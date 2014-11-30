@@ -1,0 +1,140 @@
+body, div, img, h1, h2, h3, h4, h5, h6, p,
+ul, ol, li, dl, dd, dt, blockquote, fieldset,
+legend, label, input, textarea { margin: 0; padding: 0; border: 0; }
+
+
+	@font-face {
+    font-family: ProximaNova;
+    src: url(fonts/ProximaNovaRegular.otf);
+    /* font-style: italic;
+    */
+}
+body{
+	font-family:ProximaNova,sans-serif;
+}
+	/* Style for our header texts
+	* --------------------------------------- */
+	h1{
+		font-size: 3em;
+		font-family:ProximaNova,sans-serif;
+		/*Proxima Nova*/
+		color: #fff;
+		margin:10px;
+		padding:0;
+	}
+	/*according to the design*/
+    
+ #logincontain{
+       /* margin-top:200px; */
+        padding: 115px 0px 0px 327px;
+    }
+	#title{
+text-align:left;
+font-size: 40px;
+/*24px*/
+font-weight: bold;
+
+/*margin:-200px;
+padding: 115px 0px 0px 327px;
+*/
+	}
+	#content{
+font-size: 22px;
+text-align:left;
+
+/*16px
+padding: 160px 0px 0px 327px;
+*/
+}
+
+textarea {
+ /*
+   font-size: 40em;
+  */
+} 
+body {	
+    background-image: url("../images/MountainFuji.jpg");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    
+}
+#fullpage {
+/*
+    z-index: -1;
+    */
+    background-color: #f8b040;
+    opacity: 0.77;
+    
+}
+#loginform{
+	 z-index: -10;
+	}
+
+
+#logosm {
+	height: 280px;
+	width: auto;
+	/*  
+	border-style: solid;
+    border-width: 2px;
+   border-color: #7ccced;
+
+     border-radius: 650px;
+*/
+}
+
+
+
+
+
+#crowdfluttr{
+	
+	width: 186px;
+	height: 70px;
+	margin-top: -10px;
+
+}
+
+.textelement {
+	
+	color: white;
+
+}
+            .jssora21l, .jssora21r, .jssora21ldn, .jssora21rdn
+            {
+            	position: absolute;
+            	cursor: pointer;
+            	display: block;
+                background: url(../js/Jssor.Slider.FullPack/img/a21.png) center center no-repeat;
+                overflow: hidden;
+            }
+            .jssora21l { background-position: -3px -33px; }
+            .jssora21r { background-position: -63px -33px; }
+            .jssora21l:hover { background-position: -123px -33px; }
+            .jssora21r:hover { background-position: -183px -33px; }
+            .jssora21ldn { background-position: -243px -33px; }
+            .jssora21rdn { background-position: -303px -33px; }
+
+            /* jssor slider arrow navigator skin 01 css */
+            /*
+            .jssora01l              (normal)
+            .jssora01r              (normal)
+            .jssora01l:hover        (normal mouseover)
+            .jssora01r:hover        (normal mouseover)
+            .jssora01ldn            (mousedown)
+            .jssora01rdn            (mousedown)
+           
+            .jssora01l, .jssora01r, .jssora01ldn, .jssora01rdn
+            {
+            	position: absolute;
+            	cursor: pointer;
+            	display: block;
+                background: url(../js/Jssor.Slider.FullPack/img/a01.png) no-repeat;
+                overflow:hidden;
+            }
+            .jssora01l { background-position: -8px -38px; }
+            .jssora01r { background-position: -68px -38px; }
+            .jssora01l:hover { background-position: -128px -38px; }
+            .jssora01r:hover { background-position: -188px -38px; }
+            .jssora01ldn { background-position: -8px -38px; }
+            .jssora01rdn { background-position: -68px -38px; } */
