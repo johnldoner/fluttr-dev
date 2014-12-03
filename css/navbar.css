@@ -1,0 +1,30 @@
+
+@font-face {
+    font-family: ProximaNova;
+    src: url(../fonts/ProximaNovaRegular.otf);
+}
+
+body{
+  font-family: ProximaNova;
+  font-size:20px;
+}
+      #crowdfluttr {
+      height: 55px;
+      width: 200px;
+      margin-left: 8%;
+      }
+      #navsearch{
+      margin:10px 0px 10px 300px;
+      float:left;
+      text-align: center;
+      z-index: -1;
+
+      }
+
+#ideaContent{
+  height: 200px;
+  width: 200px;
+  background-color: grey;
+  border-radius: 10px;
+  color: white;
+}
