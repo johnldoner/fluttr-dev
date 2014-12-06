@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html ng-app="app"  >
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="shortcut icon" href="images/logosm.png">
+    <title>Project Dashboard</title>
+    <!-- Bootstrap Core CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <!-- MetisMenu CSS -->
+    <link href="css/metisMenu.css" rel="stylesheet">
+    <!-- Timeline CSS -->
+    <link href="css/timeline.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="css/sb-admin-2.css" rel="stylesheet">
+    <!-- Morris Charts CSS -->
+    <link href="css/morris.css" rel="stylesheet">
+    <!-- Custom Fonts -->
+    <link href="font-awesome-4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" type="text/css" href="css/navbar.css" />
+    <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.11.1/jquery-ui.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.2/angular.min.js"></script>
+    <script src="https://cdn.firebase.com/js/client/2.0.2/firebase.js"></script>
+    <script src="https://cdn.firebase.com/libs/angularfire/0.9.0/angularfire.min.js"></script>
+    <script src="app.js"></script>
+    <link href="css/dashboard.css" rel="stylesheet">
+    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.0-beta.19/angular.min.js"></script>
+    
+    <script type="text/javascript" src="app.js"></script>
+    <!--
+    <style>
+    @font-face {
+    font-family: ProximaNova;
+    src: url(fonts/ProximaNovaRegular.otf);
+    }
+    body{
+    font-family: ProximaNova;
+    font-size:20px;
+    }
+    #crowdfluttr {
+    height: 50px;
+    width: 200px;
+    margin-left: 8%;
+    }
+    #ideaContent{
+    height: 200px;
+    width: 200px;
+    background-color: grey;
+    border-radius: 10px;
+    color: white;
+    }
+    </style>  -->
+  </head>
+  <body ng-controller="ctrl">
+    <nav ng-include="'navbar.html'"  class="navbar navbar-default navbar-fixed-top" role="navigation">
+    </nav>
+    <div class="container-fluid">
+      
+      <!--
+      <div class="row">
+        <div class="col-sm-3 col-md-2 sidebar">
+          <ul class="nav nav-sidebar">
+            <li class="active"><a href="#">Overview</a></li>
+            <li><a href="#">Reports</a></li>
+            <li><a href="#">Analytics</a></li>
+            <li><a href="#">Export</a></li>
+          </ul>
+          <ul class="nav nav-sidebar">
+            <li><a href="">Nav item</a></li>
+            <li><a href="">Nav item again</a></li>
+            <li><a href="">One more nav</a></li>
+            <li><a href="">Another nav item</a></li>
+            <li><a href="">More navigation</a></li>
+          </ul>
+          <ul class="nav nav-sidebar">
+            <li><a href="">Nav item again</a></li>
+            <li><a href="">One more nav</a></li>
+            <li><a href="">Another nav item</a></li>
+          </ul>
+        </div>
+        -->
+        
+        <h1 class="page-header">Dashboard</h1>
+        <div class="row">
+          <div class="col-lg-3 " id='projectStatus' >
+            <!--jumbotron-->
+            <div id='ideaContent'>
+              <h3> Law Hero</h3>
+              <p>
+              A game app that helps users apply legal principles to everyday situations to assess potential claims.
+            </div>
+            <ul>
+              <li>proposed:7/13/14</li>
+              <li>oroposer: Julien G</li>
+              <li>24 Upvotes- 5 Downvotes</li>
+              <li>11 Collaborators</li>
+              <li>300 Views</li>
+              <li>4 Updates</li>
+            </ul>
+            
+          </div>
+          <div class="col-lg-7">
+            <ul class="nav nav-tabs" role="tablist" id="myTab">
+              <li role="presentation" class="active "><a href="#Activity" role="tab" data-toggle="tab">Activity</a></li>
+              <li role="presentation"><a href="#Proprosals" role="tab" data-toggle="tab">Proprosals<span class="badge">4</span></a></li>
+              <li role="presentation"><a href="#Work" role="tab" data-toggle="tab">Work Products<span class="badge">2</span></a></li>
+              <li role="presentation"><a href="#Invite" role="tab" data-toggle="tab">Invite</a></li>
+            </ul>
+            <div class="tab-content">
+              <div role="tabpanel" class="tab-pane fade in active" id="Activity">
+                <div class="row">
+                  
+                  <div class="col-lg-6">
+                    <div class="form-group">
+                      <label for="comment">Comment:</label>
+                      <textarea class="form-control" rows="5" id="comment"></textarea>
+                      
+                      <button class="btn btn-default" type="button">Comment</button>
+                      
+                    </div>
+                    </div><!-- /.col-lg-6 -->
+                    </div><!-- /.row -->
+                    <div class="table-responsive">
+                      <table class="table table-striped">
+                        <thead>
+                          <tr>
+                            <th>#</th>
+                            <th>UserName</th>
+                            <th>Time</th>
+                            <th>Comments</th>
+                            <th>Reply</th>
+                            <!--
+                            <th>like or dislike</th>
+                            -->
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>1,001</td>
+                            <td><a href="#" >Lorem</a></td>
+                            <td>2014-10-31</td>
+                            <td>ipsum</td>
+                            <td> <button type="submit" class="btn btn-default">
+                            <span class="glyphicon glyphicon-pencil"></span></button></td>
+                            
+                          </tr>
+                          <tr>
+                            <td>1,002</td>
+                            <td>amet</td>
+                            <td><a><span class="glyphicon glyphicon-heart-empty"></span></a></td>
+                            <td><a><span class="glyphicon glyphicon-heart"></span></a></td>
+                            <td> <button type="submit" class="btn btn-default">
+                            <span class="glyphicon glyphicon-user"></span></button></td>
+                          </tr>
+                          <tr>
+                            <td>1,003</td>
+                            <td>Integer</td>
+                            <td>nec</td>
+                            <td>odio</td>
+                            <td> <button type="submit" class="btn btn-default">
+                            <span class="glyphicon glyphicon-plus"></span></button></td>
+                          </tr>
+                          <tr>
+                            <td>1,003</td>
+                            <td>libero</td>
+                            <td>Sed</td>
+                            <td>cursus</td>
+                            <td> <button type="submit" class="btn btn-default">
+                            <span class="glyphicon glyphicon-comment"></span></button></td>
+                          </tr>
+                          
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                  <div role="tabpanel" class="tab-pane fade" id="Proprosals">
+                    <div class="row">
+                      
+                      <div class="col-lg-3">
+                        
+                        <div class="list-group">
+                          <button type='button' class="btn btn-warning"> Submit</button>
+                          
+                          <a href="#" class="list-group-item active">Proposal 1<span class="badge">14</span></a>
+                          <a href="#" class="list-group-item " data-toggle="collapse" data-target="#demo">Proposal 2</a>
+                          <a href="#" class="list-group-item">Proposal 3</a>
+                          <a href="#" class="list-group-item">Proposal 4</a>
+                          
+                        </div>
+                        <!--simple collapse-->
+                        <h2>Simple Collapsible</h2>
+                        <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#demo">Simple collapsible</button>
+                        <div id="demo" class="collapse in">
+                          Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+                          sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                          quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                        </div>
+                      </div>
+                      <div class="col-lg-6">
+                        <!-- Single button -->
+                        <div class="btn-group">
+                          <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                          Action <span class="caret"></span>
+                          </button>
+                          <ul class="dropdown-menu" role="menu">
+                            <li><a href="#">Action</a></li>
+                            <li><a href="#">Another action</a></li>
+                            <li><a href="#">Something else here</a></li>
+                            <li class="divider"></li>
+                            <li><a href="#">Separated link</a></li>
+                          </ul>
+                        </div>
+                        <p>proposal 2</p>
+                        <p>proposed: 7/18/14</p>
+                        <p>created by: User7</p>
+                        <p>3 Collaborators</p>
+                        <p><a><span class="glyphicon glyphicon-plus" href="#"></span></a>Join this proposal</p>
+                        <p>The proposal is about</p>
+                        <!--group collaps-->
+                        <h2>Collapse</h2>
+                        <div class="panel-group" id="accordion">
+                          <div class="panel panel-default">
+                            <div class="panel-heading">
+                              <h4 class="panel-title">
+                              <a data-toggle="collapse" data-parent="#accordion" href="#collapse1">Collapsible Group 1</a>
+                              </h4>
+                            </div>
+                            <div id="collapse1" class="panel-collapse collapse in">
+                              <div class="panel-body">Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+                                sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                              quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</div>
+                            </div>
+                          </div>
+                          <div class="panel panel-default">
+                            <div class="panel-heading">
+                              <h4 class="panel-title">
+                              <a data-toggle="collapse" data-parent="#accordion" href="#collapse2">Collapsible Group 2</a>
+                              </h4>
+                            </div>
+                            <div id="collapse2" class="panel-collapse collapse">
+                              <div class="panel-body">Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+                                sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                              quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</div>
+                            </div>
+                          </div>
+                          <div class="panel panel-default">
+                            <div class="panel-heading">
+                              <h4 class="panel-title">
+                              <a data-toggle="collapse" data-parent="#accordion" href="#collapse3">Collapsible Group 3</a>
+                              </h4>
+                            </div>
+                            <div id="collapse3" class="panel-collapse collapse">
+                              <div class="panel-body">Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+                                sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                              quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div role="tabpanel" class="tab-pane fade" id="Work">
+                    <ul class="media-list">
+                      <li class="media col-md-8"  style="background-color:lavender;">
+                        <a class="media-left " href="#">
+                          <img src="..." alt="...">
+                        </a>
+                        <div class="media-body">
+                          <h4 class="media-heading">Media heading</h4>
+                          ...
+                        </div>
+                      </li>
+                      <li class="media col-md-8">
+                        <a class="media-left media-middle" href="#">
+                          <img data-src="..." alt="...">
+                        </a>
+                        <div class="media-body">
+                          <h4 class="media-heading">Middle aligned media</h4>
+                          ...
+                        </div>
+                      </li>
+                      <li class="media col-md-8">
+                        <a class="media-right" href="#">
+                          <img data-src="..." alt="...">
+                        </a>
+                        <div class="media-body">
+                          <h4 class="media-heading">Middle aligned media</h4>
+                          ...
+                        </div>
+                      </li>
+                    </ul>
+                  </div>
+                  
+                  <div role="tabpanel" class="tab-pane fade" id="Invite">
+                    
+                    Invite User to Law Hero
+                    <div class="input-group input-group-lg">
+                      <span class="input-group-addon">@</span>
+                      <input type="text" class="form-control" placeholder="Username">
+                    </div>
+                    <div class="input-group">
+                      <span class="input-group-addon">@</span>
+                      <input type="text" class="form-control" placeholder="Username">
+                    </div>
+                    <div class="input-group input-group-sm">
+                      <span class="input-group-addon">@</span>
+                      <input type="text" class="form-control" placeholder="Username">
+                    </div>
+                    
+                    <button type="button" class='btn btn-info'>SEND INVITATION</button>
+                  </div>
+                </div>
+                
+              </div>
+            </div>
+            <!-- Bootstrap core JavaScript
+            ================================================== -->
+            <!-- Placed at the end of the document so the pages load faster -->
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+            <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+            <script src="js/docs.min.js"></script>
+            <script>
+            $(function () {
+            $('#myTab a:first').tab('show')
+            })
+            </script>
+            <!--
+            <script src="../../assets/js/docs.min.js"></script>
+            
+            <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
+            -->
+          </body>
+        </html>
