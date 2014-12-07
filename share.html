@@ -7,13 +7,29 @@
 		<script src="https://code.jquery.com/ui/1.11.1/jquery-ui.min.js"></script>
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 		<script type="text/javascript" src="js/jquery.fullPage.js"></script>
-		<script src="app.js"></script>
+
 		<!-- Custom Fonts -->
+
+		<link rel="stylesheet" type="text/css" href="css/tags.css" />
 		<link href="font-awesome-4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 		<link rel="shortcut icon" href="images/logosm.png">
 		<link rel="stylesheet" type="text/css" href="css/navbar.css" />
 		<link rel="stylesheet" type="text/css" href="../css/maincarousel.css" />
 		<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+
+		<script>
+			$(":input, a").attr("tabindex", "-1");	
+		</script>
+
+		<script src="app.js"></script>
+		<script src="js/tags.js"></script>
+
+
+		<script type="text/javascript">
+		$(function() {
+			$('#tags_1').tagsInput({width:'auto'});
+		});
+		</script>
 	</head>
 	<!-- 	<style type="text/css">
 	#crowdfluttr {
@@ -40,8 +56,14 @@
 							<label for="idea-title"></label>
 							<input type="text" class="form-control" ng-model="idea" id="idea-title" placeholder="">
 						</div>
+<<<<<<< HEAD
 						<button type="submit" class="btn btn-primary btn-lg">Make it happen</button>
 					</form>
+=======
+						<button type="submit" class="btn btn-primary btn-lg">Flut</button>
+					</form>
+						<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">Float</button>
+>>>>>>> origin/master
 				</div>
 			</div>
 			<hr>
@@ -49,5 +71,37 @@
 				<p>Plug into the crowd</p>
 			</footer>
 		</div>
+<<<<<<< HEAD
+=======
+
+		<div id="myModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+			<div class="modal-dialog">
+			<div class="modal-content">
+
+			<div class="modal-header">
+			<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+			<h4 class="modal-title" id="myModalLabel">Send Idea to a Friend</h4>
+			</div>
+			<div class="modal-body">
+			<p>You can send your idea to a friend by typing in their email address. It's simple!</p>
+
+			<form role="form" ng-submit="shareIdea()">
+			<div class="form-group">
+			<input ng-model="emails" id="tags_1" type="text" class="tags" value="" /></input>					
+			</div>
+			</div>
+			<div class="modal-footer">
+			<button type="button" class="btn btn-default" tab-index="-1" data-dismiss="modal">Close</button>
+			<button type="submit" tab-index="-1" class="btn btn-primary">Save changes</button>
+			</div>
+			</form>
+			</div><!-- /.modal-content -->
+			</div><!-- /.modal-dialog -->
+		</div><!-- /.modal -->
+
+
+
+
+>>>>>>> origin/master
 	</body>
 </html>

@@ -11,6 +11,7 @@
         <link href="css/font-awesome.min.css" rel="stylesheet" type="text/css">
         <!-- DataTables CSS -->
         <link href="css/dataTables.bootstrap.css" rel="stylesheet">
+
         <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
         <link rel="shortcut icon" href="images/logosm.png">
         <link rel="stylesheet" type="text/css" href="css/navbar.css" />
@@ -77,14 +78,15 @@
                                 <li role="presentation"><a href="#ideamail" role="tab" data-toggle="tab">Ideas Mail</a></li>
                             </ul>
                             <div class="tab-content">
-                                <div role="tabpanel" class="tab-pane fade in active" id="created">
+
+ <!--                                <div role="tabpanel" class="tab-pane fade in active" id="created">
                                     <div class="row">
                                         <div class="col-lg-6">
                                             <div ng-repeat="(id,item) in filtered = (ideas | filter: user.google.id )"></div>
                                             <h3>Ideas in total: {{filtered.length}}</h3>
                                         </div>
                                     </div>
-                                    <!--original-->
+       
                                     <div class="table-responsive">
                                         <table class="table table-striped table-bordered table-hover" id="dataTables-example">
                                             <thead>
@@ -95,9 +97,9 @@
                                                     <th>Likes</th>
                                                     <th>Author</th>
                                                     <th>Delete Idea</th>
-                                                    <!--
+                                                    
                                                     <th>like or dislike</th>
-                                                    -->
+                                                    
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -113,7 +115,47 @@
                                             </tbody>
                                         </table>
                                     </div>
+                                </div> -->
+<!---->
+                            <div role="tabpanel" class="tab-pane fade in active" id="created">
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <h3>Ideas in total: {{filtered.length}}</h3>
+                                    </div>
                                 </div>
+                                <!--original-->
+                                <div class="table-responsive">
+                                    <table class="table table-striped table-bordered table-hover" id="dataTables-example">
+                                        <thead>
+                                            <tr>
+                                                <th>Time</th>
+                                                <th>Idea</th>
+                                                <th>Description</th>
+                                                <th>Likes</th>
+                                                <th>Dislikes</th>
+                                                <th>Author</th>
+                                                <th>Delete Idea</th>
+                                                <!--
+                                                <th>like or dislike</th>
+                                                -->
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                             <tr ng-repeat="(id,item) in ideas | filter: user.google.id | filter:query">
+                                                <td>{{item.timestamp}}</td>
+                                                <td><input ng-change="ideas.$save(id)" ng-model="item.idea"></td>
+                                                <td><textarea ng-change="ideas.$save(id)" ng-model="item.description"></textarea></td>
+                                                <td><a href="#" >{{item.likes.like}}</a></td>
+                                                <td><a href="#" >{{item.likes.dislike}}</a></td>
+                                                <td><a href="#" >{{item.userName}}</a></td>
+                                                <td> <button type="submit" class="btn btn-default" ng-click="DeleteIdea(id)">
+                                                <span class="glyphicon glyphicon-remove"></span></button></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+<!---->
                                 <div role="tabpanel" class="tab-pane fade" id="Likes">
                                     <div class="row">
                                         <div class="col-lg-6 col-md-6">
@@ -447,6 +489,7 @@
         // $(document).ready(function() {
         // $('#dataTables-example').dataTable();
         // });
+
         </script>
     </body>
 </html>
