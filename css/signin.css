@@ -1,16 +1,21 @@
 body {
+
+  margin-top: 40px;
   padding-top: 40px;
   padding-bottom: 40px;
-
-/*  background: -webkit-gradient(linear, top left, bottom left, from(#92a1ca), to(#76c2bd));
+  /*
+background: -webkit-gradient(linear, top left, bottom left, from(#92a1ca), to(#76c2bd));
     background: -webkit-linear-gradient(#f8b040, #76c2bd,#38a9e1);
     background: linear-gradient(#f8b040,#76c2bd,#38a9e1);
 */
+
+
+}
+.container{
     background: -webkit-linear-gradient(left top, #f8b040,#76c2bd,#38a9e1); /* For Safari 5.1 to 6.0 */
   background: -o-linear-gradient(bottom right,#f8b040,#76c2bd,#38a9e1); /* For Opera 11.1 to 12.0 */
   background: -moz-linear-gradient(bottom right, #f8b040,#76c2bd,#38a9e1); /* For Firefox 3.6 to 15 */
   background: linear-gradient(to bottom right, #f8b040,#76c2bd,#38a9e1); /* Standard syntax */
-
 
 }
 
