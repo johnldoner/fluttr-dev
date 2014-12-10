@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html ng-app="app">
+<head>
+	<title>Float Test</title>
+		<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" />
+		<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+		<script src="https://code.jquery.com/ui/1.11.2/jquery-ui.min.js"></script>
+
+			<link rel="stylesheet" type="text/css" href="http://xoxco.com/projects/code/tagsinput/jquery.tagsinput.css" />
+
+		<!-- THE TRIO -->
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.3/angular.min.js"></script>
+		<script src="https://cdn.firebase.com/js/client/2.0.2/firebase.js"></script>
+		<script src="https://cdn.firebase.com/libs/angularfire/0.9.0/angularfire.min.js"></script>
+
+		<script>
+			$(":input, a").attr("tabindex", "-1");
+			
+		</script>
+		<script src="float.js"></script>
+		<script src="tags.js"></script>
+
+
+		<script type="text/javascript">
+		$(function() {
+
+			$('#tags_1').tagsInput({width:'auto'});
+		});
+		</script>
+
+</head>
+<body ng-controller="ctrl">
+<a href="#" ng-click="shareIdea()">Share Idea</a>
+{{"Hello World!"}}
+
+<div>
+	<a href="#" ng-click="auth.$authWithOAuthPopup('google')">Login</a>
+</div>
+<div ng-show="auth">
+	Hello, {{user.google.displayName}}!
+	<br>
+	<a href="#" ng-click="auth.$unauth()">Logout</a>
+</div>
+
+  <!-- sample modal content -->
+  <div id="myModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+          <h4 class="modal-title" id="myModalLabel">Send Idea to a Friend</h4>
+        </div>
+        <div class="modal-body">
+     		<p>You can send your idea to a friend by typing in their email address. It's simple!</p>
+
+		<form role="form" ng-submit="shareIdea()">
+		  <div class="form-group">
+		  	<input ng-model="emails" id="tags_1" type="text" class="tags" value="" /></input>					
+		  </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" tab-index="-1" data-dismiss="modal">Close</button>
+          <button type="submit" tab-index="-1" class="btn btn-primary">Save changes</button>
+        </div>
+    	</form>
+      </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+  </div><!-- /.modal -->
+
+  <div class="bs-example" style="padding-bottom: 24px;">
+    <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+      Float
+    </button>
+  </div><!-- /example -->
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+
+</body>
+</html>
