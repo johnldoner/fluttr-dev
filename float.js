@@ -75,12 +75,20 @@ app.controller("ctrl", ["$scope","Ideas","Users","Auth","Messages", function($sc
             recipent: $scope.val,
             // sender: $scope.user.google.email
         }).then(function() {
-          $.post( "test.php", function( data ) {
-            $( "#float" ).serialize();
-            console.log(data);
+
+
+              var  str = $( "form" ).serialize();
+             // $( "#tags_1" ).text( str );
+              console.log(str);
+
+          /*
+          $.post( "test.php", function( val ) {
+            $("tags_1").serialize();
+            console.log(val);
           });
+          */
           console.log('Idea added: ' + val);
-        });ßß
+        });
       return;
     });  };
 

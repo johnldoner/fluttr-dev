@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html ng-app="app">
+<head>
+	<title>Growl Test</title>
+	<script type="text/javascript" src="bower_components/angular/angular.js"></script>
+	<script type="text/javascript" src="bower_components/angular-growl-notifications/dist/angular-growl-notifications.js"></script>
+	<script>
+	angular.module('app', ['growlNotifications']);
+	</script>
+	<style>
+		growl-notifications{
+		  position: fixed;
+		  top: 150px;
+		  right: 10px;
+		}
+		growl-notification{
+		  border: 1px solid black;
+		  padding: 15px 30px;
+		  margin-bottom: 15px;
+		}
+	</style>
+</head>
+<body>
+<growl-notifications></growl-notifications>
+<growl-notification>
+  Hello world
+</growl-notification>
+</body>
+</html>
