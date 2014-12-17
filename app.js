@@ -48,7 +48,20 @@ app.controller("ctrl", ["$scope","$firebase","Ideas","Auth","IdeasObject","Messa
 
   $scope.GoogleLogin = function () {   
     window.location.href = "http://flut.site44.com/" + "explore.html";
-    $scope.auth.$authWithOAuthPopup('google')()
+    $scope.auth.$authWithOAuthPopup('google')();
+    console.log(user.google.displayName);
+  };
+
+  $scope.FacebookLogin = function () {   
+    window.location.href = "http://flut.site44.com/" + "explore.html";
+    $scope.auth.$authWithOAuthPopup('facebook')();
+    console.log(user.facebook.displayName);
+  };
+
+  $scope.TwitterLogin = function () {   
+    window.location.href = "http://flut.site44.com/" + "explore.html";
+    $scope.auth.$authWithOAuthPopup('twitter')();
+    console.log(user.twitter.displayName);
   };
 
 
