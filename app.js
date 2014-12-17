@@ -175,9 +175,9 @@ app.controller("ctrl", ["$scope","$firebase","Ideas","Auth","IdeasObject","Messa
     $scope.ideaTitle = entries.idea;
     $scope.ideaDesc = entries.description;
     $scope.ideaAuthor = entries.userName;
-    var karma = ref.child("likes");
-    $scope.ideaLikes = karma.like;
-    $scope.ideaDislikes = karma.dislike;
+    var karma = item.child("likes");
+    $scope.ideaLikes = entries.likes.like;
+    $scope.ideaDislikes = entries.likes.dislike;
 
     console.log(entries.userEmail);
   }, function (errorObject) {
