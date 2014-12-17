@@ -149,7 +149,42 @@ app.controller("ctrl", ["$scope","$firebase","Ideas","Auth","IdeasObject","Messa
   function clearIdea() {
     $scope.idea = "";
   }
-  
+
+// BEGIN: IDEA PERMALINK =========================================================
+  $.urlParam = function(name, url) {
+      if (!url) {
+       url = window.location.href;
+      }
+      var results = new RegExp('[\\?&]' + name + '=([^&#]*)').exec(url);
+      if (!results) { 
+          return undefined;
+      }
+      return results[1] || undefined;
+    }
+  var ideaID = $.urlParam('id');
+  console.log(ideaID);
+
+    var ref = new Firebase("https://crowdfluttr.firebaseio.com/ideas/" + ideaID);
+    var sync = $firebase(ref);
+    var syncObject = sync.$asObject();
+    syncObject.$bindTo($scope, "data");
+
+  ref.on("value", function(snapshot) {
+    var entries = snapshot.val();
+    console.log(entries);
+    $scope.ideaTitle = entries.idea;
+    $scope.ideaDesc = entries.description;
+    $scope.ideaAuthor = entries.userName;
+    var karma = ref.child("likes");
+    $scope.ideaLikes = karma.like;
+    $scope.ideaDislikes = karma.dislike;
+
+    console.log(entries.userEmail);
+  }, function (errorObject) {
+    console.log("The read failed: " + errorObject.code);
+  });
+// END: IDEA PERMALINK =========================================================
+
 }]);
 
 app.run(["$rootScope", "Auth", function($rootScope, Auth) {

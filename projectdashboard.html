@@ -91,20 +91,26 @@
           <div class="col-lg-3 " id='projectStatus' >
             <!--jumbotron-->
             <div id='ideaContent'>
-              <h3> Law Hero</h3>
-              <p>
-              A game app that helps users apply legal principles to everyday situations to assess potential claims.
+
             </div>
             <ul>
-              <li>proposed:7/13/14</li>
-              <li>oroposer: Julien G</li>
-              <li>24 Upvotes- 5 Downvotes</li>
+              <li>Proposed:7/13/14</li>
+              <li>Creator: {{ideaAuthor}}</li>
+              <li>{{ideaLikes}} Upvotes / {{ideaDislikes}} Downvotes</li>
               <li>11 Collaborators</li>
               <li>300 Views</li>
               <li>4 Updates</li>
             </ul>
             
           </div>
+
+          <div class="col-lg-7">
+              <h2>{{ideaTitle}}</h2>
+              <small>By: {{ideaAuthor}}</small>
+              <p>{{ideaDesc}}</p>
+          </div>
+
+
           <div class="col-lg-7">
             <ul class="nav nav-tabs" role="tablist" id="myTab">
               <li role="presentation" class="active "><a href="#Activity" role="tab" data-toggle="tab">Activity</a></li>
