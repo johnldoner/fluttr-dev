@@ -9,9 +9,10 @@ body{
   font-size:20px;
 }
       #crowdfluttr {
-      height: 55px;
-      width: 200px;
-      margin-left: 8%;
+  width: 186px;
+  height: 90px;
+  margin-top: -20px;
+  margin-bottom: -20px;
       }
       #navsearch{
       margin:10px 0px 10px 300px;
