@@ -17,41 +17,29 @@ app.factory("Users", ["$firebase", "Ref", function($firebase, Ref) {
   return $firebase(childRef).$asArray();
 }]);
 
+app.factory("cfFloat", ["$firebase", "Ref", function($firebase, Ref) {
+  var childRef = Ref.child('float');
+  return $firebase(childRef).$asArray();
+}]);
+
 app.factory("Messages", ["$firebase", "Ref", function($firebase, Ref) {
   var childRef = Ref.child('messages');
   return $firebase(childRef).$asArray();
 }]);
 
-app.controller("ctrl", ["$scope","Ideas","Users","Auth","Messages", function($scope,Ideas,Users,Auth,Messages) {
+app.controller("ctrl", ["$scope","Ideas","Users","Auth","Messages","cfFloat", function($scope,Ideas,Users,Auth,Messages,cfFloat) {
   $scope.users = Users;
   $scope.ideas = Ideas;
   $scope.auth = Auth;
   $scope.messages = Messages;
+  $scope.cfFloat = cfFloat;
   $scope.idea = "";
 
 
-  $scope.GoogleLogin = function () {   
+  $scope.FacebookLogin = function () {   
  //   window.location.href = "http://flut.site44.com/" + "explore.html";
-    $scope.auth.$authWithOAuthPopup('google')();
-    $scope.username = $scope.auth.google.displayName;
-  };
-
-  $scope.UpdateFirebaseWithString = function () {   
-    $scope.ideas.$add({
-      idea: $scope.idea,
-          userId: $scope.user.google.id,
-          userName: $scope.user.google.displayName,
-          userEmail: $scope.user.google.email
-    }).then(function() {
-      clearIdea();
-    });
-
-    $scope.users.child($scope.user.google.id).$add({
-      idea: $scope.idea,
-    }).then(function() {
-      clearIdea();
-    });
-
+    $scope.auth.$authWithOAuthPopup('facebook')();
+    $scope.username = $scope.auth.facebook.displayName;
   };
 
 
@@ -59,7 +47,7 @@ app.controller("ctrl", ["$scope","Ideas","Users","Auth","Messages", function($sc
     var arr = $( "input" ).val().split(',');
     jQuery.each( arr, function( i, val ) {
       // will change this to to dynamic ideaID once templating and permalinking is integrated
-    $scope.ideaID = "-JbSSmv_rJufUKukdZ5c"; 
+    $scope.ideaID = "-JcXFk3iWiDxisvWllLx"; 
             // Get a reference to our posts
     var ref = new Firebase("https://crowdfluttr.firebaseio.com/ideas/" + $scope.ideaID);
     // Attach an asynchronous callback to read the data at our posts reference
@@ -70,10 +58,11 @@ app.controller("ctrl", ["$scope","Ideas","Users","Auth","Messages", function($sc
     });
 
         $scope.val = val;
-        $scope.messages.$add({
+        $scope.cfFloat.$add({
             ideaID: $scope.ideaID,
-            recipent: $scope.val,
-            // sender: $scope.user.google.email
+            recipientEmail: $scope.val,
+            senderName: $scope.user.facebook.displayName,
+            senderID: $scope.user.facebook.id
         }).then(function() {
 
 

@@ -49,7 +49,12 @@ app.factory("WorkplansComments", ["$firebase", "Ref", function($firebase, Ref) {
   return $firebase(childRef).$asArray();
 }]);
 
-app.controller("ctrl", ["$scope","$firebase","Ideas","IdeasComments","Auth","IdeasObject","Messages","Proposals","ProposalsComments","Workplans","WorkplansComments", function($scope,$firebase,Ideas,IdeasComments,Auth,IdeasObject,Messages,Proposals,ProposalsComments,Workplans,WorkplansComments) {
+app.factory("cfFloat", ["$firebase", "Ref", function($firebase, Ref) {
+  var childRef = Ref.child('float');
+  return $firebase(childRef).$asArray();
+}]);
+
+app.controller("ctrl", ["$scope","$firebase","cfFloat","Ideas","IdeasComments","Auth","IdeasObject","Messages","Proposals","ProposalsComments","Workplans","WorkplansComments", function($scope,$firebase,cfFloat,Ideas,IdeasComments,Auth,IdeasObject,Messages,Proposals,ProposalsComments,Workplans,WorkplansComments) {
   $scope.ideas = Ideas;
   $scope.ideas_comments = IdeasComments;
   $scope.ideas_object = IdeasObject; 
@@ -59,6 +64,7 @@ app.controller("ctrl", ["$scope","$firebase","Ideas","IdeasComments","Auth","Ide
   $scope.prcomments = ProposalsComments;
   $scope.workplans = Workplans;
   $scope.wpcomments = WorkplansComments;
+  $scope.cfFloat = cfFloat;
   $scope.idea = "";
     $.urlParam = function(name, url) {
       if (!url) {
@@ -184,34 +190,28 @@ app.controller("ctrl", ["$scope","$firebase","Ideas","IdeasComments","Auth","Ide
       });
     };
 
+// FLOAT
   $scope.shareIdea = function () {
-    var arr = $( "input" ).val().split(',');
+    var arr = $( "#tags_1" ).val().split(',');
     jQuery.each( arr, function( i, val ) {
       // will change this to to dynamic ideaID once templating and permalinking is integrated
-    $scope.ideaID = "-JbSSmv_rJufUKukdZ5c"; 
-            // Get a reference to our posts
-    var ref = new Firebase("https://crowdfluttr.firebaseio.com/ideas/" + $scope.ideaID);
-    // Attach an asynchronous callback to read the data at our posts reference
-    ref.on("value", function(snapshot) {
-      console.log(snapshot.val());
-    }, function (errorObject) {
-      console.log("The read failed: " + errorObject.code);
-    });
-
         $scope.val = val;
-        $scope.messages.$add({
+        $scope.cfFloat.$add({
             ideaID: $scope.ideaID,
-            recipent: $scope.val,
-            // sender: $scope.user.google.email
+            recipientEmail: $scope.val,
+            senderName: $scope.user.facebook.displayName,
+            senderID: $scope.user.facebook.id
         }).then(function() {
           console.log('Idea added: ' + val);
         });
       return;
-    });  };
+    });
+      $('#floatModal').modal('hide');
+      };
 
 //
 
-
+/*
   $scope.DeleteIdea = function (item) {
         $scope.ideas.$remove(item);
     };
@@ -219,25 +219,31 @@ app.controller("ctrl", ["$scope","$firebase","Ideas","IdeasComments","Auth","Ide
   function clearIdea() {
     $scope.idea = "";
   }
-
+*/
 // BEGIN: PERMALINKS =========================================================
   // GET Idea IDs
     var idearef = new Firebase("https://crowdfluttr.firebaseio.com/ideas/" + ideaID);
+    /*
     var ideasync = $firebase(idearef);
     var ideasyncObject = ideasync.$asObject();
     ideasyncObject.$bindTo($scope, "data");
+    */
 
   // GET Proposal IDs
     var propref = new Firebase("https://crowdfluttr.firebaseio.com/proposals/" + proposalID);
+    /*
     var propsync = $firebase(propref);
     var propsyncObject = propsync.$asObject();
     propsyncObject.$bindTo($scope, "data");
+    */
 
   // GET Workplan IDs
     var wpref = new Firebase("https://crowdfluttr.firebaseio.com/workplans/" + wpID);
+    /*
     var wpsync = $firebase(wpref);
     var wpsyncObject = wpsync.$asObject();
     wpsyncObject.$bindTo($scope, "data");
+    */
 
     // GET Information from Idea IDs
   idearef.on("value", function(snapshot) {
@@ -268,7 +274,7 @@ app.controller("ctrl", ["$scope","$firebase","Ideas","IdeasComments","Auth","Ide
   }, function (errorObject) {
     console.log("The read failed: " + errorObject.code);
   });
-
+/*
       // GET Information from Workplan IDs
   wpref.on("value", function(snapshot) {
     var entries = snapshot.val();
@@ -283,6 +289,7 @@ app.controller("ctrl", ["$scope","$firebase","Ideas","IdeasComments","Auth","Ide
   }, function (errorObject) {
     console.log("The read failed: " + errorObject.code);
   });
+*/
 
 // END: PERMALINKS =========================================================
 

@@ -34,10 +34,10 @@
 {{"Hello World!"}}
 
 <div>
-	<a href="#" ng-click="auth.$authWithOAuthPopup('google')">Login</a>
+	<a href="#" ng-click="FacebookLogin()">Login</a>
 </div>
 <div ng-show="auth">
-	Hello, {{user.google.displayName}}!
+	Hello, {{user.facebook.displayName}}!
 	<br>
 	<a href="#" ng-click="auth.$unauth()">Logout</a>
 </div>

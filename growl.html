@@ -2,10 +2,18 @@
 <html ng-app="app">
 <head>
 	<title>Growl Test</title>
-	<script type="text/javascript" src="bower_components/angular/angular.js"></script>
-	<script type="text/javascript" src="bower_components/angular-growl-notifications/dist/angular-growl-notifications.js"></script>
+
+
+		<!-- THE TRIO -->
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.3/angular.min.js"></script>
+		<script src="https://cdn.firebase.com/js/client/2.0.2/firebase.js"></script>
+		<script src="https://cdn.firebase.com/libs/angularfire/0.9.0/angularfire.min.js"></script>
+
+
+		<script type="text/javascript" src="bower_components/angular-growl-notifications/dist/angular-growl-notifications.js"></script>
+	<script src="float.js"></script>
 	<script>
-	angular.module('app', ['growlNotifications']);
+	// angular.module('app', ['growlNotifications']);
 	</script>
 	<style>
 		growl-notifications{
@@ -20,10 +28,20 @@
 		}
 	</style>
 </head>
-<body>
+<body ng-controller="ctrl">
+{{"Hello World!"}}
+
+<div>
+	<a href="#" ng-click="FacebookLogin()">Login</a>
+</div>
+<div ng-show="user">
+	Hello, {{user.facebook.displayName}}. Your email is {{user.facebook.email}}.
+	<br>
+	<a href="#" ng-click="auth.$unauth()">Logout</a>
+</div>
 <growl-notifications></growl-notifications>
-<growl-notification>
-  Hello world
+<growl-notification ng-repeat="item in cfFloat | filter:user.facebook.email">
+		<a ng-href="/users/{{item.senderID}}">{{item.senderName}}</a> has shared <a ng-href="idea.html?id={{item.ideaID}}">"{{item.ideaID}}"</a> with you!
 </growl-notification>
 </body>
 </html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html ng-app="app">
+<head>
+	<title>Growl Test</title>
+	<script type="text/javascript" src="bower_components/angular/angular.js"></script>
+	<script src="float.js"></script>
+	<style>
+		growl-notifications{
+		  position: fixed;
+		  top: 150px;
+		  right: 10px;
+		}
+		growl-notification{
+		  border: 1px solid black;
+		  padding: 15px 30px;
+		  margin-bottom: 15px;
+		}
+	</style>
+</head>
+<body ng-controller="ctrl">
+{{"Hello World!"}}
+
+<div>
+	<a href="#" ng-click="FacebookLogin()">Login</a>
+</div>
+<div ng-show="user">
+	Hello, {{user.facebook.displayName}}!
+	<br>
+	<a href="#" ng-click="auth.$unauth()">Logout</a>
+</div>
+<div ng-repeat="user in cfFloat | filter:user.facebook.displayName">
+  {{user.senderName}} has shared "{{user.ideaID}}" with you!
+</div>
+</body>
+</html>

@@ -31,7 +31,7 @@
  -->
         <div class="item" ng-repeat="(id,item) in ideas_object| filter: query" ng-class="{active : $first}">
           <div class="carousel-caption">
-            <a href="projectdashboard.html?id={{id}}"><h1 style="color:#fff">{{item.idea}}</h1></a>
+            <a href="idea.html?id={{id}}"><h1 style="color:#fff">{{item.idea}}</h1></a>
             <h3>-{{item.userName}}</h3>
             <h3>Likes: {{item.likes.like}} Dislikes: {{item.likes.dislike}}</h3>
             <a ng-click="LikeIdea('like',id)"  class="btn btn-lg btn-primary" href="#myCarousel" role="button" data-slide="next">Like<span class="glyphicon glyphicon-heart"></span></a>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html ng-app="app">
+<head>
+	<title>Float Test</title>
+		<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" />
+		<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+		<script src="https://code.jquery.com/ui/1.11.2/jquery-ui.min.js"></script>
+
+			<link rel="stylesheet" type="text/css" href="http://xoxco.com/projects/code/tagsinput/jquery.tagsinput.css" />
+			<link rel="stylesheet" type="text/css" href="css/navbar.css" />
+
+		<!-- THE TRIO -->
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.3/angular.min.js"></script>
+		<script src="https://cdn.firebase.com/js/client/2.0.2/firebase.js"></script>
+		<script src="https://cdn.firebase.com/libs/angularfire/0.9.0/angularfire.min.js"></script>
+
+
+		<script>
+			$(":input, a").attr("tabindex", "-1");
+			
+		</script>
+		<script src="float.js"></script>
+</head>
+<body ng-controller="ctrl">
+{{"Hello World!"}}
+
+<input type="text" class="form-control" ng-model="storeSearch.$" placeholder="Store Search">
+<ul class="list-unstyled" ng-repeat="(id, user) in cfFloat | filter:storeSearch">
+	<li><a href="#/users/{{user.$id}}/" class="btn btn-danger btn-lg">{{user.$id}}</a>
+		<div class="avatar-container">
+                                  <div class="avatar" style="background-image: url('https://graph.facebook.com/{{item.$id}}/picture?type=normal')"></div>
+                              </div>
+	</li>
+</ul>
+ 
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+
+</body>
+</html>

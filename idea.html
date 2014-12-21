@@ -12,6 +12,8 @@
         <link href="css/font-awesome.min.css" rel="stylesheet" type="text/css">
         <!-- DataTables CSS -->
         <link href="css/dataTables.bootstrap.css" rel="stylesheet">
+        <!-- Tags CSS -->
+        <link rel="stylesheet" type="text/css" href="http://xoxco.com/projects/code/tagsinput/jquery.tagsinput.css" />
         <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
         <link rel="shortcut icon" href="images/logosm.png">
         <link rel="stylesheet" type="text/css" href="css/navbar.css" />
@@ -20,6 +22,7 @@
         <script src="https://cdn.firebase.com/js/client/2.0.2/firebase.js"></script>
         <script src="https://cdn.firebase.com/libs/angularfire/0.9.0/angularfire.min.js"></script>
         <script src="app.js"></script>
+        <script src="tags.js"></script>
         <!--use login.js for present-->
            <!-- jQuery -->
         <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
@@ -41,6 +44,12 @@
             $(".iframe").colorbox({iframe:true, width:"80%", height:"80%"});
           });
         </script>
+        <script type="text/javascript">
+    $(function() {
+
+      $('#tags_1').tagsInput({width:'auto'});
+    });
+    </script>
   </head>
   <body ng-controller="ctrl">
   <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-521ec0330762c358" async="async"></script>
@@ -59,6 +68,9 @@
               <li>4 Updates</li>
             </ul>
         </div>
+        <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#floatModal">
+      Float
+    </button>
       </div>
       <!-- /.panel-body -->
     </div>               
@@ -118,6 +130,7 @@
                   <th>Compare</th>
               </thead>
               <tbody style="font-size:80%">
+                  <tr ng-hide="proposals.length | filter:ideaID"><td>There are currently no Proposals. Create the first one!</td></tr>
                   <tr ng-repeat="(id,item) in proposals | filter: ideaID | orderBy: item.timestamp">
                       <td>
 
@@ -133,6 +146,7 @@
                   </tr>
                   <tr>
                       <td><button class="btn btn-primary" data-toggle="modal" data-target="#myModal" data-backdrop="static" data-keyboard="false">Submit New Proposal</button></td>
+                      <td></td>
                       <td></td>
                       <td></td>
                       <td><button class="btn btn-primary" ng-click="compareProposals()">Compare</button></td>
@@ -216,7 +230,31 @@
   </div>
 </div>
 
+  <!-- sample modal content -->
+  <div id="floatModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
 
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+          <h4 class="modal-title" id="myModalLabel">Send Idea to a Friend</h4>
+        </div>
+        <div class="modal-body">
+        <p>You can send your idea to a friend by typing in their email address. It's simple!</p>
+
+    <form role="form" ng-submit="shareIdea()" id="float">
+      <div class="form-group">
+        <input ng-model="emails" id="tags_1" type="text" class="tags" value="" /></input>         
+      </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" tab-index="-1" data-dismiss="modal">Close</button>
+          <button type="submit" tab-index="-1" class="btn btn-primary">Save changes</button>
+        </div>
+      </form>
+      </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+  </div><!-- /.modal -->
 
 <!-- Modal -->
 <div class="modal fade" id="prModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
