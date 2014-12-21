@@ -49,7 +49,18 @@ app.factory("WorkplansComments", ["$firebase", "Ref", function($firebase, Ref) {
   return $firebase(childRef).$asArray();
 }]);
 
-app.controller("ctrl", ["$scope","$firebase","Ideas","IdeasComments","Auth","IdeasObject","Messages","Proposals","ProposalsComments","Workplans","WorkplansComments", function($scope,$firebase,Ideas,IdeasComments,Auth,IdeasObject,Messages,Proposals,ProposalsComments,Workplans,WorkplansComments) {
+
+app.factory("User", ["$firebase", "Ref", function($firebase, Ref) {
+         return function(userid) {
+            var childRef = Ref.child('users').child(userid);
+            return $firebase(childRef).$asObject();
+         }
+}]);
+
+app.controller("ctrl", ["$scope","$firebase","Ideas","IdeasComments","Auth","IdeasObject","Messages","Proposals","ProposalsComments","Workplans","WorkplansComments","User", function($scope,$firebase,Ideas,IdeasComments,Auth,IdeasObject,Messages,Proposals,ProposalsComments,Workplans,WorkplansComments,User) {
+  
+  $scope.user_profile_update = User($scope.user.facebook.id);
+
   $scope.ideas = Ideas;
   $scope.ideas_comments = IdeasComments;
   $scope.ideas_object = IdeasObject; 
