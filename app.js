@@ -95,8 +95,8 @@ app.controller("ctrl", ["$scope","$firebase","Ideas","IdeasComments","Auth","Ide
   $scope.UpdateFirebaseWithString = function () {   
     $scope.ideas.$add({
           idea: $scope.idea,
-          userId: $scope.user.google.id,
-          userName: $scope.user.google.displayName,
+          userId: $scope.user.facebook.id,
+          userName: $scope.user.facebook.displayName,
           timestamp: Date.now()
     }).then(function(Ref) {
       clearIdea();
@@ -157,8 +157,8 @@ app.controller("ctrl", ["$scope","$firebase","Ideas","IdeasComments","Auth","Ide
     var IdeaData = $firebase(IdeaRef);
     $scope.IdeaAttributes = IdeaData.$asArray();
     $scope.IdeaAttributes.$add({
-        userId: $scope.user.google.id,
-        userName: $scope.user.google.displayName,
+        userId: $scope.user.facebook.id,
+        userName: $scope.user.facebook.displayName,
         timestamp: Date.now()
       });
 
