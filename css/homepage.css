@@ -1,0 +1,63 @@
+			html { 
+				font-family: 'Open Sans', sans-serif;
+				color: #fff;
+			  	background: url(http://fluttr.johnldoner.com/images/backgrounds/rotater.php) no-repeat center center fixed; 
+			  	-webkit-background-size: cover;
+			  	-moz-background-size: cover;
+			  	-o-background-size: cover;
+			  	background-size: cover;
+			}
+
+			a {
+				color: #fff;
+			}
+
+			.left {
+				float: left;
+				width: 70%; 
+				display: inline-block;
+			}
+			.right { 
+				float: right;
+				width: 30%;
+				
+			}
+
+			.container {
+				padding: 10%;
+			}
+
+			.logo {
+				opacity: 0.8;
+			}
+
+			#title {
+				font-family: 'Bitter', serif;
+				font-size: 300%;
+			}
+
+			#caption {
+				font-size: 150%;
+			}
+
+			.form-signin {
+				margin-top: 50%;
+				margin-right: 20%;
+				margin-left: 10%;
+			}
+
+			footer{
+				position:fixed;
+				height: 40px;
+				display:block;
+				width: 100%;
+				font-size: 80%;
+				color: #fff;
+				text-align:center;
+				z-index:9;		
+				bottom: 0px;
+				padding: 10px 0 0 0;
+			}
+			footer a {
+				color: #fff;
+			}

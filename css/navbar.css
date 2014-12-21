@@ -8,6 +8,23 @@ body{
   font-family: ProximaNova;
   font-size:20px;
 }
+
+     .avatar {
+      width: 40px;
+      height: 40px;
+      -webkit-border-radius: 50%; /* Can also be 55px */
+      -moz-border-radius: 50%;
+      border-radius: 50%;
+      background-position: center center;
+      background-size: cover;
+     }
+
+     .avatar-container {
+        width: 40px;
+        height: 40px;
+        display: block;
+     }
+
       #crowdfluttr {
       height: 55px;
       width: 200px;
