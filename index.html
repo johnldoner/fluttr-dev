@@ -5,71 +5,32 @@
 		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.2/angular.min.js"></script>
 		<script src="https://cdn.firebase.com/js/client/2.0.2/firebase.js"></script>
 		<script src="https://cdn.firebase.com/libs/angularfire/0.9.0/angularfire.min.js"></script>
-		
-		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+		<script src="app.js"></script>
+
+		<link href='https://fonts.googleapis.com/css?family=Bitter:400,700|Open+Sans:400,700' rel='stylesheet' type='text/css'>
+		<link href="css/buttons.css" rel="stylesheet" type="text/css">
+		<link href="css/homepage.css" rel="stylesheet" type="text/css">
 		<link rel="shortcut icon" href="images/logosm.png">
-		<link rel="stylesheet" type="text/css" href="css/navbar.css" />
-		<script type="text/javascript" src="js/jquery.fullPage.js"></script>
-		<script type="text/javascript" src="app.js"></script>
-		<link type='text/css' rel='stylesheet' href='css/style.css' />
-		<link type='text/css' rel='stylesheet' href='css/jquery.fullPage.css' />
-		<link type='text/css' rel='stylesheet' href='css/examples.css' />
-		<link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.2.0/css/font-awesome.css" rel="stylesheet" type="text/css">
-		<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" rel="stylesheet" type="text/css">
-		<!-- Custom Fonts -->
-		<link href="font-awesome-4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 		
-		
-		<script type="text/javascript">
-		
-			$(document).ready(function() {
-					$('#fullpage').fullpage({
-			sectionsColor: ['#f8b040', '#7ccced', '#38a9e1'],
-			anchors: ['Page1', 'Page2', 'Page3'],
-			menu: '#menu',
-			loopTop: true,
-			loopBottom: true,
-			fixedElements: '#arrowL, #arrowR',
+		<link rel="stylesheet" href="css/colorbox.css" />
+		<script src="js/colorbox.js"></script>
+		<script>
+			$(document).ready(function(){
+				$(".vimeo").colorbox({iframe:true, innerWidth:800, innerHeight:600});
+				if(user) {
+					window.location.href="explore.html";
+				}
+				var ref = new Firebase("https://crowdfluttr.firebaseio.com");
+				var authData = ref.getAuth();
+				if (authData) {
+				  console.log("User " + authData.uid + " is logged in with " + authData.provider);
+				} else {
+				  console.log("User is logged out");
+				}
 			});
-			});
-			
 		</script>
-		<style>
-		.btn-blue{
-
-			background-color: #38a9e1;
-			color:white;
-		}
-
-			/* Centered texts in each section
-	* --------------------------------------- */
-	.section{
-		text-align:center;
-	}
-
-	/* Fixed header and footer.
-	* --------------------------------------- */
-	#footer{
-		position:fixed;
-		height: 50px;
-		display:block;
-		width: 100%;
-		background: #fff;
-		text-align:center;
-		/*#7ccced */
-		z-index:9;
-		
-		color: #000;
-		padding: 20px 0 0 0;
-	}
-
-	#footer{
-		bottom:0px;
-	}
-
-		</style>
 	</head>
+<!--
 	<style type="text/css">
 		
 		a.li-center{
@@ -92,36 +53,36 @@
 					<div class="row" id="logincontain">
 						<div class="col-lg-6">
 							<div class="textelement">
-								<!-- col-lg-offset-3-->
+							
 								<P id="title">Welcome to CrowdFluttr.</h1>
 								<p id="content">Share ideas with friends-and awesome people from around the world. Collaborate to realize the world's imagination.
 							</div>
 						</div>
 						<div class="col-lg-4">
 							<form class="form-signin" role="form">
-								<!-- <h2 class="form-signin-heading">Please login</h2> -->
+							
 								<br>
 								<div class="form-group">
 									<button class="btn btn-lg btn-danger" id="Gbtn" ng-click="GoogleLogin()">
 									<i class="fa fa-google fa-2x"></i>
-									<!--fa-google-plus-square-->
+								
 									Login with Google</button>
 									</div>
 									<div class="form-group">
 									<button class="btn btn-lg btn-primary" id="Gbtn" ng-click="FacebookLogin()">
 									<i class="fa fa-facebook fa-2x"></i>
-									<!--fa-facebook-square-->
+									
 									Login with Facebook</button>
 									</div>
 									<div class="form-group">
 									<button class="btn btn-lg btn-blue" id="Gbtn" ng-click="TwitterLogin()">
 									<i class="fa fa-twitter fa-2x"></i>
-									<!--fa-twitter-->
+									
 									Login with Twitter</button>
 									</div>
 								<div class="form-group">
 									<button class="btn btn-lg btn-success" id="Lbtn"  onclick="window.location.href='signup.html'">
-									<!-- <i class="fa fa-google-plus-square fa-2x"></i> -->
+								
 									<img src ="images/logosm.png">Make it Happen</button>
 								</div>
 							</form>
@@ -132,30 +93,50 @@
 				</div>
 			</div>
 <div id="footer">
-<!-- <p>hellp
-<ul >
-	<li ><a href="#">Intro</a></li>
-	<li><a href="#">Sign up</a></li>
-	<li><a href="#">Log In</a></li>
-</ul> -->
+
 	 
 	 <a href="#">About</a>
 	 <a href="#">Terms & Conditions</a>
 	 <a href="#">Blog</a>
 	 <a href="#">Meet the Team</a>	 
 	 &copy;2014 Crowdfluttr, LLC. All rights reserved.
-<!-- <ul>
-<li> About</li>
-<li>Terms & Conditions</li>
-<li>Blog</li>
-<li>Meet the Team</li>
-</ul> -->
 
-</div>
+-->
+	<body ng-controller="ctrl">
 
-<footer>
+		<section class="left">
+			<div class="container">
+				<img class="logo" src="images/logomed.png" width="188" height="188" /><br>
+				<h1 id="title">Welcome to CrowdFluttr.</h1>
+				<p id="caption">Share ideas with friends &hyphen; and awesome people from around the world.<br> Collaborate to realize the world's imagination.<br><br>
+<a class='vimeo' href="http://player.vimeo.com/video/99522814" title="Crowdfluttr">Learn More &raquo;</a>
+</p>
+			</div>
+		</section>
+		<section class="right">
+			<form class="form-signin" role="form">
+				<div class="form-group">
+					<button class="btn btn-lg btn-primary btn-block" ng-click="FacebookLogin()">
+					<i class="fa fa-facebook-plus-square fa-2x"></i>
+					Login with Facebook</button>
+				</div>
+				<div class="form-group">
+					<button class="btn btn-lg btn-success btn-block" onclick="window.location.href='signup.html'">
+					<img src ="images/logosm.png"> Register</button>
+				</div>
+			</form>			
+		</section>
 
-</footer>
+		<footer class="effect">
+			 <small><a href="#">About</a></small> | 
+			 <small><a href="#">Terms & Conditions</a></small> | 
+			 <small><a href="#">Blog</a></small> | 
+			 <small><a href="#">Meet the Team</a></small> <br>
+			 <small>&copy;2014 Crowdfluttr. All rights reserved.</small>
+		</footer>
+<!-- Go to www.addthis.com/dashboard to customize your tools -->
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-521ec0330762c358" async="async"></script>
+
 
 		</body>
 	</html>

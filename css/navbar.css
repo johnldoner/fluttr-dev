@@ -6,8 +6,30 @@
 
 body{
   font-family: ProximaNova;
-  font-size:20px;
+  font-size:16px;
 }
+
+  .sub-text {
+    font-size: 80%;
+    color: #888888;
+  }
+
+     .avatar {
+      width: 40px;
+      height: 40px;
+      -webkit-border-radius: 50%; /* Can also be 55px */
+      -moz-border-radius: 50%;
+      border-radius: 50%;
+      background-position: center center;
+      background-size: cover;
+     }
+
+     .avatar-container {
+        width: 40px;
+        height: 40px;
+        display: block;
+     }
+
       #crowdfluttr {
   width: 186px;
   height: 90px;

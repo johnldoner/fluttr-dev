@@ -1,55 +1,34 @@
+
 <!DOCTYPE html>
-<html>
+<html data-ng-app="app">
 <head>
-	<title>URL Test</title>
-		<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-		<script src="https://code.jquery.com/ui/1.11.1/jquery-ui.min.js"></script>
-		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.2/angular.min.js"></script>
-		<script src="https://cdn.firebase.com/js/client/2.0.2/firebase.js"></script>
-		<script src="https://cdn.firebase.com/libs/angularfire/0.9.0/angularfire.min.js"></script>
-		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.2/angular-route.min.js"></script>
-
-
+	<title>Dashboard</title>
+	<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+	<script src="https://code.jquery.com/ui/1.11.1/jquery-ui.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.2/angular.min.js"></script>
+	<script src="https://cdn.firebase.com/js/client/2.0.2/firebase.js"></script>
+	<script src="https://cdn.firebase.com/libs/angularfire/0.9.0/angularfire.min.js"></script>	
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/custom.css">
+	<script type="text/javascript" src="app.js"></script>
 	<script>
-
-var app = angular.module("app", ["firebase"]);
-app.controller("ctrl", function($scope, $firebase) {
-
-	$.urlParam = function(name, url) {
-	    if (!url) {
-	     url = window.location.href;
-	    }
-	    var results = new RegExp('[\\?&]' + name + '=([^&#]*)').exec(url);
-	    if (!results) { 
-	        return undefined;
-	    }
-	    return results[1] || undefined;
+		if(user) {
+			window.location.href="feed.html";
 		}
-	var ideaID = $.urlParam('id');
-	console.log(ideaID);
-
-	  var ref = new Firebase("https://crowdfluttr.firebaseio.com/ideas/" + ideaID);
-	  var sync = $firebase(ref);
-	  var syncObject = sync.$asObject();
-	  syncObject.$bindTo($scope, "data");
-
-	ref.on("value", function(snapshot) {
-	  var entries = snapshot.val();
-	  console.log(entries);
-	  $scope.hello = entries.idea;
-	  console.log(entries.userEmail);
-	}, function (errorObject) {
-	  console.log("The read failed: " + errorObject.code);
-	});
-});
 	</script>
 </head>
-<body>
-<div ng-app="app" ng-controller="ctrl">
-	{{"hello world"}}
+<body data-ng-controller="ctrl">
+	{{"hello"}}
+
+	<button ng-show="!user" ng-click="FacebookLogin()">Login</button>
 	<br>
-	{{hello}}
+	<div ng-show="user">
+		Welcome, {{user.facebook.displayName}}.
+	</div>
+	<button ng-show="user" ng-click="auth.$unauth()">Logout</button>
 </div>
+
 
 </body>
 </html>
