@@ -5,7 +5,7 @@
     <!-- Bootstrap Core CSS -->
         <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" rel="stylesheet" type="text/css">
         <!-- MetisMenu CSS -->
-        <link href="css/metisMenu.min.css" rel="stylesheet">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/metisMenu/1.1.3/metisMenu.min.js" rel="stylesheet">
         <!-- Custom CSS -->
         <link href="css/sb-admin-2.css" rel="stylesheet">
         <!-- Custom Fonts -->
@@ -158,7 +158,18 @@
         
             </div>
             <div role="tabpanel" class="tab-pane fade" id="Invite">
-            Invite User to Law Hero
+            <p>You can send your idea to a friend by typing in their email address. It's simple!</p>
+
+    <form role="form" ng-submit="shareIdea()" id="float">
+      <div class="form-group">
+        <input ng-model="emails" id="tags_1" type="text" class="tags" value="" /></input>         
+      </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" tab-index="-1" data-dismiss="modal">Close</button>
+          <button type="submit" tab-index="-1" class="btn btn-primary">Save changes</button>
+        </div>
+      </form>
             </div>
           </div> 
         </div>

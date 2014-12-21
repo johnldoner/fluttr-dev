@@ -49,14 +49,10 @@ app.factory("WorkplansComments", ["$firebase", "Ref", function($firebase, Ref) {
   return $firebase(childRef).$asArray();
 }]);
 
-<<<<<<< HEAD
 app.factory("cfFloat", ["$firebase", "Ref", function($firebase, Ref) {
   var childRef = Ref.child('float');
   return $firebase(childRef).$asArray();
 }]);
-
-app.controller("ctrl", ["$scope","$firebase","cfFloat","Ideas","IdeasComments","Auth","IdeasObject","Messages","Proposals","ProposalsComments","Workplans","WorkplansComments", function($scope,$firebase,cfFloat,Ideas,IdeasComments,Auth,IdeasObject,Messages,Proposals,ProposalsComments,Workplans,WorkplansComments) {
-=======
 
 app.factory("User", ["$firebase", "Ref", function($firebase, Ref) {
          return function(userid) {
@@ -65,11 +61,9 @@ app.factory("User", ["$firebase", "Ref", function($firebase, Ref) {
          }
 }]);
 
-app.controller("ctrl", ["$scope","$firebase","Ideas","IdeasComments","Auth","IdeasObject","Messages","Proposals","ProposalsComments","Workplans","WorkplansComments","User", function($scope,$firebase,Ideas,IdeasComments,Auth,IdeasObject,Messages,Proposals,ProposalsComments,Workplans,WorkplansComments,User) {
+app.controller("ctrl", ["$scope","$firebase","cfFloat","Ideas","IdeasComments","Auth","IdeasObject","Messages","Proposals","ProposalsComments","Workplans","WorkplansComments","User", function($scope,$firebase,cfFloat,Ideas,IdeasComments,Auth,IdeasObject,Messages,Proposals,ProposalsComments,Workplans,WorkplansComments,User) {
   
   $scope.user_profile_update = User($scope.user.facebook.id);
-
->>>>>>> FETCH_HEAD
   $scope.ideas = Ideas;
   $scope.ideas_comments = IdeasComments;
   $scope.ideas_object = IdeasObject; 
@@ -226,7 +220,7 @@ app.controller("ctrl", ["$scope","$firebase","Ideas","IdeasComments","Auth","Ide
 
 //
 
-/*
+
   $scope.DeleteIdea = function (item) {
         $scope.ideas.$remove(item);
     };
@@ -234,7 +228,7 @@ app.controller("ctrl", ["$scope","$firebase","Ideas","IdeasComments","Auth","Ide
   function clearIdea() {
     $scope.idea = "";
   }
-*/
+
 // BEGIN: PERMALINKS =========================================================
   // GET Idea IDs
     var idearef = new Firebase("https://crowdfluttr.firebaseio.com/ideas/" + ideaID);
@@ -289,7 +283,7 @@ app.controller("ctrl", ["$scope","$firebase","Ideas","IdeasComments","Auth","Ide
   }, function (errorObject) {
     console.log("The read failed: " + errorObject.code);
   });
-/*
+
       // GET Information from Workplan IDs
   wpref.on("value", function(snapshot) {
     var entries = snapshot.val();
@@ -304,7 +298,7 @@ app.controller("ctrl", ["$scope","$firebase","Ideas","IdeasComments","Auth","Ide
   }, function (errorObject) {
     console.log("The read failed: " + errorObject.code);
   });
-*/
+
 
 // END: PERMALINKS =========================================================
 
