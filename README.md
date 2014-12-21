@@ -4,6 +4,8 @@ The development of our app is characterized into the following phases.
 
 The following provides marketing rollout for each PHASE. PHASES aren’t describe in full here yet, but will do shortly. For any new PHASES that are floated add descriptions & marketing rollout descriptions
 
+
+
 PHASE 1
 Release to founding team; play and iterate log-in functionalities
 PHASE 2: FLOAT
