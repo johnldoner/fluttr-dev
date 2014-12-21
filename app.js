@@ -81,8 +81,19 @@ app.controller("ctrl", ["$scope","$firebase","Ideas","IdeasComments","Auth","Ide
       }
       return results[1] || undefined;
     };
-  var qid = $.urlParam('id');
-  $scope.ideaID = qid;
+
+  var ideaID = $.urlParam('id');
+  var proposalID = $.urlParam('pid');
+  var wpID = $.urlParam('wid');
+/*
+  ideaID = ideaID.split("#")[0];
+  proposalID = proposalID.split("#")[0];
+  wpID = wpID.split("#")[0];
+  */
+
+  $scope.ideaID = ideaID;
+  $scope.proposalID = proposalID;
+  $scope.wpID = wpID;
 
   $scope.GoogleLogin = function () {   
     window.location.href = "explore.html";
@@ -130,6 +141,7 @@ app.controller("ctrl", ["$scope","$firebase","Ideas","IdeasComments","Auth","Ide
     var addRevRef = new Firebase('https://crowdfluttr.firebaseio.com/');
     addRevRef.child('proposals').push({
         ideaID: $scope.ideaID,
+        ptitle: $scope.ptitle,
         pbody: $scope.value,
         userID: $scope.user.facebook.id,
         userName: $scope.user.facebook.displayName,
@@ -219,40 +231,71 @@ app.controller("ctrl", ["$scope","$firebase","Ideas","IdeasComments","Auth","Ide
     $scope.idea = "";
   }
 
-// BEGIN: IDEA PERMALINK =========================================================
-  $.urlParam = function(name, url) {
-      if (!url) {
-       url = window.location.href;
-      }
-      var results = new RegExp('[\\?&]' + name + '=([^&#]*)').exec(url);
-      if (!results) { 
-          return undefined;
-      }
-      return results[1] || undefined;
-    };
-  var ideaID = $.urlParam('id');
-  console.log(ideaID);
+// BEGIN: PERMALINKS =========================================================
+  // GET Idea IDs
+    var idearef = new Firebase("https://crowdfluttr.firebaseio.com/ideas/" + ideaID);
+    var ideasync = $firebase(idearef);
+    var ideasyncObject = ideasync.$asObject();
+    ideasyncObject.$bindTo($scope, "data");
 
-    var ref = new Firebase("https://crowdfluttr.firebaseio.com/ideas/" + ideaID);
-    var sync = $firebase(ref);
-    var syncObject = sync.$asObject();
-    syncObject.$bindTo($scope, "data");
+  // GET Proposal IDs
+    var propref = new Firebase("https://crowdfluttr.firebaseio.com/proposals/" + proposalID);
+    var propsync = $firebase(propref);
+    var propsyncObject = propsync.$asObject();
+    propsyncObject.$bindTo($scope, "data");
 
-  ref.on("value", function(snapshot) {
+  // GET Workplan IDs
+    var wpref = new Firebase("https://crowdfluttr.firebaseio.com/workplans/" + wpID);
+    var wpsync = $firebase(wpref);
+    var wpsyncObject = wpsync.$asObject();
+    wpsyncObject.$bindTo($scope, "data");
+
+    // GET Information from Idea IDs
+  idearef.on("value", function(snapshot) {
     var entries = snapshot.val();
-    console.log(entries);
     $scope.ideaTitle = entries.idea;
+    var ideaTitle = entries.idea;
     $scope.ideaDesc = entries.description;
     $scope.ideaAuthor = entries.userName;
+    $scope.createTime = entries.timestamp;
     var karma = item.child("likes");
     $scope.ideaLikes = entries.likes.like;
     $scope.ideaDislikes = entries.likes.dislike;
-
-    console.log(entries.userEmail);
   }, function (errorObject) {
     console.log("The read failed: " + errorObject.code);
   });
-// END: IDEA PERMALINK =========================================================
+
+    // GET Information from Proposal IDs
+  propref.on("value", function(snapshot) {
+    var entries = snapshot.val();
+    $scope.proposalTitle = entries.ptitle;
+    var proposalTitle = entries.ptitle;
+    $scope.proposalBody = entries.pbody;
+    $scope.proposalAuthor = entries.userName;
+    $scope.createTime = entries.timestamp;
+    var karma = item.child("likes");
+    $scope.proposalLikes = entries.likes.like;
+    $scope.proposalDislikes = entries.likes.dislike;
+  }, function (errorObject) {
+    console.log("The read failed: " + errorObject.code);
+  });
+
+      // GET Information from Workplan IDs
+  wpref.on("value", function(snapshot) {
+    var entries = snapshot.val();
+    $scope.wptitle = entries.wptitle;
+    var wpTitle = entries.wptitle;
+    $scope.wpBody = entries.wpBody;
+    $scope.wpAuthor = entries.userName;
+    $scope.createTime = entries.timestamp;
+    var karma = item.child("likes");
+    $scope.wpLikes = entries.likes.like;
+    $scope.wpDislikes = entries.likes.dislike;
+  }, function (errorObject) {
+    console.log("The read failed: " + errorObject.code);
+  });
+
+// END: PERMALINKS =========================================================
 
 }]);
 

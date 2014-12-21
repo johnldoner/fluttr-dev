@@ -17,6 +17,16 @@
 		<script>
 			$(document).ready(function(){
 				$(".vimeo").colorbox({iframe:true, innerWidth:800, innerHeight:600});
+				if(user) {
+					window.location.href="explore.html";
+				}
+				var ref = new Firebase("https://crowdfluttr.firebaseio.com");
+				var authData = ref.getAuth();
+				if (authData) {
+				  console.log("User " + authData.uid + " is logged in with " + authData.provider);
+				} else {
+				  console.log("User is logged out");
+				}
 			});
 		</script>
 	</head>
@@ -53,6 +63,8 @@
 			 <small><a href="#">Meet the Team</a></small> <br>
 			 <small>&copy;2014 Crowdfluttr. All rights reserved.</small>
 		</footer>
+<!-- Go to www.addthis.com/dashboard to customize your tools -->
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-521ec0330762c358" async="async"></script>
 
 
 		</body>
