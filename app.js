@@ -29,6 +29,11 @@ app.factory("Messages", ["$firebase", "Ref", function($firebase, Ref) {
   return $firebase(childRef).$asArray();
 }]);
 
+app.factory("Projects", ["$firebase", "Ref", function($firebase, Ref) {
+  var childRef = Ref.child('projects');
+  return $firebase(childRef).$asArray();
+}]);
+
 app.factory("Proposals", ["$firebase", "Ref", function($firebase, Ref) {
   var childRef = Ref.child('proposals');
   return $firebase(childRef).$asArray();
@@ -49,21 +54,7 @@ app.factory("WorkplansComments", ["$firebase", "Ref", function($firebase, Ref) {
   return $firebase(childRef).$asArray();
 }]);
 
-app.factory("cfFloat", ["$firebase", "Ref", function($firebase, Ref) {
-  var childRef = Ref.child('float');
-  return $firebase(childRef).$asArray();
-}]);
-
-app.factory("User", ["$firebase", "Ref", function($firebase, Ref) {
-         return function(userid) {
-            var childRef = Ref.child('users').child(userid);
-            return $firebase(childRef).$asObject();
-         };
-}]);
-
-app.controller("ctrl", ["$scope","$firebase","cfFloat","Ideas","IdeasComments","Auth","IdeasObject","Messages","Proposals","ProposalsComments","Workplans","WorkplansComments","User", function($scope,$firebase,cfFloat,Ideas,IdeasComments,Auth,IdeasObject,Messages,Proposals,ProposalsComments,Workplans,WorkplansComments,User) {
-  
-  $scope.user_profile_update = User($scope.user.facebook.id);
+app.controller("ctrl", ["$scope","$firebase","Ideas","IdeasComments","Auth","IdeasObject","Messages","Proposals","ProposalsComments","Workplans","WorkplansComments", function($scope,$firebase,Ideas,IdeasComments,Auth,IdeasObject,Messages,Proposals,ProposalsComments,Workplans,WorkplansComments) {
   $scope.ideas = Ideas;
   $scope.ideas_comments = IdeasComments;
   $scope.ideas_object = IdeasObject; 
@@ -73,7 +64,7 @@ app.controller("ctrl", ["$scope","$firebase","cfFloat","Ideas","IdeasComments","
   $scope.prcomments = ProposalsComments;
   $scope.workplans = Workplans;
   $scope.wpcomments = WorkplansComments;
-  $scope.cfFloat = cfFloat;
+  $scope.projects = Projects;
   $scope.idea = "";
     $.urlParam = function(name, url) {
       if (!url) {
@@ -99,19 +90,16 @@ app.controller("ctrl", ["$scope","$firebase","cfFloat","Ideas","IdeasComments","
   $scope.proposalID = proposalID;
   $scope.wpID = wpID;
 
-
-
   $scope.GoogleLogin = function () {   
     window.location.href = "explore.html";
-    $scope.auth.$authWithOAuthPopup('google');
+    $scope.auth.$authWithOAuthPopup('google')();
     console.log(user.google.displayName);
   };
 
   $scope.FacebookLogin = function () {   
-    $scope.auth.$authWithOAuthPopup('facebook');
-    window.location.href = "explore.html";
+    // window.location.href = "explore.html";
+    $scope.auth.$authWithOAuthPopup('facebook')();
     console.log(user.facebook.displayName);
-    
   };
 
   $scope.TwitterLogin = function () {   
@@ -120,24 +108,47 @@ app.controller("ctrl", ["$scope","$firebase","cfFloat","Ideas","IdeasComments","
     console.log(user.twitter.displayName);
   };
 
-
-  $scope.newIdea = function () {   
+  $scope.UpdateFirebaseWithString = function () {   
     $scope.ideas.$add({
-          idea: $scope.idea_title,
-          description: $scope.idea_desc,
-          category: $scope.idea_cat,
-          // targetDate: $scope.idea_expected_launch,
-          ideaPic: $scope.idea_pic,
+          idea: $scope.idea,
           userId: $scope.user.facebook.id,
           userName: $scope.user.facebook.displayName,
           timestamp: Date.now()
     }).then(function(Ref) {
-      console.log("Success!");
-      window.location.href="explore.html";
-    //  $('#newIdeaModal').modal('hide');
-      
+      clearIdea();
     });
   };
+
+  //-------------------PROJECT CODE---------------------------//
+
+  $scope.addProject = function() {
+    var project = new Firebase('https://crowdfluttr.firebaseio.com/projects');
+    project.push({
+      ideaID: $scope.ideaID,
+      projTitle: $scope.projTitle,
+      projBody: $scope.projBody,
+      timestamp: Date.now(),
+      userID: $scpe.user.facebook.id,
+      username: $scope.user.facebook.displayName
+    });
+  }
+
+  $scope.editProject = function(projID) {
+    var newTitle = $scope.projTitle;
+    var newBody = $scope.projBody;
+    var project = new Firebase('https://crowdfluttr.firebaseio.com/projects');
+    // Check for current user before editing
+    project.child(projID).update({
+      projTitle: newTitle,
+      projBody: newBody
+    });
+  }
+
+  $scope.deleteProject = function(item) {
+    $scope.projects.$remove(item);
+  }
+
+  //----------------------------------------------------------//
 
   $scope.addCommentonIdea = function () { 
     var addCommentRef = new Firebase('https://crowdfluttr.firebaseio.com/');
@@ -209,26 +220,30 @@ app.controller("ctrl", ["$scope","$firebase","cfFloat","Ideas","IdeasComments","
       });
     };
 
-// FLOAT
   $scope.shareIdea = function () {
-    var arr = $( "#tags_1" ).val().split(',');
+    var arr = $( "input" ).val().split(',');
     jQuery.each( arr, function( i, val ) {
       // will change this to to dynamic ideaID once templating and permalinking is integrated
+    $scope.ideaID = "-JbSSmv_rJufUKukdZ5c"; 
+            // Get a reference to our posts
+    var ref = new Firebase("https://crowdfluttr.firebaseio.com/ideas/" + $scope.ideaID);
+    // Attach an asynchronous callback to read the data at our posts reference
+    ref.on("value", function(snapshot) {
+      console.log(snapshot.val());
+    }, function (errorObject) {
+      console.log("The read failed: " + errorObject.code);
+    });
+
         $scope.val = val;
-        $scope.cfFloat.$add({
+        $scope.messages.$add({
             ideaID: $scope.ideaID,
-            recipientEmail: $scope.val,
-            senderName: $scope.user.facebook.displayName,
-            senderID: $scope.user.facebook.id,
-            timestamp: Date.now()
+            recipent: $scope.val,
+            // sender: $scope.user.google.email
         }).then(function() {
-          $scope.val = "";
           console.log('Idea added: ' + val);
         });
       return;
-    });
-      $('#floatModal').modal('hide');
-      };
+    });  };
 
 //
 
@@ -244,27 +259,21 @@ app.controller("ctrl", ["$scope","$firebase","cfFloat","Ideas","IdeasComments","
 // BEGIN: PERMALINKS =========================================================
   // GET Idea IDs
     var idearef = new Firebase("https://crowdfluttr.firebaseio.com/ideas/" + ideaID);
-    /*
     var ideasync = $firebase(idearef);
     var ideasyncObject = ideasync.$asObject();
     ideasyncObject.$bindTo($scope, "data");
-    */
 
   // GET Proposal IDs
     var propref = new Firebase("https://crowdfluttr.firebaseio.com/proposals/" + proposalID);
-    /*
     var propsync = $firebase(propref);
     var propsyncObject = propsync.$asObject();
     propsyncObject.$bindTo($scope, "data");
-    */
 
   // GET Workplan IDs
     var wpref = new Firebase("https://crowdfluttr.firebaseio.com/workplans/" + wpID);
-    /*
     var wpsync = $firebase(wpref);
     var wpsyncObject = wpsync.$asObject();
     wpsyncObject.$bindTo($scope, "data");
-    */
 
     // GET Information from Idea IDs
   idearef.on("value", function(snapshot) {
@@ -272,9 +281,6 @@ app.controller("ctrl", ["$scope","$firebase","cfFloat","Ideas","IdeasComments","
     $scope.ideaTitle = entries.idea;
     var ideaTitle = entries.idea;
     $scope.ideaDesc = entries.description;
-    $scope.ideaCategory = entries.category;
-    $scope.ideaTargetDate = entries.targetDate;
-    $scope.ideaPic = entries.ideaPic;
     $scope.ideaAuthor = entries.userName;
     $scope.createTime = entries.timestamp;
     var karma = item.child("likes");
@@ -313,7 +319,6 @@ app.controller("ctrl", ["$scope","$firebase","cfFloat","Ideas","IdeasComments","
   }, function (errorObject) {
     console.log("The read failed: " + errorObject.code);
   });
-
 
 // END: PERMALINKS =========================================================
 
