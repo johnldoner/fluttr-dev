@@ -99,16 +99,19 @@ app.controller("ctrl", ["$scope","$firebase","cfFloat","Ideas","IdeasComments","
   $scope.proposalID = proposalID;
   $scope.wpID = wpID;
 
+
+
   $scope.GoogleLogin = function () {   
     window.location.href = "explore.html";
-    $scope.auth.$authWithOAuthPopup('google')();
+    $scope.auth.$authWithOAuthPopup('google');
     console.log(user.google.displayName);
   };
 
   $scope.FacebookLogin = function () {   
-    // window.location.href = "explore.html";
-    $scope.auth.$authWithOAuthPopup('facebook')();
+    $scope.auth.$authWithOAuthPopup('facebook',authHandler);
+    window.location.href = "explore.html";
     console.log(user.facebook.displayName);
+    
   };
 
   $scope.TwitterLogin = function () {   
