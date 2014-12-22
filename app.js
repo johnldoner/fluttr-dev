@@ -58,7 +58,7 @@ app.factory("User", ["$firebase", "Ref", function($firebase, Ref) {
          return function(userid) {
             var childRef = Ref.child('users').child(userid);
             return $firebase(childRef).$asObject();
-         }
+         };
 }]);
 
 app.controller("ctrl", ["$scope","$firebase","cfFloat","Ideas","IdeasComments","Auth","IdeasObject","Messages","Proposals","ProposalsComments","Workplans","WorkplansComments","User", function($scope,$firebase,cfFloat,Ideas,IdeasComments,Auth,IdeasObject,Messages,Proposals,ProposalsComments,Workplans,WorkplansComments,User) {
@@ -118,14 +118,21 @@ app.controller("ctrl", ["$scope","$firebase","cfFloat","Ideas","IdeasComments","
   };
 
 
-  $scope.UpdateFirebaseWithString = function () {   
+  $scope.newIdea = function () {   
     $scope.ideas.$add({
-          idea: $scope.idea,
+          idea: $scope.idea_title,
+          description: $scope.idea_desc,
+          category: $scope.idea_cat,
+          // targetDate: $scope.idea_expected_launch,
+          ideaPic: $scope.idea_pic,
           userId: $scope.user.facebook.id,
           userName: $scope.user.facebook.displayName,
           timestamp: Date.now()
     }).then(function(Ref) {
-      clearIdea();
+      console.log("Success!");
+      window.location.href="explore.html";
+    //  $('#newIdeaModal').modal('hide');
+      
     });
   };
 
@@ -209,8 +216,10 @@ app.controller("ctrl", ["$scope","$firebase","cfFloat","Ideas","IdeasComments","
             ideaID: $scope.ideaID,
             recipientEmail: $scope.val,
             senderName: $scope.user.facebook.displayName,
-            senderID: $scope.user.facebook.id
+            senderID: $scope.user.facebook.id,
+            timestamp: Date.now()
         }).then(function() {
+          $scope.val = "";
           console.log('Idea added: ' + val);
         });
       return;
@@ -260,6 +269,9 @@ app.controller("ctrl", ["$scope","$firebase","cfFloat","Ideas","IdeasComments","
     $scope.ideaTitle = entries.idea;
     var ideaTitle = entries.idea;
     $scope.ideaDesc = entries.description;
+    $scope.ideaCategory = entries.category;
+    $scope.ideaTargetDate = entries.targetDate;
+    $scope.ideaPic = entries.ideaPic;
     $scope.ideaAuthor = entries.userName;
     $scope.createTime = entries.timestamp;
     var karma = item.child("likes");

@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html ng-app="app" lang="en">
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>CrowdFluttr</title>
+    <!-- Bootstrap Core CSS -->
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+        <!-- MetisMenu CSS -->
+        <link href="css/metisMenu.min.css" rel="stylesheet">
+        <!-- Custom CSS -->
+        <link href="css/sb-admin-2.css" rel="stylesheet">
+        <!-- Custom Fonts -->
+        <link href="css/font-awesome.min.css" rel="stylesheet" type="text/css">
+        <!-- DataTables CSS -->
+        <link href="css/dataTables.bootstrap.css" rel="stylesheet">
+        <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+        <link rel="shortcut icon" href="images/logosm.png">
+        <link rel="stylesheet" type="text/css" href="css/navbar.css" />
+        <script src="https://code.jquery.com/ui/1.11.1/jquery-ui.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.2/angular.min.js"></script>
+        <script src="https://cdn.firebase.com/js/client/2.0.2/firebase.js"></script>
+        <script src="https://cdn.firebase.com/libs/angularfire/0.9.0/angularfire.min.js"></script>
+        <script src="app.js"></script>
+        <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+        <!--use login.js for present-->
+           <!-- jQuery -->
+        <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+        <!-- Bootstrap Core JavaScript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+        <!-- Metis Menu Plugin JavaScript -->
+        <script src="js/metisMenu.min.js"></script>
+        <!-- Custom Theme JavaScript -->
+        <script src="js/sb-admin-2.js"></script>
+        <!-- DataTables JavaScript -->
+        <script src="js/jquery.dataTables.js"></script>
+        <script src="js/dataTables.bootstrap.js"></script>
+        <!-- Page-Level Demo Scripts - Tables - Use for reference -->
+
+                  <link rel="stylesheet" href="css/jquery.datetimepicker.css">
+          <script type="text/javascript" src="js/jquery.datetimepicker.js"></script>
+   
+</head>
+
+   <body ng-controller="ctrl">
+
+    <div id="wrapper">
+
+        <!-- Navigation -->
+    <nav ng-include="'navbar.html'" class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+
+    </nav>
+             <!-- <div ng-include="'userleft.html'" class="navbar-default sidebar" role="navigation">
+         </div> -->
+         
+        <!-- Page Content -->
+        <div id="page-wrapper">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h1 class="page-header">Create New Idea</h1>
+
+                      <form class="form-horizontal" role="form" ng-submit="newIdea()">
+                  <div class="form-group">
+                    <label for="qtitle" class="col-sm-2 control-label">Idea Title</label>
+                    <div class="col-sm-10">
+                      <input type="text" class="form-control" id="idea_title" ng-model="idea_title" placeholder="Ex: 6 Billion People Singing Kumbaya on New Year's Eve" required>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="qdesc" class="col-sm-2 control-label">Description</label>
+                    <div class="col-sm-10">
+                      <textarea class="form-control" id="idea_desc" ng-model="idea_desc" placeholder="A short description" rows="5" required></textarea>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="qcat" class="col-sm-2 control-label">Category</label>
+                     <div class="col-sm-10">
+                        <select id="qcat" ng-model="idea_cat" class="form-control" required>
+                          <option>Animation & Comics</option>
+                          <option>Architecture & Design
+                          <option>Dance
+                          <option>Education
+                          <option>Environment
+                          <option>Experimental Art</option>
+                          <option>Fashion</option>
+                          <option>Film</option>
+                          <option>Food</option>
+                          <option>Games</option>
+                          <option>Health & Wellness</option>
+                          <option>Journalism</option>
+                          <option>Live & Social Events</option>
+                          <option>Missions & Endeavors</option>
+                          <option>Music</option>
+                          <option>Music Video</option>
+                          <option>Open Source</option>
+                          <option>Philanthropy</option>
+                          <option>Photography</option>
+                          <option> Politics</option>
+                          <option>Research & Invention</option>
+                          <option>Social Enterprise</option>
+                          <option>Social Experiments</option>
+                          <option>Software & Web</option>
+                          <option>Space</option>
+                          <option>Sports</option>
+                          <option>Technology</option>
+                          <option>Theatre</option>
+                          <option>TV & Web TV</option>
+                          <option>Visual Art</option>
+                          <option>Writing</option>
+                        </select>
+                      </div>
+                  </div>
+                  <!--
+                  <div class="form-group">
+                    <label for="datetimepicker" class="col-sm-2 control-label">Target Launch Date</label>
+                    <div class="col-sm-10">
+                      <input type="text" value="2015/12/31 00:00" class="form-control" id="datetimepicker" ng-model="idea_expected_launch" placeholder="Boldly go." required>
+                    </div>
+                  </div>
+                  -->
+                  <div class="form-group">
+                    <label for="qpic" class="col-sm-2 control-label">Picture<br>(optional)</label>
+                    <div class="col-sm-10">
+                      <input type="url" class="form-control" id="idea_pic" ng-model="idea_pic" placeholder="Picture URL">
+                    </div>
+                  </div>
+                <div class="form-group">
+                    <div class="col-sm-2"></div>
+                        <div class="col-sm-10">
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-primary">Create Idea</button>
+                            </div>
+                         </form>
+                    </div>
+                 </div>
+
+
+                    </div>
+                    <!-- /.col-lg-12 -->
+                </div>
+                <!-- /.row -->
+            </div>
+            <!-- /.container-fluid -->
+        </div>
+        <!-- /#page-wrapper -->
+
+    </div>
+    <!-- /#wrapper -->
+
+
+    <!-- jQuery -->
+    <script src="js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+
+    <!-- Metis Menu Plugin JavaScript -->
+    <script src="js/plugins/metisMenu/metisMenu.min.js"></script>
+
+    <!-- Morris Charts JavaScript -->
+    <script src="js/plugins/morris/raphael.min.js"></script>
+    <script src="js/plugins/morris/morris.min.js"></script>
+    <script src="js/plugins/morris/morris-data.js"></script>
+
+    <!-- Custom Theme JavaScript -->
+    <script src="js/sb-admin-2.js"></script>
+        <script>
+$('#datetimepicker').datetimepicker({
+dayOfWeekStart : 1,
+lang:'en',
+disabledDates:['1986/01/08','1986/01/09','1986/01/10'],
+startDate:  '1986/01/05'
+});
+</script>
+</body>
+
+</html>
