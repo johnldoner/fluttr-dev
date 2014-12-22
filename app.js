@@ -108,7 +108,7 @@ app.controller("ctrl", ["$scope","$firebase","cfFloat","Ideas","IdeasComments","
   };
 
   $scope.FacebookLogin = function () {   
-    $scope.auth.$authWithOAuthPopup('facebook',authHandler);
+    $scope.auth.$authWithOAuthPopup('facebook');
     window.location.href = "explore.html";
     console.log(user.facebook.displayName);
     
