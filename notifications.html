@@ -4,8 +4,6 @@
     <head>
         <!-- Bootstrap Core CSS -->
         <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" rel="stylesheet" type="text/css">
-        <!-- MetisMenu CSS -->
-        <link href="css/metisMenu.min.css" rel="stylesheet">
         <!-- Custom CSS -->
         <link href="css/sb-admin-2.css" rel="stylesheet">
         <!-- Custom Fonts -->
@@ -22,7 +20,9 @@
         <script src="https://cdn.firebase.com/libs/angularfire/0.9.0/angularfire.min.js"></script>
         <script src="app.js"></script>
         <link rel="stylesheet" href="css/jquery.datetimepicker.css">
-          <script type="text/javascript" src="js/jquery.datetimepicker.js"></script>
+        <script type="text/javascript" src="js/jquery.datetimepicker.js"></script>
+        <script src="https://cdn.jsdelivr.net/momentjs/2.5.1/moment.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/angular.moment/0.6.2/angular-moment.js"></script>
         <script>
           (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
           (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -33,7 +33,6 @@
           ga('send', 'pageview');
 
         </script>
-        <!--use login.js for present-->
     </head>
     <body ng-controller="ctrl">
         <div id="wrapper">
@@ -60,7 +59,18 @@
                     <div class="row">
                         <div class="col-lg-12">
                             <br><br>
-                            <h1 class="page-header">Browse Ideas</h1>
+                            <div ng-repeat="(id,item) in filtered = (cfFloat | filter: user.google.email )"></div>
+                            <h1 class="page-header">Notifications ({{filtered.length}})</h1>
+                            <table class="table table-hover">
+                                <tr ng-repeat="(id,item) in cfFloat | filter:user.facebook.email">
+                                    <td>
+        <a ng-href="/users/{{item.senderID}}">{{item.senderName}}</a> has shared <a ng-href="idea.html?id={{item.ideaID}}">"{{item.ideaTitle}}"</a> with you!</td>
+                                    <td>{{item.timestamp | date:'EEEE, MMMM d, y h:mm:ss a '}} PST</td>
+                                    <td><a href="#" class="fa fa-times fa-1x" ng-click="DeleteFloat(id)"></a></td>
+                                    <td><a href="#" class="fa fa-check fa-1x" ng-click="ApproveFloat(id)"></a></td>
+                                </tr>
+                            </table>
+                          </div>
                         </div>
                         <!-- /.col-lg-12 -->
                     </div>

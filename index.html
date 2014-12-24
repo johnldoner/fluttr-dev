@@ -20,13 +20,10 @@
 				if(user) {
 					window.location.href="explore.html";
 				}
-				var ref = new Firebase("https://crowdfluttr.firebaseio.com");
-				var authData = ref.getAuth();
-				if (authData) {
-				  console.log("User " + authData.uid + " is logged in with " + authData.provider);
-				} else {
-				  console.log("User is logged out");
-				}
+				function login() {
+					var ref = new Firebase("https://crowdfluttr.firebaseio.com");
+					ref.$authWithOAuthPopup('facebook');
+				};
 			});
 		</script>
 		<script>
@@ -47,7 +44,7 @@
 				<img class="logo" src="images/logomed.png" width="188" height="188" /><br>
 				<h1 id="title">Welcome to CrowdFluttr.</h1>
 				<p id="caption">Share ideas with friends &hyphen; and awesome people from around the world.<br> Collaborate to realize the world's imagination.<br><br>
-<a class='vimeo' href="http://player.vimeo.com/video/99522814" title="Crowdfluttr">Learn More &raquo;</a>
+				<a class='vimeo' href="http://player.vimeo.com/video/99522814" title="Crowdfluttr">Learn More &raquo;</a>
 </p>
 			</div>
 		</section>

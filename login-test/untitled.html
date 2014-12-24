@@ -1,0 +1,113 @@
+
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="shortcut icon" href="images/logosm.png">
+
+    <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.11.1/jquery-ui.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.2/angular.min.js"></script>
+    <script src="https://cdn.firebase.com/js/client/2.0.2/firebase.js"></script>
+    <script src="https://cdn.firebase.com/libs/angularfire/0.9.0/angularfire.min.js"></script>
+    <script src="app.js"></script>
+
+    <title>Crowdfluttr Authentication</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" rel="stylesheet">
+
+<style type="text/css">
+	
+	body {
+  padding-top: 40px;
+  padding-bottom: 40px;
+  background-color: #eee;
+}
+
+.form-signin {
+  max-width: 400px;
+  padding: 15px;
+  margin: 0 auto;
+}
+.form-signin .form-signin-heading,
+.form-signin .checkbox {
+  margin-bottom: 10px;
+}
+.form-signin .checkbox {
+  font-weight: normal;
+}
+.form-signin .form-control {
+  position: relative;
+  font-size: 16px;
+  height: auto;
+  padding: 10px;
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+}
+.form-signin .form-control:focus {
+  z-index: 2;
+}
+.form-signin input[type="text"] {
+  margin-bottom: -1px;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+.form-signin input[type="password"] {
+  margin-bottom: 10px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+	
+</style>
+
+    <!-- Just for debugging purposes. Don't actually copy this line! -->
+    <!--[if lt IE 9]><script src="../../docs-assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+
+  </head>
+
+  <body ng-controller="ctrl">
+    <div class="container">
+
+      <form class="form-signin" role="form" ng-submit="GoogleLogin()">
+        <h2 class="form-signin-heading">Please sign in</h2>
+        <div ng-show="!user">
+        <p>Please click the "Sign In" button below and then refresh the page.</p>
+        <button class="btn btn-md btn-primary" ng-show="!user" ng-click="GoogleLogin()">Sign in with Google.</button>
+        <br>
+        <p><a href="javascript:location.reload();">Refresh Page</a></p>
+        </div>
+          <div ng-show="user">
+          <br>
+         <p>Authentication successful. Welcome, {{user.google.displayName}}. <br> <a href="feed.html">Click here to continue to the Collaboration portal.</a></p>
+         <br>
+         <button class="btn btn-md btn-primary" ng-show="user" ng-click="auth.$unauth()">Logout</button>
+
+         <p>Copyright &copy;2014 GJP. All Rights Reserved.</p>
+        </div>
+      </form>
+
+
+        
+      </form>
+
+    </div> <!-- /container -->
+
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+  </body>
+</html>
