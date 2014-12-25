@@ -159,7 +159,7 @@
             <div role="tabpanel" class="tab-pane fade" id="Work">
         
             </div>
-            <div role="tabpanel" class="tab-pane fade" data-toggle="modal" data-target="floatModal" id="Invite">
+            <div role="tabpanel" class="tab-pane fade" id="Invite">
             <div class="row">
             <br>
             <p>You can send this idea to your friends by typing in their email addresses, separated by commas. It's simple!</p>
@@ -169,7 +169,7 @@
           </div>
               <form role="form form-inline" ng-submit="shareIdea()" id="float">
                 <div class="form-group">
-                  <input class="form-control" ng-model="emails" id="tags_1" type="text" class="tags" value="" placeholder="Email addresses, separated by commas" /></input>  
+                  <input class="form-control" ng-model="emails" name="tags_1" id="tags_1" type="text" class="tags" value="" placeholder="Email addresses, separated by commas" /></input>  
                 </div>
                 <div class="form-group">
                   <button type="submit" tab-index="-1" class="btn btn-primary">Share with Friends</button>       

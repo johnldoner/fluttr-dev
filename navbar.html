@@ -5,7 +5,7 @@
   <strong>Warning!</strong> Best check yo self, you're not looking too good.
   </div>
   -->
-<div ng-repeat="(id,item) in filtered = (cfFloat | filter: user.google.email )"></div>
+<div ng-repeat="(id,item) in filtered = (cfFloat | filter: user.facebook.email )"></div>
   <div class="navbar-header ">
     <a href="index.html"> <img id="crowdfluttr" src="images/logo_full.svg" alt="Crowdfluttr"/></a>
   </div>
@@ -25,7 +25,7 @@
       <span ng-show="filtered.length > 0"> <strong>({{filtered.length}})</strong> </span>
       <i class="fa fa-bell fa-1x" title="Notifications"></i></a>
             <ul class="dropdown-menu" role="menu">
-              <div ng-repeat="item in cfFloat">
+              <div ng-repeat="item in cfFloat | user.facebook.email">
                 <li><a style="padding:10px;font-size:80%;display:block" ng-href="idea.html?id={{item.ideaID}}">{{item.senderName}} has shared " {{item.ideaTitle | limitTo: 50}}{{item.ideaTitle.length > 50 ? '...' : '' }}" with you!</a></li>
                 <li class="divider"></li>
               </div>

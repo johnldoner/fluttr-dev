@@ -242,6 +242,24 @@ app.controller("ctrl", ["$scope","$firebase","cfFloat","Ideas","IdeasComments","
         }).then(function() {
           $scope.val = "";
           console.log('Idea added: ' + val);
+
+            // Assign handlers immediately after making the request,
+            // and remember the jqxhr object for this request
+        $.post( "https://johnldoner.com/float/", {
+                tags_1: val, 
+                ideaID: $scope.ideaID,
+                ideaTitle: $scope.ideaTitle,
+                senderName: $scope.user.facebook.displayName
+              }).
+            success(function(data, status, headers, config) {
+              // this callback will be called asynchronously
+              // when the response is available
+              console.log( "success: " + $scope.ideaID + "/" + $scope.ideaTitle + " sent to " + $scope.val);
+            }).
+            error(function(data, status, headers, config) {
+              // called asynchronously if an error occurs
+              // or server returns response with an error status.
+            });   
         });
       return;
     });
