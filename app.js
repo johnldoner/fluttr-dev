@@ -18,12 +18,6 @@ app.factory("IdeasComments", ["$firebase", "Ref", function($firebase, Ref) {
   return $firebase(childRef).$asArray();
 }]);
 
-app.factory("IdeasObject", ["$firebase", function($firebase) {
-  var Ref = new Firebase('https://crowdfluttr.firebaseio.com/');
-  var childRef = Ref.child('ideas');
-  return $firebase(childRef).$asObject();
-}]);
-
 app.factory("Messages", ["$firebase", "Ref", function($firebase, Ref) {
   var childRef = Ref.child('messages');
   return $firebase(childRef).$asArray();
@@ -59,10 +53,17 @@ app.factory("cfFloat", ["$firebase", "Ref", function($firebase, Ref) {
   return $firebase(childRef).$asArray();
 }]);
 
-app.controller("ctrl", ["$scope","$firebase","cfFloat","Ideas","IdeasComments","Auth","IdeasObject","Messages","Proposals","ProposalsComments","Workplans","WorkplansComments","Projects", function($scope,$firebase,cfFloat,Ideas,IdeasComments,Auth,IdeasObject,Messages,Proposals,ProposalsComments,Workplans,WorkplansComments,Projects) {
+//purpose is to pull only the ideas under that users liked section
+app.factory("LikedIdeas", ["$firebase","Ref", function($firebase,Ref) {
+     return function(userId) {
+        var ref = new Firebase(Ref).child("users").child("like").child(userId);
+        return $firebase(ref).$asArray();
+     }
+}]);
+
+app.controller("ctrl", ["$scope","$firebase","cfFloat","Ideas","IdeasComments","Auth","Messages","Proposals","ProposalsComments","Workplans","WorkplansComments","Projects","LikedIdeas", function($scope,$firebase,cfFloat,Ideas,IdeasComments,Auth,Messages,Proposals,ProposalsComments,Workplans,WorkplansComments,Projects,LikedIdeas) {
   $scope.ideas = Ideas;
   $scope.ideas_comments = IdeasComments;
-  $scope.ideas_object = IdeasObject; 
   $scope.auth = Auth;
   $scope.messages = Messages;
   $scope.proposals = Proposals;
@@ -72,6 +73,8 @@ app.controller("ctrl", ["$scope","$firebase","cfFloat","Ideas","IdeasComments","
   $scope.projects = Projects;
   $scope.cfFloat = cfFloat;
   $scope.idea = "";
+  $scope.likedIdeas = LikedIdeas($scope.user.facebook.id); //array is used in browse.html
+
     $.urlParam = function(name, url) {
       if (!url) {
        url = window.location.href;
@@ -200,9 +203,13 @@ app.controller("ctrl", ["$scope","$firebase","cfFloat","Ideas","IdeasComments","
       $scope.newComment = "";
   };
 
-  $scope.LikeIdea = function (likeVar,id) {
-    var FBURL = "https://crowdfluttr.firebaseio.com/ideas/"+id;
-    var IdeaRef = new Firebase(FBURL + "/" + likeVar);
+  //The below does the following: 
+  //add the userid to the idea address
+  //adds the ideaId to the user address
+  //adds to the counter 
+  $scope.LikeIdea = function (LikeorDislike,ideaName,id) {
+    var FBURL = "https://crowdfluttr.firebaseio.com/ideas/"+Ideas.$keyAt(id);
+    var IdeaRef = new Firebase(FBURL + "/" + LikeorDislike);
     var IdeaData = $firebase(IdeaRef);
     $scope.IdeaAttributes = IdeaData.$asArray();
     $scope.IdeaAttributes.$add({
@@ -216,9 +223,22 @@ app.controller("ctrl", ["$scope","$firebase","cfFloat","Ideas","IdeasComments","
         if( !current_val ) {
             current_val = {like: 0, dislike: 0};
         }
-        current_val[likeVar]++;
+        current_val[LikeorDislike]++;
         return current_val;
       });
+
+    //adds the idea to the user trunk
+    //LIMITATION: This essentially duplicates the idea in the user node
+    var FBURL = "https://crowdfluttr.firebaseio.com/users/"+ String($scope.user.facebook.id);
+    var IdeaRef = new Firebase(FBURL + "/" + likeVar);
+    var IdeaData = $firebase(IdeaRef);
+    $scope.IdeaAttributes = IdeaData.$asArray();
+    $scope.IdeaAttributes.$add({
+        ideaId: Ideas.$keyAt(id),
+        idea: ideaName,
+        timestamp: Date.now()
+      });  
+
     };
 
 // FLOAT
