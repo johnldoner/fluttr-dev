@@ -135,6 +135,25 @@ app.controller("ctrl", ["$scope","$firebase","cfFloat","Ideas","IdeasComments","
     });
   };
 
+
+  $scope.qnewIdea = function (idea_title) {   
+    $scope.ideas.$add({
+          idea: idea_title,
+          description: null,
+          category: null,
+          // targetDate: $scope.idea_expected_launch,
+          ideaPic: null,
+          userId: $scope.user.facebook.id,
+          userName: $scope.user.facebook.displayName,
+          timestamp: Date.now()
+    }).then(function(Ref) {
+      console.log("Success!");
+      $scope.quickAdd = true;
+      $( "#quickadd-success" ).fadeIn( "slow" );
+      
+    });
+  };
+
   //-------------------PROJECT CODE---------------------------//
 
   $scope.addProject = function() {
