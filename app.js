@@ -1,3 +1,15 @@
+    function AuthHandler(error, authData) {
+      if (error) {
+        console.log("Login Failed!", error);
+      } else {
+        console.log("Authenticated successfully with payload:" + authData);
+          window.setTimeout(function(){
+              window.location.reload();
+              window.location.href = "explore.html";
+          }, 1000);
+      }
+    };
+
 var app = angular.module("app", ["firebase"]);
 
 app.constant("FBURL", "https://crowdfluttr.firebaseio.com/");
@@ -73,7 +85,7 @@ app.controller("ctrl", ["$scope","$firebase","cfFloat","Ideas","IdeasComments","
   $scope.projects = Projects;
   $scope.cfFloat = cfFloat;
   $scope.idea = "";
-  //$scope.likedIdeas = LikedIdeas($scope.user.facebook.id); //array is used in browse.html //causes error with user to be undefined
+  // $scope.likedIdeas = LikedIdeas($scope.user.facebook.id); //array is used in browse.html //causes error with user to be undefined
 
     $.urlParam = function(name, url) {
       if (!url) {
@@ -100,7 +112,7 @@ app.controller("ctrl", ["$scope","$firebase","cfFloat","Ideas","IdeasComments","
   $scope.wpID = wpID;
 
   $scope.FacebookLogin = function () {  
-    $scope.auth.$authWithOAuthPopup('facebook')(); //Need to have empty parenthesis for login to be called
+    $scope.auth.$authWithOAuthPopup('facebook', AuthHandler())(); //Need to have empty parenthesis for login to be called
     console.log(user.facebook.displayName);
     window.location.href = "explore.html";
   };
