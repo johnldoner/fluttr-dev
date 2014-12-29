@@ -159,19 +159,14 @@
                                                                 <table class="table table-striped">
                                                                     <thead>
                                                                         <tr>
-                                                                            <th>Time</th>
                                                                             <th>Idea</th>
                                                                             <th>Author</th>
-                                                                            <th>Delete</th>
                                                                         </tr>
                                                                     </thead>
                                                                     <tbody>
-                                                                         <tr ng-repeat="(id,item) in likedIdeas | filter:query">
-                                                                            <td>{{item.timestamp}}</td>
+                                                                         <tr ng-repeat="(id,item) in ideas | filter: {'like': user.facebook.id}">
                                                                             <td>{{item.idea}}</td>
-                                                                            <td>{{item.author}}</td>
-                                                                            <td> <button type="submit" class="btn btn-default" ng-click="DeleteIdea(id)">
-                                                                            <span class="glyphicon glyphicon-remove"></span></button></td>
+                                                                            <td>{{item.userName}}</td>
                                                                         </tr>
                                                                     </tbody>
                                                                 </table>

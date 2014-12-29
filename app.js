@@ -73,7 +73,7 @@ app.controller("ctrl", ["$scope","$firebase","cfFloat","Ideas","IdeasComments","
   $scope.projects = Projects;
   $scope.cfFloat = cfFloat;
   $scope.idea = "";
-  $scope.likedIdeas = LikedIdeas($scope.user.facebook.id); //array is used in browse.html
+  //$scope.likedIdeas = LikedIdeas($scope.user.facebook.id); //array is used in browse.html //causes error with user to be undefined
 
     $.urlParam = function(name, url) {
       if (!url) {
@@ -99,8 +99,8 @@ app.controller("ctrl", ["$scope","$firebase","cfFloat","Ideas","IdeasComments","
   $scope.proposalID = proposalID;
   $scope.wpID = wpID;
 
-  $scope.FacebookLogin = function () {   
-    $scope.auth.$authWithOAuthRedirect('facebook',{remember: "sessionOnly",scope: "email,user_likes"});
+  $scope.FacebookLogin = function () {  
+    $scope.auth.$authWithOAuthPopup('facebook')(); //Need to have empty parenthesis for login to be called
     console.log(user.facebook.displayName);
     window.location.href = "explore.html";
   };
