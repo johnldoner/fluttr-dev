@@ -117,6 +117,26 @@ app.controller("ctrl", ["$scope","$firebase","cfFloat","Ideas","IdeasComments","
     window.location.href = "explore.html";
   };
 
+  $scope.logout = function () {
+    $scope.auth.$unauth();
+    window.setTimeout(function(){
+        window.location.reload();
+        window.location.href = "/";
+    }, 500);
+  };
+
+  $scope.checkAuth = function () {
+    if (!Auth.$getAuth()) {
+    window.location.href = "/";
+    }
+  };
+
+  $scope.homepageRedirect = function () {
+    if (Auth.$getAuth()) {
+    window.location.href = "/explore.html";
+    }
+  };
+
   $scope.newIdea = function () {   
     $scope.ideas.$add({
           idea: $scope.idea_title,

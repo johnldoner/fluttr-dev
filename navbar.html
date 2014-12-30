@@ -1,14 +1,4 @@
-  
-<!--
-  <div class="alert" style="position:relative;top:0;left:0;width:100%;z-index:999;background-color:#5cb85c">
-  <button type="button" class="close" data-dismiss="alert">&times;</button>
-  <strong>Warning!</strong> Best check yo self, you're not looking too good.
-  </div>
-  -->
-
-
-
-<div ng-repeat="(id,item) in filtered = (cfFloat | filter: user.facebook.email)"></div>
+  <div ng-init="checkAuth()" ng-repeat="(id,item) in filtered = (cfFloat | filter: user.facebook.email)"></div>
   <div class="navbar-header ">
     <a href="index.html"> <img id="crowdfluttr" src="images/logo_full.svg" alt="Crowdfluttr"/></a>
   </div>
@@ -64,6 +54,8 @@
           <li><a href="userdashboard.html">Home</a></li>
           <li><a href="projectdashboard.html">My Projects</a></li>
           <li><a href="editprofile.html">My Profile</a></li>
+          <li class="divider"></li>
+          <li ng-show="user"><a href="#" ng-click="logout()">Logout</a></li>
         </ul>
       </li>
     </ul>
