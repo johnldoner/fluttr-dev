@@ -29,8 +29,6 @@
 
         <link rel="stylesheet" href="css/colorbox.css" />
         <script src="js/colorbox.js"></script>
-        <script src="feedback/js/jquery.feedback_me.js"></script>
-        <link rel="stylesheet" href="feedback/css/jquery.feedback_me.css" />
         <script>
           $(document).ready(function(){
             $(".iframe").colorbox({iframe:true, width:"80%", height:"80%"});
@@ -40,45 +38,15 @@
           });
 
           </script>
-              <script>
-
-$(document).ready(function () {
-    //set up some minimal options for the feedback_me plugin
-    fm_options = {
-        bootstrap: true,
-        name_placeholder: "Name",
-        name_required: true,
-        show_email: true,
-        email_label : "Email",
-        email_required: true,
-        message_placeholder: "Go ahead, type your feedback here...",
-        feedback_url: "feedback/",
-        show_radio_button_list: true,
-        radio_button_list_required: true,
-        radio_button_list_title: "How likely are you to recommend Crowdfluttr to a friend? (1 is Not at All, 5 is Very Likely)",
-        show_asterisk_for_required: true,
-  
-        custom_params: {
-            feedback_type: "bootstrap"
-        },
-        delayed_options: {
-            success_color: "#5cb85c",
-            fail_color: "#d2322d",
-            delay_success_milliseconds: 3500,
-            send_success : "Thanks for your feedback. You are always welcome to share Crowdfluttr with anyone around you :)"
-        }
-    };
- 
-    //init feedback_me plugin
-    fm.init(fm_options);
-     
-});
-    </script>
   </head>
-  <body ng-controller="ctrl"">
+  <body ng-controller="ctrl">
   <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-521ec0330762c358" async="async"></script>
     <nav ng-include="'navbar.html'"  class="navbar navbar-default navbar-fixed-top" role="navigation">
     </nav>
+
+    <!-- Fluttr feedback form -->
+    <div ng-include=" 'feedback.html' "></div>
+
     <div class="navbar-default sidebar" role="navigation">
       <div class="row">
         <div class="col-lg-12">

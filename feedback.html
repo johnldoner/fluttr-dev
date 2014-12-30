@@ -1,0 +1,36 @@
+	<div id="slideout">
+		<img src="images/feedback.png" alt="Feedback" />
+		<div id="slideout_inner">
+			<form ng-submit="newFeedback(feedback,rating); feedback=''; rating=''">
+			  <div class="form-group">
+			    <label for="feedback">Feedback</label>
+			    <div ng-show="feedbackAdd" style="display:none;z-index:99999;color:#000" id="feedback-success" class="alert alert-success alert-dismissible" role="alert">
+			    	<strong>Success!</strong> Thanks for sharing your feedback. Care to share Crowdfluttr?<br>
+			    	<a onclick="return !window.open(this.href, 'Share on Facebook', 'width=640, height=536')" href="https://www.facebook.com/sharer/sharer.php?u=href=https://crowdfluttr.com&display=popup&ref=plugin" target="_window"><button class="btn btn-primary">Share on Facebook</button></a>
+			    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+				  <span aria-hidden="true">&times;</span>
+				</button></div>
+			    <textarea class="form-control" ng-model="feedback" id="feedback" placeholder="Tell us everything."></textarea>
+			  </div>
+			  <div class="form-group">
+			    <label><small>On a scale of 1 to 5, with 1 being "Never" and 5 being "Heck Yeah!", would you recommend Crowdfluttr to your friends to share and promote ideas?</small></label>
+			   <label class="radio-inline">
+				  <input type="radio" name="rating" ng-model="rating" value="1"> 1
+				</label>
+				<label class="radio-inline">
+				  <input type="radio" name="rating" ng-model="rating" value="2"> 2
+				</label>
+				<label class="radio-inline">
+				  <input type="radio" name="rating" ng-model="rating" value="3"> 3
+				</label>
+				<label class="radio-inline">
+				  <input type="radio" name="rating" ng-model="rating" value="4"> 4
+				</label>
+				<label class="radio-inline">
+				  <input type="radio" name="rating" ng-model="rating" value="5"> 5
+				</label>
+			  </div>
+			  <button type="submit" class="btn btn-primary">Submit</button>
+			</form>
+		</div>
+	</div>

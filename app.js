@@ -65,6 +65,11 @@ app.factory("cfFloat", ["$firebase", "Ref", function($firebase, Ref) {
   return $firebase(childRef).$asArray();
 }]);
 
+app.factory("Feedback", ["$firebase", "Ref", function($firebase, Ref) {
+  var childRef = Ref.child('feedback');
+  return $firebase(childRef).$asArray();
+}]);
+
 //purpose is to pull only the ideas under that users liked section
 app.factory("LikedIdeas", ["$firebase","Ref", function($firebase,Ref) {
      return function(userId) {
@@ -73,7 +78,7 @@ app.factory("LikedIdeas", ["$firebase","Ref", function($firebase,Ref) {
      }
 }]);
 
-app.controller("ctrl", ["$scope","$firebase","cfFloat","Ideas","IdeasComments","Auth","Messages","Proposals","ProposalsComments","Workplans","WorkplansComments","Projects","LikedIdeas", function($scope,$firebase,cfFloat,Ideas,IdeasComments,Auth,Messages,Proposals,ProposalsComments,Workplans,WorkplansComments,Projects,LikedIdeas) {
+app.controller("ctrl", ["$scope","$firebase","cfFloat","Ideas","IdeasComments","Auth","Messages","Proposals","ProposalsComments","Workplans","WorkplansComments","Projects","LikedIdeas","Feedback", function($scope,$firebase,cfFloat,Ideas,IdeasComments,Auth,Messages,Proposals,ProposalsComments,Workplans,WorkplansComments,Projects,LikedIdeas,Feedback) {
   $scope.ideas = Ideas;
   $scope.ideas_comments = IdeasComments;
   $scope.auth = Auth;
@@ -84,6 +89,7 @@ app.controller("ctrl", ["$scope","$firebase","cfFloat","Ideas","IdeasComments","
   $scope.wpcomments = WorkplansComments;
   $scope.projects = Projects;
   $scope.cfFloat = cfFloat;
+  $scope.feedback = Feedback;
   $scope.idea = "";
   // $scope.likedIdeas = LikedIdeas($scope.user.facebook.id); //array is used in browse.html //causes error with user to be undefined
 
@@ -137,6 +143,7 @@ app.controller("ctrl", ["$scope","$firebase","cfFloat","Ideas","IdeasComments","
     }
   };
 
+  // use this function on newIdea.html
   $scope.newIdea = function () {   
     $scope.ideas.$add({
           idea: $scope.idea_title,
@@ -155,7 +162,7 @@ app.controller("ctrl", ["$scope","$firebase","cfFloat","Ideas","IdeasComments","
     });
   };
 
-
+  // Quick add new idea on navbar
   $scope.qnewIdea = function (idea_title) {   
     $scope.ideas.$add({
           idea: idea_title,
@@ -170,6 +177,25 @@ app.controller("ctrl", ["$scope","$firebase","cfFloat","Ideas","IdeasComments","
       console.log("Success!");
       $scope.quickAdd = true;
       $( "#quickadd-success" ).fadeIn( "slow" );
+      
+    });
+  };
+
+
+  // Feedback form
+  $scope.newFeedback = function (feedback,rating) {   
+    $scope.feedback.$add({
+          feedback: feedback,
+          rating: rating,
+          userId: $scope.user.facebook.id,
+          userName: $scope.user.facebook.displayName,
+          userEmail: $scope.user.facebook.email,
+          status: 'Unresolved',
+          timestamp: Date.now()
+    }).then(function(Ref) {
+      console.log("Success!");
+      $scope.feedbackAdd = true;
+      $( "#feedback-success" ).fadeIn( "slow" );
       
     });
   };
@@ -344,6 +370,10 @@ app.controller("ctrl", ["$scope","$firebase","cfFloat","Ideas","IdeasComments","
 
   $scope.DeleteIdea = function (item) {
         $scope.ideas.$remove(item);
+    };
+
+  $scope.DeleteFeedback = function (item) {
+        $scope.feedback.$remove(item);
     };
 
   $scope.ApproveFloat = function (item) {

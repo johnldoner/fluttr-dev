@@ -8,6 +8,60 @@ body{
   font-family: ProximaNova;
   font-size:16px;
 }
+    #feedback-success #alert-success {
+      position: relative;
+      display: block;
+      color: black;
+    }
+
+    #slideout {
+      position: fixed;
+      z-index: 9999;
+      top: 40px;
+      left: 0;
+      width: 35px;
+      padding: 12px 0;
+      color: #fff;
+      text-align: center;
+      background: #6DAD53;
+      -webkit-transition-duration: 0.3s;
+      -moz-transition-duration: 0.3s;
+      -o-transition-duration: 0.3s;
+      transition-duration: 0.3s;
+      -webkit-border-radius: 0 5px 5px 0;
+      -moz-border-radius: 0 5px 5px 0;
+      border-radius: 0 5px 5px 0;
+    }
+    #slideout_inner {
+      position: fixed;
+      top: 40px;
+      left: -350px;
+      background: #6DAD53;
+      width: 350px;
+      padding: 25px;
+      height: 500px;
+      -webkit-transition-duration: 0.3s;
+      -moz-transition-duration: 0.3s;
+      -o-transition-duration: 0.3s;
+      transition-duration: 0.3s;
+      text-align: left;
+      -webkit-border-radius: 0 0 5px 0;
+      -moz-border-radius: 0 0 5px 0;
+      border-radius: 0 0 5px 0;
+    }
+    #slideout_inner textarea {
+      width: 300px;
+      height: 100px;
+      margin-bottom: 6px;
+    }
+    #slideout:hover {
+      left: 350px;
+      z-index: 9999;
+    }
+    #slideout:hover #slideout_inner {
+      left: 0;
+      z-index: 9999;
+    }
 
   .sub-text {
     font-size: 80%;
