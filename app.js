@@ -10,6 +10,8 @@
       }
     };
 
+// AUTOCOMPLETE RELIES ON NG-TOUCH AND ANGUCOMPLETE. STILL A WORK IN PROGRESS
+// var app = angular.module("app", ["firebase", "ngTouch", "angucomplete"]);
 var app = angular.module("app", ["firebase"]);
 
 app.constant("FBURL", "https://crowdfluttr.firebaseio.com/");

@@ -8,6 +8,9 @@ body{
   font-family: ProximaNova;
   font-size:16px;
 }
+
+.nav, .pagination, .carousel, .panel-title a { cursor: pointer; }
+
     #feedback-success #alert-success {
       position: relative;
       display: block;

@@ -2,19 +2,12 @@
 <html ng-app="app">
   <head>
      <title>CrowdFluttr</title>
-    <!-- Bootstrap Core CSS -->
         <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
         <script src="https://code.jquery.com/ui/1.11.1/jquery-ui.min.js"></script>
         <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" rel="stylesheet" type="text/css">
-        <!-- MetisMenu CSS -->
-        <!-- <link href="https://cdnjs.cloudflare.com/ajax/libs/metisMenu/1.1.3/metisMenu.min.css" rel="stylesheet"> -->
-        <!-- Custom CSS -->
-       <link href="css/sb-admin-2.css" rel="stylesheet">
-        <!-- Custom Fonts -->
+        <link href="css/sb-admin-2.css" rel="stylesheet">
+        <link href="css/angucomplete.css" rel="stylesheet">
         <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
-        <!-- DataTables CSS -->
-        <!-- <link href="css/dataTables.bootstrap.css" rel="stylesheet"> -->
-        <!-- Tags CSS -->
         
         <link rel="shortcut icon" href="images/logosm.png">
         <link rel="stylesheet" type="text/css" href="css/navbar.css" />
@@ -22,10 +15,14 @@
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.2/angular.min.js"></script>
         <script src="https://cdn.firebase.com/js/client/2.0.2/firebase.js"></script>
         <script src="https://cdn.firebase.com/libs/angularfire/0.9.0/angularfire.min.js"></script>
-          <link rel="stylesheet" href="css/jquery.datetimepicker.css">
-          <script type="text/javascript" src="js/jquery.datetimepicker.js"></script>
+        <script src="https://darylrowland.github.io/angucomplete/js/angular-touch.min.js"></script>
+        <link rel="stylesheet" href="css/jquery.datetimepicker.css">
+        <script type="text/javascript" src="js/jquery.datetimepicker.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.8/angular-touch.min.js"></script>
         <script src="app.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+        <script src="js/angucomplete-dir.js"></script>
+        <script src="js/angucomplete-ctrl.js"></script>
 
         <link rel="stylesheet" href="css/colorbox.css" />
         <script src="js/colorbox.js"></script>
@@ -150,8 +147,18 @@
             <div role="tabpanel" class="tab-pane fade" id="Work">
         
             </div>
-            <div role="tabpanel" class="tab-pane fade" id="Invite">
+            <div role="tabpanel" class="tab-pane fade" id="Invite" ng-controller="MainController">
             <div class="row">
+            <div class="large-padded-row">
+                <h3>Example 2 - People</h3>
+                <div class="padded-row">
+                    <div angucomplete id="ex2" placeholder="Search people" pause="300" selectedobject="selectedPerson" localdata="people" searchfields="firstName,surname" titlefield="firstName,surname" descriptionfield="twitter" imagefield="pic" minlength="1" inputclass="form-control"/>
+                </div>
+                <div class="" ng-show="selectedPerson">
+                    You selected <span class="bold-span">{{selectedPerson.originalObject.firstName}} {{selectedPerson.originalObject.surname}}</span>
+                </div>
+            </div>
+            <br><br>
             <br>
             <p>You can send this idea to your friends by typing in their email addresses, separated by commas. It's simple!</p>
             <div style="display:none" id="float-success" class="alert alert-success alert-dismissible" role="alert">
