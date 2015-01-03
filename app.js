@@ -93,6 +93,27 @@ app.controller("ctrl", ["$scope","$firebase","cfFloat","Ideas","IdeasComments","
   $scope.cfFloat = cfFloat;
   $scope.feedback = Feedback;
   $scope.idea = "";
+
+
+
+  $scope.UpdateFirebaseWithString = function () {   
+    $scope.ideas.$add({
+      idea: $scope.idea,
+      description: $scope.description,
+      userId: $scope.user.facebook.id,
+    }).then(function(ref) {
+      clearIdea();
+    });
+
+  };
+  
+  function clearIdea() {
+    $scope.description = "";
+    $scope.idea = "";
+    
+  }
+  
+
   // $scope.likedIdeas = LikedIdeas($scope.user.facebook.id); //array is used in browse.html //causes error with user to be undefined
 
     $.urlParam = function(name, url) {
