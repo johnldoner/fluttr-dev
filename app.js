@@ -120,7 +120,7 @@ app.controller("ctrl", ["$scope","$firebase","cfFloat","Ideas","IdeasComments","
   $scope.wpID = wpID;
 
   $scope.FacebookLogin = function () {  
-    $scope.auth.$authWithOAuthPopup('facebook', AuthHandler())(); //Need to have empty parenthesis for login to be called
+    $scope.auth.$authWithOAuthRedirect('facebook', AuthHandler())(); //Need to have empty parenthesis for login to be called
     console.log(user.facebook.displayName);
     window.location.href = "explore.html";
   };
