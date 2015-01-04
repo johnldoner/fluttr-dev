@@ -28,34 +28,44 @@
           ga('send', 'pageview');
 
         </script>
-        <!--use login.js for present-->
+        <style>
+            .well {
+                background: rgb(22, 105, 173);
+            }
+        </style>
     </head>
     <body ng-controller="ctrl">
         <div id="wrapper">
             <nav ng-include="'navbar.html'"  class="navbar navbar-default navbar-fixed-top" role="navigation">
             </nav>
-            <div class="navbar-default sidebar" role="navigation">
-                <div id='ideaContent'>
-                    <h3> User Name</h3>
-                    <p><img src=""></img></p>
-                    <p>
-                    Profile Description Section - the user can describe themselves
-                    </p>
-                </div>
-                <ul>
-                    <li>Likes on my Ideas: 7</li>
-                    <li>Ideas Created: 12</li>
-                    <li>Shares: 11</li>
-                    <li>Badges: 10 Badges </li>
-                </ul>
-            </div>
+            <div ng-include="'sidebar.html'"></div>
             <!-- Page Content -->
             <div id="page-wrapper">
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-lg-12">
                             <br><br>
-                            <h1 class="page-header">Browse Ideas</h1>
+                            <h1 class="page-header">My Ideas</h1>
+
+                             <!-- Projects Row -->
+        <div class="row">
+            <div class="col-md-4 portfolio-item" ng-repeat="(id,item) in ideas | filter:{userId: user.facebook.id} | filter:query">
+
+                <a href="#">
+                    <img class="img-responsive" ng-src="http://placehold.it/700x400" alt="">
+                </a>
+                <h3>
+                    <a href="idea.html?id={{ideas.$keyAt(ideas.indexOf(item))}}">{{item.idea | limitTo: 100}}{{item.idea.length > 100 ? '...' : ''}}</a>
+                </h3><p>{{item.likes.like}} <i class="fa fa-thumbs-o-up"></i> &nbsp; &nbsp; &nbsp; {{item.likes.dislike}} <i class="fa fa-thumbs-o-down"></i> &nbsp; &nbsp; &nbsp; {{item.category}}
+                        </p>
+                <p>{{item.description| limitTo: 200}}{{item.description.length > 200 ? '...' : ''}}</p>
+            </div>
+        </div>
+
+
+
+
+
                         </div>
                         <!-- /.col-lg-12 -->
                     </div>

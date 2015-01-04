@@ -1,0 +1,1569 @@
+<!DOCTYPE html>
+<!-- saved from url=(0080)http://stackoverflow.com/questions/22130478/filter-firebase-data-using-angularjs -->
+<html itemscope="" itemtype="http://schema.org/QAPage"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <title>javascript - Filter Firebase data using AngularJS - Stack Overflow</title>
+    <link rel="shortcut icon" href="http://cdn.sstatic.net/stackoverflow/img/favicon.ico?v=038622610830">
+    <link rel="apple-touch-icon image_src" href="http://cdn.sstatic.net/stackoverflow/img/apple-touch-icon.png?v=fd7230a85918">
+    <link rel="search" type="application/opensearchdescription+xml" title="Stack Overflow" href="http://stackoverflow.com/opensearch.xml">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:domain" content="stackoverflow.com">
+    <meta property="og:type" content="website">
+    <meta property="og:image" itemprop="image primaryImageOfPage" content="http://cdn.sstatic.net/stackoverflow/img/apple-touch-icon@2.png?v=fde65a5a78c6">
+    <meta name="twitter:title" property="og:title" itemprop="title name" content="Filter Firebase data using AngularJS">
+    <meta name="twitter:description" property="og:description" itemprop="description" content="i have a data in firebase like this:
+
+firebase_data {
+    -JGc5X37NDuvmJylmx0s: Object {
+        name: &#39;John Doe&#39;,
+        age: 21
+    }
+    -JGnGJlTjyAxFT-Vn48Y: Object {
+        name: &#39;Jane Doe&#39;,...">
+    <meta property="og:url" content="http://stackoverflow.com/questions/22130478/filter-firebase-data-using-angularjs">
+    <link rel="canonical" href="./javascript - Filter Firebase data using AngularJS - Stack Overflow_files/javascript - Filter Firebase data using AngularJS - Stack Overflow.html">
+
+    
+    
+    <script async="" src="./javascript - Filter Firebase data using AngularJS - Stack Overflow_files/quant.js"></script><script async="" src="./javascript - Filter Firebase data using AngularJS - Stack Overflow_files/beacon.js"></script><script async="" src="./javascript - Filter Firebase data using AngularJS - Stack Overflow_files/analytics.js"></script><script type="text/javascript" async="" src="http://static.adzerk.net/ados.js"></script><script src="./javascript - Filter Firebase data using AngularJS - Stack Overflow_files/jquery.min.js"></script>
+    <script src="./javascript - Filter Firebase data using AngularJS - Stack Overflow_files/stub.en.js"></script>
+    <link rel="stylesheet" type="text/css" href="./javascript - Filter Firebase data using AngularJS - Stack Overflow_files/all.css">
+    
+    <link rel="alternate" type="application/atom+xml" title="Feed for question &#39;Filter Firebase data using AngularJS&#39;" href="http://stackoverflow.com/feeds/question/22130478">
+    <meta name="twitter:app:country" content="US">
+    <meta name="twitter:app:name:iphone" content="Stack Exchange iOS">
+    <meta name="twitter:app:id:iphone" content="871299723">
+    <meta name="twitter:app:url:iphone" content="se-zaphod://stackoverflow.com/questions/22130478/filter-firebase-data-using-angularjs">
+    <meta name="twitter:app:name:ipad" content="Stack Exchange iOS">
+    <meta name="twitter:app:id:ipad" content="871299723">
+    <meta name="twitter:app:url:ipad" content="se-zaphod://stackoverflow.com/questions/22130478/filter-firebase-data-using-angularjs">
+    <meta name="twitter:app:name:googleplay" content="Stack Exchange Android">
+    <meta name="twitter:app:url:googleplay" content="http://stackoverflow.com/questions/22130478/filter-firebase-data-using-angularjs">
+    <meta name="twitter:app:id:googleplay" content="com.stackexchange.marvin">
+    <script>
+        
+        StackExchange.ready(function () {
+                
+                StackExchange.using("snippets", function () {
+                    StackExchange.snippets.initSnippetRenderer();
+                });
+                
+
+            StackExchange.using("postValidation", function () {
+                StackExchange.postValidation.initOnBlurAndSubmit($('#post-form'), 2, 'answer');
+            });
+
+            
+            StackExchange.question.init({votesCast:[],autoShowCommentHelp:true,showAnswerHelp:true,totalCommentCount:1,shownCommentCount:1,highlightColor:'#F4A83D',backgroundColor:'#FFF',questionId:22130478});
+
+            styleCode();
+
+                StackExchange.realtime.subscribeToQuestion('1', '22130478');
+            
+                    });
+    </script>
+
+            <script>
+                StackExchange.ready(function () {
+                    try {
+                        if (!document.createElementNS('http://www.w3.org/2000/svg', "svg").createSVGTransform)
+                            return;
+                    } catch (ex) {
+                        return;
+                    }
+                    var d = 100;
+                    $.ajax({url:"//cdn-prom.sstatic.net/WinterBash/js/core.js?v=26",cache:true,dataType:"script"}).done(function tryInit() {
+                        if (window.WinterBash) {
+                            WinterBash.core.init('winterbash2014.stackexchange.com', '//cdn-prom.sstatic.net/WinterBash/');
+                        } else {
+                            if (d <= 800)
+                                setTimeout(tryInit, d);
+                            d *= 2;
+                        }
+                    });
+                });
+            </script>
+
+    <script>
+        StackExchange.init({"locale":"en","stackAuthUrl":"https://stackauth.com","serverTime":1420347400,"networkMetaHostname":"meta.stackexchange.com","routeName":"Questions/Show","styleCode":true,"enableUserHovercards":true,"snippets":{"enabled":true,"domain":"stacksnippets.net"},"site":{"name":"Stack Overflow","description":"Q&A for professional and enthusiast programmers","isNoticesTabEnabled":true,"recaptchaPublicKey":"6LdchgIAAAAAAJwGpIzRQSOFaO0pU6s44Xt8aTwc","recaptchaAudioLang":"en","enableNewTagCreationWarning":true,"nonAsciiTags":true,"enableSocialMediaInSharePopup":true},"user":{"fkey":"bb404e0d33a612b390a5c244d29b905d","isRegistered":true,"userType":3,"userId":4097071,"accountId":5110233,"gravatar":"<div><img src=\"https://www.gravatar.com/avatar/c3edd8bce3584c8ba4d97d0200138d44?s=32&d=identicon&r=PG&f=1\" alt=\"\" width=\"32\" height=\"32\"></div>","profileUrl":"http://stackoverflow.com/users/4097071/leeuwenhoek","notificationsUnviewedCount":0,"inboxUnviewedCount":0}});
+        StackExchange.using.setCacheBreakers({"js/prettify-full.en.js":"b6f8ea633299","js/moderator.en.js":"b1ec549ded79","js/full-anon.en.js":"c1b0bbad1143","js/full.en.js":"0398f1afe912","js/wmd.en.js":"fee0ddcd79e9","js/third-party/jquery.autocomplete.min.js":"e5f01e97f7c3","js/third-party/jquery.autocomplete.min.en.js":"","js/mobile.en.js":"1871f23e40dd","js/help.en.js":"b5f40fd81205","js/tageditor.en.js":"9c54855bf167","js/tageditornew.en.js":"2ca8ad11856d","js/inline-tag-editing.en.js":"21223186b436","js/revisions.en.js":"921feab5aaf7","js/review.en.js":"2764f73fac67","js/tagsuggestions.en.js":"d1ff9b84abe5","js/post-validation.en.js":"2fcab1c80797","js/explore-qlist.en.js":"e7a80905fa22","js/events.en.js":"9a54d13eb460","js/keyboard-shortcuts.en.js":"8ae40f4f2de5","js/external-editor.en.js":"42d8411afdcc","js/external-editor.en.js":"42d8411afdcc","js/snippet-javascript.en.js":"4ddac7652103","js/snippet-javascript-codemirror.en.js":"5329336953c9"});
+        StackExchange.using("gps", function() {
+             StackExchange.gps.init(true);
+        });
+    </script>
+    
+    
+    
+<script async="" src="./javascript - Filter Firebase data using AngularJS - Stack Overflow_files/full.en.js"></script><script async="" src="./javascript - Filter Firebase data using AngularJS - Stack Overflow_files/snippet-javascript.en.js"></script><script async="" src="./javascript - Filter Firebase data using AngularJS - Stack Overflow_files/post-validation.en.js"></script><script async="" src="./javascript - Filter Firebase data using AngularJS - Stack Overflow_files/prettify-full.en.js"></script><script async="" src="./javascript - Filter Firebase data using AngularJS - Stack Overflow_files/external-editor.en.js"></script><script async="" src="./javascript - Filter Firebase data using AngularJS - Stack Overflow_files/wmd.en.js"></script><link id="avast_os_ext_custom_font" href="./javascript - Filter Firebase data using AngularJS - Stack Overflow_files/css" rel="stylesheet" type="text/css"><link href="./javascript - Filter Firebase data using AngularJS - Stack Overflow_files/css(1)" rel="stylesheet" type="text/css"><style id="wrc-css" type="text/css">.wrcx {display:none} .post-text .wrcx {display:inline !important; background: url("chrome-extension://gomekmidlodglbbmalcneegieacbdmki/common/skin/img/se_icn_grey.png") right no-repeat}"}
+.wrc0 {display:none} .post-text .wrc0 {display:inline !important; background: url("chrome-extension://gomekmidlodglbbmalcneegieacbdmki/common/skin/img/se_icn_grey.png") right no-repeat}"}
+.wrc11 {display:none} .post-text .wrc11 {display:inline !important; background: url("chrome-extension://gomekmidlodglbbmalcneegieacbdmki/common/skin/img/se_icn_green.png") right no-repeat}"}
+.wrc12 {display:none} .post-text .wrc12 {display:inline !important; background: url("chrome-extension://gomekmidlodglbbmalcneegieacbdmki/common/skin/img/se_icn_green.png") right no-repeat}"}
+.wrc13 {display:none} .post-text .wrc13 {display:inline !important; background: url("chrome-extension://gomekmidlodglbbmalcneegieacbdmki/common/skin/img/se_icn_green.png") right no-repeat}"}
+.wrc21 {display:none} .post-text .wrc21 {display:inline !important; background: url("chrome-extension://gomekmidlodglbbmalcneegieacbdmki/common/skin/img/se_icn_orange.png") right no-repeat}"}
+.wrc22 {display:none} .post-text .wrc22 {display:inline !important; background: url("chrome-extension://gomekmidlodglbbmalcneegieacbdmki/common/skin/img/se_icn_orange.png") right no-repeat}"}
+.wrc23 {display:none} .post-text .wrc23 {display:inline !important; background: url("chrome-extension://gomekmidlodglbbmalcneegieacbdmki/common/skin/img/se_icn_orange.png") right no-repeat}"}
+.wrc31 {display:none} .post-text .wrc31 {display:inline !important; background: url("chrome-extension://gomekmidlodglbbmalcneegieacbdmki/common/skin/img/se_icn_red.png") right no-repeat}"}
+.wrc32 {display:none} .post-text .wrc32 {display:inline !important; background: url("chrome-extension://gomekmidlodglbbmalcneegieacbdmki/common/skin/img/se_icn_red.png") right no-repeat}"}
+.wrc33 {display:none} .post-text .wrc33 {display:inline !important; background: url("chrome-extension://gomekmidlodglbbmalcneegieacbdmki/common/skin/img/se_icn_red.png") right no-repeat}"}
+.wrc_icon{margin:0;padding:0;padding:2px 0 0 10px !important; position: absolute; width:16px !important; height:16px !important;line-height:16px !important;}
+#wrchoverdiv{position:absolute; margin: 0 0 0 20px; display:none; font-family: Segoe UI, Arial Unicode MS, Arial, Sans-Serif; font-size: 14px; z-index:9999999;}
+#wrchoverdiv{cursor:default;}
+#wrchoverdiv #wrccontainer{width:130px; height:140px; border-radius: 6px; background-position: center 35% !important; background-repeat: no-repeat !important; box-shadow: 0 0 0 5px #fff; }
+#wrchoverdiv #wrcratingtext{color:#FFF; text-align:center; padding: 95px 5px 0 5px; font-size:15px; font-family: 'Source Sans Pro', sans-serif;}
+#wrchoverdiv .wrclogo{background:url(chrome-extension://gomekmidlodglbbmalcneegieacbdmki/common/skin/img/logo_avastsmall.png);padding:0;margin:0;position:absolute;top:5px !important;right:5px !important;width:24px !important;height:24px !important;}
+</style><link rel="stylesheet" type="text/css" href="./javascript - Filter Firebase data using AngularJS - Stack Overflow_files/wb-include.css"><style type="text/css"> .wmd-snippet-button span { background-position: 0 0; } .wmd-snippet-button:hover span { background-position: 0 -40px; }</style></head>
+<body class="question-page new-topbar">
+    <noscript>&lt;div id="noscript-padding"&gt;&lt;/div&gt;</noscript>
+    <div id="notify-container"></div>
+    <div id="overlay-header"></div>
+    <div id="custom-header"></div>
+
+
+
+
+<div class="topbar">
+    <div class="topbar-wrapper">
+
+        <div class="js-topbar-dialog-corral">
+
+<div class="topbar-dialog siteSwitcher-dialog dno">
+    <div class="header">
+        <h3><a href="http://stackoverflow.com/">current community</a></h3>
+    </div>
+    <div class="modal-content current-site-container">
+        <ul class="current-site">
+                <li>
+                        <div class="related-links">
+            <a href="http://chat.stackoverflow.com/" class="js-gps-track" data-gps-track="site_switcher.click({ item_type:6 })" wrc_done="true">chat</a>&nbsp;<span class="wrc_icon wrc13" rating="{&quot;icon&quot;:&quot;icn_extensiontop_green.png&quot;,&quot;rating&quot;:1,&quot;weight&quot;:3,&quot;flags&quot;:{&quot;shopping&quot;:null,&quot;social&quot;:null,&quot;news&quot;:null,&quot;it&quot;:true,&quot;corporate&quot;:null,&quot;pornography&quot;:null,&quot;violence&quot;:null,&quot;gambling&quot;:null,&quot;drugs&quot;:null,&quot;illegal&quot;:null},&quot;lastHit&quot;:1420347402049}"></span>
+                    <a href="http://blog.stackoverflow.com/" class="js-gps-track" data-gps-track="site_switcher.click({ item_type:7 })" wrc_done="true">blog</a>&nbsp;<span class="wrc_icon wrc13" rating="{&quot;icon&quot;:&quot;icn_extensiontop_green.png&quot;,&quot;rating&quot;:1,&quot;weight&quot;:3,&quot;flags&quot;:{&quot;shopping&quot;:null,&quot;social&quot;:null,&quot;news&quot;:null,&quot;it&quot;:true,&quot;corporate&quot;:null,&quot;pornography&quot;:null,&quot;violence&quot;:null,&quot;gambling&quot;:null,&quot;drugs&quot;:null,&quot;illegal&quot;:null},&quot;lastHit&quot;:1420347402049}"></span>
+                    <a href="http://stackoverflow.com/users/logout" class="js-gps-track" data-gps-track="site_switcher.click({ item_type:8 })">log out</a>
+    </div>
+
+
+
+
+    <a href="http://stackoverflow.com/" class="current-site-link site-link js-gps-track" data-id="1" data-gps-track="
+        site_switcher.click({ item_type:3 })">
+        <div class="site-icon favicon favicon-stackoverflow" title="Stack Overflow"></div>
+        Stack Overflow
+    </a>
+
+                </li>
+                <li class="related-site">
+                        <div class="L-shaped-icon-container">
+        <span class="L-shaped-icon"></span>
+    </div>
+
+                    
+
+
+
+    <a href="http://meta.stackoverflow.com/" class="site-link js-gps-track" data-id="552" data-gps-track="
+            site.switch({ target_site:552, item_type:3 }),
+        site_switcher.click({ item_type:4 })" wrc_done="true">
+        <div class="site-icon favicon favicon-stackoverflowmeta" title="Meta Stack Overflow"></div>
+        Meta Stack Overflow
+    </a>&nbsp;<span class="wrc_icon wrc13" rating="{&quot;icon&quot;:&quot;icn_extensiontop_green.png&quot;,&quot;rating&quot;:1,&quot;weight&quot;:3,&quot;flags&quot;:{&quot;shopping&quot;:null,&quot;social&quot;:null,&quot;news&quot;:null,&quot;it&quot;:true,&quot;corporate&quot;:null,&quot;pornography&quot;:null,&quot;violence&quot;:null,&quot;gambling&quot;:null,&quot;drugs&quot;:null,&quot;illegal&quot;:null},&quot;lastHit&quot;:1420347402049}"></span>
+
+                </li>
+                            <li class="related-site">
+                        <div class="L-shaped-icon-container">
+        <span class="L-shaped-icon"></span>
+    </div>
+
+                    <a class="site-link js-gps-track" href="http://careers.stackoverflow.com/?utm_source=stackoverflow.com&utm_medium=site-ui&utm_campaign=multicollider" data-gps-track="site_switcher.click({ item_type:9 })">
+                        <div class="site-icon favicon favicon-careers" title="Stack Overflow Careers"></div>
+                        Stack Overflow Careers
+                    </a>
+                </li>
+        </ul>
+    </div>
+    
+    <div class="header" id="your-communities-header">
+        <h3>
+                <a href="http://stackexchange.com/users/5110233/?tab=accounts">your communities</a>
+        </h3>
+            
+            <a href="http://stackoverflow.com/questions/22130478/filter-firebase-data-using-angularjs#" id="edit-pinned-sites">edit</a>
+            <a href="http://stackoverflow.com/questions/22130478/filter-firebase-data-using-angularjs#" id="cancel-pinned-sites" style="display: none;">cancel</a>
+    </div>
+    <div class="modal-content" id="your-communities-section">
+            
+            <ul class="my-sites">
+                    <li>
+                        
+
+
+
+    <a href="http://stackoverflow.com/" class="site-link js-gps-track" data-id="1" data-gps-track="
+            site.switch({ target_site:1, item_type:3 }),
+        site_switcher.click({ item_type:1 })">
+        <div class="site-icon favicon favicon-stackoverflow" title="Stack Overflow"></div>
+        Stack Overflow
+            <span class="rep-score">28</span>
+    </a>
+
+                    </li>
+            </ul>
+                <div class="pinned-site-editor-container" style="display: none;">
+                    <input id="js-site-search-txt" type="text" class="site-filter-input" value="" placeholder="Add a Stack Exchange community">
+                    <input type="submit" id="pin-site-btn" value="Add" disabled="disabled">
+                    <ul class="js-found-sites found-sites"></ul>
+                    <ul class="pinned-site-list sortable" data-custom-list="False">
+                    </ul>
+                    <input type="submit" value="Save" id="save-pinned-sites-btn" disabled="disabled">
+                    <a href="http://stackoverflow.com/questions/22130478/filter-firebase-data-using-angularjs#" id="reset-pinned-sites">reset to default list</a>
+                </div>
+    </div>
+    
+    <div class="header">
+        <h3><a href="http://stackexchange.com/sites">more stack exchange communities</a></h3>
+    </div>
+    <div class="modal-content">
+            <div class="child-content"></div>
+    </div>
+</div>
+        </div>
+
+        <div class="network-items">
+
+            <a href="http://stackexchange.com/" class="topbar-icon icon-site-switcher yes-hover js-site-switcher-button js-gps-track" data-gps-track="site_switcher.show" title="A list of all 134 Stack Exchange sites">
+                <span class="hidden-text">Stack Exchange</span>
+            </a>
+
+                <a href="http://stackoverflow.com/questions/22130478/filter-firebase-data-using-angularjs#" class="topbar-icon icon-inbox yes-hover js-inbox-button" title="Recent inbox messages">
+                    <span class="hidden-text">Inbox</span>
+                    <span class="unread-count" style="display:none"></span>
+                </a>
+                <a href="http://stackoverflow.com/questions/22130478/filter-firebase-data-using-angularjs#" class="topbar-icon icon-achievements yes-hover js-achievements-button" data-unread-class="" title="Recent achievements: reputation, badges, and privileges earned">
+                    <span class="hidden-text">Reputation and Badges</span>
+                    <span class="unread-count" style="display:none">
+                        
+                    </span>
+                </a>
+        <a href="http://stackoverflow.com/questions/22130478/filter-firebase-data-using-angularjs#" class="topbar-icon yes-hover icon-winterbash"><span class="wb-unread-count">5</span></a></div>
+
+        <div class="topbar-links">
+
+                <a href="http://stackoverflow.com/users/4097071/leeuwenhoek" class="profile-me js-gps-track" data-gps-track="profile_summary.click()">
+                    <div title="leeuwenhoek"><img src="./javascript - Filter Firebase data using AngularJS - Stack Overflow_files/c3edd8bce3584c8ba4d97d0200138d44" alt="" width="24" height="24" class="avatar-me js-avatar-me"></div>
+                    <div class="links-container topbar-flair">
+
+                        <span class="reputation" title="your reputation: 28">
+                            28
+                        </span>
+<span title="5 bronze badges"><span class="badge3"></span><span class="badgecount">5</span></span>                    </div>
+                </a>
+                <div class="links-container">
+                    <span class="topbar-menu-links">
+
+
+
+
+    <a href="http://stackoverflow.com/questions/22130478/filter-firebase-data-using-angularjs#" class="icon-help js-help-button" title="Help Center and other resources">
+        help
+        <span class="triangle"></span>
+    </a>
+    <div class="topbar-dialog help-dialog js-help-dialog dno">
+        <div class="modal-content">
+            <ul>
+                                    <li>
+                        <a href="http://stackoverflow.com/tour" class="js-gps-track" data-gps-track="help_popup.click({ item_type:1 })">
+                            Tour
+                            <span class="item-summary">
+                                Start here for a quick overview of the site
+                            </span>
+                        </a>
+                    </li>
+                <li>
+                    <a href="http://stackoverflow.com/help" class="js-gps-track" data-gps-track="help_popup.click({ item_type:4 })">
+                        Help Center
+                        <span class="item-summary">
+                            Detailed answers to any questions you might have
+                        </span>
+                    </a>
+                </li>
+                    <li>
+                        <a href="http://meta.stackoverflow.com/" class="js-gps-track" data-gps-track="help_popup.click({ item_type:2 })">
+                            Meta
+                            <span class="item-summary">
+                                Discuss the workings and policies of this site
+                            </span>
+                        </a>
+                    </li>
+            </ul>
+        </div>
+    </div>
+
+                    </span>
+                </div>
+
+            <div class="search-container">
+                <form id="search" action="http://stackoverflow.com/search" method="get" autocomplete="off">
+                    <input name="q" type="text" placeholder="search" value="" tabindex="1" autocomplete="off" maxlength="240">
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>
+    <script>
+        StackExchange.ready(function() { StackExchange.topbar.init(); });
+    </script>
+
+    <div class="container">
+        <div id="header">
+            <br class="cbt">
+            <div id="hlogo">
+                <a href="http://stackoverflow.com/">
+                    Stack Overflow
+                </a>
+            </div>
+            <div id="hmenus">
+                <div class="nav mainnavs">
+                    <ul>
+                        <li class="youarehere"><a id="nav-questions" href="http://stackoverflow.com/questions">Questions</a></li>
+                        <li><a id="nav-tags" href="http://stackoverflow.com/tags">Tags</a></li>
+                        <li><a id="nav-users" href="http://stackoverflow.com/users">Users</a></li>
+                        <li><a id="nav-badges" href="http://stackoverflow.com/help/badges">Badges</a></li>
+                        <li><a id="nav-unanswered" href="http://stackoverflow.com/unanswered">Unanswered</a></li>
+                    </ul>
+                </div>
+                <div class="nav askquestion">
+                    <ul>
+                        <li>
+                            <a id="nav-askquestion" href="http://stackoverflow.com/questions/ask">Ask Question</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+
+
+
+        <div id="content" class="snippet-hidden">
+            
+
+<div itemscope="" itemtype="http://schema.org/Question">
+	<link itemprop="image" href="http://cdn.sstatic.net/stackoverflow/img/apple-touch-icon.png">
+			<div id="question-header">
+			<h1 itemprop="name"><a href="./javascript - Filter Firebase data using AngularJS - Stack Overflow_files/javascript - Filter Firebase data using AngularJS - Stack Overflow.html" class="question-hyperlink">Filter Firebase data using AngularJS</a></h1>
+		</div>
+			<div id="mainbar">
+
+			
+
+<div class="question" data-questionid="22130478" id="question">
+
+    <script>
+                var ados = ados || {};ados.run = ados.run || [];
+                ados.run.push(function() { ados_add_placement(22,8277,"adzerk697782892",4).setZone(43) ; });                    
+            </script>
+            <div class="everyonelovesstackoverflow" id="adzerk697782892">
+            </div>    <table>
+        <tbody><tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+    <input type="hidden" name="_id_" value="22130478">
+    <a class="vote-up-off" title="This question shows research effort; it is useful and clear">up vote</a>
+    <span itemprop="upvoteCount" class="vote-count-post ">4</span>
+    <a class="vote-down-off" title="This question does not show any research effort; it is unclear or not useful">down vote</a>
+    
+    <a class="star-off" href="http://stackoverflow.com/questions/22130478/filter-firebase-data-using-angularjs#" title="This is a favorite question (click again to undo)">favorite</a>
+    <div class="favoritecount"><b></b></div>   
+
+</div>
+
+            </td>
+            
+<td class="postcell">
+<div>
+    <div class="post-text" itemprop="text">
+
+        <p>i have a data in firebase like this:</p>
+
+<pre class="default prettyprint prettyprinted"><code><span class="pln">firebase_data </span><span class="pun">{</span><span class="pln">
+    </span><span class="pun">-</span><span class="typ">JGc5X37NDuvmJylmx0s</span><span class="pun">:</span><span class="pln"> </span><span class="typ">Object</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+        name</span><span class="pun">:</span><span class="pln"> </span><span class="str">'John Doe'</span><span class="pun">,</span><span class="pln">
+        age</span><span class="pun">:</span><span class="pln"> </span><span class="lit">21</span><span class="pln">
+    </span><span class="pun">}</span><span class="pln">
+    </span><span class="pun">-</span><span class="typ">JGnGJlTjyAxFT</span><span class="pun">-</span><span class="typ">Vn48Y</span><span class="pun">:</span><span class="pln"> </span><span class="typ">Object</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+        name</span><span class="pun">:</span><span class="pln"> </span><span class="str">'Jane Doe'</span><span class="pun">,</span><span class="pln">
+        age</span><span class="pun">:</span><span class="pln"> </span><span class="lit">22</span><span class="pln">
+    </span><span class="pun">}</span><span class="pln">
+</span><span class="pun">}</span></code></pre>
+
+<p>in my controller:</p>
+
+<pre class="default prettyprint prettyprinted"><code><span class="pln">$scope</span><span class="pun">.</span><span class="pln">firebase </span><span class="pun">=</span><span class="pln"> $firebase</span><span class="pun">(</span><span class="kwd">new</span><span class="pln"> </span><span class="typ">Firebase</span><span class="pun">(</span><span class="str">"https://firebase_data.firebaseio.com"</span><span class="pun">));</span></code></pre>
+
+<p>my view:</p>
+
+<pre class="default prettyprint prettyprinted"><code><span class="tag">&lt;input</span><span class="pln"> </span><span class="atn">type</span><span class="pun">=</span><span class="atv">"text"</span><span class="pln"> </span><span class="atn">ng-model</span><span class="pun">=</span><span class="atv">"search"</span><span class="pln"> </span><span class="tag">/&gt;</span><span class="pln">
+</span><span class="tag">&lt;ul</span><span class="pln"> </span><span class="atn">ng-repeat</span><span class="pun">=</span><span class="atv">"(key, value) in firebase | filter:search"</span><span class="tag">&gt;</span><span class="pln">  
+    </span><span class="tag">&lt;li&gt;&lt;a</span><span class="pln"> </span><span class="atn">href</span><span class="pun">=</span><span class="atv">"{{ key }}"</span><span class="tag">&gt;</span><span class="pln">{{ value.name }}</span><span class="tag">&lt;/a&gt;&lt;/li&gt;</span><span class="pln">
+</span><span class="tag">&lt;/ul&gt;</span></code></pre>
+
+<p>the filter is not working. how can i make the filter work?</p>
+
+    </div>
+    <div class="post-taglist">
+        <a href="http://stackoverflow.com/questions/tagged/javascript" class="post-tag js-gps-track" title="show questions tagged &#39;javascript&#39;" rel="tag">javascript</a> <a href="http://stackoverflow.com/questions/tagged/angularjs" class="post-tag js-gps-track" title="show questions tagged &#39;angularjs&#39;" rel="tag">angularjs</a> <a href="http://stackoverflow.com/questions/tagged/firebase" class="post-tag js-gps-track" title="show questions tagged &#39;firebase&#39;" rel="tag">firebase</a> <a href="http://stackoverflow.com/questions/tagged/angularfire" class="post-tag js-gps-track" title="show questions tagged &#39;angularfire&#39;" rel="tag">angularfire</a> 
+    </div>
+    <table class="fw">
+    <tbody><tr>
+    <td class="vt">
+<div class="post-menu"><a href="http://stackoverflow.com/q/22130478/4097071" title="short permalink to this question" class="short-link" id="link-post-22130478">share</a><span class="lsep">|</span><a href="http://stackoverflow.com/posts/22130478/edit" class="suggest-edit-post" title="revise and improve this post">edit</a><span class="lsep">|</span><a href="http://stackoverflow.com/questions/22130478/filter-firebase-data-using-angularjs#" class="flag-post-link" title="flag this post for serious problems or moderator attention" data-postid="22130478">flag</a></div>        
+    </td>
+    <td align="right" class="post-signature">
+<div class="user-info ">
+    <div class="user-action-time">
+        <a href="http://stackoverflow.com/posts/22130478/revisions" title="show all edits to this post">edited <span title="2014-03-03 06:32:44Z" class="relativetime">Mar 3 '14 at 6:32</span></a>
+    </div>
+    <div class="user-gravatar32">
+        <a href="http://stackoverflow.com/users/394010/kato"><div class="gravatar-wrapper-32"><img src="./javascript - Filter Firebase data using AngularJS - Stack Overflow_files/aeeb400b9dfb7d0cd6fdcdfab9b84d6b" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="http://stackoverflow.com/users/394010/kato">Kato</a><br>
+        <span class="reputation-score" title="reputation score 15138" dir="ltr">15.1k</span><span title="1 gold badge"><span class="badge1"></span><span class="badgecount">1</span></span><span title="26 silver badges"><span class="badge2"></span><span class="badgecount">26</span></span><span title="56 bronze badges"><span class="badge3"></span><span class="badgecount">56</span></span>
+    </div>
+</div>    </td>
+    <td class="post-signature owner">
+        <div class="user-info ">
+    <div class="user-action-time">
+        asked <span title="2014-03-02 16:53:38Z" class="relativetime">Mar 2 '14 at 16:53</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="http://stackoverflow.com/users/1713627/junerey"><div class="gravatar-wrapper-32"><img src="./javascript - Filter Firebase data using AngularJS - Stack Overflow_files/d8559cdadaf461b4faea5d6feef5db5e" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="http://stackoverflow.com/users/1713627/junerey">junerey</a><br>
+        <span class="reputation-score" title="reputation score " dir="ltr">50</span><span title="4 bronze badges"><span class="badge3"></span><span class="badgecount">4</span></span>
+    </div>
+</div>
+    </td>
+    </tr>
+    </tbody></table>
+</div>
+</td>
+        </tr>
+                
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-22130478" class="comments ">
+		    <table>
+                <tbody data-remaining-comments-count="0" data-canpost="false" data-cansee="true" data-comments-unavailable="false" data-addlink-disabled="true">
+
+
+
+    <tr id="comment-33578002" class="comment ">
+        <td class="comment-actions">
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                <a class="comment-up comment-up-off" title="this comment adds something useful to the post">upvote</a>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td>&nbsp;</td>
+                                <td>
+                                    <a class="comment-flag" title="Flag this comment for serious problems or moderator attention">flag</a>
+                                </td>
+                        </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">Filters only work on arrays. Have a look at this <a href="http://stackoverflow.com/questions/14788652/how-to-filter-key-value-with-ng-repeat-in-angularjs">'How to filter (key, value) with ng-repeat in AngularJs?'</a> for workarounds:</span>
+                –&nbsp;
+                    <a href="http://stackoverflow.com/users/1141370/gruff-bunny" title="6334 reputation" class="comment-user">Gruff Bunny</a>
+                <span class="comment-date" dir="ltr"><a class="comment-link" href="http://stackoverflow.com/questions/22130478/filter-firebase-data-using-angularjs#comment33578002_22130478"><span title="2014-03-02 17:10:55Z" class="relativetime-clean">Mar 2 '14 at 17:10</span></a></span>
+                    <span class="edited-yes" title="this comment was edited 1 time"></span>
+                                                                            </div>
+                    </td>
+    </tr>
+                </tbody>
+		    </table>
+	    </div>
+            <div id="comments-link-22130478" data-rep="50" data-reg="true">
+
+                <a class="js-add-link comments-link disabled-link " title="Use comments to ask for more information or suggest improvements. Avoid answering questions in comments.">add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span><a class="js-show-link comments-link dno" title="expand to show all comments on this post, or add one of your own" href="http://stackoverflow.com/questions/22130478/filter-firebase-data-using-angularjs#" onclick=""></a>
+            </div>
+    </td>
+</tr>        </tbody></table>
+</div>
+
+			<div id="answers">
+
+				<a name="tab-top"></a>
+				<div id="answers-header">
+					<div class="subheader answers-subheader">
+						<h2>
+								2 Answers
+                                <span style="display:none;" itemprop="answerCount">2</span>
+						</h2>
+						<div>
+							<div id="tabs">
+        <a href="http://stackoverflow.com/questions/22130478/filter-firebase-data-using-angularjs?answertab=active#tab-top" title="Answers with the latest activity first">active</a>
+        <a class="youarehere" href="http://stackoverflow.com/questions/22130478/filter-firebase-data-using-angularjs?answertab=oldest#tab-top" title="Answers in the order they were provided">oldest</a>
+        <a href="http://stackoverflow.com/questions/22130478/filter-firebase-data-using-angularjs?answertab=votes#tab-top" title="Answers with the highest score first">votes</a>
+</div>
+						</div>
+					</div>    
+				</div>    
+
+
+
+
+  
+<a name="22140159"></a>
+<div id="answer-22140159" class="answer accepted-answer" data-answerid="22140159" itemscope="" itemtype="http://schema.org/Answer" itemprop="acceptedAnswer">
+    <table>
+        <tbody><tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+    <input type="hidden" name="_id_" value="22140159">
+    <a class="vote-up-off" title="This answer is useful">up vote</a>
+    <span itemprop="upvoteCount" class="vote-count-post ">6</span>
+    <a class="vote-down-off" title="This answer is not useful">down vote</a>
+    
+
+
+        <span class="vote-accepted-on load-accepted-answer-date" title="loading when this answer was accepted...">accepted</span>
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text" itemprop="text">
+<p>Use <a href="https://www.firebase.com/docs/angular/reference.html#ordered-data-and-arrays" wrc_done="true">orderByPriority</a>&nbsp;<span class="wrc_icon wrc13" rating="{&quot;icon&quot;:&quot;icn_extensiontop_green.png&quot;,&quot;rating&quot;:1,&quot;weight&quot;:3,&quot;flags&quot;:{&quot;shopping&quot;:null,&quot;social&quot;:null,&quot;news&quot;:null,&quot;it&quot;:null,&quot;corporate&quot;:null,&quot;pornography&quot;:null,&quot;violence&quot;:null,&quot;gambling&quot;:null,&quot;drugs&quot;:null,&quot;illegal&quot;:null},&quot;lastHit&quot;:1420347402049}"></span> to convert your Firebase object to an array.</p>
+
+<pre class="default prettyprint prettyprinted"><code><span class="tag">&lt;input</span><span class="pln"> </span><span class="atn">type</span><span class="pun">=</span><span class="atv">"text"</span><span class="pln"> </span><span class="atn">ng-model</span><span class="pun">=</span><span class="atv">"search"</span><span class="pln"> </span><span class="tag">/&gt;</span><span class="pln">
+</span><span class="tag">&lt;ul</span><span class="pln"> </span><span class="atn">ng-repeat</span><span class="pun">=</span><span class="atv">"(key, value) in firebase | orderByPriority | filter:search"</span><span class="tag">&gt;</span><span class="pln">  
+    </span><span class="tag">&lt;li&gt;&lt;a</span><span class="pln"> </span><span class="atn">href</span><span class="pun">=</span><span class="atv">"{{ key }}"</span><span class="tag">&gt;</span><span class="pln">{{ value.name }}</span><span class="tag">&lt;/a&gt;&lt;/li&gt;</span><span class="pln">
+</span><span class="tag">&lt;/ul&gt;</span></code></pre>
+    </div>
+    <table class="fw">
+    <tbody><tr>
+    <td class="vt">
+<div class="post-menu"><a href="http://stackoverflow.com/a/22140159/4097071" title="short permalink to this answer" class="short-link" id="link-post-22140159">share</a><span class="lsep">|</span><a href="http://stackoverflow.com/posts/22140159/edit" class="suggest-edit-post" title="revise and improve this post">edit</a><span class="lsep">|</span><a href="http://stackoverflow.com/questions/22130478/filter-firebase-data-using-angularjs#" class="flag-post-link" title="flag this post for serious problems or moderator attention" data-postid="22140159">flag</a></div>                    </td>
+            
+
+
+    <td align="right" class="post-signature">   
+       
+
+    <div class="user-info ">
+    <div class="user-action-time">
+        answered <span title="2014-03-03 06:33:48Z" class="relativetime">Mar 3 '14 at 6:33</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="http://stackoverflow.com/users/394010/kato"><div class="gravatar-wrapper-32"><img src="./javascript - Filter Firebase data using AngularJS - Stack Overflow_files/aeeb400b9dfb7d0cd6fdcdfab9b84d6b" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="http://stackoverflow.com/users/394010/kato">Kato</a><br>
+        <span class="reputation-score" title="reputation score 15138" dir="ltr">15.1k</span><span title="1 gold badge"><span class="badge1"></span><span class="badgecount">1</span></span><span title="26 silver badges"><span class="badge2"></span><span class="badgecount">26</span></span><span title="56 bronze badges"><span class="badge3"></span><span class="badgecount">56</span></span>
+    </div>
+</div>
+    </td>
+    </tr>
+    </tbody></table>
+</td>
+        </tr>
+        
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-22140159" class="comments ">
+		    <table>
+                <tbody data-remaining-comments-count="0" data-canpost="false" data-cansee="true" data-comments-unavailable="false" data-addlink-disabled="true">
+
+
+
+    <tr id="comment-33614259" class="comment ">
+        <td class="comment-actions">
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                <a class="comment-up comment-up-off" title="this comment adds something useful to the post">upvote</a>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td>&nbsp;</td>
+                                <td>
+                                    <a class="comment-flag" title="Flag this comment for serious problems or moderator attention">flag</a>
+                                </td>
+                        </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">thanks. this works very well</span>
+                –&nbsp;
+                    <a href="http://stackoverflow.com/users/1713627/junerey" title="50 reputation" class="comment-user owner">junerey</a>
+                <span class="comment-date" dir="ltr"><a class="comment-link" href="http://stackoverflow.com/questions/22130478/filter-firebase-data-using-angularjs#comment33614259_22140159"><span title="2014-03-03 16:05:29Z" class="relativetime-clean">Mar 3 '14 at 16:05</span></a></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-41078614" class="comment ">
+        <td class="comment-actions">
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                <a class="comment-up comment-up-off" title="this comment adds something useful to the post">upvote</a>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td>&nbsp;</td>
+                                <td>
+                                    <a class="comment-flag" title="Flag this comment for serious problems or moderator attention">flag</a>
+                                </td>
+                        </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">Today, <code>orderByPriority</code> is deprecated, right? I've been trying to use this but it's doesn't work.</span>
+                –&nbsp;
+                    <a href="http://stackoverflow.com/users/3366109/jobsamuel" title="347 reputation" class="comment-user">Jobsamuel</a>
+                <span class="comment-date" dir="ltr"><a class="comment-link" href="http://stackoverflow.com/questions/22130478/filter-firebase-data-using-angularjs#comment41078614_22140159"><span title="2014-10-04 20:28:37Z" class="relativetime-clean">Oct 4 '14 at 20:28</span></a></span>
+                    <span class="edited-yes" title="this comment was edited 2 times"></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-41083087" class="comment ">
+        <td class="comment-actions">
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                <span title="number of &#39;useful comment&#39; votes received" class="cool">2</span>
+                        </td>
+                        <td>
+                                <a class="comment-up comment-up-off" title="this comment adds something useful to the post">upvote</a>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td>&nbsp;</td>
+                                <td>
+                                    <a class="comment-flag" title="Flag this comment for serious problems or moderator attention">flag</a>
+                                </td>
+                        </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">In the latest versions just use <code>$asArray</code> which already provides sorted values.</span>
+                –&nbsp;
+                    <a href="http://stackoverflow.com/users/394010/kato" title="15138 reputation" class="comment-user">Kato</a>
+                <span class="comment-date" dir="ltr"><a class="comment-link" href="http://stackoverflow.com/questions/22130478/filter-firebase-data-using-angularjs#comment41083087_22140159"><span title="2014-10-05 03:29:41Z" class="relativetime-clean">Oct 5 '14 at 3:29</span></a></span>
+                                                                            </div>
+                    </td>
+    </tr>
+                </tbody>
+		    </table>
+	    </div>
+            <div id="comments-link-22140159" data-rep="50" data-reg="true">
+
+                <a class="js-add-link comments-link disabled-link " title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”.">add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span><a class="js-show-link comments-link dno" title="expand to show all comments on this post, or add one of your own" href="http://stackoverflow.com/questions/22130478/filter-firebase-data-using-angularjs#" onclick=""></a>
+            </div>
+    </td>
+</tr>    </tbody></table>
+</div>
+<script>
+                var ados = ados || {};ados.run = ados.run || [];
+                ados.run.push(function() { ados_add_placement(22,8277,"adzerk847981206",4).setZone(44) ; });                    
+            </script>
+            <div class="everyonelovesstackoverflow" id="adzerk847981206">
+            </div>
+  
+<a name="22132431"></a>
+<div id="answer-22132431" class="answer" data-answerid="22132431" itemscope="" itemtype="http://schema.org/Answer">
+    <table>
+        <tbody><tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+    <input type="hidden" name="_id_" value="22132431">
+    <a class="vote-up-off" title="This answer is useful">up vote</a>
+    <span itemprop="upvoteCount" class="vote-count-post ">2</span>
+    <a class="vote-down-off" title="This answer is not useful">down vote</a>
+    
+
+
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text" itemprop="text">
+<p>I think firebase returns as object and angular's filter will filter only arrays and does not filter object </p>
+
+<p>You can create custom filter and filter. I have created example for that using firebase object</p>
+
+<p><a href="http://plnkr.co/edit/tiSsswXQWgAPPv6ozqOm?p=preview" rel="nofollow" wrc_done="true">http://plnkr.co/edit/tiSsswXQWgAPPv6ozqOm?p=preview</a>&nbsp;<span class="wrc_icon wrc13" rating="{&quot;icon&quot;:&quot;icn_extensiontop_green.png&quot;,&quot;rating&quot;:1,&quot;weight&quot;:3,&quot;flags&quot;:{&quot;shopping&quot;:null,&quot;social&quot;:null,&quot;news&quot;:null,&quot;it&quot;:null,&quot;corporate&quot;:null,&quot;pornography&quot;:null,&quot;violence&quot;:null,&quot;gambling&quot;:null,&quot;drugs&quot;:null,&quot;illegal&quot;:null},&quot;lastHit&quot;:1420347402049}"></span></p>
+
+<p>Please let me know if anything</p>
+    </div>
+    <table class="fw">
+    <tbody><tr>
+    <td class="vt">
+<div class="post-menu"><a href="http://stackoverflow.com/a/22132431/4097071" title="short permalink to this answer" class="short-link" id="link-post-22132431">share</a><span class="lsep">|</span><a href="http://stackoverflow.com/posts/22132431/edit" class="suggest-edit-post" title="revise and improve this post">edit</a><span class="lsep">|</span><a href="http://stackoverflow.com/questions/22130478/filter-firebase-data-using-angularjs#" class="flag-post-link" title="flag this post for serious problems or moderator attention" data-postid="22132431">flag</a></div>                    </td>
+            
+
+
+    <td align="right" class="post-signature">   
+       
+
+    <div class="user-info ">
+    <div class="user-action-time">
+        answered <span title="2014-03-02 19:39:10Z" class="relativetime">Mar 2 '14 at 19:39</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="http://stackoverflow.com/users/2268657/madhured"><div class="gravatar-wrapper-32"><img src="./javascript - Filter Firebase data using AngularJS - Stack Overflow_files/47a25ed624e9829ce4123571f5483f1b" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="http://stackoverflow.com/users/2268657/madhured">madhured</a><br>
+        <span class="reputation-score" title="reputation score " dir="ltr">368</span><span title="1 silver badge"><span class="badge2"></span><span class="badgecount">1</span></span><span title="7 bronze badges"><span class="badge3"></span><span class="badgecount">7</span></span>
+    </div>
+</div>
+    </td>
+    </tr>
+    </tbody></table>
+</td>
+        </tr>
+        
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-22132431" class="comments  dno">
+		    <table>
+                <tbody data-remaining-comments-count="0" data-canpost="false" data-cansee="true" data-comments-unavailable="false" data-addlink-disabled="true">
+
+                        <tr><td></td><td></td></tr>
+                </tbody>
+		    </table>
+	    </div>
+            <div id="comments-link-22132431" data-rep="50" data-reg="true">
+
+                <a class="js-add-link comments-link disabled-link " title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”.">add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span><a class="js-show-link comments-link dno" title="expand to show all comments on this post, or add one of your own" href="http://stackoverflow.com/questions/22130478/filter-firebase-data-using-angularjs#" onclick=""></a>
+            </div>
+    </td>
+</tr>    </tbody></table>
+</div>
+									<a name="new-answer"></a>
+						<form id="post-form" action="http://stackoverflow.com/questions/22130478/answer/submit" method="post" class="post-form">
+						    <input type="hidden" id="post-id" value="22130478">
+                            <input type="hidden" id="qualityBanWarningShown" name="qualityBanWarningShown" value="false">
+                            <input type="hidden" name="referrer" value="https://www.google.com/">
+							<h2 class="space">Your Answer</h2>
+
+
+
+            <script>
+            StackExchange.ifUsing("editor", function () {
+                StackExchange.using("externalEditor", function () {
+                    StackExchange.using("snippets", function () {
+                        StackExchange.snippets.init();
+                    });
+                });
+            }, "code-snippets");
+        </script>
+    
+
+<script>
+    StackExchange.ready(function() {
+        initTagRenderer("".split(" "), "".split(" "));
+       
+        StackExchange.using("externalEditor", function() {
+            // Have to fire editor after snippets, if snippets enabled
+            if (StackExchange.options.snippets.enabled) {
+                StackExchange.using("snippets", function() {
+                    createEditor();
+                });
+            }
+            else {
+                createEditor();
+            }
+        });
+
+        function createEditor() {
+            prepareEditor({
+                heartbeatType: 'answer',
+                bindNavPrevention: true,
+                postfix: "",
+                    onDemand: false,
+                    discardSelector: ".discard-answer"
+                ,immediatelyShowMarkdownHelp:true
+                });
+                
+
+        }
+    });  
+</script>
+
+
+<div id="post-editor" class="post-editor">
+
+    <div style="position: relative;">     
+        <div class="wmd-container">
+            <div id="wmd-button-bar" class="wmd-button-bar"><ul id="wmd-button-row" class="wmd-button-row"><li class="wmd-button" id="wmd-bold-button" title="Strong &lt;strong&gt; Ctrl+B" style="left: 0px;"><span style="background-position: 0px 0px;"></span></li><li class="wmd-button" id="wmd-italic-button" title="Emphasis &lt;em&gt; Ctrl+I" style="left: 25px;"><span style="background-position: -20px 0px;"></span></li><li class="wmd-spacer wmd-spacer1" id="wmd-spacer1"></li><li class="wmd-button" id="wmd-link-button" title="Hyperlink &lt;a&gt; Ctrl+L" style="left: 75px;"><span style="background-position: -40px 0px;"></span></li><li class="wmd-button" id="wmd-quote-button" title="Blockquote &lt;blockquote&gt; Ctrl+Q" style="left: 100px;"><span style="background-position: -60px 0px;"></span></li><li class="wmd-button" id="wmd-code-button" title="Code Sample &lt;pre&gt;&lt;code&gt; Ctrl+K" style="left: 125px;"><span style="background-position: -80px 0px;"></span></li><li class="wmd-button" id="wmd-image-button" title="Image &lt;img&gt; Ctrl+G" style="left: 150px;"><span style="background-position: -100px 0px;"></span></li><li class="wmd-button wmd-snippet-button" style="left:175px" id="wmd-snippet-button" title="Code snippet Ctrl-M"><span style="background-image: url(http://stackoverflow.com/content/balsamiq/wmd-mockup-button.png?v=4);"></span></li><li class="wmd-spacer wmd-spacer2" id="wmd-spacer2" style="left: 200px;"></li><li class="wmd-button" id="wmd-olist-button" title="Numbered List &lt;ol&gt; Ctrl+O" style="left: 225px;"><span style="background-position: -120px 0px;"></span></li><li class="wmd-button" id="wmd-ulist-button" title="Bulleted List &lt;ul&gt; Ctrl+U" style="left: 250px;"><span style="background-position: -140px 0px;"></span></li><li class="wmd-button" id="wmd-heading-button" title="Heading &lt;h1&gt;/&lt;h2&gt; Ctrl+H" style="left: 275px;"><span style="background-position: -160px 0px;"></span></li><li class="wmd-button" id="wmd-hr-button" title="Horizontal Rule &lt;hr&gt; Ctrl+R" style="left: 300px;"><span style="background-position: -180px 0px;"></span></li><li class="wmd-spacer wmd-spacer3" id="wmd-spacer3" style="left: 325px;"></li><li class="wmd-button" id="wmd-undo-button" title="Undo - Ctrl+Z" style="left: 350px;"><span style="background-position: -200px -20px;"></span></li><li class="wmd-button" id="wmd-redo-button" title="Redo - Ctrl+Shift+Z" style="left: 375px;"><span style="background-position: -220px -20px;"></span></li><li class="wmd-button wmd-help-button active-help" id="wmd-help-button" title="Markdown Editing Help" style="right: 0px;"><span style="background-position: -240px 0px;"></span></li><div id="mdhelp" class="mdhelp" style="right: -8px; width: 668px; top: 25px;">
+    <ul id="mdhelp-tabs" class="mdhelp-tabs">
+        <li data-tab="mdhelp-links" data-buttons="link">Links</li>
+        <li data-tab="mdhelp-images" data-buttons="image">Images</li>
+        <li data-tab="mdhelp-styles" data-buttons="bold,italic,heading">Styling/Headers</li>
+        <li data-tab="mdhelp-lists" data-buttons="olist,ulist">Lists</li>
+        <li data-tab="mdhelp-blockquotes" data-buttons="quote">Blockquotes</li>
+        <li data-tab="mdhelp-code" data-buttons="code">Code</li>
+        <li data-tab="mdhelp-html"> HTML </li>
+        <li style="float:right"><a href="http://stackoverflow.com/editing-help" target="_blank">advanced help »</a></li>
+    </ul>
+    
+    <div class="mdhelp-tab" id="mdhelp-links">
+            <p>
+                In most cases, a plain URL will be recognized as such and automatically linked:
+            </p>
+            <pre>Visit http://area51.stackexchange.com/ regularly!
+Use angle brackets to force linking: Have you seen &lt;http://superuser.com&gt;?
+</pre>
+            <p>
+                To create fancier links, use Markdown:
+            </p>
+                <pre>Here's [a link](http://www.example.com/)! And a reference-style link to [a panda][1].
+References don't have to be [numbers][question].
+
+ [1]: http://notfound.stackexchange.com/
+ [question]: http://english.stackexchange.com/questions/11481
+</pre>
+                <p>You can add tooltips to links:</p>
+<pre> Click [here](http://diy.stackexchange.com<span class="spaces">&nbsp;</span>"this text appears when you mouse over")! This works with [reference links][blog] as well.   [blog]: http://blog.stackoverflow.com/<span class="spaces">&nbsp;</span>"click here for updates" </pre>
+    </div>
+
+    <div class="mdhelp-tab" id="mdhelp-images">
+        <p>Images are exactly like links, but they have an exclamation point in front of them:</p>
+        <pre>![a busy cat](http://sstatic.net/stackoverflow/img/error-lolcat-problemz.jpg)
+![two muppets][1]
+
+ [1]: http://i.imgur.com/I5DFV.jpg "tooltip"
+</pre>
+        <p>
+            The word in square brackets is the alt text, which gets displayed if the browser
+ can't show the image. Be sure to include meaningful alt text for screen-reading
+ software.
+        </p>
+   
+    </div>
+    <div class="mdhelp-tab" id="mdhelp-styles">
+        <div class="col1">
+            <p>Be sure to use text styling sparingly; only where it helps readability.</p>
+                <pre>*This is italicized*, and so
+is _this_.
+
+**This is bold**, just like __this__.
+
+You can ***combine*** them
+if you ___really have to___.
+</pre>
+        
+        </div>
+        <div class="col2">
+            <p>
+                To break your text into sections, you can use headers:
+            </p>
+                <pre>A Large Header
+==============
+
+Smaller Subheader
+-----------------
+</pre>
+            <p>
+                Use hash marks if you need several levels of headers:</p>
+    <pre># Header 1 #
+## Header 2 ##
+### Header 3 ###
+</pre>
+
+            
+        </div>
+
+    </div>
+    <div class="mdhelp-tab" id="mdhelp-lists">
+        <p>Both bulleted and numbered lists are possible:</p>
+        <div class="col1">
+<pre> -<span class="spaces">&nbsp;</span>Use a minus sign for a bullet +<span class="spaces">&nbsp;</span>Or plus sign *<span class="spaces">&nbsp;</span>Or an asterisk  1.<span class="spaces">&nbsp;</span>Numbered lists are easy 2.<span class="spaces">&nbsp;</span>Markdown keeps track of  the numbers for you 7.<span class="spaces">&nbsp;</span>So this will be item 3. </pre>
+        </div>
+        <div class="col2">
+<pre> 1.<span class="spaces">&nbsp;</span>Lists in a list item: <span class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</span>-<span class="spaces">&nbsp;</span>Indented four spaces. <span class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>*<span class="spaces">&nbsp;</span>indented eight spaces. <span class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</span>-<span class="spaces">&nbsp;</span>Four spaces again. 2.<span class="spaces">&nbsp;&nbsp;</span>You can have multiple <span class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</span>paragraphs in a list items. <span class="spaces">&nbsp;</span> <span class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</span>Just be sure to indent. </pre>        
+        </div>
+    </div>
+
+    <div class="mdhelp-tab" id="mdhelp-blockquotes">
+        <div class="col1">
+            <pre>&gt; Create a blockquote by
+&gt; prepending “&gt;” to each line.
+&gt;
+&gt; Other formatting also works here, e.g.
+&gt;
+&gt; 1. Lists or
+&gt; 2. Headings:
+&gt;
+&gt; ## Quoted Heading ##
+</pre>
+        </div>
+        <div class="col2">
+                <p>
+                    You can even put blockquotes in blockquotes:
+                </p>
+                <pre>&gt; A standard blockquote is indented
+&gt; &gt; A nested blockquote is indented more
+&gt; &gt; &gt; &gt; You can nest to any depth.
+</pre>
+        </div>
+    </div>
+
+    <div class="mdhelp-tab" id="mdhelp-code">
+        <p>
+            To create code blocks or other preformatted text, indent by four spaces:
+        </p>
+        <pre> <span class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</span>This will be displayed in a monospaced font. The first four spaces <span class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</span>will be stripped off, but all other whitespace will be preserved. <span class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</span> <span class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</span>Markdown and HTML are turned off in code blocks: <span class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</span>&lt;i&gt;This is not italic&lt;/i&gt;, and [this is not a link](http://example.com) </pre>
+        <p>
+            To create not a block, but an inline code span, use backticks:
+        </p>
+        <pre>The `$` character is just a shortcut for `window.jQuery`.
+</pre>
+        <p>
+            If you want to have a preformatted block within a list, indent by eight spaces:
+        </p>
+        <pre> 1. This is normal text. 2. So is this, but now follows a code block: <span class="spaces">&nbsp;</span> <span class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>Skip a line and indent eight spaces. <span class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>That's four spaces for the list <span class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>and four to trigger the code block. </pre>
+    </div>
+
+    <div class="mdhelp-tab" id="mdhelp-html">
+        <p>
+            If you need to do something that Markdown can't handle, use HTML. Note that <a href="http://meta.stackexchange.com/questions/1777/what-html-tags-are-allowed" target="_blank" wrc_done="true">we only support a very strict subset of HTML!</a>&nbsp;<span class="wrc_icon wrc13" rating="{&quot;icon&quot;:&quot;icn_extensiontop_green.png&quot;,&quot;rating&quot;:1,&quot;weight&quot;:3,&quot;flags&quot;:{&quot;shopping&quot;:null,&quot;social&quot;:null,&quot;news&quot;:null,&quot;it&quot;:null,&quot;corporate&quot;:null,&quot;pornography&quot;:null,&quot;violence&quot;:null,&quot;gambling&quot;:null,&quot;drugs&quot;:null,&quot;illegal&quot;:null},&quot;lastHit&quot;:1420347402049}"></span>
+        </p>
+        <pre>Strikethrough humor is &lt;strike&gt;funny&lt;/strike&gt;.
+</pre>
+        <p>
+            Markdown is smart enough not to mangle your span-level HTML:
+        </p>
+        <pre>&lt;b&gt;Markdown works *fine* in here.&lt;/b&gt;
+</pre>
+        <p>
+            Block-level HTML elements have a few restrictions:
+        </p>
+        <ol>
+            <li>They must be separated from surrounding text by blank lines.</li>
+            <li>The begin and end tags of the outermost block element must not be indented.</li>
+            <li>Markdown can't be used within HTML blocks.</li>
+        </ol>
+        <br>
+        <pre> &lt;pre&gt;  You can &lt;em&gt;not&lt;/em&gt; use Markdown in here. &lt;/pre&gt; </pre>
+    </div>
+
+    <div class="cbt"></div>
+</div></ul></div>
+            <div style="clear: both; height: 24px;"></div><textarea id="wmd-input" class="wmd-input processed" name="post-text" cols="92" rows="15" tabindex="101" data-min-length=""></textarea>
+        <div class="grippie" style="margin-right: -8px;"></div></div>
+    </div>
+
+    <div class="fl" style="margin-top: 8px; height:24px;">&nbsp;</div>
+    <div id="draft-saved" class="draft-saved community-option fl" style="margin-top: 8px; height:24px; display:none;">draft saved</div>
+
+    <div id="draft-discarded" class="draft-discarded community-option fl" style="margin-top: 8px; height:24px; display:none;">draft discarded</div>
+
+    <div class="community-option">
+        <input id="communitymode" name="communitymode" type="checkbox">
+        <label for="communitymode" title="Marking an answer community wiki encourages others to edit it by lowering the reputation barrier required to edit. However, you will not gain any upvote reputation from it. This cannot be undone.">community wiki</label>
+    </div>
+
+
+    <div id="wmd-preview" class="wmd-preview"></div>
+    <div></div>
+    <div class="edit-block">
+        <input id="fkey" name="fkey" type="hidden" value="bb404e0d33a612b390a5c244d29b905d">
+        <input id="author" name="author" type="text">
+    </div>
+</div>
+							<div style="position: relative;">
+								
+							</div>
+           
+															<div class="form-submit cbt">
+									<input id="submit-button" type="submit" value="Post Your Answer" tabindex="110">
+									<a href="http://stackoverflow.com/questions/22130478/filter-firebase-data-using-angularjs#" class="discard-answer dno">discard</a>
+								</div>
+						</form>
+
+
+
+						<h2 class="bottom-notice" data-loc="1">
+Not the answer you're looking for?							Browse other questions tagged <a href="http://stackoverflow.com/questions/tagged/javascript" class="post-tag" title="show questions tagged &#39;javascript&#39;" rel="tag">javascript</a> <a href="http://stackoverflow.com/questions/tagged/angularjs" class="post-tag" title="show questions tagged &#39;angularjs&#39;" rel="tag">angularjs</a> <a href="http://stackoverflow.com/questions/tagged/firebase" class="post-tag" title="show questions tagged &#39;firebase&#39;" rel="tag">firebase</a> <a href="http://stackoverflow.com/questions/tagged/angularfire" class="post-tag" title="show questions tagged &#39;angularfire&#39;" rel="tag">angularfire</a>  or <a href="http://stackoverflow.com/questions/ask">ask your own question</a>.						</h2>
+			</div>
+		</div>
+				<div id="sidebar" class="show-votes">
+						    <div class="module question-stats">
+			        <table id="qinfo">
+			            <tbody><tr>
+			                <td>
+			                    <p class="label-key">asked</p>
+			                </td>
+			                <td style="padding-left: 10px">
+			                    <p class="label-key" title="2014-03-02 16:53:38Z"><b>10 months ago</b></p>
+			                </td>
+			            </tr>
+			            <tr>
+			                <td>
+			                    <p class="label-key">viewed</p>
+			                </td>
+
+			                <td style="padding-left: 10px">
+			                    <p class="label-key">
+			                        <b>898 times</b>
+			                    </p>
+			                </td>
+			            </tr>
+			                <tr>
+			                    <td>
+			                        <p class="label-key">active</p>
+			                    </td>
+			                    <td style="padding-left: 10px">
+			                        <p class="label-key"><b><a href="http://stackoverflow.com/questions/22130478/filter-firebase-data-using-angularjs?lastactivity" class="lastactivity-link" title="2014-03-03 06:33:48Z">10 months ago</a></b></p>
+			                    </td>
+			                </tr>
+			        </tbody></table>
+			    </div>
+			<div class="module community-bulletin" data-tracker="cb=1">
+    <div class="related">
+                <div class="bulletin-title">
+                    Hot Meta Posts
+                </div>
+                <hr>
+    <div class="spacer">
+        <div class="bulletin-item-type">
+                <span title="Vote score (upvotes - downvotes)">18</span>
+            </div>
+                <div class="bulletin-item-content">
+                    <a href="http://meta.stackoverflow.com/questions/281553/js-room-monthly-challenge-january?cb=1" class="question-hyperlink" wrc_done="true">JS Room Monthly Challenge January</a>&nbsp;<span class="wrc_icon wrc13" rating="{&quot;icon&quot;:&quot;icn_extensiontop_green.png&quot;,&quot;rating&quot;:1,&quot;weight&quot;:3,&quot;flags&quot;:{&quot;shopping&quot;:null,&quot;social&quot;:null,&quot;news&quot;:null,&quot;it&quot;:true,&quot;corporate&quot;:null,&quot;pornography&quot;:null,&quot;violence&quot;:null,&quot;gambling&quot;:null,&quot;drugs&quot;:null,&quot;illegal&quot;:null},&quot;lastHit&quot;:1420347402049}"></span>
+                </div>
+                <br class="cbt">
+            </div>
+    <div class="spacer">
+        <div class="bulletin-item-type">
+                <span title="Vote score (upvotes - downvotes)">6</span>
+            </div>
+                <div class="bulletin-item-content">
+                    <a href="http://meta.stackoverflow.com/questions/281682/triggers-synonym-intermittently-broken?cb=1" class="question-hyperlink" wrc_done="true">Triggers synonym intermittently broken</a>&nbsp;<span class="wrc_icon wrc13" rating="{&quot;icon&quot;:&quot;icn_extensiontop_green.png&quot;,&quot;rating&quot;:1,&quot;weight&quot;:3,&quot;flags&quot;:{&quot;shopping&quot;:null,&quot;social&quot;:null,&quot;news&quot;:null,&quot;it&quot;:true,&quot;corporate&quot;:null,&quot;pornography&quot;:null,&quot;violence&quot;:null,&quot;gambling&quot;:null,&quot;drugs&quot;:null,&quot;illegal&quot;:null},&quot;lastHit&quot;:1420347402049}"></span>
+                </div>
+                <br class="cbt">
+            </div>
+    <div class="spacer">
+        <div class="bulletin-item-type">
+                <span title="Vote score (upvotes - downvotes)">32</span>
+            </div>
+                <div class="bulletin-item-content">
+                    <a href="http://meta.stackoverflow.com/questions/281615/why-was-the-closing-of-this-question-so-unusual?cb=1" class="question-hyperlink" wrc_done="true">Why was the closing of this question so unusual?</a>&nbsp;<span class="wrc_icon wrc13" rating="{&quot;icon&quot;:&quot;icn_extensiontop_green.png&quot;,&quot;rating&quot;:1,&quot;weight&quot;:3,&quot;flags&quot;:{&quot;shopping&quot;:null,&quot;social&quot;:null,&quot;news&quot;:null,&quot;it&quot;:true,&quot;corporate&quot;:null,&quot;pornography&quot;:null,&quot;violence&quot;:null,&quot;gambling&quot;:null,&quot;drugs&quot;:null,&quot;illegal&quot;:null},&quot;lastHit&quot;:1420347402049}"></span>
+                </div>
+                <br class="cbt">
+            </div>
+    <div class="spacer">
+        <div class="bulletin-item-type">
+                <span title="Vote score (upvotes - downvotes)">10</span>
+            </div>
+                <div class="bulletin-item-content">
+                    <a href="http://meta.stackoverflow.com/questions/281635/burninate-range?cb=1" class="question-hyperlink" wrc_done="true">Burninate [range]</a>&nbsp;<span class="wrc_icon wrc13" rating="{&quot;icon&quot;:&quot;icn_extensiontop_green.png&quot;,&quot;rating&quot;:1,&quot;weight&quot;:3,&quot;flags&quot;:{&quot;shopping&quot;:null,&quot;social&quot;:null,&quot;news&quot;:null,&quot;it&quot;:true,&quot;corporate&quot;:null,&quot;pornography&quot;:null,&quot;violence&quot;:null,&quot;gambling&quot;:null,&quot;drugs&quot;:null,&quot;illegal&quot;:null},&quot;lastHit&quot;:1420347402049}"></span>
+                </div>
+                <br class="cbt">
+            </div>
+    </div>
+</div>			
+			<script>
+                var ados = ados || {};ados.run = ados.run || [];
+                ados.run.push(function() { ados_add_placement(22,8277,"adzerk897342712",[17,2221]).setZone(45) ; });                    
+            </script>
+            <div class="everyonelovesstackoverflow" id="adzerk897342712">
+            </div>  
+        <div id="hireme">
+            <script>
+;(function(e){var a=window.$,p=window.StackExchange,f=100,c="div#hireme,div.hireme",g=decodeURIComponent,i=encodeURIComponent,q=setTimeout,h=document,m={},l=location.hash;if(l.length>1){l.substr(1).split("&").forEach(function(s){var t=s.split("=");this[g(t[0])]=g(t[1])},m)}var b=m.ac||m.accountid||(p&&p.options&&p.options.user&&p.options.user.accountId);if(b){m.ac=b}if(l==="#large"){m.l=1}if(l==="#abort"){m.abort=1}function j(s){return a(s).html().replace(/\s+/g,"").length>0}function r(){var s=a("#sidebar [id^='adzerk'].everyonelovesstackoverflow");if(s.length===0){return true}return !j(s)}function n(){var t=a(c);if(t.length>0){if(m.l||a("#careersadsdoublehigh").length>0){m.l=1}var v=t.map(function(y,s){return"d="+s.id}).get().join("&");var x=["l","ip","ac","eng","prov"];var u=Object.keys(m).filter(function(s){return x.indexOf(s)!==-1}).map(function(s){return i(s)+"="+i(m[s])}).join("&");if(u){v+="&"+u}var w=h.createElement("script");w.type="text/javascript";w.src=e+(e.indexOf("?")===-1?"?":"&")+v;h.body.appendChild(w)}}function o(){if(r()){d=q(o,f);return}var s=m.abort||a("#commdoubhi").length>0;if(s){k()}n()}function k(){clearTimeout(d);a(c).each(function(){var s=a(this);if(!j(s)){var u=s;var t=s.parents(".everyonelovesstackoverflow").first();if(t.length>0){u=t}u.remove()}})}q(k,2000);var d=q(o,f)}).apply(null, ["//clc.stackoverflow.com/j/p"]);            </script>
+            
+        </div>
+			  
+    
+            <div class="module sidebar-linked">
+	<h4 id="h-linked">Linked</h4>
+	<div class="linked" data-tracker="lq=1">
+<div class="spacer">
+	<a href="http://stackoverflow.com/q/14788652?lq=1" title="Vote score (upvotes - downvotes)">
+		<div class="answer-votes answered-accepted default">27</div>
+	</a>
+	<a href="http://stackoverflow.com/questions/14788652/how-to-filter-key-value-with-ng-repeat-in-angularjs?lq=1" class="question-hyperlink">How to filter (key, value) with ng-repeat in AngularJs?</a>
+</div>			</div>
+</div>
+
+				<div class="module sidebar-related">
+					<h4 id="h-related">Related</h4>
+                    <div class="related js-gps-related-questions" data-tracker="rq=1">
+                        <div class="spacer js-gps-track">
+<a href="http://stackoverflow.com/q/18855238?rq=1" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes default">0
+    </div>
+</a><a href="http://stackoverflow.com/questions/18855238/how-to-display-data-in-firebase-using-angularfire-collection?rq=1" class="question-hyperlink">How to display data in firebase using angularfire collection?</a>
+</div>
+<div class="spacer js-gps-track">
+<a href="http://stackoverflow.com/q/23050002?rq=1" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes answered-accepted default">0
+    </div>
+</a><a href="http://stackoverflow.com/questions/23050002/filtering-a-firebase-list-by-another-firebase-object-in-angularjs?rq=1" class="question-hyperlink">Filtering a Firebase list by another Firebase Object in Angularjs</a>
+</div>
+<div class="spacer js-gps-track">
+<a href="http://stackoverflow.com/q/23416048?rq=1" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes default">0
+    </div>
+</a><a href="http://stackoverflow.com/questions/23416048/attempting-to-upload-form-data-from-angularjs-to-firebase-does-not-work?rq=1" class="question-hyperlink">Attempting to Upload Form Data from Angularjs to Firebase Does Not Work</a>
+</div>
+<div class="spacer js-gps-track">
+<a href="http://stackoverflow.com/q/23418958?rq=1" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes answered-accepted default">1
+    </div>
+</a><a href="http://stackoverflow.com/questions/23418958/input-can-not-be-read-angularfire-firebase?rq=1" class="question-hyperlink">Input can not be read | Angularfire + Firebase</a>
+</div>
+<div class="spacer js-gps-track">
+<a href="http://stackoverflow.com/q/23753941?rq=1" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes answered-accepted default">0
+    </div>
+</a><a href="http://stackoverflow.com/questions/23753941/angular-filter-confusion?rq=1" class="question-hyperlink">Angular filter confusion</a>
+</div>
+<div class="spacer js-gps-track">
+<a href="http://stackoverflow.com/q/24748313?rq=1" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes default">0
+    </div>
+</a><a href="http://stackoverflow.com/questions/24748313/storing-comments-in-firebase-using-angularjs?rq=1" class="question-hyperlink">Storing Comments in firebase using angularjs</a>
+</div>
+<div class="spacer js-gps-track">
+<a href="http://stackoverflow.com/q/25143225?rq=1" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes default">1
+    </div>
+</a><a href="http://stackoverflow.com/questions/25143225/how-to-filter-out-or-get-rid-of-null-objects-within-array-angularjs-firebase?rq=1" class="question-hyperlink">How to filter out or get rid of null objects within array? AngularJS, Firebase</a>
+</div>
+<div class="spacer js-gps-track">
+<a href="http://stackoverflow.com/q/25229433?rq=1" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes answered-accepted default">1
+    </div>
+</a><a href="http://stackoverflow.com/questions/25229433/how-to-update-a-dictionary-within-firebase-while-also-add-a-time-stamp-with-angu?rq=1" class="question-hyperlink">How to update a dictionary within firebase while also add a time stamp with angularjs?</a>
+</div>
+<div class="spacer js-gps-track">
+<a href="http://stackoverflow.com/q/25741744?rq=1" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes default">2
+    </div>
+</a><a href="http://stackoverflow.com/questions/25741744/firebase-3-way-binding-with-save-for-asarray-from-within-the-scope-with-ang?rq=1" class="question-hyperlink">Firebase: 3 way binding with $save for $asArray() from within the scope with angularjs</a>
+</div>
+<div class="spacer js-gps-track">
+<a href="http://stackoverflow.com/q/27274145?rq=1" title="Vote score (upvotes - downvotes)">
+    <div class="answer-votes answered-accepted default">0
+    </div>
+</a><a href="http://stackoverflow.com/questions/27274145/saving-an-item-through-factory-casts-an-error-with-angularjs-and-firebase?rq=1" class="question-hyperlink">Saving an item through factory casts an error with AngularJS and Firebase</a>
+</div>
+
+                    </div>
+				</div>
+            
+<div id="hot-network-questions" class="module">
+    <h4>
+        <a href="http://stackexchange.com/questions?tab=hot" class="js-gps-track" data-gps-track="posts_hot_network.click({ item_type:1, location:11 })">
+            Hot Network Questions
+        </a>
+    </h4>
+    <ul>
+            <li>
+                <div class="favicon favicon-anime" title="Anime &amp; Manga Stack Exchange"></div><a href="http://anime.stackexchange.com/questions/17281/why-do-lots-of-anime-titles-have-%e2%98%86-in-them" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:477 }); posts_hot_network.click({ item_type:2, location:11 })" wrc_done="true">
+                    Why do lots of anime titles have ☆ in them?
+                </a>&nbsp;<span class="wrc_icon wrc13" rating="{&quot;icon&quot;:&quot;icn_extensiontop_green.png&quot;,&quot;rating&quot;:1,&quot;weight&quot;:3,&quot;flags&quot;:{&quot;shopping&quot;:null,&quot;social&quot;:null,&quot;news&quot;:null,&quot;it&quot;:null,&quot;corporate&quot;:null,&quot;pornography&quot;:null,&quot;violence&quot;:null,&quot;gambling&quot;:null,&quot;drugs&quot;:null,&quot;illegal&quot;:null},&quot;lastHit&quot;:1420347402049}"></span>
+
+            </li>
+            <li>
+                <div class="favicon favicon-gamedev" title="Game Development Stack Exchange"></div><a href="http://gamedev.stackexchange.com/questions/90555/how-can-i-make-a-finish-faster-when-the-destination-is-impassable" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:53 }); posts_hot_network.click({ item_type:2, location:11 })" wrc_done="true">
+                    How can I make A* finish faster when the destination is impassable?
+                </a>&nbsp;<span class="wrc_icon wrc13" rating="{&quot;icon&quot;:&quot;icn_extensiontop_green.png&quot;,&quot;rating&quot;:1,&quot;weight&quot;:3,&quot;flags&quot;:{&quot;shopping&quot;:null,&quot;social&quot;:null,&quot;news&quot;:null,&quot;it&quot;:null,&quot;corporate&quot;:null,&quot;pornography&quot;:null,&quot;violence&quot;:null,&quot;gambling&quot;:null,&quot;drugs&quot;:null,&quot;illegal&quot;:null},&quot;lastHit&quot;:1420347402049}"></span>
+
+            </li>
+            <li>
+                <div class="favicon favicon-math" title="Mathematics Stack Exchange"></div><a href="http://math.stackexchange.com/questions/1090374/is-there-a-vector-field-that-is-equal-to-its-own-curl" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:69 }); posts_hot_network.click({ item_type:2, location:11 })" wrc_done="true">
+                    Is there a vector field that is equal to its own curl?
+                </a>&nbsp;<span class="wrc_icon wrc13" rating="{&quot;icon&quot;:&quot;icn_extensiontop_green.png&quot;,&quot;rating&quot;:1,&quot;weight&quot;:3,&quot;flags&quot;:{&quot;shopping&quot;:null,&quot;social&quot;:null,&quot;news&quot;:null,&quot;it&quot;:null,&quot;corporate&quot;:null,&quot;pornography&quot;:null,&quot;violence&quot;:null,&quot;gambling&quot;:null,&quot;drugs&quot;:null,&quot;illegal&quot;:null},&quot;lastHit&quot;:1420347402049}"></span>
+
+            </li>
+            <li>
+                <div class="favicon favicon-unix" title="Unix &amp; Linux Stack Exchange"></div><a href="http://unix.stackexchange.com/questions/177295/fork-and-wait-unix-v6" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:106 }); posts_hot_network.click({ item_type:2, location:11 })" wrc_done="true">
+                    fork and wait - Unix v6
+                </a>&nbsp;<span class="wrc_icon wrc13" rating="{&quot;icon&quot;:&quot;icn_extensiontop_green.png&quot;,&quot;rating&quot;:1,&quot;weight&quot;:3,&quot;flags&quot;:{&quot;shopping&quot;:null,&quot;social&quot;:null,&quot;news&quot;:null,&quot;it&quot;:null,&quot;corporate&quot;:null,&quot;pornography&quot;:null,&quot;violence&quot;:null,&quot;gambling&quot;:null,&quot;drugs&quot;:null,&quot;illegal&quot;:null},&quot;lastHit&quot;:1420347402049}"></span>
+
+            </li>
+            <li>
+                <div class="favicon favicon-electronics" title="Electrical Engineering Stack Exchange"></div><a href="http://electronics.stackexchange.com/questions/146453/single-led-connected-in-parallel-to-conducting-wire-does-not-light-up" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:135 }); posts_hot_network.click({ item_type:2, location:11 })" wrc_done="true">
+                    Single LED connected in parallel to conducting wire does not light up
+                </a>&nbsp;<span class="wrc_icon wrc13" rating="{&quot;icon&quot;:&quot;icn_extensiontop_green.png&quot;,&quot;rating&quot;:1,&quot;weight&quot;:3,&quot;flags&quot;:{&quot;shopping&quot;:null,&quot;social&quot;:null,&quot;news&quot;:null,&quot;it&quot;:null,&quot;corporate&quot;:null,&quot;pornography&quot;:null,&quot;violence&quot;:null,&quot;gambling&quot;:null,&quot;drugs&quot;:null,&quot;illegal&quot;:null},&quot;lastHit&quot;:1420347402049}"></span>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-apple" title="Ask Different"></div><a href="http://apple.stackexchange.com/questions/164705/why-does-google-chrome-launch-multiple-instances-of-google-chrome-helper" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:118 }); posts_hot_network.click({ item_type:2, location:11 })" wrc_done="true">
+                    Why does Google Chrome launch multiple instances of Google Chrome Helper?
+                </a>&nbsp;<span class="wrc_icon wrc13" rating="{&quot;icon&quot;:&quot;icn_extensiontop_green.png&quot;,&quot;rating&quot;:1,&quot;weight&quot;:3,&quot;flags&quot;:{&quot;shopping&quot;:null,&quot;social&quot;:null,&quot;news&quot;:null,&quot;it&quot;:null,&quot;corporate&quot;:null,&quot;pornography&quot;:null,&quot;violence&quot;:null,&quot;gambling&quot;:null,&quot;drugs&quot;:null,&quot;illegal&quot;:null},&quot;lastHit&quot;:1420347402049}"></span>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-academia" title="Academia Stack Exchange"></div><a href="http://academia.stackexchange.com/questions/35187/can-i-get-phd-advisors-in-europe-to-agree-on-the-length-of-my-phd-program-in-adv" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:415 }); posts_hot_network.click({ item_type:2, location:11 })" wrc_done="true">
+                    Can I get PhD advisors in Europe to agree on the length of my PhD program in advance?
+                </a>&nbsp;<span class="wrc_icon wrc13" rating="{&quot;icon&quot;:&quot;icn_extensiontop_green.png&quot;,&quot;rating&quot;:1,&quot;weight&quot;:3,&quot;flags&quot;:{&quot;shopping&quot;:null,&quot;social&quot;:null,&quot;news&quot;:null,&quot;it&quot;:null,&quot;corporate&quot;:null,&quot;pornography&quot;:null,&quot;violence&quot;:null,&quot;gambling&quot;:null,&quot;drugs&quot;:null,&quot;illegal&quot;:null},&quot;lastHit&quot;:1420347402049}"></span>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-worldbuilding" title="Worldbuilding Stack Exchange"></div><a href="http://worldbuilding.stackexchange.com/questions/7168/how-would-societies-be-if-created-and-populated-only-by-young-people" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:579 }); posts_hot_network.click({ item_type:2, location:11 })" wrc_done="true">
+                    How would societies be if created and populated only by young people?
+                </a>&nbsp;<span class="wrc_icon wrc13" rating="{&quot;icon&quot;:&quot;icn_extensiontop_green.png&quot;,&quot;rating&quot;:1,&quot;weight&quot;:3,&quot;flags&quot;:{&quot;shopping&quot;:null,&quot;social&quot;:null,&quot;news&quot;:null,&quot;it&quot;:null,&quot;corporate&quot;:null,&quot;pornography&quot;:null,&quot;violence&quot;:null,&quot;gambling&quot;:null,&quot;drugs&quot;:null,&quot;illegal&quot;:null},&quot;lastHit&quot;:1420347402049}"></span>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-rpg" title="Role-playing Games Stack Exchange"></div><a href="http://rpg.stackexchange.com/questions/53880/what-to-do-when-i-accidentally-kill-the-whole-party" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:122 }); posts_hot_network.click({ item_type:2, location:11 })" wrc_done="true">
+                    What to do when I accidentally kill the whole party?
+                </a>&nbsp;<span class="wrc_icon wrc13" rating="{&quot;icon&quot;:&quot;icn_extensiontop_green.png&quot;,&quot;rating&quot;:1,&quot;weight&quot;:3,&quot;flags&quot;:{&quot;shopping&quot;:null,&quot;social&quot;:null,&quot;news&quot;:null,&quot;it&quot;:null,&quot;corporate&quot;:null,&quot;pornography&quot;:null,&quot;violence&quot;:null,&quot;gambling&quot;:null,&quot;drugs&quot;:null,&quot;illegal&quot;:null},&quot;lastHit&quot;:1420347402049}"></span>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-physics" title="Physics Stack Exchange"></div><a href="http://physics.stackexchange.com/questions/156439/how-does-a-rotating-object-cause-frame-dragging" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:151 }); posts_hot_network.click({ item_type:2, location:11 })" wrc_done="true">
+                    How does a rotating object cause frame dragging?
+                </a>&nbsp;<span class="wrc_icon wrc13" rating="{&quot;icon&quot;:&quot;icn_extensiontop_green.png&quot;,&quot;rating&quot;:1,&quot;weight&quot;:3,&quot;flags&quot;:{&quot;shopping&quot;:null,&quot;social&quot;:null,&quot;news&quot;:null,&quot;it&quot;:null,&quot;corporate&quot;:null,&quot;pornography&quot;:null,&quot;violence&quot;:null,&quot;gambling&quot;:null,&quot;drugs&quot;:null,&quot;illegal&quot;:null},&quot;lastHit&quot;:1420347402049}"></span>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-security" title="Information Security Stack Exchange"></div><a href="http://security.stackexchange.com/questions/77359/does-it-indicate-a-bad-password-system-to-disallow-certain-characters-in-passwor" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:162 }); posts_hot_network.click({ item_type:2, location:11 })" wrc_done="true">
+                    Does it indicate a bad password system to disallow certain characters in passwords?
+                </a>&nbsp;<span class="wrc_icon wrc13" rating="{&quot;icon&quot;:&quot;icn_extensiontop_green.png&quot;,&quot;rating&quot;:1,&quot;weight&quot;:3,&quot;flags&quot;:{&quot;shopping&quot;:null,&quot;social&quot;:null,&quot;news&quot;:null,&quot;it&quot;:null,&quot;corporate&quot;:null,&quot;pornography&quot;:null,&quot;violence&quot;:null,&quot;gambling&quot;:null,&quot;drugs&quot;:null,&quot;illegal&quot;:null},&quot;lastHit&quot;:1420347402049}"></span>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-math" title="Mathematics Stack Exchange"></div><a href="http://math.stackexchange.com/questions/1088338/besides-proving-new-theorems-how-can-a-person-contribute-to-mathematics" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:69 }); posts_hot_network.click({ item_type:2, location:11 })" wrc_done="true">
+                    Besides proving new theorems, how can a person contribute to mathematics?
+                </a>&nbsp;<span class="wrc_icon wrc13" rating="{&quot;icon&quot;:&quot;icn_extensiontop_green.png&quot;,&quot;rating&quot;:1,&quot;weight&quot;:3,&quot;flags&quot;:{&quot;shopping&quot;:null,&quot;social&quot;:null,&quot;news&quot;:null,&quot;it&quot;:null,&quot;corporate&quot;:null,&quot;pornography&quot;:null,&quot;violence&quot;:null,&quot;gambling&quot;:null,&quot;drugs&quot;:null,&quot;illegal&quot;:null},&quot;lastHit&quot;:1420347402049}"></span>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-unix" title="Unix &amp; Linux Stack Exchange"></div><a href="http://unix.stackexchange.com/questions/177224/why-is-using-75-times-faster-than-if-fi-and-how-to-make-code-clearer" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:106 }); posts_hot_network.click({ item_type:2, location:11 })" wrc_done="true">
+                    Why is using &amp;&amp; 75 times faster than if...fi and how to make code clearer
+                </a>&nbsp;<span class="wrc_icon wrc13" rating="{&quot;icon&quot;:&quot;icn_extensiontop_green.png&quot;,&quot;rating&quot;:1,&quot;weight&quot;:3,&quot;flags&quot;:{&quot;shopping&quot;:null,&quot;social&quot;:null,&quot;news&quot;:null,&quot;it&quot;:null,&quot;corporate&quot;:null,&quot;pornography&quot;:null,&quot;violence&quot;:null,&quot;gambling&quot;:null,&quot;drugs&quot;:null,&quot;illegal&quot;:null},&quot;lastHit&quot;:1420347402049}"></span>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-diy" title="Home Improvement Stack Exchange"></div><a href="http://diy.stackexchange.com/questions/56185/how-do-i-fill-in-holes-in-a-fire-door" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:73 }); posts_hot_network.click({ item_type:2, location:11 })" wrc_done="true">
+                    How do I fill in holes in a fire door?
+                </a>&nbsp;<span class="wrc_icon wrc13" rating="{&quot;icon&quot;:&quot;icn_extensiontop_green.png&quot;,&quot;rating&quot;:1,&quot;weight&quot;:3,&quot;flags&quot;:{&quot;shopping&quot;:null,&quot;social&quot;:null,&quot;news&quot;:null,&quot;it&quot;:null,&quot;corporate&quot;:null,&quot;pornography&quot;:null,&quot;violence&quot;:null,&quot;gambling&quot;:null,&quot;drugs&quot;:null,&quot;illegal&quot;:null},&quot;lastHit&quot;:1420347402049}"></span>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-sqa" title="Software Quality Assurance &amp; Testing Stack Exchange"></div><a href="http://sqa.stackexchange.com/questions/11691/get-older-versions-of-internet-explorer" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:244 }); posts_hot_network.click({ item_type:2, location:11 })" wrc_done="true">
+                    Get older versions of Internet Explorer
+                </a>&nbsp;<span class="wrc_icon wrc13" rating="{&quot;icon&quot;:&quot;icn_extensiontop_green.png&quot;,&quot;rating&quot;:1,&quot;weight&quot;:3,&quot;flags&quot;:{&quot;shopping&quot;:null,&quot;social&quot;:null,&quot;news&quot;:null,&quot;it&quot;:null,&quot;corporate&quot;:null,&quot;pornography&quot;:null,&quot;violence&quot;:null,&quot;gambling&quot;:null,&quot;drugs&quot;:null,&quot;illegal&quot;:null},&quot;lastHit&quot;:1420347402049}"></span>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-mathoverflow" title="MathOverflow"></div><a href="http://mathoverflow.net/questions/191929/are-there-any-serious-investigations-of-whether-mathematicians-do-their-best-wo" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:504 }); posts_hot_network.click({ item_type:2, location:11 })" wrc_done="true">
+                    Are there any serious investigations of whether "mathematicians do their best work when they're young"?
+                </a>&nbsp;<span class="wrc_icon wrc13" rating="{&quot;icon&quot;:&quot;icn_extensiontop_green.png&quot;,&quot;rating&quot;:1,&quot;weight&quot;:3,&quot;flags&quot;:{&quot;shopping&quot;:null,&quot;social&quot;:null,&quot;news&quot;:null,&quot;it&quot;:null,&quot;corporate&quot;:null,&quot;pornography&quot;:null,&quot;violence&quot;:null,&quot;gambling&quot;:null,&quot;drugs&quot;:null,&quot;illegal&quot;:null},&quot;lastHit&quot;:1420347402049}"></span>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-superuser" title="Super User"></div><a href="http://superuser.com/questions/860269/playing-hd-videos-on-a-low-spec-computer-using-usb-to-hdmi-adapter" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:3 }); posts_hot_network.click({ item_type:2, location:11 })" wrc_done="true">
+                    Playing HD videos on a low spec computer using USB-to-HDMI adapter
+                </a>&nbsp;<span class="wrc_icon wrc13" rating="{&quot;icon&quot;:&quot;icn_extensiontop_green.png&quot;,&quot;rating&quot;:1,&quot;weight&quot;:3,&quot;flags&quot;:{&quot;shopping&quot;:null,&quot;social&quot;:null,&quot;news&quot;:null,&quot;it&quot;:null,&quot;corporate&quot;:null,&quot;pornography&quot;:null,&quot;violence&quot;:null,&quot;gambling&quot;:null,&quot;drugs&quot;:null,&quot;illegal&quot;:null},&quot;lastHit&quot;:1420347402049}"></span>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-ell" title="English Language Learners Stack Exchange"></div><a href="http://ell.stackexchange.com/questions/44610/haha-over-lol-do-natives-consider-hahaha-as-an-offensive-gesture" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:481 }); posts_hot_network.click({ item_type:2, location:11 })" wrc_done="true">
+                    'Haha' over 'lol' -Do natives consider 'hahaha' as an offensive gesture?
+                </a>&nbsp;<span class="wrc_icon wrc13" rating="{&quot;icon&quot;:&quot;icn_extensiontop_green.png&quot;,&quot;rating&quot;:1,&quot;weight&quot;:3,&quot;flags&quot;:{&quot;shopping&quot;:null,&quot;social&quot;:null,&quot;news&quot;:null,&quot;it&quot;:null,&quot;corporate&quot;:null,&quot;pornography&quot;:null,&quot;violence&quot;:null,&quot;gambling&quot;:null,&quot;drugs&quot;:null,&quot;illegal&quot;:null},&quot;lastHit&quot;:1420347402049}"></span>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-russian" title="Russian Language Stack Exchange"></div><a href="http://russian.stackexchange.com/questions/7869/use-of-past-form-amongst-present-forms" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:451 }); posts_hot_network.click({ item_type:2, location:11 })" wrc_done="true">
+                    Use of past form amongst present forms
+                </a>&nbsp;<span class="wrc_icon wrc13" rating="{&quot;icon&quot;:&quot;icn_extensiontop_green.png&quot;,&quot;rating&quot;:1,&quot;weight&quot;:3,&quot;flags&quot;:{&quot;shopping&quot;:null,&quot;social&quot;:null,&quot;news&quot;:null,&quot;it&quot;:null,&quot;corporate&quot;:null,&quot;pornography&quot;:null,&quot;violence&quot;:null,&quot;gambling&quot;:null,&quot;drugs&quot;:null,&quot;illegal&quot;:null},&quot;lastHit&quot;:1420347402049}"></span>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-academia" title="Academia Stack Exchange"></div><a href="http://academia.stackexchange.com/questions/35170/am-i-obligated-to-finish-my-post-doc-term-before-starting-my-tenure-track-job" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:415 }); posts_hot_network.click({ item_type:2, location:11 })" wrc_done="true">
+                    Am I obligated to finish my post-doc term before starting my tenure-track job?
+                </a>&nbsp;<span class="wrc_icon wrc13" rating="{&quot;icon&quot;:&quot;icn_extensiontop_green.png&quot;,&quot;rating&quot;:1,&quot;weight&quot;:3,&quot;flags&quot;:{&quot;shopping&quot;:null,&quot;social&quot;:null,&quot;news&quot;:null,&quot;it&quot;:null,&quot;corporate&quot;:null,&quot;pornography&quot;:null,&quot;violence&quot;:null,&quot;gambling&quot;:null,&quot;drugs&quot;:null,&quot;illegal&quot;:null},&quot;lastHit&quot;:1420347402049}"></span>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-scifi" title="Science Fiction &amp; Fantasy Stack Exchange"></div><a href="http://scifi.stackexchange.com/questions/77092/2001-film-hals-disconnection-why-does-voice-slow-down" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:186 }); posts_hot_network.click({ item_type:2, location:11 })" wrc_done="true">
+                    2001 (film): HAL's disconnection - why does voice slow down?
+                </a>&nbsp;<span class="wrc_icon wrc13" rating="{&quot;icon&quot;:&quot;icn_extensiontop_green.png&quot;,&quot;rating&quot;:1,&quot;weight&quot;:3,&quot;flags&quot;:{&quot;shopping&quot;:null,&quot;social&quot;:null,&quot;news&quot;:null,&quot;it&quot;:null,&quot;corporate&quot;:null,&quot;pornography&quot;:null,&quot;violence&quot;:null,&quot;gambling&quot;:null,&quot;drugs&quot;:null,&quot;illegal&quot;:null},&quot;lastHit&quot;:1420347402049}"></span>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-academia" title="Academia Stack Exchange"></div><a href="http://academia.stackexchange.com/questions/35194/how-do-academics-find-time-to-write-books" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:415 }); posts_hot_network.click({ item_type:2, location:11 })" wrc_done="true">
+                    How do academics find time to write books?
+                </a>&nbsp;<span class="wrc_icon wrc13" rating="{&quot;icon&quot;:&quot;icn_extensiontop_green.png&quot;,&quot;rating&quot;:1,&quot;weight&quot;:3,&quot;flags&quot;:{&quot;shopping&quot;:null,&quot;social&quot;:null,&quot;news&quot;:null,&quot;it&quot;:null,&quot;corporate&quot;:null,&quot;pornography&quot;:null,&quot;violence&quot;:null,&quot;gambling&quot;:null,&quot;drugs&quot;:null,&quot;illegal&quot;:null},&quot;lastHit&quot;:1420347402049}"></span>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-academia" title="Academia Stack Exchange"></div><a href="http://academia.stackexchange.com/questions/35172/can-my-recommendation-letters-be-repeated" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:415 }); posts_hot_network.click({ item_type:2, location:11 })" wrc_done="true">
+                    Can my recommendation letters be repeated?
+                </a>&nbsp;<span class="wrc_icon wrc13" rating="{&quot;icon&quot;:&quot;icn_extensiontop_green.png&quot;,&quot;rating&quot;:1,&quot;weight&quot;:3,&quot;flags&quot;:{&quot;shopping&quot;:null,&quot;social&quot;:null,&quot;news&quot;:null,&quot;it&quot;:null,&quot;corporate&quot;:null,&quot;pornography&quot;:null,&quot;violence&quot;:null,&quot;gambling&quot;:null,&quot;drugs&quot;:null,&quot;illegal&quot;:null},&quot;lastHit&quot;:1420347402049}"></span>
+
+            </li>
+            <li class="dno js-hidden">
+                <div class="favicon favicon-aviation" title="Aviation Stack Exchange"></div><a href="http://aviation.stackexchange.com/questions/11489/why-cant-the-ntsb-publicly-release-cockpit-voice-recordings-whereas-they-can-re" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:528 }); posts_hot_network.click({ item_type:2, location:11 })" wrc_done="true">
+                    Why can't the NTSB publicly release Cockpit Voice Recordings whereas they can release transcripts?
+                </a>&nbsp;<span class="wrc_icon wrc13" rating="{&quot;icon&quot;:&quot;icn_extensiontop_green.png&quot;,&quot;rating&quot;:1,&quot;weight&quot;:3,&quot;flags&quot;:{&quot;shopping&quot;:null,&quot;social&quot;:null,&quot;news&quot;:null,&quot;it&quot;:null,&quot;corporate&quot;:null,&quot;pornography&quot;:null,&quot;violence&quot;:null,&quot;gambling&quot;:null,&quot;drugs&quot;:null,&quot;illegal&quot;:null},&quot;lastHit&quot;:1420347402049}"></span>
+
+            </li>
+    </ul>
+
+        <a href="http://stackoverflow.com/questions/22130478/filter-firebase-data-using-angularjs#" class="show-more js-show-more js-gps-track" data-gps-track="posts_hot_network.click({ item_type:3, location:11 })">
+            more hot questions
+        </a>
+</div>
+		</div>
+	
+<div id="feed-link">
+    <div id="feed-link-text">
+        <a href="http://stackoverflow.com/feeds/question/22130478" title="feed of this question and its answers">
+            <span class="feed-icon"></span>question feed
+        </a>
+    </div>
+</div>	<script>
+StackExchange.ready(function(){$.get('/posts/22130478/ivc/4388');});
+</script>
+<noscript>
+    &lt;div&gt;&lt;img src="/posts/22130478/ivc/4388" class="dno" alt="" width="0" height="0"&gt;&lt;/div&gt;
+</noscript><div style="display:none" id="prettify-lang">default</div></div>
+
+    <script>
+        $('#wmd-input').one("keypress", function() {
+            $.ajax({
+                url: '/accounts/email-settings-form',
+                cache: false,
+                success: function(data) {
+                    $('#submit-button').parent().prepend(data);
+                }
+            });
+        });
+
+    </script>
+
+
+        </div>
+    </div>
+    <div id="footer" class="categories">
+        <div class="footerwrap">
+            <div id="footer-menu">
+                <div class="top-footer-links">
+                        <a href="http://stackoverflow.com/tour">tour</a>
+                    <a href="http://stackoverflow.com/help">help</a>
+                    <a href="http://blog.stackoverflow.com/?blb=1" wrc_done="true">blog</a>&nbsp;<span class="wrc_icon wrc13" rating="{&quot;icon&quot;:&quot;icn_extensiontop_green.png&quot;,&quot;rating&quot;:1,&quot;weight&quot;:3,&quot;flags&quot;:{&quot;shopping&quot;:null,&quot;social&quot;:null,&quot;news&quot;:null,&quot;it&quot;:true,&quot;corporate&quot;:null,&quot;pornography&quot;:null,&quot;violence&quot;:null,&quot;gambling&quot;:null,&quot;drugs&quot;:null,&quot;illegal&quot;:null},&quot;lastHit&quot;:1420347402049}"></span>
+                        <a href="http://chat.stackoverflow.com/" wrc_done="true">chat</a>&nbsp;<span class="wrc_icon wrc13" rating="{&quot;icon&quot;:&quot;icn_extensiontop_green.png&quot;,&quot;rating&quot;:1,&quot;weight&quot;:3,&quot;flags&quot;:{&quot;shopping&quot;:null,&quot;social&quot;:null,&quot;news&quot;:null,&quot;it&quot;:true,&quot;corporate&quot;:null,&quot;pornography&quot;:null,&quot;violence&quot;:null,&quot;gambling&quot;:null,&quot;drugs&quot;:null,&quot;illegal&quot;:null},&quot;lastHit&quot;:1420347402049}"></span>
+                    <a href="http://data.stackexchange.com/" wrc_done="true">data</a>&nbsp;<span class="wrc_icon wrc13" rating="{&quot;icon&quot;:&quot;icn_extensiontop_green.png&quot;,&quot;rating&quot;:1,&quot;weight&quot;:3,&quot;flags&quot;:{&quot;shopping&quot;:null,&quot;social&quot;:null,&quot;news&quot;:null,&quot;it&quot;:null,&quot;corporate&quot;:null,&quot;pornography&quot;:null,&quot;violence&quot;:null,&quot;gambling&quot;:null,&quot;drugs&quot;:null,&quot;illegal&quot;:null},&quot;lastHit&quot;:1420347402049}"></span>
+                    <a href="http://stackexchange.com/legal" wrc_done="true">legal</a>&nbsp;<span class="wrc_icon wrc13" rating="{&quot;icon&quot;:&quot;icn_extensiontop_green.png&quot;,&quot;rating&quot;:1,&quot;weight&quot;:3,&quot;flags&quot;:{&quot;shopping&quot;:null,&quot;social&quot;:null,&quot;news&quot;:null,&quot;it&quot;:null,&quot;corporate&quot;:null,&quot;pornography&quot;:null,&quot;violence&quot;:null,&quot;gambling&quot;:null,&quot;drugs&quot;:null,&quot;illegal&quot;:null},&quot;lastHit&quot;:1420347402049}"></span>
+                    <a href="http://stackexchange.com/legal/privacy-policy" wrc_done="true">privacy policy</a>&nbsp;<span class="wrc_icon wrc13" rating="{&quot;icon&quot;:&quot;icn_extensiontop_green.png&quot;,&quot;rating&quot;:1,&quot;weight&quot;:3,&quot;flags&quot;:{&quot;shopping&quot;:null,&quot;social&quot;:null,&quot;news&quot;:null,&quot;it&quot;:null,&quot;corporate&quot;:null,&quot;pornography&quot;:null,&quot;violence&quot;:null,&quot;gambling&quot;:null,&quot;drugs&quot;:null,&quot;illegal&quot;:null},&quot;lastHit&quot;:1420347402049}"></span>
+                    <a href="http://stackexchange.com/work-here" wrc_done="true">work here</a>&nbsp;<span class="wrc_icon wrc13" rating="{&quot;icon&quot;:&quot;icn_extensiontop_green.png&quot;,&quot;rating&quot;:1,&quot;weight&quot;:3,&quot;flags&quot;:{&quot;shopping&quot;:null,&quot;social&quot;:null,&quot;news&quot;:null,&quot;it&quot;:null,&quot;corporate&quot;:null,&quot;pornography&quot;:null,&quot;violence&quot;:null,&quot;gambling&quot;:null,&quot;drugs&quot;:null,&quot;illegal&quot;:null},&quot;lastHit&quot;:1420347402049}"></span>
+                    <a href="http://stackexchange.com/mediakit" wrc_done="true">advertising info</a>&nbsp;<span class="wrc_icon wrc13" rating="{&quot;icon&quot;:&quot;icn_extensiontop_green.png&quot;,&quot;rating&quot;:1,&quot;weight&quot;:3,&quot;flags&quot;:{&quot;shopping&quot;:null,&quot;social&quot;:null,&quot;news&quot;:null,&quot;it&quot;:null,&quot;corporate&quot;:null,&quot;pornography&quot;:null,&quot;violence&quot;:null,&quot;gambling&quot;:null,&quot;drugs&quot;:null,&quot;illegal&quot;:null},&quot;lastHit&quot;:1420347402049}"></span>
+
+                    <a onclick="StackExchange.switchMobile(&quot;on&quot;)">mobile</a>
+                    <b><a href="http://stackoverflow.com/contact">contact us</a></b>
+                        <b><a href="http://meta.stackoverflow.com/" wrc_done="true">feedback</a>&nbsp;<span class="wrc_icon wrc13" rating="{&quot;icon&quot;:&quot;icn_extensiontop_green.png&quot;,&quot;rating&quot;:1,&quot;weight&quot;:3,&quot;flags&quot;:{&quot;shopping&quot;:null,&quot;social&quot;:null,&quot;news&quot;:null,&quot;it&quot;:true,&quot;corporate&quot;:null,&quot;pornography&quot;:null,&quot;violence&quot;:null,&quot;gambling&quot;:null,&quot;drugs&quot;:null,&quot;illegal&quot;:null},&quot;lastHit&quot;:1420347402049}"></span></b>
+                    
+                </div>
+                <div id="footer-sites">
+                    <table>
+    <tbody><tr>
+            <th colspan="3">
+                Technology
+            </th>
+            <th>
+                Life / Arts
+            </th>
+            <th>
+                Culture / Recreation
+            </th>
+            <th>
+                Science
+            </th>
+            <th>
+                Other
+            </th>
+    </tr>
+    <tr>
+            <td>
+                <ol>
+                        <li><a href="http://stackoverflow.com/" title="professional and enthusiast programmers">Stack Overflow</a></li>
+                        <li><a href="http://serverfault.com/" title="professional system and network administrators">Server Fault</a></li>
+                        <li><a href="http://superuser.com/" title="computer enthusiasts and power users">Super User</a></li>
+                        <li><a href="http://webapps.stackexchange.com/" title="power users of web applications">Web Applications</a></li>
+                        <li><a href="http://askubuntu.com/" title="Ubuntu users and developers">Ask Ubuntu</a></li>
+                        <li><a href="http://webmasters.stackexchange.com/" title="pro webmasters">Webmasters</a></li>
+                        <li><a href="http://gamedev.stackexchange.com/" title="professional and independent game developers">Game Development</a></li>
+                        <li><a href="http://tex.stackexchange.com/" title="users of TeX, LaTeX, ConTeXt, and related typesetting systems">TeX - LaTeX</a></li>
+                            </ol></td><td><ol>
+                        <li><a href="http://programmers.stackexchange.com/" title="professional programmers interested in conceptual questions about software development">Programmers</a></li>
+                        <li><a href="http://unix.stackexchange.com/" title="users of Linux, FreeBSD and other Un*x-like operating systems.">Unix &amp; Linux</a></li>
+                        <li><a href="http://apple.stackexchange.com/" title="power users of Apple hardware and software">Ask Different (Apple)</a></li>
+                        <li><a href="http://wordpress.stackexchange.com/" title="WordPress developers and administrators">WordPress Development</a></li>
+                        <li><a href="http://gis.stackexchange.com/" title="cartographers, geographers and GIS professionals">Geographic Information Systems</a></li>
+                        <li><a href="http://electronics.stackexchange.com/" title="electronics and electrical engineering professionals, students, and enthusiasts">Electrical Engineering</a></li>
+                        <li><a href="http://android.stackexchange.com/" title="enthusiasts and power users of the Android operating system">Android Enthusiasts</a></li>
+                        <li><a href="http://security.stackexchange.com/" title="Information security professionals">Information Security</a></li>
+                            </ol></td><td><ol>
+                        <li><a href="http://dba.stackexchange.com/" title="database professionals who wish to improve their database skills and learn from others in the community">Database Administrators</a></li>
+                        <li><a href="http://drupal.stackexchange.com/" title="Drupal developers and administrators">Drupal Answers</a></li>
+                        <li><a href="http://sharepoint.stackexchange.com/" title="SharePoint enthusiasts">SharePoint</a></li>
+                        <li><a href="http://ux.stackexchange.com/" title="user experience researchers and experts">User Experience</a></li>
+                        <li><a href="http://mathematica.stackexchange.com/" title="users of Mathematica">Mathematica</a></li>
+                        <li><a href="http://salesforce.stackexchange.com/" title="Salesforce administrators, implementation experts, developers and anybody in-between">Salesforce</a></li>
+                    
+                        <li>
+                            <a href="http://stackexchange.com/sites#technology" class="more" wrc_done="true">
+                                more (13)
+                            </a>&nbsp;<span class="wrc_icon wrc13" rating="{&quot;icon&quot;:&quot;icn_extensiontop_green.png&quot;,&quot;rating&quot;:1,&quot;weight&quot;:3,&quot;flags&quot;:{&quot;shopping&quot;:null,&quot;social&quot;:null,&quot;news&quot;:null,&quot;it&quot;:null,&quot;corporate&quot;:null,&quot;pornography&quot;:null,&quot;violence&quot;:null,&quot;gambling&quot;:null,&quot;drugs&quot;:null,&quot;illegal&quot;:null},&quot;lastHit&quot;:1420347402049}"></span>
+                        </li>
+                </ol>
+            </td>
+            <td>
+                <ol>
+                        <li><a href="http://photo.stackexchange.com/" title="professional, enthusiast and amateur photographers">Photography</a></li>
+                        <li><a href="http://scifi.stackexchange.com/" title="science fiction and fantasy enthusiasts">Science Fiction &amp; Fantasy</a></li>
+                        <li><a href="http://graphicdesign.stackexchange.com/" title="Graphic Design professionals, students, and enthusiasts">Graphic Design</a></li>
+                        <li><a href="http://cooking.stackexchange.com/" title="professional and amateur chefs">Seasoned Advice (cooking)</a></li>
+                        <li><a href="http://diy.stackexchange.com/" title="contractors and serious DIYers">Home Improvement</a></li>
+                        <li><a href="http://money.stackexchange.com/" title="people who want to be financially literate">Personal Finance &amp; Money</a></li>
+                        <li><a href="http://academia.stackexchange.com/" title="academics and those enrolled in higher education">Academia</a></li>
+                    
+                        <li>
+                            <a href="http://stackexchange.com/sites#lifearts" class="more" wrc_done="true">
+                                more (10)
+                            </a>&nbsp;<span class="wrc_icon wrc13" rating="{&quot;icon&quot;:&quot;icn_extensiontop_green.png&quot;,&quot;rating&quot;:1,&quot;weight&quot;:3,&quot;flags&quot;:{&quot;shopping&quot;:null,&quot;social&quot;:null,&quot;news&quot;:null,&quot;it&quot;:null,&quot;corporate&quot;:null,&quot;pornography&quot;:null,&quot;violence&quot;:null,&quot;gambling&quot;:null,&quot;drugs&quot;:null,&quot;illegal&quot;:null},&quot;lastHit&quot;:1420347402049}"></span>
+                        </li>
+                </ol>
+            </td>
+            <td>
+                <ol>
+                        <li><a href="http://english.stackexchange.com/" title="linguists, etymologists, and serious English language enthusiasts">English Language &amp; Usage</a></li>
+                        <li><a href="http://skeptics.stackexchange.com/" title="scientific skepticism">Skeptics</a></li>
+                        <li><a href="http://judaism.stackexchange.com/" title="those who base their lives on Jewish law and tradition and anyone interested in learning more">Mi Yodeya (Judaism)</a></li>
+                        <li><a href="http://travel.stackexchange.com/" title="road warriors and seasoned travelers">Travel</a></li>
+                        <li><a href="http://christianity.stackexchange.com/" title="committed Christians, experts in Christianity and those interested in learning more">Christianity</a></li>
+                        <li><a href="http://gaming.stackexchange.com/" title="passionate videogamers on all platforms">Arqade (gaming)</a></li>
+                        <li><a href="http://bicycles.stackexchange.com/" title="people who build and repair bicycles, people who train cycling, or commute on bicycles">Bicycles</a></li>
+                        <li><a href="http://rpg.stackexchange.com/" title="gamemasters and players of tabletop, paper-and-pencil role-playing games">Role-playing Games</a></li>
+                    
+                        <li>
+                            <a href="http://stackexchange.com/sites#culturerecreation" class="more" wrc_done="true">
+                                more (21)
+                            </a>&nbsp;<span class="wrc_icon wrc13" rating="{&quot;icon&quot;:&quot;icn_extensiontop_green.png&quot;,&quot;rating&quot;:1,&quot;weight&quot;:3,&quot;flags&quot;:{&quot;shopping&quot;:null,&quot;social&quot;:null,&quot;news&quot;:null,&quot;it&quot;:null,&quot;corporate&quot;:null,&quot;pornography&quot;:null,&quot;violence&quot;:null,&quot;gambling&quot;:null,&quot;drugs&quot;:null,&quot;illegal&quot;:null},&quot;lastHit&quot;:1420347402049}"></span>
+                        </li>
+                </ol>
+            </td>
+            <td>
+                <ol>
+                        <li><a href="http://math.stackexchange.com/" title="people studying math at any level and professionals in related fields">Mathematics</a></li>
+                        <li><a href="http://stats.stackexchange.com/" title="people interested in statistics, machine learning, data analysis, data mining, and data visualization">Cross Validated (stats)</a></li>
+                        <li><a href="http://cstheory.stackexchange.com/" title="theoretical computer scientists and researchers in related fields">Theoretical Computer Science</a></li>
+                        <li><a href="http://physics.stackexchange.com/" title="active researchers, academics and students of physics">Physics</a></li>
+                        <li><a href="http://mathoverflow.net/" title="professional mathematicians">MathOverflow</a></li>
+                    
+                        <li>
+                            <a href="http://stackexchange.com/sites#science" class="more" wrc_done="true">
+                                more (7)
+                            </a>&nbsp;<span class="wrc_icon wrc13" rating="{&quot;icon&quot;:&quot;icn_extensiontop_green.png&quot;,&quot;rating&quot;:1,&quot;weight&quot;:3,&quot;flags&quot;:{&quot;shopping&quot;:null,&quot;social&quot;:null,&quot;news&quot;:null,&quot;it&quot;:null,&quot;corporate&quot;:null,&quot;pornography&quot;:null,&quot;violence&quot;:null,&quot;gambling&quot;:null,&quot;drugs&quot;:null,&quot;illegal&quot;:null},&quot;lastHit&quot;:1420347402049}"></span>
+                        </li>
+                </ol>
+            </td>
+            <td>
+                <ol>
+                        <li><a href="http://stackapps.com/" title="apps, scripts, and development with the Stack Exchange API">Stack Apps</a></li>
+                        <li><a href="http://meta.stackexchange.com/" title="meta-discussion of the Stack Exchange family of Q&amp;A websites">Meta Stack Exchange</a></li>
+                        <li><a href="http://area51.stackexchange.com/" title="proposing new sites in the Stack Exchange network">Area 51</a></li>
+                        <li><a href="http://careers.stackoverflow.com/?utm_source=stackoverflow.com&utm_medium=site-ui&utm_campaign=footerlink">Stack Overflow Careers</a></li>
+                    
+                </ol>
+            </td>
+    </tr>
+</tbody></table>
+                </div>
+            </div>
+
+            <div id="copyright">
+                site design / logo © 2015 stack exchange inc; user contributions licensed under <a href="http://creativecommons.org/licenses/by-sa/3.0/" rel="license" wrc_done="true">cc by-sa 3.0</a>&nbsp;<span class="wrc_icon wrc13" rating="{&quot;icon&quot;:&quot;icn_extensiontop_green.png&quot;,&quot;rating&quot;:1,&quot;weight&quot;:3,&quot;flags&quot;:{&quot;shopping&quot;:null,&quot;social&quot;:null,&quot;news&quot;:null,&quot;it&quot;:null,&quot;corporate&quot;:null,&quot;pornography&quot;:null,&quot;violence&quot;:null,&quot;gambling&quot;:null,&quot;drugs&quot;:null,&quot;illegal&quot;:null},&quot;lastHit&quot;:1420347402049}"></span>                   with <a href="http://blog.stackoverflow.com/2009/06/attribution-required/" rel="license" wrc_done="true">attribution required</a>&nbsp;<span class="wrc_icon wrc13" rating="{&quot;icon&quot;:&quot;icn_extensiontop_green.png&quot;,&quot;rating&quot;:1,&quot;weight&quot;:3,&quot;flags&quot;:{&quot;shopping&quot;:null,&quot;social&quot;:null,&quot;news&quot;:null,&quot;it&quot;:true,&quot;corporate&quot;:null,&quot;pornography&quot;:null,&quot;violence&quot;:null,&quot;gambling&quot;:null,&quot;drugs&quot;:null,&quot;illegal&quot;:null},&quot;lastHit&quot;:1420347402049}"></span>
+            </div>
+            <div id="svnrev">
+                rev 2014.12.30.2143
+            </div>
+            
+        </div>
+    </div>
+    <noscript>
+        &lt;div id="noscript-warning"&gt;Stack Overflow works best with JavaScript enabled&lt;img src="http://pixel.quantserve.com/pixel/p-c1rF4kxgLUzNc.gif" alt="" class="dno"&gt;&lt;/div&gt;
+    </noscript>
+<script>var p = "http", d = "static"; if (document.location.protocol == "https:") { p += "s"; d = "engine"; } var z = document.createElement("script"); z.type = "text/javascript"; z.async = true; z.src = p + "://" + d + ".adzerk.net/ados.js"; var s = document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(z, s);</script>
+<script>
+    var ados = ados || {};
+    ados.run = ados.run || [];
+    ados.run.push(function () { ados_setKeywords('javascript,angularjs,firebase,angularfire,x-user-registered');; ados_load(); });         
+</script>
+
+    <script>
+        (function (i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () { (i[r].q = i[r].q || []).push(arguments) }, i[r].l = 1 * new Date(); a = s.createElement(o),
+            m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m);
+        })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+        ga('create', 'UA-5620270-1');        
+        ga('set', 'dimension1', '5110233');         
+        ga('set', 'dimension2', '|javascript|angularjs|firebase|angularfire|');         
+        ga('send', 'pageview');
+        var _qevents = _qevents || [],
+            _comscore = _comscore || [];
+        (function () {
+            var ssl='https:'==document.location.protocol,
+                s=document.getElementsByTagName('script')[0],
+                qc=document.createElement('script');
+            qc.async=true;
+            qc.src=(ssl?'https://secure':'http://edge')+'.quantserve.com/quant.js';
+            s.parentNode.insertBefore(qc, s);
+            var sc=document.createElement('script');
+            sc.async=true;
+            sc.src=(ssl?'https://sb':'http://b') + '.scorecardresearch.com/beacon.js';
+            s.parentNode.insertBefore(sc, s);
+        })();
+        _comscore.push({ c1: "2", c2: "17440561" });
+        _qevents.push({ qacct: "p-c1rF4kxgLUzNc" });
+    </script>        
+    
+    
+<div id="wrchoverdiv"><div id="wrccontainer" style="background: #a5abb2 url(chrome-extension://gomekmidlodglbbmalcneegieacbdmki/common/skin/img/se_icn_norating.png)"><div id="wrcratingtext">This site has no rating</div><div class="wrclogo"></div></div></div></body></html>
