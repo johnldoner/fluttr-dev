@@ -1,0 +1,24 @@
+<html ng-app="app">
+	<head>
+		<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+		<script src="https://code.jquery.com/ui/1.11.1/jquery-ui.min.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.2/angular.min.js"></script>
+		<script src="https://cdn.firebase.com/js/client/2.0.2/firebase.js"></script>
+		<script src="https://cdn.firebase.com/libs/angularfire/0.9.0/angularfire.min.js"></script>
+		<script src="../app.js"></script>
+
+		<link href='https://fonts.googleapis.com/css?family=Bitter:400,700|Open+Sans:400,700' rel='stylesheet' type='text/css'>
+		<script>
+				function login() {
+					var ref = new Firebase("https://crowdfluttr.firebaseio.com");
+					ref.$authWithOAuthPopup('facebook');
+				};
+		</script>
+	</head>
+	<body ng-controller="ctrl">
+
+	<a href="#" ng-click="login()">Login</a>
+	<br>
+	Welcome: {{user.facebook.displayName}}
+		</body>
+	</html>

@@ -1,14 +1,8 @@
+  <div ng-repeat="(id,item) in filtered = (cfFloat | filter: user.facebook.email)"></div>
+  <div class="navbar-header">
+    <a href="index.html"> <img class="crowdfluttr-nav" src="images/logo_full.svg" alt="Crowdfluttr"/></a>
+  </div>
   
-<!--
-  <div class="alert" style="position:relative;top:0;left:0;width:100%;z-index:999;background-color:#5cb85c">
-  <button type="button" class="close" data-dismiss="alert">&times;</button>
-  <strong>Warning!</strong> Best check yo self, you're not looking too good.
-  </div>
-  -->
-
-  <div class="navbar-header ">
-    <a href="index.html"> <img id="crowdfluttr" src="images/logo_full.svg" alt="Crowdfluttr"/></a>
-  </div>
   <form class="navbar-form" id="navsearch" role="search">
     <div class="form-group">
       <input type="text" class="form-control" placeholder="Search" ng-model="query">
@@ -17,22 +11,63 @@
     <span class="glyphicon glyphicon-search"></span>
     </button>
   </form>
+  
   <ul class="nav navbar-nav navbar-right">
-      <li><a href="#"><i class="fa fa-send fa-1x" title="Float an Idea"></i></a></li>
-      <li><a href="#"><i class="fa fa-bell fa-1x" title="Notifications"></i></a></li>
-      <li><a href="newIdea.html"><button type="button" class="btn btn-md btn-block btn-primary"><i class="fa fa-plus-circle fa-1x" title="Create New Idea" onclick="document.location.href='newIdea.html'"></i> Create New Idea</button></a></li>
+
+      <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-plus-square fa-1x" title="Create New Idea"></i></a>
+        <ul class="dropdown-menu" role="menu" style="width:500px">
+          <li>
+            <form ng-show="!quickAdd" class="form" role="form" ng-submit="qnewIdea(idea_title)">
+              <div class="form-group col-sm-12">
+                <label for="idea_title" class="control-label">Idea Title</label>
+                  <input type="text" class="form-control" id="idea_title" ng-model="idea_title" placeholder="Ex: 6 Billion People Singing Kumbaya on New Year's Eve" required>
+                </div>
+                <div class="form-group col-sm-12">
+                  <button type="submit" class="btn btn-primary">Create Idea</button>
+                </div>
+              </form>
+              <div>
+                <div ng-show="quickAdd" style="display:none" id="quickadd-success" class="alert alert-success alert-dismissible" role="alert">
+                  <button type="button" class="close" data-dismiss="alert" data-toggle="dropdown" ng-click="javascript:location.reload()" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                  <strong>Success!</strong> Thanks for sharing your idea.
+                </div>
+              </div>
+          </li>
+        </ul>
+      </li>
+
+
+      <li><a href="explore.html"><i class="fa fa-send fa-1x" title="Explore Ideas"></i></a></li>
+
+      <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">
+      <span ng-show="filtered.length > 0"> <strong>({{filtered.length}})</strong> </span>
+      <i class="fa fa-bell fa-1x" title="Notifications"></i></a>
+            <ul class="dropdown-menu" role="menu" style="width:300px">
+              <div ng-repeat="item in cfFloat | filter:user.facebook.email">
+                <li><a style="padding:10px;font-size:80%;display:block" ng-href="idea.html?id={{item.ideaID}}">{{item.senderName}} has shared " {{item.ideaTitle | limitTo: 50}}{{item.ideaTitle.length > 50 ? '...' : '' }}" with you!</a></li>
+                <li class="divider"></li>
+              </div>
+              <li><a href="notifications.html">All Notifications</a></li>
+            </ul>
+      </li>
+
+      <!--
+      <li><a href="share.html"><button class="btn btn-primary"><i class="fa fa-plus-circle fa-1x" title="Create New Idea"></i> Create New Idea</button></a></li>
+      -->
+
+
+
+
+
       <li class="dropdown">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown"><div ng-show="user" style="margin-right:20px">
-           Welcome, {{user.facebook.displayName}}
+           Hello, {{user.facebook.displayName}}
           <span class="caret"></span></div> </a>
         <ul class="dropdown-menu" role="menu">
-          <li><a href="userdashboard.html">Home</a></li>
-          <li><a href="projectdashboard.html">My Projects</a></li>
-          <li><a href="editprofile.html">My Profile</a></li>
-          <div ng-show="user">
-            <li class="divider"></li>
-            <li><a href="#" ng-click="auth.$unauth()">Logout</a></li>
-          </div>
+          <li><a href="userdashboard.html">Dashboard</a></li>
+          <li><a href="editprofile.html">Profile</a></li>
+          <li class="divider"></li>
+          <li ng-show="user"><a href="#" ng-click="logout()">Logout</a></li>
         </ul>
       </li>
     </ul>

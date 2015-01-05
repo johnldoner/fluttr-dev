@@ -8,7 +8,7 @@
         <!-- Custom CSS -->
         <link href="css/sb-admin-2.css" rel="stylesheet">
         <!-- Custom Fonts -->
-        <link href="css/font-awesome.min.css" rel="stylesheet" type="text/css">
+        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
         <!-- DataTables CSS -->
         <link href="css/dataTables.bootstrap.css" rel="stylesheet">
 
@@ -129,7 +129,7 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                             <tr ng-repeat="(id,item) in ideas | filter: user.google.id | filter:query">
+                                             <tr ng-repeat="(id,item) in ideas | filter: user.facebook.id | filter:query">
                                                 <td>{{item.timestamp}}</td>
                                                 <td><input ng-change="ideas.$save(id)" ng-model="item.idea"></td>
                                                 <td><textarea ng-change="ideas.$save(id)" ng-model="item.description"></textarea></td>
@@ -152,36 +152,21 @@
                                                     My Likes
                                                 </div>
                                                 <div class="panel-body">
-                                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum tincidunt est vitae ultrices accumsan. Aliquam ornare lacus adipiscing, posuere lectus et, fringilla augue.</p>
+                                                    <p>See below for ideas that you've liked.</p>
                                                     <div class="row">
                                                         <div class="col-lg-10 col-lg-offset-1">
                                                             <div class="table-responsive">
                                                                 <table class="table table-striped">
                                                                     <thead>
                                                                         <tr>
-                                                                            <th>Time</th>
                                                                             <th>Idea</th>
-                                                                            <th>UserName</th>
-                                                                            <th>Likes</th>
-                                                                            
+                                                                            <th>Author</th>
                                                                         </tr>
                                                                     </thead>
                                                                     <tbody>
-                                                                        <tr>
-                                                                            <td>2014-10-31</td>
-                                                                            
-                                                                            <td>Idea content</td>
-                                                                            <td><a href="#" >Lorem</a></td>
-                                                                            <td><a href="#"><span class="glyphicon glyphicon-heart-empty"></span></a></td>
-                                                                            
-                                                                        </tr>
-                                                                        <tr>
-                                                                            <td>2014-01-31</td>
-                                                                            
-                                                                            <td>Idea content</td>
-                                                                            <td><a href="#" >Lorem</a></td>
-                                                                            <td><a href="#"><span class="glyphicon glyphicon-heart"></span></a></td>
-                                                                            <td> </td>
+                                                                         <tr ng-repeat="(id,item) in ideas | filter: {'like': user.facebook.id}">
+                                                                            <td>{{item.idea}}</td>
+                                                                            <td>{{item.userName}}</td>
                                                                         </tr>
                                                                     </tbody>
                                                                 </table>

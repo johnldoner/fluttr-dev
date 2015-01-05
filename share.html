@@ -57,19 +57,25 @@
 	<body ng-controller="ctrl" >
 		<nav ng-include="'navbar.html'"  class="navbar navbar-default navbar-fixed-top" role="navigation">
 		</nav>
+
+		<br>
+		<br>
+		<br>
+		<br>
+
 		<div class="container">
 			<div class="row">
-				<div class="col-md-12">
+				<div  class="col-md-12">
 					<h2>What's your idea?</h2>
-					<form role="form" ng-submit="UpdateFirebaseWithString()">
+					<form  role="form" ng-submit="UpdateFirebaseWithString()">
 						<div class="form-group">
 							<label for="idea-title"></label>
-							<input type="text" class="form-control" ng-model="idea" id="idea-title" placeholder="">
+							<input type="text" class="form-control" placeholder='Idea' ng-model="idea" id="idea-title" placeholder="">
+							<textarea type="text" class="form-control" placeholder='Description' ng-model="description" id="idea-title" placeholder=""></textarea>
 						</div>
-
-						<button type="submit" class="btn btn-primary btn-lg">Flut</button>
+						<button type="submit" class="btn btn-primary btn-lg">Share idea with the World</button>
 					</form>
-						<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">Float</button>
+						<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">Share idea with a Friend</button>
 
 				</div>
 			</div>
@@ -103,98 +109,6 @@
 			</div><!-- /.modal-content -->
 			</div><!-- /.modal-dialog -->
 		</div><!-- /.modal -->
-
-
-		<script>
-var app = angular.module("app", ["firebase"]);
-
-app.constant("FBURL", "https://crowdfluttr.firebaseio.com/");
-
-app.service("Ref", ["FBURL", Firebase]);
-
-app.factory("Auth", ["$firebaseAuth", "Ref", function($firebaseAuth, Ref) {
-  return $firebaseAuth(Ref);
-}]);
-
-app.factory("Ideas", ["$firebase", "Ref", function($firebase, Ref) {
-  var childRef = Ref.child('ideas');
-  return $firebase(childRef).$asArray();
-}]);
-
-app.factory("IdeasComments", ["$firebase", "Ref", function($firebase, Ref) {
-  var childRef = Ref.child('idea-comments');
-  return $firebase(childRef).$asArray();
-}]);
-
-app.factory("IdeasObject", ["$firebase", function($firebase) {
-  var Ref = new Firebase('https://crowdfluttr.firebaseio.com/');
-  var childRef = Ref.child('ideas');
-  return $firebase(childRef).$asObject();
-}]);
-
-
-app.factory("Users", ["$firebase", function($firebase) {
-  var Ref = new Firebase('https://crowdfluttr.firebaseio.com/');
-  var childRef = Ref.child('users');
-  return $firebase(childRef).$asArray();
-}]);
-
-
-
-app.factory("Messages", ["$firebase", "Ref", function($firebase, Ref) {
-  var childRef = Ref.child('messages');
-  return $firebase(childRef).$asArray();
-}]);
-
-app.factory("Proposals", ["$firebase", "Ref", function($firebase, Ref) {
-  var childRef = Ref.child('proposals');
-  return $firebase(childRef).$asArray();
-}]);
-
-app.factory("ProposalsComments", ["$firebase", "Ref", function($firebase, Ref) {
-  var childRef = Ref.child('pr-comments');
-  return $firebase(childRef).$asArray();
-}]);
-
-app.factory("Workplans", ["$firebase", "Ref", function($firebase, Ref) {
-  var childRef = Ref.child('workplans');
-  return $firebase(childRef).$asArray();
-}]);
-
-app.factory("WorkplansComments", ["$firebase", "Ref", function($firebase, Ref) {
-  var childRef = Ref.child('wp-comments');
-  return $firebase(childRef).$asArray();
-}]);
-
-app.controller("ctrl", ["$scope","$firebase","Ideas","IdeasComments","Auth","IdeasObject","Messages","Proposals","ProposalsComments","Workplans","WorkplansComments","Users", function($scope,$firebase,Ideas,IdeasComments,Auth,IdeasObject,Messages,Proposals,ProposalsComments,Workplans,WorkplansComments,Users) {
-  $scope.ideas = Ideas;
-  $scope.users = Users;
-  $scope.ideas_comments = IdeasComments;
-  $scope.ideas_object = IdeasObject; 
-  $scope.auth = Auth;
-  $scope.messages = Messages;
-  $scope.proposals = Proposals;
-  $scope.prcomments = ProposalsComments;
-  $scope.workplans = Workplans;
-  $scope.wpcomments = WorkplansComments;
-  $scope.idea = "";
-
-  
-  $scope.UpdateFirebasUserWithString = function () {   
-    $scope.users.set({
-  alanisawesome: {
-    date_of_birth: "June 23, 1912",
-    full_name: "Alan Turing"
-  }).then(function(Ref) {
-      clearIdea();
-    });
-  };
-  
-
-app.run(["$rootScope", "Auth", function($rootScope, Auth) {
-  $rootScope.user = Auth.$getAuth();
-}]);
-		</script>
 
 	</body>
 </html>
