@@ -1,3 +1,11 @@
+  
+<!--
+  <div class="alert" style="position:relative;top:0;left:0;width:100%;z-index:999;background-color:#5cb85c">
+  <button type="button" class="close" data-dismiss="alert">&times;</button>
+  <strong>Warning!</strong> Best check yo self, you're not looking too good.
+  </div>
+  -->
+
   <div class="navbar-header ">
     <a href="index.html"> <img id="crowdfluttr" src="images/logo_full.svg" alt="Crowdfluttr"/></a>
   </div>
@@ -10,6 +18,9 @@
     </button>
   </form>
   <ul class="nav navbar-nav navbar-right">
+      <li><a href="#"><i class="fa fa-send fa-1x" title="Float an Idea"></i></a></li>
+      <li><a href="#"><i class="fa fa-bell fa-1x" title="Notifications"></i></a></li>
+      <li><a href="newIdea.html"><button type="button" class="btn btn-md btn-block btn-primary"><i class="fa fa-plus-circle fa-1x" title="Create New Idea" onclick="document.location.href='newIdea.html'"></i> Create New Idea</button></a></li>
       <li class="dropdown">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown"><div ng-show="user" style="margin-right:20px">
            Welcome, {{user.facebook.displayName}}

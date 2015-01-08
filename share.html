@@ -30,6 +30,16 @@
 			$('#tags_1').tagsInput({width:'auto'});
 		});
 		</script>
+		<script>
+		  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+		  ga('create', 'UA-57899345-1', 'auto');
+		  ga('send', 'pageview');
+
+		</script>
 	</head>
 	<!-- 	<style type="text/css">
 	#crowdfluttr {
@@ -93,6 +103,98 @@
 			</div><!-- /.modal-content -->
 			</div><!-- /.modal-dialog -->
 		</div><!-- /.modal -->
+
+
+		<script>
+var app = angular.module("app", ["firebase"]);
+
+app.constant("FBURL", "https://crowdfluttr.firebaseio.com/");
+
+app.service("Ref", ["FBURL", Firebase]);
+
+app.factory("Auth", ["$firebaseAuth", "Ref", function($firebaseAuth, Ref) {
+  return $firebaseAuth(Ref);
+}]);
+
+app.factory("Ideas", ["$firebase", "Ref", function($firebase, Ref) {
+  var childRef = Ref.child('ideas');
+  return $firebase(childRef).$asArray();
+}]);
+
+app.factory("IdeasComments", ["$firebase", "Ref", function($firebase, Ref) {
+  var childRef = Ref.child('idea-comments');
+  return $firebase(childRef).$asArray();
+}]);
+
+app.factory("IdeasObject", ["$firebase", function($firebase) {
+  var Ref = new Firebase('https://crowdfluttr.firebaseio.com/');
+  var childRef = Ref.child('ideas');
+  return $firebase(childRef).$asObject();
+}]);
+
+
+app.factory("Users", ["$firebase", function($firebase) {
+  var Ref = new Firebase('https://crowdfluttr.firebaseio.com/');
+  var childRef = Ref.child('users');
+  return $firebase(childRef).$asArray();
+}]);
+
+
+
+app.factory("Messages", ["$firebase", "Ref", function($firebase, Ref) {
+  var childRef = Ref.child('messages');
+  return $firebase(childRef).$asArray();
+}]);
+
+app.factory("Proposals", ["$firebase", "Ref", function($firebase, Ref) {
+  var childRef = Ref.child('proposals');
+  return $firebase(childRef).$asArray();
+}]);
+
+app.factory("ProposalsComments", ["$firebase", "Ref", function($firebase, Ref) {
+  var childRef = Ref.child('pr-comments');
+  return $firebase(childRef).$asArray();
+}]);
+
+app.factory("Workplans", ["$firebase", "Ref", function($firebase, Ref) {
+  var childRef = Ref.child('workplans');
+  return $firebase(childRef).$asArray();
+}]);
+
+app.factory("WorkplansComments", ["$firebase", "Ref", function($firebase, Ref) {
+  var childRef = Ref.child('wp-comments');
+  return $firebase(childRef).$asArray();
+}]);
+
+app.controller("ctrl", ["$scope","$firebase","Ideas","IdeasComments","Auth","IdeasObject","Messages","Proposals","ProposalsComments","Workplans","WorkplansComments","Users", function($scope,$firebase,Ideas,IdeasComments,Auth,IdeasObject,Messages,Proposals,ProposalsComments,Workplans,WorkplansComments,Users) {
+  $scope.ideas = Ideas;
+  $scope.users = Users;
+  $scope.ideas_comments = IdeasComments;
+  $scope.ideas_object = IdeasObject; 
+  $scope.auth = Auth;
+  $scope.messages = Messages;
+  $scope.proposals = Proposals;
+  $scope.prcomments = ProposalsComments;
+  $scope.workplans = Workplans;
+  $scope.wpcomments = WorkplansComments;
+  $scope.idea = "";
+
+  
+  $scope.UpdateFirebasUserWithString = function () {   
+    $scope.users.set({
+  alanisawesome: {
+    date_of_birth: "June 23, 1912",
+    full_name: "Alan Turing"
+  }).then(function(Ref) {
+      clearIdea();
+    });
+  };
+  
+
+app.run(["$rootScope", "Auth", function($rootScope, Auth) {
+  $rootScope.user = Auth.$getAuth();
+}]);
+		</script>
 
 	</body>
 </html>
