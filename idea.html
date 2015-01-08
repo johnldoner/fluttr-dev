@@ -2,12 +2,11 @@
 <html ng-app="app">
   <head>
      <title>CrowdFluttr</title>
-    <!-- Bootstrap Core CSS -->
+        <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+        <script src="https://code.jquery.com/ui/1.11.1/jquery-ui.min.js"></script>
         <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" rel="stylesheet" type="text/css">
-        <!-- MetisMenu CSS -->
-        <link href="https://cdnjs.cloudflare.com/ajax/libs/metisMenu/1.1.3/metisMenu.min.js" rel="stylesheet">
-        <!-- Custom CSS -->
         <link href="css/sb-admin-2.css" rel="stylesheet">
+
          <!-- Custom Fonts -->
     <link href="font-awesome-4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
         <!-- Custom Fonts -->
@@ -17,48 +16,46 @@
         <!-- Tags CSS -->
         <link rel="stylesheet" type="text/css" href="http://xoxco.com/projects/code/tagsinput/jquery.tagsinput.css" />
         <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+
+        <link href="css/angucomplete.css" rel="stylesheet">
+        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+        
+
         <link rel="shortcut icon" href="images/logosm.png">
         <link rel="stylesheet" type="text/css" href="css/navbar.css" />
-        <script src="https://code.jquery.com/ui/1.11.1/jquery-ui.min.js"></script>
+        
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.2/angular.min.js"></script>
         <script src="https://cdn.firebase.com/js/client/2.0.2/firebase.js"></script>
         <script src="https://cdn.firebase.com/libs/angularfire/0.9.0/angularfire.min.js"></script>
-          <link rel="stylesheet" href="css/jquery.datetimepicker.css">
-          <script type="text/javascript" src="js/jquery.datetimepicker.js"></script>
+        <script src="https://darylrowland.github.io/angucomplete/js/angular-touch.min.js"></script>
+        <link rel="stylesheet" href="css/jquery.datetimepicker.css">
+        <script type="text/javascript" src="js/jquery.datetimepicker.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.8/angular-touch.min.js"></script>
         <script src="app.js"></script>
-        <script src="tags.js"></script>
-        <!--use login.js for present-->
-           <!-- jQuery -->
-        <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-        <!-- Bootstrap Core JavaScript -->
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-        <!-- Metis Menu Plugin JavaScript -->
-        <script src="js/metisMenu.min.js"></script>
-        <!-- Custom Theme JavaScript -->
-        <script src="js/sb-admin-2.js"></script>
-        <!-- DataTables JavaScript -->
-        <script src="js/jquery.dataTables.js"></script>
-        <script src="js/dataTables.bootstrap.js"></script>
-        <!-- Page-Level Demo Scripts - Tables - Use for reference -->
+        <script src="js/angucomplete-dir.js"></script>
+        <script src="js/angucomplete-ctrl.js"></script>
 
         <link rel="stylesheet" href="css/colorbox.css" />
         <script src="js/colorbox.js"></script>
         <script>
           $(document).ready(function(){
             $(".iframe").colorbox({iframe:true, width:"80%", height:"80%"});
+            if(!auth) {
+              window.location.href="/";
+            };
           });
-        </script>
-        <script type="text/javascript">
-    $(function() {
 
-      $('#tags_1').tagsInput({width:'auto'});
-    });
-    </script>
+          </script>
   </head>
   <body ng-controller="ctrl">
   <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-521ec0330762c358" async="async"></script>
     <nav ng-include="'navbar.html'"  class="navbar navbar-default navbar-fixed-top" role="navigation">
     </nav>
+
+    <!-- Fluttr feedback form -->
+    <div ng-include=" 'feedback.html' "></div>
+
     <div class="navbar-default sidebar" role="navigation">
       <div class="row">
         <div class="col-lg-12">
@@ -73,6 +70,7 @@
               <li>11 Collaborators</li>
               <li>300 Views</li>
               <li>4 Updates</li>
+              <li><a href="#" ng-click="DeleteIdea(ideaID)">Delete this Idea</a>
             </ul>
         </div>
       </div>
@@ -161,16 +159,30 @@
             <div role="tabpanel" class="tab-pane fade" id="Work">
         
             </div>
-            <div role="tabpanel" class="tab-pane fade" data-toggle="modal" data-target="floatModal" id="Invite">
+            <div role="tabpanel" class="tab-pane fade" id="Invite" ng-controller="MainController">
             <div class="row">
+            <div class="large-padded-row">
+                <h3>Example 2 - People</h3>
+                <div class="padded-row">
+                    <div angucomplete id="ex2" placeholder="Search people" pause="300" selectedobject="selectedPerson" localdata="people" searchfields="firstName,surname" titlefield="firstName,surname" descriptionfield="twitter" imagefield="pic" minlength="1" inputclass="form-control"/>
+                </div>
+                <div class="" ng-show="selectedPerson">
+                    You selected <span class="bold-span">{{selectedPerson.originalObject.firstName}} {{selectedPerson.originalObject.surname}}</span>
+                </div>
+            </div>
+            <br><br>
+            <br>
             <p>You can send this idea to your friends by typing in their email addresses, separated by commas. It's simple!</p>
-
+            <div style="display:none" id="float-success" class="alert alert-success alert-dismissible" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <strong>Success!</strong> This idea has been shared with your friends.
+          </div>
               <form role="form form-inline" ng-submit="shareIdea()" id="float">
                 <div class="form-group">
-                  <input class="form-control" ng-model="emails" id="tags_1" type="text" class="tags" value="" /></input>  
+                  <input class="form-control" ng-model="emails" name="tags_1" id="tags_1" type="text" class="tags" value="" placeholder="Email addresses, separated by commas" /></input>  
                 </div>
                 <div class="form-group">
-                  <button type="submit" tab-index="-1" class="btn btn-primary">Save changes</button>       
+                  <button type="submit" tab-index="-1" class="btn btn-primary">Share with Friends</button>       
                     </form>
                   </div>
                 </div>
@@ -196,13 +208,6 @@
 <div ng-include=" 'footer.html' "></div>
 
 
-  
-
-
-
-
-
-
             <!-- Bootstrap core JavaScript
 
             <!-- Placed at the end of the document so the pages load faster -->
@@ -214,7 +219,6 @@
             $('#myTab a:first').tab('show')
             })
             </script>
-
 
 <!-- Modal -->
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">

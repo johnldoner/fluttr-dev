@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html ng-app="app">
+<head>
+	<title>User Get Test</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.2/angular.min.js"></script>
+    <script src="https://cdn.firebase.com/js/client/2.0.2/firebase.js"></script>
+    <script src="https://cdn.firebase.com/libs/angularfire/0.9.0/angularfire.min.js"></script>
+	<script>
+	var app = angular.module("app", ["firebase"]);
+
+app.controller('MainController', ['$scope', '$firebase', '$http',
+    function MainController($scope, $http, $firebase) {
+
+      /*
+        $scope.people = [
+            {firstName: "Daryl", surname: "Rowland", twitter: "@darylrowland", pic: "https://graph.facebook.com/picture?type=normal"},
+            {firstName: "Alan", surname: "Partridge", twitter: "@alangpartridge", pic: "img/alanp.jpg"},
+            {firstName: "Annie", surname: "Rowland", twitter: "@anklesannie", pic: "img/annie.jpg"}
+        ];
+        */
+
+      var ref = new Firebase("https://crowdfluttr.firebaseio.com/users");
+      // Attach an asynchronous callback to read the data at our posts reference
+      ref.on("child_added", function(snapshot) {
+        // console.log(snapshot.val());
+        var entries = snapshot.val();
+		$scope.people = entries.userName;
+		console.log(entries.userName);
+        //$scope.people = snapshot.val(userName);
+      }, function (errorObject) {
+        console.log("The read failed: " + errorObject.code);
+      });
+    }
+]);
+	</script>
+</head>
+<body ng-controller="MainController">
+<div ng-repeat="entries in people">
+	{{entries.userName}}
+</div>
+</body>
+</html>

@@ -27,6 +27,10 @@ app.factory("Messages", ["$firebase", "Ref", function($firebase, Ref) {
   return $firebase(childRef).$asArray();
 }]);
 
+function increment(value) {
+  return value + 1;
+}
+
 app.controller("ctrl", ["$scope","Ideas","Users","Auth","Messages","cfFloat", function($scope,Ideas,Users,Auth,Messages,cfFloat) {
   $scope.users = Users;
   $scope.ideas = Ideas;
@@ -48,6 +52,14 @@ app.controller("ctrl", ["$scope","Ideas","Users","Auth","Messages","cfFloat", fu
     jQuery.each( arr, function( i, val ) {
       // will change this to to dynamic ideaID once templating and permalinking is integrated
     $scope.ideaID = "-JcXFk3iWiDxisvWllLx"; 
+
+    //Increments the counter for number of idea shares
+    var origRef = new Firebase(FBURL);
+    var userPath = origRef.child("users").child($scope.user.facebook.id);
+    var shareCountPath = userPath.child("shareCount");
+    shareCountPath.transaction(increment(count));
+
+
             // Get a reference to our posts
     var ref = new Firebase("https://crowdfluttr.firebaseio.com/ideas/" + $scope.ideaID);
     // Attach an asynchronous callback to read the data at our posts reference

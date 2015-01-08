@@ -1,0 +1,113 @@
+
+<!DOCTYPE html>
+<html ng-app="app">
+  <head>
+     <title>CrowdFluttr</title>
+    <!-- Bootstrap Core CSS -->
+        <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+        <script src="https://code.jquery.com/ui/1.11.1/jquery-ui.min.js"></script>
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+        <!-- MetisMenu CSS -->
+        <!-- <link href="https://cdnjs.cloudflare.com/ajax/libs/metisMenu/1.1.3/metisMenu.min.css" rel="stylesheet"> -->
+        <!-- Custom CSS -->
+       <link href="css/sb-admin-2.css" rel="stylesheet">
+        <!-- Custom Fonts -->
+        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+        <!-- DataTables CSS -->
+        <!-- <link href="css/dataTables.bootstrap.css" rel="stylesheet"> -->
+        <!-- Tags CSS -->
+        
+        <link rel="shortcut icon" href="images/logosm.png">
+        <link rel="stylesheet" type="text/css" href="css/navbar.css" />
+        
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.2/angular.min.js"></script>
+        <script src="https://cdn.firebase.com/js/client/2.0.2/firebase.js"></script>
+        <script src="https://cdn.firebase.com/libs/angularfire/0.9.0/angularfire.min.js"></script>
+          <link rel="stylesheet" href="css/jquery.datetimepicker.css">
+          <script type="text/javascript" src="js/jquery.datetimepicker.js"></script>
+        <script src="app.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+
+        <link rel="stylesheet" href="css/colorbox.css" />
+        <script src="js/colorbox.js"></script>
+        <script>
+          $(document).ready(function(){
+            $(".iframe").colorbox({iframe:true, width:"80%", height:"80%"});
+            if(!auth) {
+              window.location.href="/";
+            };
+          });
+
+          </script>
+  </head>
+  <body ng-controller="ctrl">
+  <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-521ec0330762c358" async="async"></script>
+    <nav ng-include="'navbar.html'"  class="navbar navbar-default navbar-fixed-top" role="navigation">
+    </nav>
+
+    <!-- Fluttr feedback form -->
+    <div ng-include=" 'feedback.html' "></div>
+            
+<!-- Page Content -->
+<div style="padding-bottom:50px;padding-top:50px">
+  <div class="container-fluid">
+    <div class="row col-lg-12">
+    <h2>Feedback</h2>
+    <hr>
+      <table class="table table-striped table-bordered table-hover" style="font-size:80%">
+        <thead>
+            <tr>
+                <th>Support Ticket ID</th>
+                <th width="100">Submitted</th>
+                <th>Author Name</th>
+                <th>Author Email</th>
+                <th>Author ID</th>
+                <th>Feedback
+                <th>Rating<br>(Will Share?)</th>
+                <th>Staff Comments</th>
+                <th>Status</th>
+                <th>Reply to User</th>
+                <th>Forward To Staff</th>
+                <th>Delete Feedback</th>
+            </tr>
+        </thead>
+        <tbody>
+             <tr ng-repeat="(id,item) in feedback | filter:query">
+                <td>{{item.$id}}</td>
+                <td>{{item.timestamp | date: 'MMM d, y h:mm:ss a'}}</td>
+                <td>{{item.userName}}</td>
+                <td>{{item.userEmail}}</td>
+                <td>{{item.userId}}</td>
+                <td>{{item.feedback}}</td>
+                <td>{{item.rating}}</td>
+                <td><textarea ng-change="feedback.$save(id)" ng-model="item.comments"></textarea></td>
+                <td><select ng-model="item.status" ng-change="feedback.$save(id)">
+                  <option value="Unresolved">Unresolved</option>
+                  <option value="Resolved">Resolved</option>
+                  <option value="In Progress">In Progress</option>
+                  <option value="Implemented">Implemented</option>
+                  <option value="Rejected">Rejected</option>
+                  <option value="Forwarded to CRM">Forwarded to CRM</option>
+                  <option value="Forwarded to Email">Forwarded to Email</option>
+                </select></td>
+                <td><a target="_blank" ng-href="mailto:{{item.userEmail}}?subject=RE:%20Crowdfluttr%20Feedback&cc=johnldoner@gmail.com&body=Hi%20{{item.userName}},%0D%0A%0D%0AThanks%20for%20offering%20your%20feedback!%20Just%20to%20clarify,%20you%20said:%20'{{item.feedback}}'.%0D%0A%0D%0A[insert%20rest%20of%20message%20here]%0D%0A%0D%0A"><button class="btn btn-default"><span class="glyphicon glyphicon-envelope"></span></button></a></td>
+                <td><a target="_blank" ng-href="mailto:hello@crowdfluttr.com,chris@curalate.com?subject=Feedback&cc=johnldoner@gmail.com&body=Time:%20{{item.timestamp | date: 'MMM d, y h:mm:ss a'}}%0D%0AUsername:%20{{item.userName}}%0D%0AEmail:%20{{item.userEmail}}%0D%0AFeedback:%20{{item.feedback}}%0D%0A"><button class="btn btn-default"><span class="glyphicon glyphicon-share"></span></button></a></td>
+                <td><button type="submit" class="btn btn-default" ng-click="DeleteFeedback(id)"><span class="glyphicon glyphicon-remove"></span></button></td>
+            </tr>
+        </tbody>
+    </table>
+    </div>
+  </div>
+  <!-- /.container-fluid -->
+</div>
+<!-- /#page-wrapper -->
+
+</div>
+<!-- /#wrapper -->
+
+
+<div ng-include=" 'footer.html' "></div>
+
+
+          </body>
+        </html>

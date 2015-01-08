@@ -36,10 +36,10 @@
 {{"Hello World!"}}
 
 <input type="text" class="form-control" ng-model="storeSearch.$" placeholder="Store Search">
-<ul class="list-unstyled" ng-repeat="(id, user) in cfFloat | filter:storeSearch">
-	<li><a href="#/users/{{user.$id}}/" class="btn btn-danger btn-lg">{{user.$id}}</a>
+<ul class="list-unstyled" ng-repeat="(id, user) in users | filter:storeSearch">
+	<li><a href="#/users/{{user.userName}}/" class="btn btn-danger btn-lg">{{user.userName}}</a>
 		<div class="avatar-container">
-                                  <div class="avatar" style="background-image: url('https://graph.facebook.com/{{item.$id}}/picture?type=normal')"></div>
+                                  <div class="avatar" style="background-image: url('https://graph.facebook.com/{{user.userId}}/picture?type=normal')"></div>
                               </div>
 	</li>
 </ul>
