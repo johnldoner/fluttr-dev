@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<html ng-app="app">
+<html ng-app="app" ng-controller="ctrl">
   <head>
-     <title>CrowdFluttr</title>
+     <title ng-cloak ng-bind="ideaTitle">{{ideaTitle}}</title>
         <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
         <script src="https://code.jquery.com/ui/1.11.1/jquery-ui.min.js"></script>
         <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" rel="stylesheet" type="text/css">
@@ -36,7 +36,7 @@
 
           </script>
   </head>
-  <body ng-controller="ctrl">
+  <body>
   <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-521ec0330762c358" async="async"></script>
     <nav ng-include="'navbar.html'"  class="navbar navbar-default navbar-fixed-top" role="navigation">
     </nav>
