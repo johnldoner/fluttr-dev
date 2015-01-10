@@ -41,7 +41,7 @@
     <div id="myCarousel" class="carousel slide" data-ride="carousel">
       <div class="carousel-inner" role="listbox">
 
-        <div class="item" ng-repeat="(id,item) in ideas| filter: query| filter: {'like': '!' + user.facebook.id} | filter: {'dislike': '!' + user.facebook.id}" ng-class="{active : $first}">
+        <div class="item" ng-repeat="(id,item) in ideas| filter: query| filter: {'like': '!' + user.facebook.id} | filter: {'isPublic': true } | filter: {'dislike': '!' + user.facebook.id}" ng-class="{active : $first}">
           <div class="carousel-caption">
             <h1 style="color:#fff">{{item.idea}}</h1>
             <h3>-{{item.userName}}</h3>
@@ -52,9 +52,11 @@
             <a ng-click="LikeIdea('dislike',id)"  class="btn btn-lg btn-warning" href="#myCarousel" role="button" data-slide="next">Dislike<span class="glyphicon glyphicon-heart-empty"></span></a>
 -->
             <h3>Dislikes: {{item.likes.dislike}} / Likes: {{item.likes.like}}</h3>
-            <a ng-click="LikeIdea('like',item.idea,ideas.indexOf(item))"  class="btn btn-lg btn-success" href="#myCarousel" role="button" data-slide="next">Like<span class="glyphicon glyphicon-heart"></span></a>
-            <a class="btn btn-lg btn-default" href="idea.html?id={{ideas.$keyAt(ideas.indexOf(item))}}" role="button"><span class="glyphicon glyphicon-search"></span></a>
-            <a ng-click="LikeIdea('dislike',item.idea,ideas.indexOf(item))"  class="btn btn-lg btn-danger" href="#myCarousel" role="button" data-slide="next">Dislike<span class="glyphicon glyphicon-remove"></span></a>
+                <a ng-click="LikeIdea('dislike',item.idea,ideas.indexOf(item))"  class="btn btn-lg btn-danger" href="#myCarousel" role="button" data-slide="next">Dislike<span class="glyphicon glyphicon-remove"></span></a>
+                <a class="btn btn-lg btn-default" href="idea.html?id={{ideas.$keyAt(ideas.indexOf(item))}}" role="button"><span class="glyphicon glyphicon-search"></span></a>
+                <a ng-click="LikeIdea('like',item.idea,ideas.indexOf(item))"  class="btn btn-lg btn-success" href="#myCarousel" role="button" data-slide="next">Like<span class="glyphicon glyphicon-heart"></span></a>
+            
+        
 
 
           </div>

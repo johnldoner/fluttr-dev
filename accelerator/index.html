@@ -1,0 +1,560 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="shortcut icon" href="../images/logosm.png">
+
+    <title>Crowdfluttr</title>
+
+    <script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://code.jquery.com/ui/1.11.1/jquery-ui.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.2/angular.min.js"></script>
+    <script src="https://cdn.firebase.com/js/client/2.0.2/firebase.js"></script>
+    <script src="https://cdn.firebase.com/libs/angularfire/0.9.0/angularfire.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.8/angular-touch.min.js"></script>
+
+
+    <!-- Custom CSS -->
+    <link href="../css/homepage-landing.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Shadows+Into+Light' rel='stylesheet' type='text/css'>
+
+    <!-- CSS Animations -->
+    <link href="https://cdn.jsdelivr.net/animatecss/3.1.1/animate.min.css" rel="stylesheet">
+    <script src="../js/morphex.js"></script>
+    <script>
+    $( document ).ready(function() {
+        $("#js-rotating").Morphext({
+            animation: "fadeInUp",
+            separator: ",",
+            speed: 2000
+        });
+        $("#js-rotating-2").Morphext({
+            animation: "fadeInUp",
+            separator: ",",
+            speed: 2000
+        });
+    });
+    </script>
+    <script src="../js/typed.js"></script>
+    <script>
+      $(function(){
+          $(".element").typed({
+            strings: ["Hey, VFA! <i class='fa fa-smile-o'></i>"],
+            typeSpeed: 0
+          });
+      });
+    </script>
+
+
+    <link rel="stylesheet" href="../css/colorbox.css" />
+    <script src="../js/colorbox.js"></script>
+    <script>
+        $(document).ready(function(){
+            $(".vimeo").colorbox({iframe:true, innerWidth:800, innerHeight:600});
+            $(".iframe").colorbox({iframe:true, width:"90%", height:"90%"});
+        });
+    </script>
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-57899345-1', 'auto');
+      ga('send', 'pageview');
+
+    </script>
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <style>
+        .paid:before {    
+            font-family: 'FontAwesome';
+            content: '\f045';
+            font-size: 16pt;
+            margin:0 5px 0 -35px;
+        }
+       .additional:before {    
+            font-family: 'FontAwesome';
+            content: '\f023';
+            font-size: 16pt;
+            margin:0 5px 0 -35px;
+        }
+        .talent:before {    
+            font-family: 'FontAwesome';
+            content: '\f0c0';
+            font-size: 16pt;
+            margin:0 5px 0 -35px;
+        }
+        .services:before {    
+            font-family: 'FontAwesome';
+            content: '\f085';
+            font-size: 16pt;
+            margin:0 5px 0 -35px;
+        }
+        .volume:before {    
+            font-family: 'FontAwesome';
+            content: '\f080';
+            font-size: 16pt;
+            margin:0 5px 0 -35px;
+        }
+        .signature {
+            font-family: 'Shadows Into Light', cursive;
+        }
+    </style>
+
+</head>
+
+<body>
+
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-default navbar-fixed-top topnav" role="navigation">
+        <div class="container topnav">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand topnav" href="/"><img class="crowdfluttr" src="../images/logo_full.svg" alt="Crowdfluttr"/></a></a>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                        <li><a href="/">Home</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#problem">Problem</a></li>
+                        <li><a href="#product">Product</a></li>
+                        <li><a href="#progress">Progress</a></li>
+                        <li><a href="#marketing">Marketing</a></li>
+                        <li><a href="#monetization">Revenue Model</a></li>
+                        <li><a href="#competitors">Competitors</a></li>
+                        <li><a href="#why">Why We're Applying</a></li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
+
+    <!-- Header -->
+    <a name="about"></a>
+    <div class="intro-header">
+        <div class="container">
+
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="intro-message">
+                        <img class="logo" src="../images/logomed.png" width="188" height="188" /><br>
+                        <h1 class="element"></h1>
+                        <h3>Welcome to Crowdfluttr. We're thrilled to have you.
+                        <br>We're not just a crowdfunding site. We offer much more.</h3>
+                        <h3>Crowdfluttr is powered by <span id="js-rotating">the people, innovators, creators, students, citizens, you</span>.</h3>
+                        <hr class="intro-divider">
+                        <ul class="list-inline intro-social-buttons">
+                            <li>
+                                <a href="proposal.pdf" class="btn btn-default btn-lg"><i class="fa fa-file-pdf-o fa-fw"></i> <span class="network-name">Proposal</span></a>
+                            </li>
+                            <li>
+                                <a href="https://player.vimeo.com/video/99522814" title="Crowdfluttr" class="btn btn-default btn-lg vimeo"><i class="fa fa-youtube-play fa-fw"></i> <span class="network-name">Learn more &raquo;</span></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <!-- /.container -->
+
+    </div>
+    <!-- /.intro-header -->
+
+    <!-- Page Content -->
+
+	<a  name="services"></a>
+    <div class="content-section-a" id="about">
+
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-5 col-sm-6">
+                    <hr class="section-heading-spacer">
+                    <div class="clearfix"></div>
+                    <h2 class="section-heading">About</h2>
+                    <p class="lead">Crowdfluttr is an integrated crowdsourcing SaaS (software as a service) platform designed to help people bring the world’s best ideas to life through collaboration and validation.<br><br>It’s Linkedin for ideas, Kickstarter for work product, and Tinder for market-testing---all in one.<br><br>No idea is too small (or big) when the world is your team.</p>
+                </div>
+                <div class="col-lg-5 col-lg-offset-2 col-sm-6">
+                    <img class="img-responsive" src="../images/ipad.png" alt="">
+                </div>
+            </div>
+
+        </div>
+        <!-- /.container -->
+
+    </div>
+    <!-- /.content-section-a -->
+
+    <div class="content-section-b" id="problem">
+
+        <div class="container">
+              <!-- Example row of columns -->
+              <div class="row text-center">
+                  <div class="col-md-12"><h1>The Problem</h1>
+                  <br><i class="fa fa-question fa-5x"></i><br><br><br></div>
+              </div>
+              <div class="row">
+                <div class="col-lg-5 col-sm-6">
+                    <img class="img-responsive" src="img/confused.png" alt="">
+                </div>
+               <div class="col-lg-5 col-lg-offset-1 col-sm-6">
+                    <p class="lead">Great ideas are conceived from many different backgrounds. Many people dream of helping build a better world, but not everyone has the means (social network, capital, or time) to do so alone.<br><br>Our platform allows users to create and share ideas, gain valuable user feedback, analyze the idea validation through analytics and market testing, collaborate with others, and receive funding to make their ideas happen, through our planned partnerships with various platforms. We help people create, validate, and initiate their ideas --- from start to finish. </p>
+
+              </div>
+
+        </div>
+        <!-- /.container -->
+
+    </div>
+    <!-- /.content-section-b -->
+
+
+
+
+    <div class="content-section-b" id="product">
+
+        <div class="container">
+              <!-- Example row of columns -->
+              <div class="row text-center">
+                  <div class="col-md-12"><h1>Product: Building the world's imagination.</h1>
+                  <br><br><br></div>
+              </div>
+              <div class="row text-center">
+                <div class="col-md-4">
+                  <a><i class="fa fa-lightbulb-o fa-5x"></i></a>
+                  <h2>1. Imagine</h2>
+                  <p class="lead">Users pitch ideas to friends, public figures, or the world at large. We provide the analytics. Every idea matters. Be heard.</p>
+                  <a class="iframe" href="img/share.png"><img class="center-block" src="img/share.png" width="350"></a><br>
+                  <a class="iframe" href="img/email.png"><img class="center-block" src="img/email.png" width="350"></a>
+                </div>
+                <div class="col-md-4">
+                  <a><i class="fa fa-thumbs-o-up fa-5x fa-spin"></i></a>
+                  <h2>2. Validate</h2>
+                  <p class="lead">Discover and vote for the world's best ideas. Learn which ideas receives the most reach and traction in the market.</p>
+                  <a class="iframe" href="img/explore.png"><img class="center-block" src="img/explore.png" width="350"></a><br>
+                  <a class="iframe" href="img/idea-list.png"><img class="center-block" src="img/idea-list.png" width="350"></a>
+
+               </div>
+                <div class="col-md-4">
+                  <a><i class="fa fa-group fa-5x"></i></a>
+                  <h2>3. Collaborate</h2>
+                  <p class="lead">Collaborate with talented people from around the world to bring the idea to life. Contribute micro-tasks to bring the idea to the next level.</p>
+                  <a class="iframe" href="img/idea-page.png"><img class="center-block" src="img/idea-page.png" width="350"></a><br>
+                  <a class="iframe" href="img/notifications.png"><img class="center-block" src="img/notifications.png" width="350"></a>
+                </div>
+              </div>
+
+        </div>
+        <!-- /.container -->
+
+    </div>
+    <!-- /.content-section-b -->
+
+
+    <div class="content-section-b" id="progress">
+
+        <div class="container">
+              <!-- Example row of columns -->
+              <div class="row text-center">
+                  <div class="col-md-12"><h1>Principles and Progress</h1>
+                  <p>(AKA: The boring---but necessary---fine print.)</p>
+                  <br><br><i class="fa fa-briefcase fa-5x"></i><br><br></div>
+              </div>
+              <div class="row">
+                <div class="col-lg-6 col-sm-6">
+                    <h3>Progress and Work Flow</h3>
+                    <p class="lead">We’ve released our <strong><a href="../" target="_blank">closed beta</a></strong> with core features and ensured our <strong>platform’s virality</strong> through comprehensive <strong>integration with Facebook and AddThis</strong> for social media promotion and user acquisition, conversion, and retention, as well as planned integrations with Twitter, LinkedIn, Google Plus, and Github.<br><br>We’ve also recruited a large sample of <strong>180 "creative analysts"</strong> (beta testers), who not only provide UI/UX feedback and validation, but also help us continue to build iteratively, modeling the <strong><a href="http://theleanstartup.com/principles" target="_blank">Lean Startup methodology of validated learning: build, measure, learn</a></strong>. All product development is organized into one-week work cycles of group meetings and then <strong><a href="http://www.slideshare.net/mduchateau/lean-startup-and-agile-methods-michel-duchateau-creadelta" target="_blank">"sprints"</a></strong> to develop agreed-upon features from both our team and user feedback from our beta testers.</p>
+                    <h3>Target Audience</h3>
+                    <p class="lead">Our target audience is driven <strong>millennials who are self-starters</strong> with a strong entrepreneurial spirit, set goals, and drive for high levels of productivity. A <a href="http://www.bentley.edu/centers/center-for-women-and-business/millennials-workplace" target="_blank">2011 survey released by Bentley University</a> found that an astounding <strong>44% of millennials are interested in starting a company</strong>. Thus, we’re initially targeting these users through entrepreneurially-focused organizations which we have access and connections to, such as PennApps, Startup Weekend, and Venture for America.</p>
+                </div>
+               <div class="col-lg-6 col-sm-6">
+                    <h3>Traction and Validation</h3>
+                    <p class="lead">Our initial validation can be measured through our successful <a href="http://www.rockethub.com/projects/45116-crowdfluttr" target="_blank">crowdfunding campaign</a> where we gained more than 150 supporters and reached 110% of our goal. However, gaining validation has been built into our work cycle plan by integrating concepts from <a href="http://agilemanifesto.org/" target="_blank">agile software development</a> and clearly defining our key performance indicators for further validation.<br><br>For example, our creative analyst interviews at the end of each work cycle are focused on a scripted interview with them in-person or on the phone. We begin with outlining the problem we addressed that week and the solution we implemented, and then we ask the analysts for their feedback and suggestions. This allows us to explore specific problems potential customers are having with our platform and the process of idea creation, validation, and collaboration.</p>
+                    <h3>Key Performance Indicators</h3>
+                    <ol style="font-size:120%">
+                        <li>Acquisition (how many visitors are coming from each channel)</li>
+                        <li>Conversion (what percentage of visitors sign up to become active users)</li>
+                        <li>Retention (what percentage of users come back and revisit the site)</li>
+                        <li>Virality (what percentage of users are sharing their ideas on the platform with third-party platforms).</li>
+                    </ol>
+
+              </div>
+
+        </div>
+        <!-- /.container -->
+
+    </div>
+    <!-- /.content-section-b -->
+
+
+    <div class="content-section-b" id="marketing">
+
+        <div class="container">
+              <!-- Example row of columns -->
+              <div class="row text-center">
+                  <div class="col-md-12"><h1>Marketing</h1>
+                  <br><br>
+                    <i class="fa fa-paper-plane fa-2x"></i> &nbsp; &nbsp; &nbsp; 
+                    <i class="fa fa-arrow-right fa-2x"></i> &nbsp; &nbsp; &nbsp; 
+                    <i class="fa fa-plane fa-4x"></i> &nbsp; &nbsp; &nbsp; 
+                    <i class="fa fa-arrow-right fa-2x"></i> &nbsp; &nbsp; &nbsp; 
+                    <i class="fa fa-rocket fa-5x"></i>
+                  <br><br><br><br></div>
+              </div>
+                <div class="row">
+                    <div class="col-lg-8 col-sm-8">
+                    <h3>User Acquisition</h3>             
+                        <p class="lead">Driven by <strong>grassroots efforts, inbound marketing, and other demand generation techniques</strong> (e.g. social media, paid advertising, search engine optimization, word-of-mouth, UPenn and Columbia University posters and flyers, and email marketing). Our grassroots efforts will be driven by partnering with college organizations such as <strong>PennApps</strong> as well as <strong>Startup Weekends</strong> in New York City and Philadelphia. Our ‘creative analysts’ will also serve as <strong>campus ambassadors</strong> who will also promote us through college events, hackathons and other social functions. Press will be driven by a series of guest posts on our blog, as well as social media coverage from our friends and peers. Additional demand generation will be driven by the purchase of advertisements geared towards entrepreneurial communities. We also plan to devote a percentage of our marketing budget to purchasing and designing <strong>apparel, stickers, pens</strong>, etc. These will be distributed throughout college campuses and will be available <strong>for sale and as prizes</strong> on our company website.</p>
+                    <h3>User Conversion and Retention</h3>
+                        <p class="lead">User conversion and retention involves the sharing and collaboration of ideas between users. To ensure high conversion and retention rates coupled with low customer acquisition costs, users are inherently incentivized to recruit other users (and remain active) on the platform due to the crowdfunding model of promoting and funding their own ideas, as the success and validation of their ideas depends on how many people see (impressions) and engage with them (clicks, likes, shares, and comments). To keep our estimates conservative, we only expect the users that were added in prior recruitment cycles to send out invitations. Based on this model, we need a conversion rate of 10% to reach our goal of 8,000 users by January 2016. However, because of social media integration, our combined grassroots and online recruitment model, and inherent incentives, we should have no problem obtaining conversion rates well over 20%.</p>
+
+                    </div>
+                    <div class="col-lg-4 col-sm-4">
+                        <img class="img-responsive pull-right" src="img/ad.jpeg" width="400" alt="">
+                    </div>
+                </div>
+        </div>
+        <!-- /.container -->
+
+    </div>
+    <!-- /.content-section-b -->
+
+
+
+        <div class="content-section-b" id="monetization">
+
+        <div class="container">
+              <!-- Example row of columns -->
+              <div class="row text-center">
+                  <div class="col-md-12"><h1>But Wait!!!!</h1>
+                  <h2>How the heck are we gonna make $$$???</h2>
+                  <p>(Don't worry. We've got you covered.)</p>
+                  <br><br><i class="fa fa-dollar fa-5x"></i><br><br><br><br></div>
+              </div>
+              <div class="row">
+                <div class="col-lg-6 col-sm-6">
+
+                <div class="panel panel-success">
+                     <div class="panel-heading"><h3 class="panel-title">Freemium Model -- Subscriptions</h3></div>
+                        <div class="panel-body">
+                            <ul style="padding-left:40px;list-style-type:none">
+                                <li class="paid"><strong><u>Paid Promotion of Ideas</u></strong> -- Some users might pay to have their ideas promoted and displayed more on the site and through our partners, just like Facebook users can boost their pages by paying for increased ad space. There could be two pricing tiers: free and subscriber. Subscribers will enjoy lower promotional fees.</li>
+                                <li class="additional"><strong><u>Additional Private Ideas</u></strong> -- Users can subscribe to gain ability to create more private ideas, similar to Github’s plans for private repos ($7 per month for the 6th and above private repo).</li>
+                                <li class="talent"><strong><u>Talent Acquisition Service</u></strong> -- Employers might also pay to gain access to lists of most productive contributors and idea creators, similar to Github Jobs.</li>
+                                <li class="services"><strong><u>Subscriptions for Additional Services</u></strong> -- Everyone will have equal access to idea submission, validation, and collaboration, but paying users will have better access to advanced promotion and analytics tools.</li>
+                                <li class="volume"><strong><u>Metered Promotion and Volume-Based Pricing</u></strong> -- Potentially, we could also charge “free” ideas will a high-volume of activity (likes, shares, or comments) a “volume fee” or receive a portion of the funds raised. This fee would be waived for paying subscribers.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+               <div class="col-lg-6 col-sm-6">
+                    <div class="panel panel-success">
+                        <div class="panel-heading"><h3 class="panel-title">General Advertisements</h3></div>
+                        <div class="panel-body">
+                            Google Adwords or banner ads in a way that is unobtrusive and preserves our value proposition. For Facebook, advertising generates almost $3 billion annually for the company. Because we are a social platform, once we have a critical mass of users, we can generate thousands of dollars in monthly revenues from advertising alone.
+                        </div>
+                    </div>
+                    <div class="panel panel-success">
+                        <div class="panel-heading"><h3 class="panel-title">Third Party Lead Generation through Referrals</h3></div>
+                        <div class="panel-body">
+                            <p>We also plan to have partnerships with other companies. We provide resources to make ideas happen for our users and give access to them at a discounted price. Possible and planned partnerships are:</p>
+                                <ul>
+                                    <li><strong><u>Kickstarter or a similar crowdfunding site</u></strong> -- We will take a cut of the funds raised for referring the customer.
+                                    <li><strong><u>Name.com or a similar domain registrar</u></strong> -- to provide domains at a cheaper price for our users. We will take a cut of the sale for referring the customer.
+                                    <li><strong><u>Instapage or Unbounce</u></strong> -- to provide landing pages for further idea validation and market testing. We will take a cut of the sale for referring the customer.
+                                    <li><strong><u>Google</u></strong> -- to provide a space for user collaboration and process and task management through Google Drive and Google Hangouts.
+                                    <li><strong><u>Twilio</u></strong> -- Users can pay to send their ideas to their friends via SMS. We will take a cut of the sale for referring the customer.
+                                </ul>
+
+                        </div>
+                    </div>
+              </div>
+
+        </div>
+        <!-- /.container -->
+
+    </div>
+    <!-- /.content-section-b -->
+
+
+    <div class="content-section-b" id="competitors">
+
+        <div class="container">
+              <!-- Example row of columns -->
+              <div class="row text-center">
+                  <div class="col-md-12"><h1>Competitors</h1>
+                  <br><br><i class="fa fa-asterisk fa-5x"></i><br><br><br><br></div>
+                  <img src="img/logos/idea-squares.png" alt="" width="100" class="img-thumbnail">
+                  <img src="img/logos/ideapod.jpg" alt="" width="100" class="img-thumbnail">
+                  <img src="img/logos/quirky_logo.jpg" width="100" alt="" class="img-thumbnail">
+                  <img src="img/logos/crowdflower.png" width="100" alt="" class="img-thumbnail">
+                  <img src="img/logos/product-hunt.jpg" width="100" alt="" class="img-thumbnail">
+                  <img src="img/logos/startup-weekend.jpg" width="100" alt="" class="img-thumbnail">
+                  <img src="img/logos/wisdom-of-the-crowd.png" width="100" alt="" class="img-thumbnail"><br><br>
+                  <h3>What Makes Us Different:</h3>
+                </div>
+                <div class="row">
+                  <div class="col-md-8 col-md-offset-2">
+                    <p class="lead">We share similarities with our competitors in that we promote the submission and sharing of ideas among the crowd. However, we differentiate ourselves by offering <strong>comprehensive methods to create, market-test and support ideas</strong> through our <strong>privacy controls, integration with AddThis share buttons, and planned partnerships</strong>. Thus, a user who is unsure whether or not their idea will be successful can <strong>recruit other users</strong> to be on the team organized around making the idea happen, <strong>collaborate with other users online and in-person</strong>, <strong>track idea impressions and shares</strong>, and <strong>monitor idea progression and task management</strong> through Asana. <br><br>When the idea is ready to be fully publicly funded, the user can <strong>share the idea with over 300+ online social media and sharing platforms</strong>, such as Facebook, Twitter, Google Plus, Pinterest, LinkedIn, and Github. Because ideas are subject to validation by the crowd and the free market through likes/dislikes and comments, this addresses and <strong><u>protects both quality and equity</u></strong>. Thus, we offer SaaS (software as a service) to offer a comprehensive, horizontally-integrated platform of idea creation and validation, social media promotion and analytics, team and task management, and fundraising. </p>
+
+              </div>
+
+        </div>
+        <!-- /.container -->
+
+    </div>
+    <!-- /.content-section-b -->
+
+
+    <div class="content-section-b" id="why">
+
+        <div class="container">
+              <!-- Example row of columns -->
+              <div class="row">
+                  <div class="col-md-12 text-center"><h1>Why We're Applying</h1>
+                  <br><br><i class='fa fa-bolt fa-5x'></i><br><br><br>
+                  </div>
+                  </div>
+                <div class="row">
+                <div class="col-md-8 col-md-offset-2">
+                  <p class="lead">We’re applying to this accelerator to rapidly build this company in order to attract potential investors, build our user base, and further validate our proof-of-concept. <br><br>
+                During the accelerator, our goals are to validate our revenue model through A/B testing, in addition to determining our best channels of customer acquisition. More concretely, we want to dramatically increase the number of site visits and impressions, increase conversion rate, maintain a high retention rate, and increase our virality.  
+                <br><br>We expect to be surrounded with a passionate group of entrepreneurs that we’ll be spending 7,000+ hours with. We expect to speak with experts on different aspects of leading a company and gain advice on how to deal with investors and the best ways to gain user traction. We also look forward to one-on-one time with seasoned entrepreneurs that can help us bring this idea and better refine our business pitch. <br><br>By the end of May, we want to gain a competitive edge on similar crowdfunding and crowdsourcing platforms but be unique with our SaaS model, and be prepared to decide on whether to apply to another accelerator, pursue a Series A round, or seek VFA seed investing to continue to build our product.</p>
+                  </div>
+              </div>
+
+        </div>
+        <!-- /.container -->
+
+    </div>
+    <!-- /.content-section-b -->
+
+
+    <div class="content-section-a" id="team">
+
+        <div class="container">
+
+            <div class="row">
+                <div class="col-lg-5 col-sm-6">
+                    <hr class="section-heading-spacer">
+                    <div class="clearfix"></div>
+                    <h2 class="section-heading">Crowdfluttr<br>is powered by <span id="js-rotating-2">the people, innovators, creators, students, citizens, you</span>.</h2>
+                    <p class="lead">Crowdfluttr is founded by a motley crew of idealists, dreamers, and misfits who believe that every idea deserves a chance to evolve into something greater. If you have an idea too big for you to lift on your own, have no fear. All things are possible when we all work together.<br><br>Help Crowdfluttr grow. Together, let's realize the world's imagination.</p>
+                </div>
+                <div class="col-lg-5 col-lg-offset-2 col-sm-6"><br><br><br><br><br><div style="overflow:hidden;margin-bottom:-100px;max-height:200px">
+                    <img class="img-responsive" src="../images/world.png" alt=""></div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                <hr>
+                    
+                    <h2>Thank you.</h2><br><br>
+                    
+                    <h2>-<span class="signature">Chris, Cornelius, John, Wei, Pranav, Eric, and Alex</span></h2><br><br><br>
+                    <img class="img-responsive img-thumbnail center-block" src="img/team.png" alt=""></div>
+                </div>
+            </div>
+
+        </div>
+        <!-- /.container -->
+
+    </div>
+    <!-- /.content-section-a -->
+
+	<a  name="contact"></a>
+    <div class="banner">
+
+        <div class="container">
+
+            <div class="row">
+                <div class="col-lg-6">
+                    <h2>Be Great.<br>Fluttr.</h2>
+                </div>
+                <div class="col-lg-6 text-center" id="#contact">
+                    <ul class="list-inline banner-social-buttons">
+                        <li>
+                            <a href="https://twitter.com/crowdfluttr" class="btn btn-default btn-lg"><i class="fa fa-twitter fa-fw"></i> <span class="network-name">Twitter</span></a>
+                        </li>
+                        <li>
+                            <a href="https://www.facebook.com/CrowdFluttr" class="btn btn-default btn-lg"><i class="fa fa-facebook fa-fw"></i> <span class="network-name">Facebook</span></a>
+                        </li>
+                    </ul>
+                    
+                </div>
+                <div class="col-lg-6 text-center">
+                    <br>
+                    <h2 class="pull-right">&nbsp;&nbsp;&nbsp;&#104;ello&#64;crowdflutt&#114;&#46;c&#111;m</h2>
+                </div>
+            </div>
+
+        </div>
+        <!-- /.container -->
+
+    </div>
+    <!-- /.banner -->
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <ul class="list-inline">
+                        <li><a href="/">Home</a></li>
+                        <li class="footer-menu-divider">&sdot;</li>
+                        <li><a href="#about">About</a></li>
+                        <li class="footer-menu-divider">&sdot;</li>
+                        <li><a href="#problem">Problem</a></li>
+                        <li class="footer-menu-divider">&sdot;</li>
+                        <li><a href="#product">Product</a></li>
+                        <li class="footer-menu-divider">&sdot;</li>
+                        <li><a href="#progress">Progress</a></li>
+                        <li class="footer-menu-divider">&sdot;</li>
+                        <li><a href="#marketing">Marketing</a></li>
+                        <li class="footer-menu-divider">&sdot;</li>
+                        <li><a href="#monetization">Revenue Model</a></li>
+                        <li class="footer-menu-divider">&sdot;</li>
+                        <li><a href="#competitors">Competitors</a></li>
+                        <li class="footer-menu-divider">&sdot;</li>
+                        <li><a href="#why">Why We're Applying</a></li>
+                    </ul>
+                    <p class="copyright text-muted small">
+                    Made with &nbsp; <i class="fa fa-heart"></i> &nbsp; and &nbsp; <i class="fa fa-users"></i> &nbsp; in Philadelphia.
+                    <br>Copyright &copy;2014-2015 Crowdfluttr. All Rights Reserved.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+</body>
+
+</html>
