@@ -1,0 +1,53 @@
+﻿Merge branch 'master' of https://github.com/johnldoner/fluttr-dev
+
+Conflicts:
+	explore.html
+	idea.html
+#
+# It looks like you may be committing a merge.
+# If this is not correct, please remove the file
+#	.git/MERGE_HEAD
+# and try again.
+
+
+# Please enter the commit message for your changes. Lines starting
+# with '#' will be ignored, and an empty message aborts the commit.
+# On branch master
+# Your branch and 'origin/master' have diverged,
+# and have 3 and 11 different commits each, respectively.
+#   (use "git pull" to merge the remote branch into yours)
+#
+# All conflicts fixed but you are still merging.
+#
+# Changes to be committed:
+#	modified:   .DS_Store
+#	new file:   README.html
+#	new file:   README.md
+#	modified:   app.js
+#	modified:   browse.html
+#	new file:   browseleft.html
+#	new file:   config.codekit
+#	new file:   css/jquery.datetimepicker.css
+#	modified:   css/navbar.css
+#	modified:   editprofile.html
+#	modified:   explore.html
+#	modified:   float.html
+#	modified:   float.js
+#	new file:   floatSearch.html
+#	new file:   floatTest.html
+#	modified:   footer.html
+#	modified:   growl.html
+#	renamed:    projectdashboard.html -> idea.html
+#	modified:   index.html
+#	new file:   js/jquery.datetimepicker.js
+#	modified:   min/app-min.js
+#	new file:   min/float-min.js
+#	modified:   navbar.html
+#	new file:   newIdea.html
+#	modified:   proposal.html
+#	modified:   share.html
+#	modified:   signup.html
+#	new file:   userSearch.html
+#	modified:   userdashboard.html
+#
+
