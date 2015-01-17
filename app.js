@@ -1,21 +1,4 @@
 
-function AuthHandler(error, authData) {
-  if (error) {
-    console.log("Login Failed!", error);
-  } else {
-    console.log("Authenticated successfully with payload:" + authData);
-      window.setTimeout(function(){
-          window.location.reload();
-          window.location.href = "explore.html";
-      }, 1000);
-  }
-};
-
-function increment(value) {
-  return value + 1;
-}
-
-
 /*
 function increment(value) {
   return value + 1;
@@ -75,9 +58,6 @@ app.factory("WorkplansComments", ["$firebase", "Ref", function($firebase, Ref) {
   return $firebase(childRef).$asArray();
 }]);
 
-<<<<<<< HEAD
-app.controller("ctrl", ["$scope","$firebase","Ideas","IdeasComments","Auth","IdeasObject","Messages","Proposals","ProposalsComments","Workplans","WorkplansComments", function($scope,$firebase,Ideas,IdeasComments,Auth,IdeasObject,Messages,Proposals,ProposalsComments,Workplans,WorkplansComments) {
-=======
 app.factory("cfFloat", ["$firebase", "Ref", function($firebase, Ref) {
   var childRef = Ref.child('float');
   return $firebase(childRef).$asArray();
@@ -97,7 +77,7 @@ app.factory("LikedIdeas", ["$firebase","Ref", function($firebase,Ref) {
 }]);
 
 app.controller("ctrl", ["$scope","$firebase","cfFloat","Ideas","IdeasComments","Auth","Messages","Proposals","ProposalsComments","Workplans","WorkplansComments","Projects","LikedIdeas","Feedback", function($scope,$firebase,cfFloat,Ideas,IdeasComments,Auth,Messages,Proposals,ProposalsComments,Workplans,WorkplansComments,Projects,LikedIdeas,Feedback) {
->>>>>>> c3cb1b1302c2828049c1986df54030949a73ab3a
+
   $scope.ideas = Ideas;
   $scope.ideas_comments = IdeasComments;
   $scope.auth = Auth;
@@ -107,11 +87,8 @@ app.controller("ctrl", ["$scope","$firebase","cfFloat","Ideas","IdeasComments","
   $scope.workplans = Workplans;
   $scope.wpcomments = WorkplansComments;
   $scope.projects = Projects;
-<<<<<<< HEAD
-=======
   $scope.cfFloat = cfFloat;
   $scope.feedback = Feedback;
->>>>>>> c3cb1b1302c2828049c1986df54030949a73ab3a
   $scope.idea = "";
   $scope.FBURL = "https://crowdfluttr.firebase.com/";
 
@@ -165,20 +142,6 @@ app.controller("ctrl", ["$scope","$firebase","cfFloat","Ideas","IdeasComments","
   $scope.proposalID = proposalID;
   $scope.wpID = wpID;
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-  $scope.GoogleLogin = function () {   
-    window.location.href = "explore.html";
-    $scope.auth.$authWithOAuthPopup('google')();
-    console.log(user.google.displayName);
-  };
-
-  $scope.FacebookLogin = function () {   
-    // window.location.href = "explore.html";
-    $scope.auth.$authWithOAuthPopup('facebook')();
-    console.log(user.facebook.displayName);
-=======
-=======
       function AuthHandler(error, authData) {
       if (error) {
         console.log("Login Failed!", error);
@@ -204,8 +167,6 @@ app.controller("ctrl", ["$scope","$firebase","cfFloat","Ideas","IdeasComments","
       }
     }
 
-
->>>>>>> b9fb21cb44829c05ab5ab50979e64bd521a530bf
   $scope.FacebookLogin = function () {  
     $scope.auth.$authWithOAuthRedirect('facebook', AuthHandler())(); //Need to have empty parenthesis for login to be called
     console.log(user.facebook.displayName);
@@ -222,18 +183,17 @@ app.controller("ctrl", ["$scope","$firebase","cfFloat","Ideas","IdeasComments","
         // window.location.reload();
         window.location.href = "/";
     }, 500);
->>>>>>> c3cb1b1302c2828049c1986df54030949a73ab3a
+
   };
 
+/*
   $scope.checkAuth = function () {
     if (!Auth.$getAuth()) {
     window.location.href = "/";
     }
   };
+*/
 
-<<<<<<< HEAD
-  $scope.UpdateFirebaseWithString = function () {   
-=======
   $scope.homepageRedirect = function () {
     if (Auth.$getAuth()) {
     window.location.href = "/home-B.html";
@@ -242,11 +202,6 @@ app.controller("ctrl", ["$scope","$firebase","cfFloat","Ideas","IdeasComments","
 
   // use this function on newIdea.html
   $scope.newIdea = function () {   
-<<<<<<< HEAD
->>>>>>> c3cb1b1302c2828049c1986df54030949a73ab3a
-    $scope.ideas.$add({
-          idea: $scope.idea,
-=======
     if($scope.privacy == null || $scope.privacy == undefined) {
       $scope.privacy = "false";
     }
@@ -258,43 +213,30 @@ app.controller("ctrl", ["$scope","$firebase","cfFloat","Ideas","IdeasComments","
           isPublic: $scope.privacy,
           // targetDate: $scope.idea_expected_launch,
           // ideaPic: $scope.idea_pic,
->>>>>>> b9fb21cb44829c05ab5ab50979e64bd521a530bf
           userId: $scope.user.facebook.id,
           userName: $scope.user.facebook.displayName,
           timestamp: Date.now()
     }).then(function(Ref) {
-<<<<<<< HEAD
       clearIdea();
-=======
       console.log("Success!");
       // window.location.href="explore.html";
       $( "#newIdea" ).hide( "slow" );
       $( "#newIdea-success" ).fadeIn( "slow" );
     //  $('#newIdeaModal').modal('hide');
      // ideaNumberIncrement();
->>>>>>> b9fb21cb44829c05ab5ab50979e64bd521a530bf
     });
     ideaNumberIncrement();
   };
 
-<<<<<<< HEAD
-  function ideaNumberIncrement() {
-=======
 /*
    function ideaNumberIncrement() {
->>>>>>> b9fb21cb44829c05ab5ab50979e64bd521a530bf
     var ref = new Firebase(FBURL);
     var userPath = ref.child("users").child($scope.user.facebook.id);
     var ideaCountPath = userPath.child("ideaCount");
     ideaCountPath.transaction(increment(count));
   }
-<<<<<<< HEAD
-
-<<<<<<< HEAD
-=======
-=======
 */
->>>>>>> b9fb21cb44829c05ab5ab50979e64bd521a530bf
+
   // Quick add new idea on navbar
   $scope.qnewIdea = function (idea_title) {   
     $scope.ideas.$add({
@@ -334,7 +276,6 @@ app.controller("ctrl", ["$scope","$firebase","cfFloat","Ideas","IdeasComments","
     });
   };
 
->>>>>>> c3cb1b1302c2828049c1986df54030949a73ab3a
   //-------------------PROJECT CODE---------------------------//
 
   $scope.addProject = function() {
@@ -344,16 +285,6 @@ app.controller("ctrl", ["$scope","$firebase","cfFloat","Ideas","IdeasComments","
       projTitle: $scope.projTitle,
       projBody: $scope.projBody,
       timestamp: Date.now(),
-<<<<<<< HEAD
-      userID: $scpe.user.facebook.id,
-      username: $scope.user.facebook.displayName
-    });
-    var ref = new Firebase(FBURL);
-    var userPath = ref.child("users").child($scope.user.facebook.id);
-    var projectCountPath = userPath.child("projectCount");
-    projectCountPath.transaction(increment(count));
-  }
-=======
       userID: $scope.user.facebook.id,
       username: $scope.user.facebook.displayName
     });
@@ -364,7 +295,6 @@ app.controller("ctrl", ["$scope","$firebase","cfFloat","Ideas","IdeasComments","
     projectCountPath.transaction(increment(count));
     */
   };
->>>>>>> c3cb1b1302c2828049c1986df54030949a73ab3a
 
   $scope.editProject = function(projID) {
     var newTitle = $scope.projTitle;
@@ -375,19 +305,15 @@ app.controller("ctrl", ["$scope","$firebase","cfFloat","Ideas","IdeasComments","
       projTitle: newTitle,
       projBody: newBody
     });
-<<<<<<< HEAD
   }
 
   $scope.deleteProject = function(item) {
     $scope.projects.$remove(item);
-  }
-=======
   };
 
   $scope.deleteProject = function(item) {
     $scope.projects.$remove(item);
   };
->>>>>>> c3cb1b1302c2828049c1986df54030949a73ab3a
 
   //----------------------------------------------------------//
 
@@ -479,43 +405,18 @@ app.controller("ctrl", ["$scope","$firebase","cfFloat","Ideas","IdeasComments","
     };
 
   $scope.shareIdea = function () {
-<<<<<<< HEAD
     var arr = $( "input" ).val().split(',');
     jQuery.each( arr, function( i, val ) {
-      // will change this to to dynamic ideaID once templating and permalinking is integrated
-    $scope.ideaID = "-JbSSmv_rJufUKukdZ5c"; 
-            // Get a reference to our posts
-    var ref = new Firebase("https://crowdfluttr.firebaseio.com/ideas/" + $scope.ideaID);
-    // Attach an asynchronous callback to read the data at our posts reference
-    ref.on("value", function(snapshot) {
-      console.log(snapshot.val());
-    }, function (errorObject) {
-      console.log("The read failed: " + errorObject.code);
-    });
-
-=======
-    var ref = new Firebase("https://crowdfluttr.firebaseio.com/ideas"+ideaID);
-    ref.on("value", function(snapshot) {
-      var getTitle = snapshot.val();
-      console.log("Idea Title: " + getTitle.idea);
-      $scope.ideaTitle = getTitle.idea;
-    });
-    var arr = $( "#tags_1" ).val().split(',');
-    jQuery.each( arr, function( i, val ) {
->>>>>>> c3cb1b1302c2828049c1986df54030949a73ab3a
         $scope.val = val;
         $scope.messages.$add({
             ideaID: $scope.ideaID,
-<<<<<<< HEAD
             recipent: $scope.val,
             // sender: $scope.user.google.email
-=======
             ideaTitle: $scope.ideaTitle,
             recipientEmail: $scope.val,
             senderName: $scope.user.facebook.displayName,
             senderID: $scope.user.facebook.id,
             timestamp: Date.now()
->>>>>>> c3cb1b1302c2828049c1986df54030949a73ab3a
         }).then(function() {
           console.log('Idea added: ' + val);
 
@@ -538,17 +439,11 @@ app.controller("ctrl", ["$scope","$firebase","cfFloat","Ideas","IdeasComments","
             });   
         });
       return;
-<<<<<<< HEAD
-    });  };
-=======
-    });
-      // $('#floatModal').modal('hide');
       $scope.emails = "";
       $( "#float-success" ).fadeIn( "slow" );
-      };
->>>>>>> c3cb1b1302c2828049c1986df54030949a73ab3a
+    });
+  };
 
-//
 
 
   $scope.DeleteIdea = function (item) {
@@ -576,24 +471,19 @@ app.controller("ctrl", ["$scope","$firebase","cfFloat","Ideas","IdeasComments","
 // BEGIN: PERMALINKS =========================================================
   // GET Idea IDs
     var idearef = new Firebase("https://crowdfluttr.firebaseio.com/ideas/" + ideaID);
-<<<<<<< HEAD
-=======
  /*
->>>>>>> c3cb1b1302c2828049c1986df54030949a73ab3a
     var ideasync = $firebase(idearef);
     var ideasyncObject = ideasync.$asObject();
     ideasyncObject.$bindTo($scope, "data");
 
   // GET Proposal IDs
     var propref = new Firebase("https://crowdfluttr.firebaseio.com/proposals/" + proposalID);
-<<<<<<< HEAD
     var propsync = $firebase(propref);
     var propsyncObject = propsync.$asObject();
     propsyncObject.$bindTo($scope, "data");
 
   // GET Workplan IDs
     var wpref = new Firebase("https://crowdfluttr.firebaseio.com/workplans/" + wpID);
-=======
  /*
     var propsync = $firebase(propref);
     var propsyncObject = propsync.$asObject();
@@ -602,10 +492,10 @@ app.controller("ctrl", ["$scope","$firebase","cfFloat","Ideas","IdeasComments","
   // GET Workplan IDs
     var wpref = new Firebase("https://crowdfluttr.firebaseio.com/workplans/" + wpID);
   /*
->>>>>>> c3cb1b1302c2828049c1986df54030949a73ab3a
     var wpsync = $firebase(wpref);
     var wpsyncObject = wpsync.$asObject();
     wpsyncObject.$bindTo($scope, "data");
+    */
 
     // GET Information from Idea IDs
   idearef.on("value", function(snapshot) {
@@ -653,10 +543,7 @@ app.controller("ctrl", ["$scope","$firebase","cfFloat","Ideas","IdeasComments","
   }, function (errorObject) {
     console.log("The read failed: " + errorObject.code);
   });
-<<<<<<< HEAD
-=======
 */
->>>>>>> c3cb1b1302c2828049c1986df54030949a73ab3a
 
 // END: PERMALINKS =========================================================
 
