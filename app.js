@@ -147,35 +147,29 @@ app.controller("ctrl", ["$scope","$firebase","cfFloat","Ideas","IdeasComments","
         console.log("Login Failed!", error);
       } else {
         console.log("Authenticated successfully with payload:" + authData);
+        /*
           window.setTimeout(function(){
-              // window.location.reload();
+              window.location.reload();
+                window.setTimeout(function(){
+              }, 500);
               window.location.href = "home-B.html";
+
+
+
               console.log(user.facebook.displayName);
-              /*
-              var ref = new Firebase("https://crowdfluttr.firebaseio.com/");
-              var userPath = ref.child("users").child($scope.user.facebook.id);
-              userPath.$add({ 
-                name: $scope.user.facebook.displayName, 
-                ID: $scope.user.facebook.id,
-                email: $scope.user.facebook.email,
-                last_login: Date.now()
-              });
-              var loginCountPath = userPath.child("loginCount");
-              loginCountPath.transaction(increment(count));
-              */
+              
           }, 1000);
+*/
       }
     }
 
   $scope.FacebookLogin = function () {  
-    $scope.auth.$authWithOAuthRedirect('facebook', AuthHandler())(); //Need to have empty parenthesis for login to be called
+    $scope.auth.$authWithOAuthPopup('facebook', AuthHandler())();
+   //Need to have empty parenthesis for login to be called
     console.log(user.facebook.displayName);
-    var ref = new Firebase(FBURL);
-    var userPath = ref.child("users").child($scope.user.facebook.id);
-    var loginCountPath = userPath.child("loginCount");
-    loginCountPath.transaction(increment(count));
-    window.location.href = "explore.html";
-  };
+  }.then(function() {
+    window.location.href = "home-B.html";
+  });
 
   $scope.logout = function () {
     $scope.auth.$unauth();
