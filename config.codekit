@@ -11,6 +11,182 @@
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
 		},
+	"\/accelerator\/img\/ad.jpeg": {
+		"fileType": 16384,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 139521,
+		"inputAbbreviatedPath": "\/accelerator\/img\/ad.jpeg",
+		"outputAbbreviatedPath": "\/accelerator\/img\/ad.jpeg",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/accelerator\/img\/confused.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 149996,
+		"inputAbbreviatedPath": "\/accelerator\/img\/confused.png",
+		"outputAbbreviatedPath": "\/accelerator\/img\/confused.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/accelerator\/img\/email.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 43245,
+		"inputAbbreviatedPath": "\/accelerator\/img\/email.png",
+		"outputAbbreviatedPath": "\/accelerator\/img\/email.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/accelerator\/img\/explore.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 152031,
+		"inputAbbreviatedPath": "\/accelerator\/img\/explore.png",
+		"outputAbbreviatedPath": "\/accelerator\/img\/explore.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/accelerator\/img\/idea-list.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 111070,
+		"inputAbbreviatedPath": "\/accelerator\/img\/idea-list.png",
+		"outputAbbreviatedPath": "\/accelerator\/img\/idea-list.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/accelerator\/img\/idea-page.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 85707,
+		"inputAbbreviatedPath": "\/accelerator\/img\/idea-page.png",
+		"outputAbbreviatedPath": "\/accelerator\/img\/idea-page.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/accelerator\/img\/logos\/crowdflower.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 3749,
+		"inputAbbreviatedPath": "\/accelerator\/img\/logos\/crowdflower.png",
+		"outputAbbreviatedPath": "\/accelerator\/img\/logos\/crowdflower.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/accelerator\/img\/logos\/idea-squares.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 3873,
+		"inputAbbreviatedPath": "\/accelerator\/img\/logos\/idea-squares.png",
+		"outputAbbreviatedPath": "\/accelerator\/img\/logos\/idea-squares.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/accelerator\/img\/logos\/ideapod.jpg": {
+		"fileType": 16384,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 17114,
+		"inputAbbreviatedPath": "\/accelerator\/img\/logos\/ideapod.jpg",
+		"outputAbbreviatedPath": "\/accelerator\/img\/logos\/ideapod.jpg",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/accelerator\/img\/logos\/product-hunt.jpg": {
+		"fileType": 16384,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 41450,
+		"inputAbbreviatedPath": "\/accelerator\/img\/logos\/product-hunt.jpg",
+		"outputAbbreviatedPath": "\/accelerator\/img\/logos\/product-hunt.jpg",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/accelerator\/img\/logos\/quirky_logo.jpg": {
+		"fileType": 16384,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 25381,
+		"inputAbbreviatedPath": "\/accelerator\/img\/logos\/quirky_logo.jpg",
+		"outputAbbreviatedPath": "\/accelerator\/img\/logos\/quirky_logo.jpg",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/accelerator\/img\/logos\/startup-weekend.jpg": {
+		"fileType": 16384,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 25741,
+		"inputAbbreviatedPath": "\/accelerator\/img\/logos\/startup-weekend.jpg",
+		"outputAbbreviatedPath": "\/accelerator\/img\/logos\/startup-weekend.jpg",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/accelerator\/img\/logos\/wisdom-of-the-crowd.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 75652,
+		"inputAbbreviatedPath": "\/accelerator\/img\/logos\/wisdom-of-the-crowd.png",
+		"outputAbbreviatedPath": "\/accelerator\/img\/logos\/wisdom-of-the-crowd.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/accelerator\/img\/notifications.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 65357,
+		"inputAbbreviatedPath": "\/accelerator\/img\/notifications.png",
+		"outputAbbreviatedPath": "\/accelerator\/img\/notifications.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/accelerator\/img\/share.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 105223,
+		"inputAbbreviatedPath": "\/accelerator\/img\/share.png",
+		"outputAbbreviatedPath": "\/accelerator\/img\/share.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/accelerator\/img\/team.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 304299,
+		"inputAbbreviatedPath": "\/accelerator\/img\/team.png",
+		"outputAbbreviatedPath": "\/accelerator\/img\/team.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
 	"\/app.js": {
 		"fileType": 64,
 		"ignore": 0,
@@ -117,6 +293,15 @@
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
 		},
+	"\/browseleft.html": {
+		"fileType": 8192,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/browseleft.html",
+		"outputAbbreviatedPath": "No Output Path",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0
+		},
 	"\/css\/3-col-portfolio.css": {
 		"fileType": 16,
 		"ignore": 0,
@@ -194,6 +379,15 @@
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
 		"inputAbbreviatedPath": "\/css\/font-awesome.min.css",
+		"outputAbbreviatedPath": "No Output Path",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0
+		},
+	"\/css\/homepage-landing.css": {
+		"fileType": 16,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/css\/homepage-landing.css",
 		"outputAbbreviatedPath": "No Output Path",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
@@ -952,6 +1146,33 @@
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
 		},
+	"\/home-A.html": {
+		"fileType": 8192,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/home-A.html",
+		"outputAbbreviatedPath": "No Output Path",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0
+		},
+	"\/home-B.html": {
+		"fileType": 8192,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/home-B.html",
+		"outputAbbreviatedPath": "No Output Path",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0
+		},
+	"\/home-C.html": {
+		"fileType": 8192,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/home-C.html",
+		"outputAbbreviatedPath": "No Output Path",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0
+		},
 	"\/idea.html": {
 		"fileType": 8192,
 		"ignore": 0,
@@ -1214,6 +1435,165 @@
 		"outputPathIsSetByUser": 0,
 		"processed": 0
 		},
+	"\/images\/ipad.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 721534,
+		"inputAbbreviatedPath": "\/images\/ipad.png",
+		"outputAbbreviatedPath": "\/images\/ipad.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/images\/javascript - Filter Firebase data using AngularJS - Stack Overflow.html": {
+		"fileType": 8192,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/images\/javascript - Filter Firebase data using AngularJS - Stack Overflow.html",
+		"outputAbbreviatedPath": "No Output Path",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0
+		},
+	"\/images\/javascript - Filter Firebase data using AngularJS - Stack Overflow_files\/all.css": {
+		"fileType": 16,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/images\/javascript - Filter Firebase data using AngularJS - Stack Overflow_files\/all.css",
+		"outputAbbreviatedPath": "No Output Path",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0
+		},
+	"\/images\/javascript - Filter Firebase data using AngularJS - Stack Overflow_files\/analytics.js": {
+		"fileType": 64,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/images\/javascript - Filter Firebase data using AngularJS - Stack Overflow_files\/analytics.js",
+		"outputAbbreviatedPath": "\/images\/javascript - Filter Firebase data using AngularJS - Stack Overflow_files\/min\/analytics-min.js",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1,
+		"syntaxCheckerStyle": 1
+		},
+	"\/images\/javascript - Filter Firebase data using AngularJS - Stack Overflow_files\/beacon.js": {
+		"fileType": 64,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/images\/javascript - Filter Firebase data using AngularJS - Stack Overflow_files\/beacon.js",
+		"outputAbbreviatedPath": "\/images\/javascript - Filter Firebase data using AngularJS - Stack Overflow_files\/min\/beacon-min.js",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1,
+		"syntaxCheckerStyle": 1
+		},
+	"\/images\/javascript - Filter Firebase data using AngularJS - Stack Overflow_files\/external-editor.en.js": {
+		"fileType": 64,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/images\/javascript - Filter Firebase data using AngularJS - Stack Overflow_files\/external-editor.en.js",
+		"outputAbbreviatedPath": "\/images\/javascript - Filter Firebase data using AngularJS - Stack Overflow_files\/min\/external-editor.en-min.js",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1,
+		"syntaxCheckerStyle": 1
+		},
+	"\/images\/javascript - Filter Firebase data using AngularJS - Stack Overflow_files\/full.en.js": {
+		"fileType": 64,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/images\/javascript - Filter Firebase data using AngularJS - Stack Overflow_files\/full.en.js",
+		"outputAbbreviatedPath": "\/images\/javascript - Filter Firebase data using AngularJS - Stack Overflow_files\/min\/full.en-min.js",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1,
+		"syntaxCheckerStyle": 1
+		},
+	"\/images\/javascript - Filter Firebase data using AngularJS - Stack Overflow_files\/jquery.min.js": {
+		"fileType": 64,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/images\/javascript - Filter Firebase data using AngularJS - Stack Overflow_files\/jquery.min.js",
+		"outputAbbreviatedPath": "\/images\/javascript - Filter Firebase data using AngularJS - Stack Overflow_files\/min\/jquery.min-min.js",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1,
+		"syntaxCheckerStyle": 1
+		},
+	"\/images\/javascript - Filter Firebase data using AngularJS - Stack Overflow_files\/post-validation.en.js": {
+		"fileType": 64,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/images\/javascript - Filter Firebase data using AngularJS - Stack Overflow_files\/post-validation.en.js",
+		"outputAbbreviatedPath": "\/images\/javascript - Filter Firebase data using AngularJS - Stack Overflow_files\/min\/post-validation.en-min.js",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1,
+		"syntaxCheckerStyle": 1
+		},
+	"\/images\/javascript - Filter Firebase data using AngularJS - Stack Overflow_files\/prettify-full.en.js": {
+		"fileType": 64,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/images\/javascript - Filter Firebase data using AngularJS - Stack Overflow_files\/prettify-full.en.js",
+		"outputAbbreviatedPath": "\/images\/javascript - Filter Firebase data using AngularJS - Stack Overflow_files\/min\/prettify-full.en-min.js",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1,
+		"syntaxCheckerStyle": 1
+		},
+	"\/images\/javascript - Filter Firebase data using AngularJS - Stack Overflow_files\/quant.js": {
+		"fileType": 64,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/images\/javascript - Filter Firebase data using AngularJS - Stack Overflow_files\/quant.js",
+		"outputAbbreviatedPath": "\/images\/javascript - Filter Firebase data using AngularJS - Stack Overflow_files\/min\/quant-min.js",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1,
+		"syntaxCheckerStyle": 1
+		},
+	"\/images\/javascript - Filter Firebase data using AngularJS - Stack Overflow_files\/snippet-javascript.en.js": {
+		"fileType": 64,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/images\/javascript - Filter Firebase data using AngularJS - Stack Overflow_files\/snippet-javascript.en.js",
+		"outputAbbreviatedPath": "\/images\/javascript - Filter Firebase data using AngularJS - Stack Overflow_files\/min\/snippet-javascript.en-min.js",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1,
+		"syntaxCheckerStyle": 1
+		},
+	"\/images\/javascript - Filter Firebase data using AngularJS - Stack Overflow_files\/stub.en.js": {
+		"fileType": 64,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/images\/javascript - Filter Firebase data using AngularJS - Stack Overflow_files\/stub.en.js",
+		"outputAbbreviatedPath": "\/images\/javascript - Filter Firebase data using AngularJS - Stack Overflow_files\/min\/stub.en-min.js",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1,
+		"syntaxCheckerStyle": 1
+		},
+	"\/images\/javascript - Filter Firebase data using AngularJS - Stack Overflow_files\/wb-include.css": {
+		"fileType": 16,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/images\/javascript - Filter Firebase data using AngularJS - Stack Overflow_files\/wb-include.css",
+		"outputAbbreviatedPath": "No Output Path",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0
+		},
+	"\/images\/javascript - Filter Firebase data using AngularJS - Stack Overflow_files\/wmd.en.js": {
+		"fileType": 64,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/images\/javascript - Filter Firebase data using AngularJS - Stack Overflow_files\/wmd.en.js",
+		"outputAbbreviatedPath": "\/images\/javascript - Filter Firebase data using AngularJS - Stack Overflow_files\/min\/wmd.en-min.js",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1,
+		"syntaxCheckerStyle": 1
+		},
 	"\/images\/logomed.png": {
 		"fileType": 32768,
 		"ignore": 0,
@@ -1301,6 +1681,37 @@
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"processed": 0
+		},
+	"\/images\/world.jpg": {
+		"fileType": 16384,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 39041,
+		"inputAbbreviatedPath": "\/images\/world.jpg",
+		"outputAbbreviatedPath": "\/images\/world.jpg",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/images\/world.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 115041,
+		"inputAbbreviatedPath": "\/images\/world.png",
+		"outputAbbreviatedPath": "\/images\/world.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/index-oldhomepage.html": {
+		"fileType": 8192,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/index-oldhomepage.html",
+		"outputAbbreviatedPath": "No Output Path",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0
 		},
 	"\/index.html": {
 		"fileType": 8192,
@@ -1441,6 +1852,17 @@
 		"outputStyle": 1,
 		"syntaxCheckerStyle": 1
 		},
+	"\/js\/morphex.js": {
+		"fileType": 64,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/js\/morphex.js",
+		"outputAbbreviatedPath": "\/js\/min\/morphex-min.js",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1,
+		"syntaxCheckerStyle": 1
+		},
 	"\/js\/morris-data.js": {
 		"fileType": 64,
 		"ignore": 0,
@@ -1491,6 +1913,17 @@
 		"ignoreWasSetByUser": 0,
 		"inputAbbreviatedPath": "\/js\/tags.js",
 		"outputAbbreviatedPath": "\/js\/min\/tags-min.js",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1,
+		"syntaxCheckerStyle": 1
+		},
+	"\/js\/typed.js": {
+		"fileType": 64,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/js\/typed.js",
+		"outputAbbreviatedPath": "\/js\/min\/typed-min.js",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1,
@@ -1614,15 +2047,6 @@
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
 		},
-	"\/README.html": {
-		"fileType": 8192,
-		"ignore": 1,
-		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/README.html",
-		"outputAbbreviatedPath": "No Output Path",
-		"outputPathIsOutsideProject": 0,
-		"outputPathIsSetByUser": 0
-		},
 	"\/README.md": {
 		"enableFootnoteSupport": 0,
 		"enableSmartyPants": 1,
@@ -1640,6 +2064,15 @@
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
 		"inputAbbreviatedPath": "\/share.html",
+		"outputAbbreviatedPath": "No Output Path",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0
+		},
+	"\/sidebar.html": {
+		"fileType": 8192,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/sidebar.html",
 		"outputAbbreviatedPath": "No Output Path",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0

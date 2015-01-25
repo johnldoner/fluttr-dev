@@ -147,7 +147,7 @@ app.controller("ctrl", ["$scope","$firebase","cfFloat","Ideas","IdeasComments","
         console.log("Login Failed!", error);
       } else {
         console.log("Authenticated successfully with payload:" + authData);
-        /*
+        
           window.setTimeout(function(){
               window.location.reload();
                 window.setTimeout(function(){
@@ -159,7 +159,7 @@ app.controller("ctrl", ["$scope","$firebase","cfFloat","Ideas","IdeasComments","
               console.log(user.facebook.displayName);
               
           }, 1000);
-*/
+
       }
     }
 
@@ -167,9 +167,7 @@ app.controller("ctrl", ["$scope","$firebase","cfFloat","Ideas","IdeasComments","
     $scope.auth.$authWithOAuthPopup('facebook', AuthHandler())();
    //Need to have empty parenthesis for login to be called
     console.log(user.facebook.displayName);
-  }.then(function() {
-    window.location.href = "home-B.html";
-  });
+  };
 
   $scope.logout = function () {
     $scope.auth.$unauth();
