@@ -41,7 +41,7 @@
     <div id="myCarousel" class="carousel slide" data-ride="carousel">
       <div class="carousel-inner" role="listbox">
 
-        <div class="item" ng-repeat="(id,item) in ideas| filter: query| filter: {'like': '!' + user.facebook.id} | filter: {'isPublic': true } | filter: {'dislike': '!' + user.facebook.id}" ng-class="{active : $first}">
+        <div class="item" ng-repeat="(id,item) in ideas| filter: query| filter: {'like': '!' + user.facebook.id} | filter: {'dislike': '!' + user.facebook.id}" ng-class="{active : $first}">
           <div class="carousel-caption">
             <h1 style="color:#fff">{{item.idea}}</h1>
             <h3>-{{item.userName}}</h3>

@@ -1,0 +1,314 @@
+
+<!DOCTYPE html>
+<html ng-app="app">
+    <head>
+        <!-- Bootstrap Core CSS -->
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+        <!-- Custom CSS -->
+        <link href="css/sb-admin-2.css" rel="stylesheet">
+        <!-- Custom Fonts -->
+        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+
+        <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+        <link rel="shortcut icon" href="images/logosm.png">
+        <link rel="stylesheet" type="text/css" href="css/navbar.css" />
+        <script src="https://code.jquery.com/ui/1.11.1/jquery-ui.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.2/angular.min.js"></script>
+        <script src="https://cdn.firebase.com/js/client/2.0.2/firebase.js"></script>
+        <script src="https://cdn.firebase.com/libs/angularfire/0.9.0/angularfire.min.js"></script>
+        <script src="app.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+        <script>
+          (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+          (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+          })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+          ga('create', 'UA-57899345-1', 'auto');
+          ga('send', 'pageview');
+
+        </script>
+        <style>
+            .panel-warning, .panel-footer {
+                background: #ffffcd;
+            }
+
+            .clip-container {
+                margin: 50px 0 0 10px;
+                -ms-transform: rotate(21deg); /* IE 9 */
+                -webkit-transform: rotate(21deg); /* Chrome, Safari, Opera */
+                transform: rotate(21deg);
+            }
+
+            span.paper-clip:after {
+                width: 11px;
+                height: 20px;
+                content: " ";
+               /* background: white; */
+                display: block;
+                position: absolute;
+                right: 2px;
+                top: 5px;
+                border-radius: 10px;
+                border: 2px solid black;
+                border-bottom: 0;
+                border-bottom-right-radius: 0;
+                border-bottom-left-radius: 0;
+            }
+            span.paper-clip {
+               /* background: white; */
+                height: 40px;
+                width: 15px;
+                border-radius: 10px;
+                border: 2px solid black;
+                display: inline-block;
+                position: absolute;
+            }
+
+            .onoffswitch {
+                position: relative; width: 134px;
+                margin-left: 15px;
+                -webkit-user-select:none; -moz-user-select:none; -ms-user-select: none;
+            }
+            .onoffswitch-checkbox {
+                display: none;
+            }
+            .onoffswitch-label {
+                display: block; overflow: hidden; cursor: pointer;
+                border: 2px solid #999999; border-radius: 50px;
+            }
+            .onoffswitch-inner {
+                display: block; width: 200%; margin-left: -100%;
+                -moz-transition: margin 0.3s ease-in 0s; -webkit-transition: margin 0.3s ease-in 0s;
+                -o-transition: margin 0.3s ease-in 0s; transition: margin 0.3s ease-in 0s;
+            }
+            .onoffswitch-inner:before, .onoffswitch-inner:after {
+                display: block; float: left; width: 50%; height: 40px; padding: 0; line-height: 40px;
+                font-size: 14px; color: white; font-family: Trebuchet, Arial, sans-serif; font-weight: bold;
+                -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box;
+            }
+            .onoffswitch-inner:before {
+                content: "PUBLIC";
+                padding-left: 10px;
+                background-color: #34A7C1; color: #FFFFFF;
+            }
+            .onoffswitch-inner:after {
+                content: "PRIVATE";
+                padding-right: 10px;
+                background-color: #EEEEEE; color: #999999;
+                text-align: right;
+            }
+            .onoffswitch-switch {
+                display: block; width: 26px; margin: 7px;
+                background: #FFFFFF;
+                border: 2px solid #999999; border-radius: 50px;
+                position: absolute; top: 0; bottom: 0; right: 90px;
+                -moz-transition: all 0.3s ease-in 0s; -webkit-transition: all 0.3s ease-in 0s;
+                -o-transition: all 0.3s ease-in 0s; transition: all 0.3s ease-in 0s; 
+            }
+            .onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-inner {
+                margin-left: 0;
+            }
+            .onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-switch {
+                right: 0px; 
+            }
+        </style>
+    </head>
+    <body ng-controller="ctrl">
+    <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-521ec0330762c358" async="async"></script>
+        <div id="wrapper">
+            <nav ng-include="'navbar.html'"  class="navbar navbar-default navbar-fixed-top" role="navigation">
+            </nav>
+           <!-- <div ng-include="'sidebar.html'"></div> -->
+            <!-- Page Content -->
+            <div id="page-wrapper">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <br><br>
+                            <h1 class="page-header">New Idea</h1>
+                            <div>
+                              <div>
+                              <br><br>
+                                                                    <form class="form-horizontal" id="newIdea" role="form" ng-submit="newIdea()">
+                                          <div class="form-group">
+                                            <label for="qtitle" class="col-sm-2 control-label">Idea Title</label>
+                                            <div class="col-sm-10">
+                                              <input type="text" class="form-control" id="idea_title" ng-model="idea_title" placeholder="Ex: 6 Billion People Singing Kumbaya on New Year's Eve" required>
+                                            </div>
+                                          </div>
+                                          <!--
+                                          <div class="form-group">
+                                            <label for="qdesc" class="col-sm-2 control-label">Description</label>
+                                            <div class="col-sm-10">
+                                              <textarea class="form-control" id="idea_desc" ng-model="idea_desc" placeholder="A short description" rows="5" required></textarea>
+                                            </div>
+                                          </div>
+                                          -->
+                                          <!--
+                                          <div class="form-group">
+                                            <label for="qcat" class="col-sm-2 control-label">Category</label>
+                                             <div class="col-sm-10">
+                                                <select id="qcat" ng-model="idea_cat" class="form-control" required>
+                                                  <option>Animation & Comics</option>
+                                                  <option>Architecture & Design
+                                                  <option>Dance
+                                                  <option>Education
+                                                  <option>Environment
+                                                  <option>Experimental Art</option>
+                                                  <option>Fashion</option>
+                                                  <option>Film</option>
+                                                  <option>Food</option>
+                                                  <option>Games</option>
+                                                  <option>Health & Wellness</option>
+                                                  <option>Journalism</option>
+                                                  <option>Live & Social Events</option>
+                                                  <option>Missions & Endeavors</option>
+                                                  <option>Music</option>
+                                                  <option>Music Video</option>
+                                                  <option>Open Source</option>
+                                                  <option>Philanthropy</option>
+                                                  <option>Photography</option>
+                                                  <option> Politics</option>
+                                                  <option>Research & Invention</option>
+                                                  <option>Social Enterprise</option>
+                                                  <option>Social Experiments</option>
+                                                  <option>Software & Web</option>
+                                                  <option>Space</option>
+                                                  <option>Sports</option>
+                                                  <option>Technology</option>
+                                                  <option>Theatre</option>
+                                                  <option>TV & Web TV</option>
+                                                  <option>Visual Art</option>
+                                                  <option>Writing</option>
+                                                </select>
+                                              </div>
+                                          </div>
+                                          
+                                          <div class="form-group">
+                                            <label for="datetimepicker" class="col-sm-2 control-label">Target Launch Date</label>
+                                            <div class="col-sm-10">
+                                              <input type="text" value="2015/12/31 00:00" class="form-control" id="datetimepicker" ng-model="idea_expected_launch" placeholder="Boldly go." required>
+                                            </div>
+                                          </div>
+                                          
+                                          <div class="form-group">
+                                            <label for="qpic" class="col-sm-2 control-label">Picture URL<br>(optional)</label>
+                                            <div class="col-sm-10">
+                                              <input type="text" class="form-control" id="idea_pic" ng-model="idea_pic" placeholder="Picture URL">
+                                            </div>
+                                          </div>
+                                          -->
+                                        <div class="form-group">
+                                            <label for="onoffswitch" class="col-sm-2 control-label">Privacy <a href="#" data-toggle="collapse" data-target="#privacyQ" aria-expanded="false" aria-controls="privacyQ">[?]</a></label>
+                                                <div class="col-sm-10">
+                                                <!--
+                                                    <div class="form-group">
+                                        
+                                                         <div class="onoffswitch">
+                                                            <input type="checkbox" ng-model="privacy" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch" checked>
+                                                            <label class="onoffswitch-label" for="myonoffswitch">
+                                                                <span class="onoffswitch-inner"></span>
+                                                                <span class="onoffswitch-switch"></span>
+                                                            </label>
+                                                        </div>
+                                                        -->
+                                                        <div class="form-group">
+                                                            &nbsp; &nbsp; &nbsp; <button type="submit" ng-click="newIdeaPublic()" class="btn btn-primary">Public</button>
+                                                        &nbsp; &nbsp; &nbsp;
+                                                            <button type="submit" ng-click="newIdeaPrivate()" class="btn btn-primary">Private</button>
+                                                        </div>
+                                                        <br>
+                                                          <div class="collapse" id="privacyQ">
+                                                            <div class="panel panel-info">
+                                                              <div class="panel-heading">
+                                                                <h3 class="panel-title">Privacy Controls</h3>
+                                                              </div>
+                                                              <div class="panel-body">
+                                                                <p>You can set the privacy of your idea depending on your preferences.</p>
+                                                                <p><strong><u>Private:</u></strong> Use this if you first want to start off developing the idea with friends and specific people. The idea is not shown on the Idea shuffle page or the public list of Ideas. You may share this idea by "floating" it with your friends and specific people, and you can later choose to make the Idea public.</p>
+                                                                <p><strong><u>Public:</u></strong> Use this if you're confident on spreading the Idea and receiving feedback from the crowd. The Idea will be visible on the Idea shuffle page and in the public list of ideas. You may share this idea with over 300+ social platforms, and can later choose to make the idea private again. Be careful -- since the entire world can see the Idea, it may be modified or "forked" by other users and is subject to validation (positive or negative) by the crowd! </p>
+                                                              </div>
+                                                            </div>
+                                                          </div>                      
+                                                    </div>
+                                                </div>
+                                            </div>
+                                  
+                                    </form>
+                             
+
+                                    <div id="newIdea-success" style="display:none" class="alert alert-success" role="alert">
+                                        <strong>Success!</strong>
+                                        <div ng-if="privacy != true">
+                                            <p>Why not float your idea with your friends to help develop and make it a reality?</p>
+                                                <p>You can send this idea to your friends by typing in their email addresses, separated by commas. It's simple!</p>
+                                                <div style="display:none" id="float-success" class="alert alert-success alert-dismissible" role="alert">
+                                                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                               <strong>Success!</strong> This idea has been shared with your friends.
+                                              </div>
+                                                  <form role="form form-inline" ng-submit="shareIdea()" id="float">
+                                                    <div class="form-group">
+                                                      <input class="form-control" ng-model="emails" name="tags_1" id="tags_1" type="text" class="tags" value="" placeholder="Email addresses, separated by commas" /></input>  
+                                                    </div>
+                                                    <div class="form-group">
+                                                      <button type="submit" tab-index="-1" class="btn btn-primary">Share with Friends</button>       
+                                                   </form>
+                                        </div>
+
+                                        <div ng-if="privacy == true">
+                                            <p>Why not share your idea with the world?</p>
+                                            <div class="addthis_sharing_toolbox"></div>
+                                        </div>
+                                    </div>
+
+
+                              </div>
+
+                                
+
+                            </div>
+                            
+                            <h1 class="page-header">My Ideas</h1>
+                            <form action="home-C.html">
+  <button type="submit" class="btn btn-primary">table view</button>
+</form>
+                           
+    
+                             <!-- Projects Row -->
+        <div class="row">
+
+                <div class="col-lg-4" ng-repeat="(id,item) in ideas | filter: user.facebook.id | filter:query">
+                    <div class="panel panel-warning" style="min-height:250px">
+                        <div class="clip-container"><span class="paper-clip"></span></div>
+                        <div class="panel-body" style="min-height:200px;max-height:200px">
+                            <a href="idea.html?id={{ideas.$keyAt(ideas.indexOf(item))}}">
+                                {{item.idea | limitTo: 100}}{{item.idea.length > 100 ? '...' : ''}}
+                            </a>
+                            <p>{{item.description| limitTo: 160}}{{item.description.length > 160 ? '...' : ''}}</p>
+                        </div>
+                        <div class="panel-footer">
+                        <p>{{item.likes.like}} <i class="fa fa-thumbs-o-up"></i> &nbsp; &nbsp; &nbsp; {{item.likes.dislike}} <i class="fa fa-thumbs-o-down"></i> &nbsp; &nbsp; &nbsp; <i class="fa fa-comments-o"></i> &nbsp; &nbsp; &nbsp; <i class="fa fa-bar-chart-o"></i> &nbsp; &nbsp; &nbsp; <i class="fa fa-share-square-o"></i> &nbsp; &nbsp; &nbsp; 
+                        </p>
+                        </div>
+                    </div>
+                </div>
+        </div>
+
+
+
+
+
+                        </div>
+                        <!-- /.col-lg-12 -->
+                    </div>
+                    <!-- /.row -->
+                </div>
+                <!-- /.container-fluid -->
+            </div>
+            <!-- /#page-wrapper -->
+        </div>
+        <!-- /#wrapper -->
+        <div ng-include=" 'footer.html' "></div>
+    </body>
+</html>

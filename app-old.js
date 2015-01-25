@@ -198,8 +198,13 @@ app.controller("ctrl", ["$scope","$firebase","cfFloat","Ideas","IdeasComments","
       $scope.privacy = "false";
     }
 
-    var randNum = Math.floor(Math.random() * 100000000);
-    console.log(randNum);
+    function newIdeaPublic() {
+      alert('public idea!');
+    };
+
+    function newIdeaPrivate() {
+      alert('private idea!');
+    };
 
     $scope.ideas.$add({
           idea: $scope.idea_title,
