@@ -1,0 +1,10 @@
+	@font-face {
+    font-family: ProximaNova;
+    src: url(fonts/ProximaNovaRegular.otf);
+    /* font-style: italic;
+    */
+}
+
+h1,body{
+	font-family:ProximaNova,sans-serif;
+}
