@@ -13,9 +13,10 @@ body{
 color: #337ab7;
 text-decoration: none;
 }
+/*
 .navbar-default{
   background:#FF9000;
-}
+}*/
 .navbar {
   max-height: 50px;
 }

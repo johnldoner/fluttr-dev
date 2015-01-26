@@ -23,8 +23,8 @@
                   <input type="text" class="form-control" id="idea_title" ng-model="idea_title" placeholder="Ex: 6 Billion People Singing Kumbaya on New Year's Eve" required>
                 </div>
                 <div class="form-group col-sm-12">
-                  <button type="submit" class="btn btn-primary">Create Idea</button>
-
+               <!--    <button type="submit" class="btn btn-primary">Create Idea</button> -->
+   <button type="submit" class="btn btn-primary">Share Idea</button>
                 </div>
               </form>
               <div>
@@ -36,11 +36,12 @@
           </li>
         </ul>
       </li>
-<!--      <button class="btn btn-primary btn-lg btn-block" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample"><i class="fa fa-lightbulb-o"></i> &nbsp; Share a New Idea</button>
- -->
-  <li><a href="#" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample"><i class="fa fa-send fa-1x" title="Explore Ideas"></i>Share a New Idea</a></li>
-      <li><a href="explore.html" class="btn " data-toggle="tooltip" data-placement="bottom" title="Tooltip on bottom"><i class="fa fa-send fa-1x"  title="Explore Ideas"></i></a></li>
 
+  <li><a href="#" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample"><i class="fa fa-send fa-1x" title="Share Ideas"></i></a></li>
+  <!--Share a New Idea-->
+<!--
+      <li><a href="explore.html" class="btn " data-toggle="tooltip" data-placement="bottom" title="Tooltip on bottom"><i class="fa fa-send fa-1x"  title="Explore Ideas"></i></a></li>
+-->
       <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">
       <span ng-show="filtered.length > 0"> <strong>({{filtered.length}})</strong> </span>
       <i class="fa fa-bell fa-1x" title="Notifications"></i></a>

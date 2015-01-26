@@ -27,9 +27,17 @@
     ga('send', 'pageview');
     </script>
     <style>
-    #page-wrapper{
-      background-color: #FF9000;
-    }
+        /*overwrite background for .well */
+.well {
+    min-height: 20px;
+    padding: 19px;
+    margin-bottom: 20px;
+    background-color: #FFA949;
+    border: 1px solid #E3E3E3;
+    border-radius: 4px;
+    box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.05) inset;
+}
+
     .panel-warning, .panel-footer {
     background: #ffffcd;
     }
@@ -126,10 +134,14 @@
               <br><br>
               <div class="collapse" id="collapseExample">
                 <div class="well">
-                  <br><br>
+                  <div class="row">
+                    <div class="col-lg-4 col-lg-offset-4">
+                      <h3>What's your idea?</h3>
+                    </div>
+                  </div>
                   <form class="form-horizontal" id="newIdea" role="form" ng-submit="newIdea()">
                     <div class="form-group">
-                      <label for="qtitle" class="col-sm-2 control-label">Idea Title</label>
+                      <label class="col-sm-2 control-label"></label>
                       <div class="col-sm-10">
                         <input type="text" class="form-control" id="idea_title" ng-model="idea_title" placeholder="Ex: 6 Billion People Singing Kumbaya on New Year's Eve" required>
                       </div>
@@ -173,13 +185,15 @@
                       <div class="col-sm-10">
                         <div class="form-group">
                           <button type="submit" class="btn btn-primary">Fluttr</button>
+                          <!--
                              <button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="bottom" title="Tooltip on bottom">Tooltip on bottom</button>
+                             -->
                         </div>
                       </div>
                     </div>
                   </div>
                 </form>
-                
+                </div>
                 <div id="newIdea-success" style="display:none" class="alert alert-success" role="alert">
                   <strong>Success!</strong>
                   <div ng-if="privacy != true">
@@ -206,8 +220,10 @@
                 
               </div>
               <br><br>
-             <!--  <h1 class="page-header">My Ideas</h1> -->
+              <h1 class="page-header">My Ideas</h1>
+             <!--
               <h1>What's your idea?</h1>
+              -->
               <form action="home-B.html">
                 <button type="submit" class="btn btn-primary">grid view</button>
                 <button class="btn btn-info">Float Ideas</button>
