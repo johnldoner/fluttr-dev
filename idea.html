@@ -57,8 +57,11 @@
     <div ng-include=" 'feedback.html' "></div>
 
     <div class=" sidebar" role="navigation">
+
+    
       <div class="row">
         <div class="col-lg-12">
+        <!--
           <div id='ideaContent' style="margin-top:50px;margin-left:20px;background-image: url('{{ideaPic}}')">
          
             </div>
@@ -72,9 +75,13 @@
               <li>4 Updates</li>
               <li><a href="#" ng-click="DeleteIdea(ideaID)">Delete this Idea</a>
             </ul>
+            -->
+            <br><br><br><br><br><br>
+            <a href="home.html"><button class="btn btn-primary btn-lg center-block">&laquo; Back to Home</button></a>
         </div>
       </div>
-      <!-- /.panel-body -->
+
+      
     </div>               
 <!-- Page Content -->
 <div id="page-wrapper" style="padding-bottom:50px;">
@@ -89,9 +96,11 @@
           </div>
           <ul class="nav nav-tabs" role="tablist" id="myTab">
             <li role="presentation" class="active "><a href="#Activity" role="tab" data-toggle="tab">Activity</a></li>
+            <!--
             <li role="presentation"><a href="#Proposals" role="tab" data-toggle="tab">Proposals<span class="badge">4</span></a></li>
             <li role="presentation"><a href="#Work" role="tab" data-toggle="tab">Work Products<span class="badge">2</span></a></li>
             <li role="presentation"><a href="#Invite" role="tab" data-toggle="tab">Invite</a></li>
+            -->
           </ul>
           <div class="tab-content">
             <div role="tabpanel" class="tab-pane fade in active" id="Activity">
@@ -122,6 +131,7 @@
                 </div><!-- /.col-lg-12 -->
               </div><!-- /.row -->
             </div>
+            <!--
             <div role="tabpanel" class="tab-pane fade" id="Proposals">
               <table class="table table-hover">
               <thead>
@@ -137,9 +147,9 @@
                       <td>
 
                       <a class="iframe" href="proposal.html?pid={{item.$id}}">{{item.$id}}</a>
-                      <!--
+                      
                        <a href="revisions.html?qid={{ideaID}}&rid={{item.$id}}" //target="_blank">{{item.$id}}</a>
-                       -->
+                       
                       </td>
                       <td>{{item.ptitle}}</td>
                       <td>{{item.timestamp | date:'EEEE, MMMM d, y h:mm:ss a '}} PST</td>
@@ -190,6 +200,7 @@
   
             </div>
           </div> 
+          -->
         </div>
       </div>
                     </div>

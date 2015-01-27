@@ -1,4 +1,4 @@
-  <div ng-repeat="(id,item) in filtered = (cfFloat | filter: user.facebook.email)"></div>
+  <div ng-init="checkAuth()" ng-repeat="(id,item) in filtered = (cfFloat | filter: user.facebook.email)"></div>
   <div class="navbar-header">
     <a href="index.html"> <img class="crowdfluttr-nav" src="images/logo_full.svg" alt="Crowdfluttr"/></a>
   </div>

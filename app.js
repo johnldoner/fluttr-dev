@@ -178,13 +178,13 @@ app.controller("ctrl", ["$scope","$firebase","cfFloat","Ideas","IdeasComments","
 
   };
 
-/*
+
   $scope.checkAuth = function () {
     if (!Auth.$getAuth()) {
     window.location.href = "/";
     }
   };
-*/
+
 
   $scope.homepageRedirect = function () {
     if (Auth.$getAuth()) {
