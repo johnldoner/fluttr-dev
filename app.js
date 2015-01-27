@@ -164,7 +164,7 @@ app.controller("ctrl", ["$scope","$firebase","cfFloat","Ideas","IdeasComments","
     }
 
   $scope.FacebookLogin = function () {  
-    $scope.auth.$authWithOAuthPopup('facebook', AuthHandler())();
+    $scope.auth.$authWithOAuthRedirect('facebook', AuthHandler())();
    //Need to have empty parenthesis for login to be called
     console.log(user.facebook.displayName);
   };
@@ -188,7 +188,7 @@ app.controller("ctrl", ["$scope","$firebase","cfFloat","Ideas","IdeasComments","
 
   $scope.homepageRedirect = function () {
     if (Auth.$getAuth()) {
-    window.location.href = "/home-B.html";
+    window.location.href = "/home.html";
     }
   };
 

@@ -2,7 +2,7 @@
   <div class="navbar-header">
     <a href="index.html"> <img class="crowdfluttr-nav" src="images/logo_full.svg" alt="Crowdfluttr"/></a>
   </div>
-  
+  <!--
   <form class="navbar-form" id="navsearch" role="search">
     <div class="form-group">
       <input type="text" class="form-control" placeholder="Search" ng-model="query">
@@ -11,9 +11,10 @@
     <span class="glyphicon glyphicon-search"></span>
     </button>
   </form>
-  
+  -->
   <ul class="nav navbar-nav navbar-right">
-      <li><a href="home-B.html"><i class="fa fa-home fa-1x" title="Home"></i></a></li>
+      <li><a href="home.html" data-toggle="tooltip" data-placement="bottom" title="Homepage"><i class="fa fa-home fa-1x" title="Home"></i></a></li>
+      <!--
       <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-plus-square fa-1x" title="Create New Idea"></i></a>
         <ul class="dropdown-menu" role="menu" style="width:500px">
           <li>
@@ -23,7 +24,7 @@
                   <input type="text" class="form-control" id="idea_title" ng-model="idea_title" placeholder="Ex: 6 Billion People Singing Kumbaya on New Year's Eve" required>
                 </div>
                 <div class="form-group col-sm-12">
-               <!--    <button type="submit" class="btn btn-primary">Create Idea</button> -->
+                  <button type="submit" class="btn btn-primary">Create Idea</button> 
    <button type="submit" class="btn btn-primary">Share Idea</button>
                 </div>
               </form>
@@ -36,13 +37,14 @@
           </li>
         </ul>
       </li>
-
-  <li><a href="#" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample"><i class="fa fa-send fa-1x" title="Share Ideas"></i>fluttr ideas</a></li>
-  <!--Share a New Idea-->
+      -->
 <!--
-      <li><a href="explore.html" class="btn " data-toggle="tooltip" data-placement="bottom" title="Tooltip on bottom"><i class="fa fa-send fa-1x"  title="Explore Ideas"></i></a></li>
--->
-      <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">
+  <li><a href="#" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample"><i class="fa fa-send fa-1x" title="Share Ideas"></i>fluttr ideas</a></li>
+  -->
+  <!--Share a New Idea-->
+
+      <li><a href="explore.html" class="btn " data-toggle="tooltip" data-placement="bottom" title="Explore Ideas"><i class="fa fa-send fa-1x"  title="Explore Ideas"></i></a></li>
+      <li class="dropdown"><a href="#" data-toggle="tooltip" data-placement="bottom" title="My Notifications" class="dropdown-toggle" data-toggle="dropdown">
       <span ng-show="filtered.length > 0"> <strong>({{filtered.length}})</strong> </span>
       <i class="fa fa-bell fa-1x" title="Notifications"></i></a>
             <ul class="dropdown-menu" role="menu" style="width:300px">
@@ -67,8 +69,8 @@
            Hello, {{user.facebook.displayName}}
           <span class="caret"></span></div> </a>
         <ul class="dropdown-menu" role="menu">
-          <li><a href="home-B.html">Dashboard</a></li>
-          <li><a href="editprofile.html">Profile</a></li>
+          <li><a href="home.html">Dashboard</a></li>
+          <!-- <li><a href="editprofile.html">Profile</a></li> -->
           <li class="divider"></li>
           <li ng-show="user"><a href="#" ng-click="logout()">Logout</a></li>
         </ul>

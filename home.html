@@ -125,10 +125,10 @@
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-lg-12">
+                          <div>
+                            <div>
                             <br><br>
-                            <div class="collapse" id="collapseExample">
-                              <div class="well">
-                              <br><br>
+                              <h1 class="page-header">New Idea</h1>
                                                                     <form class="form-horizontal" id="newIdea" role="form" ng-submit="newIdea()">
                                           <div class="form-group">
                                             <label for="qtitle" class="col-sm-2 control-label">Idea Title</label>
@@ -274,27 +274,32 @@
                                 
 
                             </div>
-                            <br><br>
-                            <h1 class="page-header">My Ideas</h1>
+                            
+                            
+                            <!--
                             <form action="home-C.html">
   <button type="submit" class="btn btn-primary">table view</button>
 </form>
-                           
+-->
+          <h1 class="page-header">My Ideas</h1>                 
     
                              <!-- Projects Row -->
         <div class="row">
 
                 <div class="col-lg-4" ng-repeat="(id,item) in ideas | filter: user.facebook.id | filter:query">
                     <div class="panel panel-warning" style="min-height:250px">
-                        <div class="clip-container"><span class="paper-clip"></span></div>
+                        <!-- <div class="clip-container"><span class="paper-clip"></span></div> -->
                         <div class="panel-body" style="min-height:200px;max-height:200px">
                             <a href="idea.html?id={{ideas.$keyAt(ideas.indexOf(item))}}">
-                                {{item.idea | limitTo: 100}}{{item.idea.length > 100 ? '...' : ''}}
+                              <h3 class="text-center">  {{item.idea | limitTo: 100}}{{item.idea.length > 100 ? '...' : ''}} </h3>
                             </a>
-                            <p>{{item.description| limitTo: 160}}{{item.description.length > 160 ? '...' : ''}}</p>
+                            <!-- <p>{{item.description| limitTo: 160}}{{item.description.length > 160 ? '...' : ''}}</p> -->
                         </div>
                         <div class="panel-footer">
-                        <p>{{item.likes.like}} <i class="fa fa-thumbs-o-up"></i> &nbsp; &nbsp; &nbsp; {{item.likes.dislike}} <i class="fa fa-thumbs-o-down"></i> &nbsp; &nbsp; &nbsp; <i class="fa fa-comments-o"></i> &nbsp; &nbsp; &nbsp; <i class="fa fa-bar-chart-o"></i> &nbsp; &nbsp; &nbsp; <i class="fa fa-share-square-o"></i> &nbsp; &nbsp; &nbsp; 
+                        <p>{{item.likes.like}} <i class="fa fa-thumbs-o-up"></i> &nbsp; &nbsp; &nbsp; {{item.likes.dislike}} 
+                        <i class="fa fa-thumbs-o-down"></i> &nbsp; &nbsp; &nbsp; <!--
+                        <i class="fa fa-comments-o"></i> &nbsp; &nbsp; &nbsp; <i class="fa fa-bar-chart-o"></i> &nbsp; &nbsp; &nbsp; <i class="fa fa-share-square-o"></i> &nbsp; &nbsp; &nbsp; 
+                        -->
                         </p>
                         </div>
                     </div>
