@@ -273,27 +273,29 @@ app.controller("ctrl", ["$scope","$firebase","cfFloat","Ideas","IdeasComments","
   };
 
 
- $scope.PrivateFloat = function () {
+  $scope.PrivateFloat = function () {
   var email = prompt("Who do you want to float your idea to?", "example@gmail.com");
 
-  var arr = {
-  'subject':'Check out the idea at Crowdfluttr',
-  'body':'Check out the idea at Crowdfluttr',
-  'email': email,
-  'name': $scope.user.facebook.displayName
-  };
+      var arr = {
+      'subject':'Check out the idea at Crowdfluttr',
+      'body':'Check out the idea at Crowdfluttr: ' + "https://www.crowdfluttr.com/idea.html?id=" + ideaID,
+      'email': email,
+      'name': $scope.user.facebook.displayName
+      };
 
-  $.ajax({
-  url: 'https://worker-aws-us-east-1.iron.io/2/projects/549f2940154782000900002f/tasks/webhook?code_name=mandrill_email&oauth=c1UTtUSXMOUu5LjRXtRk--zOmXQ',
-  type: 'POST',
-  data: JSON.stringify(arr),
-  contentType: 'application/json; charset=utf-8',
-  dataType: 'json',
-  async: false,
-  success: function () {
-  alert('Idea Sent');
-  }
-  });
+      $.ajax({
+          url: 'https://worker-aws-us-east-1.iron.io/2/projects/549f2940154782000900002f/tasks/webhook?code_name=mandrill_email&oauth=c1UTtUSXMOUu5LjRXtRk--zOmXQ',
+          type: 'POST',
+          data: JSON.stringify(arr),
+          contentType: 'application/json; charset=utf-8',
+          dataType: 'json',
+          async: false,
+          success: function () {
+          alert('Idea Sent');
+          }
+      });
+
+  };
 
 
   //-------------------PROJECT CODE---------------------------//
