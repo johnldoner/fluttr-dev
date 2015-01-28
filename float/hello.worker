@@ -1,0 +1,4 @@
+# define the runtime language
+runtime "node"
+# exec is the file that will be executed:
+exec "hello_worker.js"
