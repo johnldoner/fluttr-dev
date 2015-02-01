@@ -490,6 +490,22 @@ app.controller("ctrl", ["$scope","$firebase","cfFloat","Ideas","IdeasComments","
     $scope.idea = "";
   }
 
+  //Add User Profile 
+  //Every time the user logs in, it's recorded into user profile node
+  $scope.UserSessionSave = function () {
+    var url = 'https://crowdfluttr.firebaseio.com/users/'+String($scope.user.facebook.id) + '/sessions'
+    var user = new Firebase(url);
+    user.push({
+        user_displayName: $scope.user.facebook.displayName,
+        user_id: $scope.user.facebook.id,
+        timestamp: Date.now(),
+        user_email: $scope.user.facebook.email,
+        page:document.URL
+       });
+  }
+
+
+
 // BEGIN: PERMALINKS =========================================================
   // GET Idea IDs
     var idearef = new Firebase("https://crowdfluttr.firebaseio.com/ideas/" + ideaID);

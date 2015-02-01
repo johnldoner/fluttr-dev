@@ -114,7 +114,7 @@
             }
         </style>
     </head>
-    <body ng-controller="ctrl">
+    <body ng-controller="ctrl" ng-init="UserSessionSave()">
     <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-521ec0330762c358" async="async"></script>
         <div id="wrapper">
             <nav ng-include="'navbar.html'"  class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -321,5 +321,8 @@
         </div>
         <!-- /#wrapper -->
         <div ng-include=" 'footer.html' "></div>
+    
+
+
     </body>
 </html>
