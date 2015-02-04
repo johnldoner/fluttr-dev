@@ -351,6 +351,21 @@ app.controller("ctrl", ["$scope","$firebase","cfFloat","Ideas","IdeasComments","
       $scope.newComment = "";
   };
 
+
+//add in plan part
+  $scope.addQuestions = function () { 
+    var addQuestionsRef = new Firebase('https://crowdfluttr.firebaseio.com/');
+    addQuestionsRef.child('questions').push({
+        ideaID: $scope.ideaID,
+       // ic_body: $scope.newComment,
+        question_content: $scope.newQuestions,
+        userID: $scope.user.facebook.id,
+        userName: $scope.user.facebook.displayName,
+        timestamp: Date.now()
+    });
+      $scope.newQuestions = "";
+  };
+
   $scope.addProposal = function () { 
     var addRevRef = new Firebase('https://crowdfluttr.firebaseio.com/');
     addRevRef.child('proposals').push({

@@ -6,6 +6,15 @@
         <script src="https://code.jquery.com/ui/1.11.1/jquery-ui.min.js"></script>
         <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" rel="stylesheet" type="text/css">
         <link href="css/sb-admin-2.css" rel="stylesheet">
+<!--add plan ui-->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <!-- FontAwesome 4.2.0 -->
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+    <!-- Ionicons 2.0.0 -->
+    <link href="http://code.ionicframework.com/ionicons/2.0.0/css/ionicons.min.css" rel="stylesheet" type="text/css" />
+
+    <!-- Theme style -->
+    <link href="css/AdminLTE.min.css" rel="stylesheet" type="text/css" />
 
          <!-- Custom Fonts -->
     <link href="font-awesome-4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
@@ -97,8 +106,9 @@
           </div>
           <ul class="nav nav-tabs" role="tablist" id="myTab">
             <li role="presentation" class="active "><a href="#Activity" role="tab" data-toggle="tab">Activity</a></li>
+            
+            <li role="presentation"><a href="#Plan" role="tab" data-toggle="tab">Plan</a></li>
             <!--
-            <li role="presentation"><a href="#Proposals" role="tab" data-toggle="tab">Proposals<span class="badge">4</span></a></li>
             <li role="presentation"><a href="#Work" role="tab" data-toggle="tab">Work Products<span class="badge">2</span></a></li>
             <li role="presentation"><a href="#Invite" role="tab" data-toggle="tab">Invite</a></li>
             -->
@@ -131,6 +141,123 @@
                   </form>
                 </div><!-- /.col-lg-12 -->
               </div><!-- /.row -->
+            </div>
+<!--
+            <div role="tabpanel" class="tab-pane fade in active" id="Plan">
+              <div class="row">
+                <div class="col-lg-12">
+                  <br><br>
+                  <ul class="media-list">
+                    <li class="media" ng-repeat="(id,item) in ideas_comments | filter:ideaID | orderBy: item.timestamp"> 
+                          <div class="media-left">
+                              <div class="avatar-container">
+                                  <div class="avatar" style="background-image: url('https://graph.facebook.com/{{item.userID}}/picture?type=normal')"></div>
+                              </div>
+                          </div>
+                      <div class="media-body">
+                        <p class="">{{item.ic_body}}</p> <span class="date sub-text"><small>Posted by {{item.userName}} on {{item.timestamp | date:'EEEE, MMMM d, y h:mm:ss a '}} PST</small></span>
+                      </div>
+                    <hr>
+                    </li>
+                  </ul>
+                  <form class="form-inline" role="form" ng-submit="addCommentonIdea()" style="width:100%">
+                      <div class="form-group" style="width:80%">
+                          <input class="form-control" type="text" placeholder="Your comments" ng-model="newComment" style="width:100%">
+                      </div>
+                      <div class="form-group">
+                          <button type="submit" class="btn btn-default btn-block">Add Comment</button>
+                      </div>
+                  </form>
+                </div>
+              </div>
+
+      
+                          <div class="col-lg-4" ng-repeat="(id,item) in ideas | filter: user.facebook.id | filter:query">
+              <div class="panel panel-warning" style="min-height:250px">
+                <div class="clip-container"><span class="paper-clip"></span></div>
+                <div class="panel-body" style="min-height:200px;max-height:200px">
+                  <a href="idea.html?id={{ideas.$keyAt(ideas.indexOf(item))}}">
+                    {{item.idea | limitTo: 100}}{{item.idea.length > 100 ? '...' : ''}}
+                  </a>
+                  <p>{{item.description| limitTo: 160}}{{item.description.length > 160 ? '...' : ''}}</p>
+                </div>
+                <div class="panel-footer">
+                  <p>{{item.likes.like}} <i class="fa fa-thumbs-o-up"></i> &nbsp; &nbsp; &nbsp; {{item.likes.dislike}} <i class="fa fa-thumbs-o-down"></i> &nbsp; &nbsp; &nbsp; <i class="fa fa-comments-o"></i> &nbsp; &nbsp; &nbsp; <i class="fa fa-bar-chart-o"></i> &nbsp; &nbsp; &nbsp; <i class="fa fa-share-square-o"></i> &nbsp; &nbsp; &nbsp;
+                  </p>
+                </div>
+              </div>
+            </div>
+     -->
+ <div role="tabpanel" class="tab-pane fade in active" id="Plan">
+ <br>
+                   <form class="form-inline" role="form" ng-submit="addQuestions()" style="width:100%">
+                     <div class="form-group" style="width:80%">
+                          <input class="form-control" type="text" placeholder="Your questions" ng-model="newQuestions" style="width:100%">
+                      </div>
+                      <div class="form-group">
+                          <button type="submit" class="btn btn-default btn-block">Add Questions</button>
+                      </div> 
+                  </form>
+                  <br>
+          <div     class="col-lg-4" ng-repeat="(id,item) in ideas_comments | filter:ideaID | orderBy: item.timestamp">
+      <div class="box box-solid bg-yellow-gradient" >
+                <div class="box-header">
+                  <i class="fa fa-comments-o"></i>
+                  <h3 class="box-title"> {{item.ic_body}}</h3>
+                  <div class="box-tools pull-right">
+                    <button class="btn btn-warning btn-sm" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                    <button class="btn btn-warning btn-sm" data-widget="remove"><i class="fa fa-times"></i></button>
+                  </div>
+                </div>
+                <div class="box-body chat" id="chat-box">
+                  <!-- chat item -->
+                  <div class="item">
+
+                  <!--
+                    <img src="dist/img/user4-128x128.jpg" alt="user image" class="online"/>
+-->
+                                                  <div class="avatar-container">
+                                  <div class="avatar" style="background-image: url('https://graph.facebook.com/{{item.userID}}/picture?type=normal')"></div>
+                              </div>
+                    <!--class="offline"-->
+                    <p class="message">
+                      <a href="#" class="name">
+                        <small class="text-muted pull-right"><i class="fa fa-clock-o"></i> {{item.timestamp | date:'EEEE, MMMM d, y h:mm:ss a '}} PST</small>
+                        {{item.userName}}
+                      </a>
+                   {{item.ic_body}}
+                    </p>
+
+                    <!-- 
+                    <div class="attachment">
+                      <h4>Attachments:</h4>
+                      <p class="filename">
+                        Theme-thumbnail-image.jpg
+                      </p>
+                      <div class="pull-right">
+                        <button class="btn btn-primary btn-sm btn-flat">Open</button>
+                      </div>
+                    </div> -->
+                  </div><!-- /.item -->
+                  <!-- chat item -->
+
+ 
+                </div><!-- /.chat -->
+                <div class="box-footer">
+                  <div class="input-group">
+                    <input class="form-control" placeholder="Type message..."/>
+                    <div class="input-group-btn">
+                      <button class="btn btn-info"><i class="fa fa-plus"></i></button>
+                    </div>
+                  </div>
+                </div>
+              </div><!-- /.box (chat box) -->
+</div>
+ </div>
+
+
+
+
             </div>
             <!--
             <div role="tabpanel" class="tab-pane fade" id="Proposals">
@@ -310,6 +437,10 @@
   </div>
 </div>
 
-
+           <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js" type="text/javascript"></script>
+    <script src="http://code.jquery.com/ui/1.11.2/jquery-ui.min.js" type="text/javascript"></script>
+    <!-- AdminLTE App -->
+    <script src="js/app.min.js" type="text/javascript"></script>
           </body>
         </html>
