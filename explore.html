@@ -43,8 +43,8 @@
 
         <div class="item" ng-repeat="(id,item) in ideas| filter: query| filter: {'like': '!' + user.facebook.id} | filter: {'dislike': '!' + user.facebook.id}" ng-class="{active : $first}">
           <div class="carousel-caption">
-            <h1 style="color:#fff">{{item.idea}}</h1>
-            <h3>-{{item.userName}}</h3>
+            <h1 style="color:#fff">{{item.idea}}</h1> 
+            <h3>-{{item.userName}} ({{item.timestamp | date:'MM/dd/yy HH:mm'}})</h3>
 <!--
             <h3>Likes: {{item.likes.like}} Dislikes: {{item.likes.dislike}}</h3>
 
