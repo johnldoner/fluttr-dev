@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html ng-app="app" ng-controller="ctrl">
-  <head>
-     <title ng-cloak ng-bind="ideaTitle">{{ideaTitle}}</title>
-        <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-        <script src="https://code.jquery.com/ui/1.11.1/jquery-ui.min.js"></script>
-        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" rel="stylesheet" type="text/css">
-        <link href="css/sb-admin-2.css" rel="stylesheet">
-<!--add plan ui-->
+<head>
+    <title ng-cloak ng-bind="ideaTitle">{{ideaTitle}}</title>
+    <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.11.1/jquery-ui.min.js"></script>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="css/sb-admin-2.css" rel="stylesheet">
+    <!--add plan ui-->
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
     <!-- FontAwesome 4.2.0 -->
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
@@ -16,431 +16,280 @@
     <!-- Theme style -->
     <link href="css/AdminLTE.min.css" rel="stylesheet" type="text/css" />
 
-         <!-- Custom Fonts -->
+    <!-- Custom Fonts -->
     <link href="font-awesome-4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-        <!-- Custom Fonts -->
-        <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
-        <!-- DataTables CSS -->
-        <link href="css/dataTables.bootstrap.css" rel="stylesheet">
-        <!-- Tags CSS -->
-        <link rel="stylesheet" type="text/css" href="http://xoxco.com/projects/code/tagsinput/jquery.tagsinput.css" />
-        <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <!-- Custom Fonts -->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    <!-- DataTables CSS -->
+    <link href="css/dataTables.bootstrap.css" rel="stylesheet">
+    <!-- Tags CSS -->
+    <link rel="stylesheet" type="text/css" href="http://xoxco.com/projects/code/tagsinput/jquery.tagsinput.css" />
+    <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
 
-        <link href="css/angucomplete.css" rel="stylesheet">
-        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
-        
+    <link href="css/angucomplete.css" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
 
-        <link rel="shortcut icon" href="images/logosm.png">
-        <link rel="stylesheet" type="text/css" href="css/navbar.css" />
-        
-        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.2/angular.min.js"></script>
-        <script src="https://cdn.firebase.com/js/client/2.0.2/firebase.js"></script>
-        <script src="https://cdn.firebase.com/libs/angularfire/0.9.0/angularfire.min.js"></script>
-        <script src="https://darylrowland.github.io/angucomplete/js/angular-touch.min.js"></script>
-        <link rel="stylesheet" href="css/jquery.datetimepicker.css">
-        <script type="text/javascript" src="js/jquery.datetimepicker.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.8/angular-touch.min.js"></script>
-        <script src="app.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-        <script src="js/angucomplete-dir.js"></script>
-        <script src="js/angucomplete-ctrl.js"></script>
 
-        <link rel="stylesheet" href="css/colorbox.css" />
-        <script src="js/colorbox.js"></script>
-        <script>
-          $(document).ready(function(){
-            $(".iframe").colorbox({iframe:true, width:"80%", height:"80%"});
-            if(!auth) {
-              window.location.href="/";
-            };
-          });
+    <link rel="shortcut icon" href="images/logosm.png">
+    <link rel="stylesheet" type="text/css" href="css/navbar.css" />
 
-          </script>
-  </head>
-  <body>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.2/angular.min.js"></script>
+    <script src="https://cdn.firebase.com/js/client/2.0.2/firebase.js"></script>
+    <script src="https://cdn.firebase.com/libs/angularfire/0.9.0/angularfire.min.js"></script>
+    <script src="https://darylrowland.github.io/angucomplete/js/angular-touch.min.js"></script>
+    <link rel="stylesheet" href="css/jquery.datetimepicker.css">
+    <script type="text/javascript" src="js/jquery.datetimepicker.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.8/angular-touch.min.js"></script>
+    <script src="app.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="js/angucomplete-dir.js"></script>
+    <script src="js/angucomplete-ctrl.js"></script>
+
+    <link rel="stylesheet" href="css/colorbox.css" />
+    <script src="js/colorbox.js"></script>
+    <script>
+    $(document).ready(function(){
+    $(".iframe").colorbox({iframe:true, width:"80%", height:"80%"});
+    if(!auth) {
+    window.location.href="/";
+    };
+    });
+
+    </script>
+</head>
+<body>
   <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-521ec0330762c358" async="async"></script>
-    <nav ng-include="'navbar.html'"  class="navbar navbar-default navbar-fixed-top" role="navigation">
-    </nav>
+  <nav ng-include="'navbar.html'"  class="navbar navbar-default navbar-fixed-top" role="navigation"></nav>
+  <!-- Fluttr feedback form -->
 
-    <!-- Fluttr feedback form -->
     <div ng-include=" 'feedback.html' "></div>
-
+  <!-- SideBar -->
     <div class=" sidebar" role="navigation">
-
-    
-      <div class="row">
-        <div class="col-lg-12">
-        <!--
-          <div id='ideaContent' style="margin-top:50px;margin-left:20px;background-image: url('{{ideaPic}}')">
-         
-            </div>
-            <ul>
-              <li>Proposed: {{createTime | date:'EEEE, MMMM d, y h:mm:ss a ' }} </li>
-              <li>Category: {{ideaCategory}}</li>
-              <li>Creator: {{ideaAuthor}}</li>
-              <li>{{ideaLikes}} Upvotes / {{ideaDislikes}} Downvotes</li>
-              <li>11 Collaborators</li>
-              <li>300 Views</li>
-              <li>4 Updates</li>
-              <li><a href="#" ng-click="DeleteIdea(ideaID)">Delete this Idea</a>
-            </ul>
-            -->
-            <br><br><br><br><br><br>
-            <a href="home.html"><button class="btn btn-primary btn-lg center-block">&laquo; Back to Home</button></a>
-        </div>
-      </div>
-
-      
-    </div>               
-<!-- Page Content -->
-<div id="page-wrapper" style="padding-bottom:50px;" ng-init="UserSessionSave()">
-  <div class="container-fluid">
     <div class="row">
-        <div class="col-lg-10">
-          <div class="idea-info" style="margin-top:100px;">
-            <h2>{{ideaTitle}}</h2>
-            <small>By: {{ideaAuthor}}</small>
-            <p>{{ideaDesc}}</p>
-            <button class="btn btn-primary btn-lg center-block" ng-click="PrivateFloat()">Share with a Friend</button><br>
-            <p><div class="addthis_sharing_toolbox"></div></p>
-          </div>
-          <ul class="nav nav-tabs" role="tablist" id="myTab">
-            <li role="presentation" class="active "><a href="#Activity" role="tab" data-toggle="tab">Activity</a></li>
-            
-            <li role="presentation"><a href="#Plan" role="tab" data-toggle="tab">Plan</a></li>
-            <!--
-            <li role="presentation"><a href="#Work" role="tab" data-toggle="tab">Work Products<span class="badge">2</span></a></li>
-            <li role="presentation"><a href="#Invite" role="tab" data-toggle="tab">Invite</a></li>
-            -->
-          </ul>
-          <div class="tab-content">
-            <div role="tabpanel" class="tab-pane fade in active" id="Activity">
-              <div class="row">
-                <div class="col-lg-12">
-                  <br><br>
-                  <ul class="media-list">
-                    <li class="media" ng-repeat="(id,item) in ideas_comments | filter:ideaID | orderBy: item.timestamp"> 
-                          <div class="media-left">
-                              <div class="avatar-container">
-                                  <div class="avatar" style="background-image: url('https://graph.facebook.com/{{item.userID}}/picture?type=normal')"></div>
-                              </div>
-                          </div>
-                      <div class="media-body">
-                        <p class="">{{item.ic_body}}</p> <span class="date sub-text"><small>Posted by {{item.userName}} on {{item.timestamp | date:'EEEE, MMMM d, y h:mm:ss a '}} PST</small></span>
-                      </div>
-                    <hr>
-                    </li>
-                  </ul>
-                  <form class="form-inline" role="form" ng-submit="addCommentonIdea()" style="width:100%">
-                      <div class="form-group" style="width:80%">
-                          <input class="form-control" type="text" placeholder="Your comments" ng-model="newComment" style="width:100%">
-                      </div>
-                      <div class="form-group">
-                          <button type="submit" class="btn btn-default btn-block">Add Comment</button>
-                      </div>
-                  </form>
-                </div><!-- /.col-lg-12 -->
-              </div><!-- /.row -->
-            </div>
-<!--
-            <div role="tabpanel" class="tab-pane fade in active" id="Plan">
-              <div class="row">
-                <div class="col-lg-12">
-                  <br><br>
-                  <ul class="media-list">
-                    <li class="media" ng-repeat="(id,item) in ideas_comments | filter:ideaID | orderBy: item.timestamp"> 
-                          <div class="media-left">
-                              <div class="avatar-container">
-                                  <div class="avatar" style="background-image: url('https://graph.facebook.com/{{item.userID}}/picture?type=normal')"></div>
-                              </div>
-                          </div>
-                      <div class="media-body">
-                        <p class="">{{item.ic_body}}</p> <span class="date sub-text"><small>Posted by {{item.userName}} on {{item.timestamp | date:'EEEE, MMMM d, y h:mm:ss a '}} PST</small></span>
-                      </div>
-                    <hr>
-                    </li>
-                  </ul>
-                  <form class="form-inline" role="form" ng-submit="addCommentonIdea()" style="width:100%">
-                      <div class="form-group" style="width:80%">
-                          <input class="form-control" type="text" placeholder="Your comments" ng-model="newComment" style="width:100%">
-                      </div>
-                      <div class="form-group">
-                          <button type="submit" class="btn btn-default btn-block">Add Comment</button>
-                      </div>
-                  </form>
-                </div>
-              </div>
+      <div class="col-lg-12">
+          <br><br><br><br><br><br>
+          <a href="home.html"><button class="btn btn-primary btn-lg center-block">&laquo; Back to Home</button></a>
+      </div>
+    </div>
+    </div>               
+  <!-- Page Content -->
+    <div id="page-wrapper" style="padding-bottom:50px;" ng-init="UserSessionSave()">
+    <div class="container-fluid">
+    <div class="row">
+    <div class="col-lg-10">
 
-      
-                          <div class="col-lg-4" ng-repeat="(id,item) in ideas | filter: user.facebook.id | filter:query">
-              <div class="panel panel-warning" style="min-height:250px">
-                <div class="clip-container"><span class="paper-clip"></span></div>
-                <div class="panel-body" style="min-height:200px;max-height:200px">
-                  <a href="idea.html?id={{ideas.$keyAt(ideas.indexOf(item))}}">
-                    {{item.idea | limitTo: 100}}{{item.idea.length > 100 ? '...' : ''}}
-                  </a>
-                  <p>{{item.description| limitTo: 160}}{{item.description.length > 160 ? '...' : ''}}</p>
-                </div>
-                <div class="panel-footer">
-                  <p>{{item.likes.like}} <i class="fa fa-thumbs-o-up"></i> &nbsp; &nbsp; &nbsp; {{item.likes.dislike}} <i class="fa fa-thumbs-o-down"></i> &nbsp; &nbsp; &nbsp; <i class="fa fa-comments-o"></i> &nbsp; &nbsp; &nbsp; <i class="fa fa-bar-chart-o"></i> &nbsp; &nbsp; &nbsp; <i class="fa fa-share-square-o"></i> &nbsp; &nbsp; &nbsp;
-                  </p>
-                </div>
+    <!-- Idea Header -->
+      <div class="idea-info" style="margin-top:100px;">
+        <h2>{{ideaTitle}}</h2>
+        <small>By: {{ideaAuthor}}</small>
+        <p>{{ideaDesc}}</p>
+        <button class="btn btn-primary btn-lg center-block" ng-click="PrivateFloat()">Share with a Friend</button><br>
+        <p><div class="addthis_sharing_toolbox"></div></p>
+      </div>
+    <!-- Tabs -->
+      <ul class="nav nav-tabs" role="tablist" id="myTab">
+        <li role="presentation" class="active "><a href="#Activity" role="tab" data-toggle="tab">Activity</a></li>
+        <li role="presentation"><a href="#Plan" role="tab" data-toggle="tab">Plan</a></li>
+        <!--
+        <li role="presentation"><a href="#Work" role="tab" data-toggle="tab">Work Products<span class="badge">2</span></a></li>
+        <li role="presentation"><a href="#Invite" role="tab" data-toggle="tab">Invite</a></li>
+        -->
+      </ul>
+    <!-- Tab Content -->
+      <div class="tab-content">
+      <!-- Comments -->
+        <div role="tabpanel" class="tab-pane fade in active" id="Activity">
+        <div class="row">
+        <div class="col-lg-12">
+        <br><br>
+        <ul class="media-list">
+        <li class="media" ng-repeat="(id,item) in ideas_comments | filter:ideaID | orderBy: item.timestamp"> 
+        <div class="media-left">
+        <div class="avatar-container">
+            <div class="avatar" style="background-image: url('https://graph.facebook.com/{{item.userID}}/picture?type=normal')"></div>
+        </div>
+        </div>
+        <div class="media-body">
+        <p class="">{{item.ic_body}}</p> <span class="date sub-text"><small>Posted by {{item.userName}} on {{item.timestamp | date:'EEEE, MMMM d, y h:mm:ss a '}} PST</small></span>
+        </div>
+        <hr>
+        </li>
+        </ul>
+        <form class="form-inline" role="form" ng-submit="addCommentonIdea()" style="width:100%">
+        <div class="form-group" style="width:80%">
+        <input class="form-control" type="text" placeholder="Your comments" ng-model="newComment" style="width:100%">
+        </div>
+        <div class="form-group">
+        <button type="submit" class="btn btn-default btn-block">Add Comment</button>
+        </div>
+        </form>
+        </div><!-- /.col-lg-12 -->
+        </div><!-- /.row -->
+        </div>
+      <!-- Plan -->
+        <div role="tabpanel" class="tab-pane fade in active" id="Plan"><br>
+          <form class="form-inline" role="form" ng-submit="addQuestions()" style="width:100%">
+            <div class="form-group" style="width:80%">
+            <input class="form-control" type="text" placeholder="Add a question" ng-model="newQuestions" style="width:100%">
+            </div>
+            <div class="form-group">
+            <button type="submit" class="btn btn-default btn-block">Add Questions</button>
+            </div> 
+          </form>
+          <br>
+          <div class="col-lg-4" ng-repeat="(id,item) in ideas_questions | filter:ideaID | orderBy: item.timestamp">
+            <div class="box box-solid bg-yellow-gradient" >
+            <div class="box-header">
+              <i class="fa fa-comments-o"></i>
+              <h3 class="box-title"> {{item.question_content}}</h3>
+              <div class="box-tools pull-right">
+              <button class="btn btn-warning btn-sm" data-widget="collapse"><i class="fa fa-minus"></i></button>
+              <button class="btn btn-warning btn-sm" data-widget="remove"><i class="fa fa-times"></i></button>
               </div>
             </div>
-     -->
- <div role="tabpanel" class="tab-pane fade in active" id="Plan">
- <br>
-                   <form class="form-inline" role="form" ng-submit="addQuestions()" style="width:100%">
-                     <div class="form-group" style="width:80%">
-                          <input class="form-control" type="text" placeholder="Your questions" ng-model="newQuestions" style="width:100%">
-                      </div>
-                      <div class="form-group">
-                          <button type="submit" class="btn btn-default btn-block">Add Questions</button>
-                      </div> 
-                  </form>
-                  <br>
-          <div     class="col-lg-4" ng-repeat="(id,item) in ideas_comments | filter:ideaID | orderBy: item.timestamp">
-      <div class="box box-solid bg-yellow-gradient" >
-                <div class="box-header">
-                  <i class="fa fa-comments-o"></i>
-                  <h3 class="box-title"> {{item.ic_body}}</h3>
-                  <div class="box-tools pull-right">
-                    <button class="btn btn-warning btn-sm" data-widget="collapse"><i class="fa fa-minus"></i></button>
-                    <button class="btn btn-warning btn-sm" data-widget="remove"><i class="fa fa-times"></i></button>
-                  </div>
-                </div>
-                <div class="box-body chat" id="chat-box">
-                  <!-- chat item -->
-                  <div class="item">
-
-                  <!--
-                    <img src="dist/img/user4-128x128.jpg" alt="user image" class="online"/>
--->
-                                                  <div class="avatar-container">
-                                  <div class="avatar" style="background-image: url('https://graph.facebook.com/{{item.userID}}/picture?type=normal')"></div>
-                              </div>
-                    <!--class="offline"-->
-                    <p class="message">
-                      <a href="#" class="name">
-                        <small class="text-muted pull-right"><i class="fa fa-clock-o"></i> {{item.timestamp | date:'EEEE, MMMM d, y h:mm:ss a '}} PST</small>
-                        {{item.userName}}
-                      </a>
-                   {{item.ic_body}}
-                    </p>
-
-                    <!-- 
-                    <div class="attachment">
-                      <h4>Attachments:</h4>
-                      <p class="filename">
-                        Theme-thumbnail-image.jpg
-                      </p>
-                      <div class="pull-right">
-                        <button class="btn btn-primary btn-sm btn-flat">Open</button>
-                      </div>
-                    </div> -->
-                  </div><!-- /.item -->
-                  <!-- chat item -->
-
- 
-                </div><!-- /.chat -->
-                <div class="box-footer">
-                  <div class="input-group">
-                    <input class="form-control" placeholder="Type message..."/>
-                    <div class="input-group-btn">
-                      <button class="btn btn-info"><i class="fa fa-plus"></i></button>
-                    </div>
-                  </div>
-                </div>
-              </div><!-- /.box (chat box) -->
-</div>
- </div>
-
-
-
-
+            <!-- Loop through comments of the question -->
+              <div class="box-body chat" id="chat-box" >
+              <!-- chat item -->
+              <div class="item" ng-repeat="(id1,item1) in item.questionComments">
+              <div class="avatar-container">
+                <div class="avatar" style="background-image: url('https://graph.facebook.com/{{item1.userID}}/picture?type=normal')"></div>
+              </div>
+              <p class="message">
+                <a href="#" class="name">
+                <small class="text-muted pull-right"><i class="fa fa-clock-o"></i> {{item1.timestamp | date:'EEEE, MMMM d, y h:mm:ss a '}} PST
+                </small>
+                {{item1.userName}}
+                </a>
+                {{item1.comment_content}}
+              </p>
+              </div><!-- /.item -->
+              </div><!-- /.chat -->
+            <!-- Message in regards to question -->
+            <div class="box-footer" role="form">
+              <form ng-submit="addQuestionComment(ideas_questions.$keyAt(ideas_questions.indexOf(item)),comment_content)">
+              <div class="input-group">
+              <input ng-model="comment_content" class="form-control" placeholder="Type message..."/>
+              <div class="input-group-btn">
+              <button  type="submit" class="btn btn-info"><i class="fa fa-plus"></i></button>
+              </div>
+              </div>
+              </form>
             </div>
-            <!--
-            <div role="tabpanel" class="tab-pane fade" id="Proposals">
-              <table class="table table-hover">
-              <thead>
-                  <th>Proposal</th>
-                  <th>Title</th>
-                  <th>Timestamp</th>
-                  <th>Author</th>
-                  <th>Compare</th>
-              </thead>
-              <tbody style="font-size:80%">
-                  <tr ng-hide="proposals.length | filter:ideaID"><td>There are currently no Proposals. Create the first one!</td></tr>
-                  <tr ng-repeat="(id,item) in proposals | filter: ideaID | orderBy: item.timestamp">
-                      <td>
-
-                      <a class="iframe" href="proposal.html?pid={{item.$id}}">{{item.$id}}</a>
-                      
-                       <a href="revisions.html?qid={{ideaID}}&rid={{item.$id}}" //target="_blank">{{item.$id}}</a>
-                       
-                      </td>
-                      <td>{{item.ptitle}}</td>
-                      <td>{{item.timestamp | date:'EEEE, MMMM d, y h:mm:ss a '}} PST</td>
-                      <td>{{item.userName}}</td>
-                      <td><input type="checkbox" ng-value="{{item.$id}}"></td>
-                  </tr>
-                  <tr>
-                      <td><button class="btn btn-primary" data-toggle="modal" data-target="#myModal" data-backdrop="static" data-keyboard="false">Submit New Proposal</button></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td><button class="btn btn-primary" ng-click="compareProposals()">Compare</button></td>
-                  </tr>
-              </tbody>
-              </table>
-            </div>
-            <div role="tabpanel" class="tab-pane fade" id="Work">
-        
-            </div>
-            <div role="tabpanel" class="tab-pane fade" id="Invite" ng-controller="MainController">
-            <div class="row">
-            <div class="large-padded-row">
-                <h3>Example 2 - People</h3>
-                <div class="padded-row">
-                    <div angucomplete id="ex2" placeholder="Search people" pause="300" selectedobject="selectedPerson" localdata="people" searchfields="firstName,surname" titlefield="firstName,surname" descriptionfield="twitter" imagefield="pic" minlength="1" inputclass="form-control"/>
-                </div>
-                <div class="" ng-show="selectedPerson">
-                    You selected <span class="bold-span">{{selectedPerson.originalObject.firstName}} {{selectedPerson.originalObject.surname}}</span>
-                </div>
-            </div>
-            <br><br>
-            <br>
-            <p>You can send this idea to your friends by typing in their email addresses, separated by commas. It's simple!</p>
-            <div style="display:none" id="float-success" class="alert alert-success alert-dismissible" role="alert">
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <strong>Success!</strong> This idea has been shared with your friends.
+            </div><!-- /.box (chat box) -->
           </div>
-              <form role="form form-inline" ng-submit="shareIdea()" id="float">
-                <div class="form-group">
-                  <input class="form-control" ng-model="emails" name="tags_1" id="tags_1" type="text" class="tags" value="" placeholder="Email addresses, separated by commas" /></input>  
-                </div>
-                <div class="form-group">
-                  <button type="submit" tab-index="-1" class="btn btn-primary">Share with Friends</button>       
-                    </form>
-                  </div>
-                </div>
-             </div>
-  
-            </div>
-          </div> 
-          -->
         </div>
       </div>
-                    </div>
-                    <!-- /.col-lg-12 -->
-                </div>
-                <!-- /.row -->
-            </div>
-            <!-- /.container-fluid -->
-        </div>
-        <!-- /#page-wrapper -->
+
 
     </div>
-    <!-- /#wrapper -->
+    </div>
+    </div>
+    </div>
 
 
-<div ng-include=" 'footer.html' "></div>
+
+  </div>
+  </div>
+  </div>
 
 
-            <!-- Bootstrap core JavaScript
+  <div ng-include=" 'footer.html' "></div>
 
-            <!-- Placed at the end of the document so the pages load faster -->
-            <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-            <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-            <script src="js/docs.min.js"></script>
-            <script>
-            $(function () {
-            $('#myTab a:first').tab('show')
-            })
-            </script>
 
-<!-- Modal -->
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-lg">
+  <!-- Bootstrap core JavaScript
+
+  <!- Javascript loads at end -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="js/docs.min.js"></script>
+    <script>
+    $(function () {
+    $('#myTab a:first').tab('show')
+    })
+    </script>
+
+  <!-- Modal -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
     <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-        <h4 class="modal-title" id="myModalLabel">New Proposal</h4>
-      </div>
-      <div class="modal-body">
+    <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+    <h4 class="modal-title" id="myModalLabel">New Proposal</h4>
+    </div>
+    <div class="modal-body">
     <form class="form" role="form" ng-submit="addProposal()">
-      <div class="form-group">
-      <label for="title">Proposal Title</label>
-      <input type="text" class="form-control" id="text" ng-model="ptitle" placeholder="Title">
+    <div class="form-group">
+    <label for="title">Proposal Title</label>
+    <input type="text" class="form-control" id="text" ng-model="ptitle" placeholder="Title">
     </div>
     <div class="form-group">
-      <label for="editor">Proposal Body</label>
-      <textarea class="form-control" rows="10" style="width:100%" name="editor" id="editor" data-ng-model="value" required><div ng-repeat="(id,item) in revisions | filter: ideaID | orderBy: item.timestamp">{{item.pbody}}</div></textarea>
-      <script>
-     //   CKEDITOR.replace( 'editor' );
-      </script>
+    <label for="editor">Proposal Body</label>
+    <textarea class="form-control" rows="10" style="width:100%" name="editor" id="editor" data-ng-model="value" required><div ng-repeat="(id,item) in revisions | filter: ideaID | orderBy: item.timestamp">{{item.pbody}}</div></textarea>
+    <script>
+    //   CKEDITOR.replace( 'editor' );
+    </script>
     </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="submit" class="btn btn-primary">Save changes</button>
-      </div>
+    </div>
+    <div class="modal-footer">
+    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+    <button type="submit" class="btn btn-primary">Save changes</button>
+    </div>
     </div>
     </form>
-  </div>
-</div>
+    </div>
+    </div>
 
-  <!-- sample modal content -->
-  <div id="floatModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <!-- sample modal content -->
+    <div id="floatModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
-      <div class="modal-content">
+    <div class="modal-content">
 
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-          <h4 class="modal-title" id="myModalLabel">Send Idea to a Friend</h4>
-        </div>
-        <div class="modal-body">
-        <p>You can send your idea to a friend by typing in their email address. It's simple!</p>
+    <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+    <h4 class="modal-title" id="myModalLabel">Send Idea to a Friend</h4>
+    </div>
+    <div class="modal-body">
+    <p>You can send your idea to a friend by typing in their email address. It's simple!</p>
 
     <form role="form" ng-submit="shareIdea()" id="float">
-      <div class="form-group">
-        <input ng-model="emails" id="tags_1" type="text" class="tags" value="" /></input>         
-      </div>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default" tab-index="-1" data-dismiss="modal">Close</button>
-          <button type="submit" tab-index="-1" class="btn btn-primary">Save changes</button>
-        </div>
-      </form>
-      </div><!-- /.modal-content -->
-    </div><!-- /.modal-dialog -->
-  </div><!-- /.modal -->
-
-<!-- Modal -->
-<div class="modal fade" id="prModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-lg">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-        <h4 class="modal-title" id="myModalLabel">{{item.$id}}</h4>
-      </div>
-      <div class="modal-body">
-      {{item.pbody}}
-      </div>
-      <div class="modal-footer">
-      Submitted by: {{item.userID}} on {{item.timestamp}}. <br>
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-      </div>
-      </div>
+    <div class="form-group">
+    <input ng-model="emails" id="tags_1" type="text" class="tags" value="" /></input>         
+    </div>
+    </div>
+    <div class="modal-footer">
+    <button type="button" class="btn btn-default" tab-index="-1" data-dismiss="modal">Close</button>
+    <button type="submit" tab-index="-1" class="btn btn-primary">Save changes</button>
     </div>
     </form>
-  </div>
-</div>
+    </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
 
-           <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js" type="text/javascript"></script>
-    <script src="http://code.jquery.com/ui/1.11.2/jquery-ui.min.js" type="text/javascript"></script>
-    <!-- AdminLTE App -->
-    <script src="js/app.min.js" type="text/javascript"></script>
-          </body>
-        </html>
+    <!-- Modal -->
+    <div class="modal fade" id="prModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+    <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+    <h4 class="modal-title" id="myModalLabel">{{item.$id}}</h4>
+    </div>
+    <div class="modal-body">
+    {{item.pbody}}
+    </div>
+    <div class="modal-footer">
+    Submitted by: {{item.userID}} on {{item.timestamp}}. <br>
+    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+    </div>
+    </div>
+    </div>
+    </form>
+    </div>
+    </div>
+
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js" type="text/javascript"></script>
+  <script src="http://code.jquery.com/ui/1.11.2/jquery-ui.min.js" type="text/javascript"></script>
+  <!-- AdminLTE App -->
+  <script src="js/app.min.js" type="text/javascript"></script>
+</body>
+</html>
