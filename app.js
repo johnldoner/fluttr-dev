@@ -161,14 +161,14 @@ app.controller("ctrl", ["$scope","$firebase","cfFloat","Ideas","IdeasComments","
           window.setTimeout(function(){
               window.location.reload();
                 window.setTimeout(function(){
-              }, 500);
+              }, 1000);
               window.location.href = "home.html";
 
 
 
               console.log(user.facebook.displayName);
               
-          }, 1000);
+          }, 2000);
 
       }
     }
