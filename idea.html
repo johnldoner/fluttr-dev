@@ -67,6 +67,7 @@
 
 <!-- Go to www.addthis.com/dashboard to customize your tools -->
 <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-54f675d86cfade76" async="async"></script>
+
   <nav ng-include="'navbar.html'"  class="navbar navbar-default navbar-fixed-top" role="navigation"></nav>
 
 <div id="fb-root"></div>
@@ -79,10 +80,6 @@
 }(document, 'script', 'facebook-jssdk'));</script>
 
 
-<!-- Go to www.addthis.com/dashboard to customize your tools -->
-<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-54f675d86cfade76" async="async"></script>
-
-  <nav ng-include="'navbar.html'"  class="navbar navbar-default navbar-fixed-top" role="navigation"></nav>
   <!-- Fluttr feedback form -->
 
     <div ng-include=" 'feedback.html' "></div>
@@ -106,9 +103,11 @@
         <h2>{{ideaTitle}}</h2>
         <small>By: {{ideaAuthor}}</small>
         <p>{{ideaDesc}}</p>
+
         <button class="" ng-click="PrivateFloat()"></button><br>
         <p><!-- Go to www.addthis.com/dashboard to customize your tools -->
             <div class="addthis_jumbo_share"></div></p>
+            
       </div>
     <!-- Tabs -->
       <ul class="nav nav-tabs" role="tablist" id="myTab">
