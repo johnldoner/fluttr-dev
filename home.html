@@ -29,7 +29,7 @@
         </script>
         <style>
             .panel-warning, .panel-footer {
-                background: #ffffcd;
+                background: #ffdb99;
             }
 
             .clip-container {
@@ -114,7 +114,13 @@
         </style>
     </head>
     <body ng-controller="ctrl" ng-init="UserSessionSave()">
-    <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-521ec0330762c358" async="async"></script>
+
+
+
+
+    
+<!-- Go to www.addthis.com/dashboard to customize your tools -->
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-54f675d86cfade76" async="async"></script>
         <div id="wrapper">
             <nav ng-include="'navbar.html'"  class="navbar navbar-default navbar-fixed-top" role="navigation">
             </nav>
@@ -231,7 +237,7 @@
                                                 <div class="col-sm-10">
                                                     <div class="form-group">
 
-                                                        &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp <button type="submit" class="btn btn-primary">Write Idea</button>
+                                                        &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp <button type="submit" class="btn btn-primary">Write Idea</button>
                                                     </div>
                                                 </div>
                                             </div>
@@ -288,6 +294,7 @@
 
                 <div class="col-lg-4" ng-repeat="(id,item) in ideas | filter: user.facebook.id | filter:query">
                     <div class="panel panel-warning" style="min-height:250px">
+
                         <!-- <div class="clip-container"><span class="paper-clip"></span></div> -->
                         <div class="panel-body" style="min-height:200px;max-height:200px">
                             <a href="idea.html?id={{ideas.$keyAt(ideas.indexOf(item))}}">
@@ -329,5 +336,13 @@
     
 
 
+
+
+
+
     </body>
 </html>
+
+
+
+

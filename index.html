@@ -1,385 +1,138 @@
-<!--
-<html ng-app="app">
-	<head>
-		<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-		<script src="https://code.jquery.com/ui/1.11.1/jquery-ui.min.js"></script>
-		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.2/angular.min.js"></script>
-		<script src="https://cdn.firebase.com/js/client/2.0.2/firebase.js"></script>
-		<script src="https://cdn.firebase.com/libs/angularfire/0.9.0/angularfire.min.js"></script>
-		<script src="app.js"></script>
-<link href="font-awesome-4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-		<link href='https://fonts.googleapis.com/css?family=Bitter:400,700|Open+Sans:400,700' rel='stylesheet' type='text/css'>
-		<link href="css/buttons.css" rel="stylesheet" type="text/css">
-		<link href="css/homepage.css" rel="stylesheet" type="text/css">
-		<link rel="shortcut icon" href="images/logosm.png">
-		
-		<link rel="stylesheet" href="css/colorbox.css" />
-		<script src="js/colorbox.js"></script>
-		<script>
-			$(document).ready(function(){
-				$(".vimeo").colorbox({iframe:true, innerWidth:800, innerHeight:600});
-				if(user) {
-					window.location.href="explore.html";
-				}
-				var ref = new Firebase("https://crowdfluttr.firebaseio.com");
-				var authData = ref.getAuth();
-				if (authData) {
-				  console.log("User " + authData.uid + " is logged in with " + authData.provider);
-				} else {
-				  console.log("User is logged out");
-				}
-			});
-		</script>
-		<script>
-		  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-		  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-		  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-		  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-		  ga('create', 'UA-57899345-1', 'auto');
-		  ga('send', 'pageview');
-
-		</script>
-	</head>
-
-	<body ng-controller="ctrl">
-
-		<section class="left">
-			<div class="container">
-				<img class="logo" src="images/logomed.png" width="188" height="188" /><br>
-				<h1 id="title">Welcome to CrowdFluttr.</h1>
-				<p id="caption">Share ideas with friends &hyphen; and awesome people from around the world.<br> Collaborate to realize the world's imagination.<br><br>
-<a class='vimeo' href="http://player.vimeo.com/video/99522814" title="Crowdfluttr">Learn More &raquo;</a>
-</p>
-			</div>
-		</section>
-		<section class="right">
-			<form class="form-signin" role="form">
-				<div class="form-group">
-					<button class="btn btn-lg btn-primary btn-block" ng-click="FacebookLogin()">
-					<i class="fa fa-facebook fa-2x"></i>
-					Login with Facebook</button>
-				</div>
-				<div class="form-group">
-					<button class="btn btn-lg btn-success btn-block" onclick="window.location.href='signup.html'">
-					<img src ="images/logosm.png"> Register</button>
-				</div>
-			</form>			
-		</section>
-
-		<footer class="effect">
-			 <small><a href="#">About</a></small> | 
-			 <small><a href="#">Terms & Conditions</a></small> | 
-			 <small><a href="#">Blog</a></small> | 
-			 <small><a href="#">Meet the Team</a></small> <br>
-			 <small>&copy;2014 Crowdfluttr. All rights reserved.</small>
-		</footer>
-
-<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-521ec0330762c358" async="async"></script>
-
-
-		</body>
-	</html>
--->
-
 <!DOCTYPE html>
-<html lang="en" ng-app="app">
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Welcome to Fluttr!</title>
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+        <link rel="shortcut icon" href="fluttr6/fluttr6/img/newlogofinal.png">
+        <link rel="stylesheet" href="css/bootstrap.css">
+        <link rel="stylesheet" href="css/flat-ui.css">
+        <!-- Using only with Flat-UI (free)-->
+        <link rel="stylesheet" href="css/icon-font.css">
+        <!-- end -->
+        <link rel="stylesheet" href="css/style.css">
+    </head>
 
-<head>
+    <body>
 
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <link rel="shortcut icon" href="images/logosm.png">
-
-    <title>Crowdfluttr</title>
-
-    <script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" rel="stylesheet">
-    <script src="https://code.jquery.com/ui/1.11.1/jquery-ui.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.2/angular.min.js"></script>
-    <script src="https://cdn.firebase.com/js/client/2.0.2/firebase.js"></script>
-    <script src="https://cdn.firebase.com/libs/angularfire/0.9.0/angularfire.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.8/angular-touch.min.js"></script>
-    <script src="app.js"></script>
-
-
-    <!-- Custom CSS -->
-    <link href="css/homepage-landing.css" rel="stylesheet">
-
-    <!-- Custom Fonts -->
-    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
-
-    <!-- CSS Animations -->
-    <link href="https://cdn.jsdelivr.net/animatecss/3.1.1/animate.min.css" rel="stylesheet">
-    <script src="js/morphex.js"></script>
-    <script>
-    $( document ).ready(function() {
-        $("#js-rotating").Morphext({
-            animation: "fadeInUp",
-            separator: ",",
-            speed: 2000
-        });
-        $("#js-rotating-2").Morphext({
-            animation: "fadeInUp",
-            separator: ",",
-            speed: 2000
-        });
-    });
-    </script>
-    <script src="js/typed.js"></script>
-    <script>
-      $(function(){
-          $(".element").typed({
-            strings: ["Be Great. Fluttr."],
-            typeSpeed: 0
-          });
-      });
-    </script>
+    <div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.0";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
 
 
-    <link rel="stylesheet" href="css/colorbox.css" />
-    <script src="js/colorbox.js"></script>
-    <script>
-        $(document).ready(function(){
-            $(".vimeo").colorbox({iframe:true, innerWidth:800, innerHeight:600});
-        });
-    </script>
-    <script>
-      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+        <div class="page-wrapper">
+            <!-- header-10 -->
+            <header class="header-10">
+                <div class="container">
+                    <div class="navbar col-sm-12" role="navigation">
+                        <div class="navbar-header">
+                            <button type="btn button info" class="navbar-toggle"></button>
+                            <a class="brand" href="#"><img src="fluttr6/fluttr6/img/newlogofinal.png" width="50" height="50" alt=""> </a>
 
-      ga('create', 'UA-57899345-1', 'auto');
-      ga('send', 'pageview');
-
-    </script>
-
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
-
-</head>
-
-<body ng-controller="ctrl" ng-init="homepageRedirect()">
-
-
-    <!-- Navigation -->
-    <nav class="navbar navbar-default navbar-fixed-top topnav" role="navigation">
-        <div class="container topnav">
-            <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand topnav" href="/"><img class="crowdfluttr" src="images/logo_full.svg" alt="Crowdfluttr"/></a></a>
-            </div>
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav navbar-right">
-                        <li><a href="/">Home</a></li>
-                        <li><a href="#about">About</a></li>
-                        <li><a href="#how">How it Works</a></li>
-                        <li><a href="https://fluttr.ghost.io/">Blog</a></li>
-                        <li><a href="#contact">Contact</a></li>
-                </ul>
-            </div>
-            <!-- /.navbar-collapse -->
-        </div>
-        <!-- /.container -->
-    </nav>
-
-    <!-- Header -->
-    <a name="about"></a>
-    <div class="intro-header">
-        <div class="container">
-
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="intro-message">
-                        <img class="logo" src="images/logomed.png" width="188" height="188" /><br>
-                        <h1 class="element"></h1>
-                        <h3>Share ideas with friends ‐ and awesome people from around the world.
-                        <br>Collaborate to realize the world's imagination.</h3>
-                        <h3>Crowdfluttr is powered by <span id="js-rotating">the people, innovators, creators, students, citizens, you</span>.</h3>
-                        <hr class="intro-divider">
-                        <ul class="list-inline intro-social-buttons">
-                            <li>
-                                <a href="#" ng-click="FacebookLogin()" class="btn btn-default btn-lg"><i class="fa fa-facebook fa-fw"></i> <span class="network-name">Login with Facebook</span></a>
-                            </li>
-                            <li>
-                            <!--
-                            <iframe src="//player.vimeo.com/video/115413441" width="500" height="281" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe> <p><a href="http://vimeo.com/115413441">Crowdfluttr Intro</a> from <a href="http://vimeo.com/user35805941">Crowdfluttr</a> on <a href="https://vimeo.com">Vimeo</a>.</p>
-                            -->
-                                <a href="http://player.vimeo.com/video/99522814" title="Crowdfluttr" class="btn btn-default btn-lg vimeo"><i class="fa fa-youtube-play fa-fw"></i> <span class="network-name">Learn more &raquo;</span></a>
-                            </li>
-                        </ul>
+                            </a>
+                         </div>
+                        <div class="collapse navbar-collapse pull-right">
+                            <ul class="nav pull-left">
+                                <li class="active"><a href="#"></a></li>
+                                <li><a href="#"></a></li>
+                                <li><a href="#"></a></li>
+                                <li><a href="#"></a></li>
+                            </ul>
+                            <form class="navbar-form pull-left">
+                                <a class="btn" href="#"></a>
+                            </form>
+                        </div>
                     </div>
                 </div>
+            </header>
+
+
+
+    
+            <section class="header-10-sub v-center bg-midnight-blue">
+                <div class="background">
+                    &nbsp;
+                </div>
+                <div>
+
+
+<div id="bgVideo" class="background"></div>
+                <div>
+                    <div class="container">
+                        <div class="hero-unit">
+                            <h1>Imagine. Share. Make it Happen.</h1>
+                             <div class="container">    
+
+        
+<ul class="list-inline intro-social-buttons">
+                            <li>
+                                <a href="#" ng-click="FacebookLogin()" class="btn btn-info"><i class="fa fa-facebook fa-fw"></i> <span class="network-name">Login</span></a> 
+                            </li>
+                            <div class="fb-like" data-href="https://www.facebook.com/CrowdFluttr?ref=bookmarks" data-layout="standard" data-action="like" data-show-faces="true" data-share="true"></div>
+
+                            <li>
+
+
+            <!-- Go to www.addthis.com/dashboard to customize your tools -->
+<div class="addthis_native_toolbox"></div>
+
+
+                        </div>
+                    </div>
+                </div>
+                </div>
+
+
+
+
+
+
+            </section>
+
+            
+           
+
+
+
+            
+
+            <!-- footer-3 -->
+
+            <footer class="footer-3">
+                <div class="text-center">
+
+        
+             <small><a href="#">About</a></small> | 
+             <small><a href="#">Terms & Conditions</a></small> | 
+             <small><a href="http://fluttr.ghost.io/">Blog</a></small> | 
+             <small><a href="#">Meet the Team</a></small> <br>
+             <small>Made with Love in Philadelphia. <br>&copy; 2014 Crowdfluttr LLC. All rights reserved.</small>
             </div>
+        </footer>
 
-        </div>
-        <!-- /.container -->
 
-    </div>
-    <!-- /.intro-header -->
+       
 
-    <!-- Page Content -->
+        <!-- Placed at the end of the document so the pages load faster -->
+        <script src="js/jquery-1.10.2.min.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+        <script src="js/modernizr.custom.js"></script>
+        <script src="js/jquery.scrollTo-1.4.3.1-min.js"></script>
+        <script src="js/jquery.parallax.min.js"></script>
+        <script src="js/startup-kit.js"></script>
+        <script src="js/jquery.backgroundvideo.min.js"></script>
+        <script src="js/script.js"></script>
+            <!-- Go to www.addthis.com/dashboard to customize your tools -->
 
-	<a  name="services"></a>
-    <div class="content-section-a" id="about">
 
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-5 col-sm-6">
-                    <hr class="section-heading-spacer">
-                    <div class="clearfix"></div>
-                    <h2 class="section-heading">About</h2>
-                    <p class="lead">Crowdfluttr is a crowdsourcing platform for ideas. We aim to bring the world’s best ideas to life through open collaboration and collective enterprise.<br><br>Join our community to plug into the world’s largest brainstorming session, give and receive feedback on amazing ideas, and collaborate with awesome people from around the world.<br><br>No idea is too small (or big) when the world is your team.</p>
-                </div>
-                <div class="col-lg-5 col-lg-offset-2 col-sm-6">
-                    <img class="img-responsive" src="images/ipad.png" alt="">
-                </div>
-            </div>
 
-        </div>
-        <!-- /.container -->
 
-    </div>
-    <!-- /.content-section-a -->
-
-    <div class="content-section-b" id="how">
-
-        <div class="container">
-              <!-- Example row of columns -->
-              <div class="row text-center">
-                  <div class="col-md-12"><h1>Together, let's build the world's imagination.</h1>
-                  <br><br><br></div>
-              </div>
-              <div class="row text-center">
-                <div class="col-md-4">
-                  <a><i class="fa fa-lightbulb-o fa-5x"></i></a>
-                  <h2>1. Imagine</h2>
-                  <p class="lead">Pitch ideas to your friends, public figures, or the world at large. We provide the analytics. Every idea matters. Be heard.</p>
-                </div>
-                <div class="col-md-4">
-                  <a><i class="fa fa-thumbs-o-up fa-5x fa-spin"></i></a>
-                  <h2>2. Validate</h2>
-                  <p class="lead">Discover and vote for the world's best ideas. Learn which ideas receives the most reach and traction in the market.</p>
-               </div>
-                <div class="col-md-4">
-                  <a><i class="fa fa-group fa-5x"></i></a>
-                  <h2>3. Collaborate</h2>
-                  <p class="lead">Collaborate with talented people from around the world to bring the idea to life. Contribute micro-tasks to bring the idea to the next level.</p>
-                </div>
-              </div>
-
-        </div>
-        <!-- /.container -->
-
-    </div>
-    <!-- /.content-section-b -->
-
-    <div class="content-section-a" id="team">
-
-        <div class="container">
-
-            <div class="row">
-                <div class="col-lg-5 col-sm-6">
-                    <hr class="section-heading-spacer">
-                    <div class="clearfix"></div>
-                    <h2 class="section-heading">Crowdfluttr<br>is powered by <span id="js-rotating-2">the people, innovators, creators, students, citizens, you</span>.</h2>
-                    <p class="lead">Crowdfluttr is founded by a motley crew of idealists, dreamers, and misfits who believe that every idea deserves a chance to evolve into something greater. If you have an idea too big for you to lift on your own, have no fear. All things are possible when we all work together.<br><br>Join Crowdfluttr. Together, let's realize the world's imagination.</p>
-                </div>
-                <div class="col-lg-5 col-lg-offset-2 col-sm-6"><br><br><br><br><br><div style="overflow:hidden;margin-bottom:-100px;max-height:200px">
-                    <img class="img-responsive" src="images/world.png" alt=""></div>
-                </div>
-            </div>
-
-        </div>
-        <!-- /.container -->
-
-    </div>
-    <!-- /.content-section-a -->
-
-	<a  name="contact"></a>
-    <div class="banner">
-
-        <div class="container">
-
-            <div class="row">
-                <div class="col-lg-6">
-                    <h2>66 ideas. 356 shares.<br>1 mission.</h2>
-                </div>
-                <div class="col-lg-6 text-center" id="#contact">
-                    <ul class="list-inline banner-social-buttons">
-                        <li>
-                            <a href="https://twitter.com/crowdfluttr" class="btn btn-default btn-lg"><i class="fa fa-twitter fa-fw"></i> <span class="network-name">Twitter</span></a>
-                        </li>
-                        <li>
-                            <a href="https://www.facebook.com/CrowdFluttr" class="btn btn-default btn-lg"><i class="fa fa-facebook fa-fw"></i> <span class="network-name">Facebook</span></a>
-                        </li>
-                        <li>
-                            <a href="#" class="btn btn-default btn-lg"><i class="fa fa-linkedin fa-fw"></i> <span class="network-name">Linkedin</span></a>
-                        </li>
-                    </ul>
-                    
-                </div>
-                <div class="col-lg-6 text-center">
-                    <br>
-                    <h2 class="pull-right">&nbsp;&nbsp;&nbsp;&#104;ello&#64;crowdflutt&#114;&#46;c&#111;m</h2>
-                </div>
-            </div>
-
-        </div>
-        <!-- /.container -->
-
-    </div>
-    <!-- /.banner -->
-
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <ul class="list-inline">
-                        <li><a href="/">Home</a></li>
-                        <li class="footer-menu-divider">&sdot;</li>
-                        <li><a href="#about">About</a></li>
-                        <li class="footer-menu-divider">&sdot;</li>
-                        <li><a href="#how">How it Works</a></li>
-                        <li class="footer-menu-divider">&sdot;</li>
-                        <li><a href="https://fluttr.ghost.io/">Blog</a></li>
-                        <li class="footer-menu-divider">&sdot;</li>
-                        <li><a href="#team">The Team</a></li>
-                        <li class="footer-menu-divider">&sdot;</li>
-                        <li><a href="#">Terms and Conditions</a></li>
-                        <li class="footer-menu-divider">&sdot;</li>
-                        <li><a href="#">Investors</a></li>
-                        <li class="footer-menu-divider">&sdot;</li>
-                        <li><a href="#">Careers</a></li>
-                        <li class="footer-menu-divider">&sdot;</li>
-                        <li><a href="#contact">Contact</a></li>
-                    </ul>
-                    <p class="copyright text-muted small">
-                    Made with &nbsp; <i class="fa fa-heart"></i> &nbsp; and &nbsp; <i class="fa fa-users"></i> &nbsp; in Philadelphia.
-                    <br>Copyright &copy;2014-2015 Crowdfluttr. All Rights Reserved.</p>
-                </div>
-            </div>
-        </div>
-    </footer>
-
-</body>
-
+    </body>
 </html>
