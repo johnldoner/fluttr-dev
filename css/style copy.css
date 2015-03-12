@@ -1622,7 +1622,7 @@ section * {
   filter: alpha(opacity=85);
 }
 .header-10 {
-  background-color: #1b1f23;
+  background-color: #fff;
 }
 .header-10 .btn:hover,
 .header-10 .btn.active,

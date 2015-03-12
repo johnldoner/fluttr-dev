@@ -188,7 +188,7 @@ app.controller("ctrl", ["$scope","$firebase","cfFloat","Ideas","IdeasComments","
 
   $scope.homepageRedirect = function () {
     if (Auth.$getAuth()) {
-    window.location.href = "/home-B.html";
+    window.location.href = "/home.html";
     }
   };
 

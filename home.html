@@ -8,9 +8,9 @@
         <!-- Custom Fonts -->
         <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
 
-        <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
         <link rel="shortcut icon" href="images/logosm.png">
         <link rel="stylesheet" type="text/css" href="css/navbar.css" />
+        <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
         <script src="https://code.jquery.com/ui/1.11.1/jquery-ui.min.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.2/angular.min.js"></script>
         <script src="https://cdn.firebase.com/js/client/2.0.2/firebase.js"></script>
@@ -28,8 +28,18 @@
 
         </script>
         <style>
-            .panel-warning, .panel-footer {
-                background: #ffdb99;
+        
+            .panel-warning{
+                background:#ffffcd
+            }
+
+            .panel-warning h3{
+                color:;
+
+            }
+
+            .panel-footer {
+                background: #ffffcd;
             }
 
             .clip-container {
@@ -112,6 +122,10 @@
                 right: 0px; 
             }
         </style>
+
+
+
+
     </head>
     <body ng-controller="ctrl" ng-init="UserSessionSave()">
 
@@ -133,7 +147,7 @@
                           <div>
                             <div>
                             <br><br>
-                              <h1 class="page-header"></h1>
+                              <h1 class="page-header">What's your idea?</h1>
                                                                     <form class="form-horizontal" id="newIdea" role="form" ng-submit="newIdea()">
                                           <div class="form-group">
                                             <label for="qtitle" class=""></label>
@@ -237,7 +251,7 @@
                                                 <div class="col-sm-10">
                                                     <div class="form-group">
 
-                                                        &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp <button type="submit" class="btn btn-primary">Write Idea</button>
+                                                        &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp<button type="submit" class="btn btn-primary">Make it Happen</button>
                                                     </div>
                                                 </div>
                                             </div>
@@ -246,7 +260,7 @@
                              
 
                                     <div id="newIdea-success" style="display:none" class="alert alert-success" role="alert">
-                                        <strong>Success!</strong> Your idea has been submitted!
+                                        <strong>Success!</strong> You have posted to your board!
 
                                         <!--
 
@@ -287,14 +301,15 @@
   <button type="submit" class="btn btn-primary">table view</button>
 </form>
 -->
-          <h1 class="page-header">Idea Board</h1>                 
+          <h1 class="page-header">Projects</h1>                 
     
                              <!-- Projects Row -->
         <div class="row">
 
                 <div class="col-lg-4" ng-repeat="(id,item) in ideas | filter: user.facebook.id | filter:query">
+          
                     <div class="panel panel-warning" style="min-height:250px">
-
+            
                         <!-- <div class="clip-container"><span class="paper-clip"></span></div> -->
                         <div class="panel-body" style="min-height:200px;max-height:200px">
                             <a href="idea.html?id={{ideas.$keyAt(ideas.indexOf(item))}}">
@@ -309,7 +324,7 @@
 
                         
 
-                        <button type="submit" class="btn btn-danger" ng-dblclick="DeleteIdea(id)">Delete Idea</button> &nbsp; &nbsp; &nbsp;<!--
+                        <button type="submit" class="btn btn-danger" ng-dblclick="DeleteIdea(id)">Delete</button> &nbsp; &nbsp; &nbsp;<!--
                         <i class="fa fa-comments-o"></i> &nbsp; &nbsp; &nbsp; <i class="fa fa-bar-chart-o"></i> &nbsp; &nbsp; &nbsp; <i class="fa fa-share-square-o"></i> &nbsp; &nbsp; &nbsp; 
                         -->
                         </p>

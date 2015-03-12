@@ -640,3 +640,6 @@ app.controller('ideaPrivacy', ['$scope', function($scope) {
 app.run(["$rootScope", "Auth", function($rootScope, Auth) {
   $rootScope.user = Auth.$getAuth();
 }]);
+
+
+

@@ -436,6 +436,7 @@ p {
   left: 0;
   right: 0;
   bottom: 0;
+
 }
 .page-wrapper,
 .header-antiflicker,
@@ -861,7 +862,7 @@ section * {
   padding-top: 0;
   padding-bottom: 0;
   height: 80px;
-  background: #233240;
+  background: #ffffff;
   color: white;
 }
 .header-10 .navbar {
@@ -1622,7 +1623,7 @@ section * {
   filter: alpha(opacity=85);
 }
 .header-10 {
-  background-color: #1b1f23;
+  background-color: #fff;
 }
 .header-10 .btn:hover,
 .header-10 .btn.active,
